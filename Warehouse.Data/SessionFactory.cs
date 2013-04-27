@@ -11,9 +11,9 @@
         private static ISessionFactory _sessionFactory;
         private static ISystemSetting _systemSetting;
 
-        public SessionFactory(ISystemSetting systemSetting)
+        public SessionFactory()
         {
-            _systemSetting = systemSetting;
+            _systemSetting = new SystemSetting();
 
             InitializeSessionFactory();
         }

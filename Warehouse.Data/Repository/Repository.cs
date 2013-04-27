@@ -13,8 +13,10 @@ namespace Warehouse.Data.Repository
     {
         private readonly ISession _session ;
 
-        protected Repository(ISession session)
+        protected Repository()
         {
+            _session = new SessionFactory();
+
             if (_session == null)
             {
                 throw new ArgumentNullException("session");
