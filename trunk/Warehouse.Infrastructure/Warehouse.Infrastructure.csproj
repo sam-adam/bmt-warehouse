@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4AF48E1F-032B-41ED-B8E6-FBE4A5BC05A6}</ProjectGuid>
+    <ProjectGuid>{CF55C5E2-E570-46A6-B9C0-E1CC04196225}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Warehouse.Test</RootNamespace>
-    <AssemblyName>Warehouse.Test</AssemblyName>
+    <RootNamespace>Warehouse.Infrastructure</RootNamespace>
+    <AssemblyName>Warehouse.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -38,38 +38,37 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ConnectionTest.cs" />
+    <Compile Include="Bootstrap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Autofac">
-      <HintPath>C:\Users\Adam\Documents\Visual Studio 2010\Projects\BerkatMitraTrading\packages\Autofac.3.0.1\lib\net40\Autofac.dll</HintPath>
+      <HintPath>..\packages\Autofac.3.0.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MySql.Data.6.6.5\lib\net40\MySql.Data.dll</HintPath>
+    <Reference Include="Autofac.Configuration">
+      <HintPath>..\packages\Autofac.3.0.2\lib\net40\Autofac.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate">
       <HintPath>C:\SharedLibs\NHibernate\Required_Bins\NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Login\Warehouse.Presentation.csproj">
+      <Project>{595E1619-645B-4131-8D8E-E01F2B37BC97}</Project>
+      <Name>Warehouse.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Warehouse.Business\Warehouse.Business.csproj">
+      <Project>{CD92CB10-ED72-4236-B3EF-CBEF67EF4891}</Project>
+      <Name>Warehouse.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Warehouse.Data\Warehouse.Data.csproj">
       <Project>{1C916A36-7768-4AFD-B7C6-90F8F00229B0}</Project>
       <Name>Warehouse.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Warehouse.Infrastructure\Warehouse.Infrastructure.csproj">
-      <Project>{CF55C5E2-E570-46A6-B9C0-E1CC04196225}</Project>
-      <Name>Warehouse.Infrastructure</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
