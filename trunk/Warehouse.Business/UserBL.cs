@@ -11,9 +11,9 @@
     {
         private readonly IUserRepository _userRepository;
 
-        public UserBl(IUserRepository userRepository)
+        public UserBl()
         {
-            _userRepository = userRepository;
+            _userRepository = new UserRepository();
         }
 
         public IEnumerable<User> Get(User user)

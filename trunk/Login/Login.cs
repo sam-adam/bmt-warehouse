@@ -11,9 +11,9 @@ namespace Warehouse.Presentation
     {
         private readonly UserBl _userBl;
 
-        public Login(UserBl userBl)
+        public Login()
         {
-            _userBl = userBl;
+            _userBl = new UserBl();
 
             InitializeComponent();
         }

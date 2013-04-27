@@ -14,6 +14,9 @@ namespace Warehouse.Presentation
         [MTAThread]
         static void Main()
         {
+            var bootstrap = new Bootstrap();
+            var container = bootstrap.Configure();
+
             Application.CurrentCulture = new CultureInfo("en-US");
 
             Application.EnableVisualStyles();
