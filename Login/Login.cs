@@ -39,5 +39,10 @@ namespace Warehouse.Presentation
                 MessageBox.Show(userList != null ? "Login success" : "Username or password is incorrect");
             }
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

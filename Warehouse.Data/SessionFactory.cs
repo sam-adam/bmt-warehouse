@@ -11,7 +11,7 @@
         private static ISessionFactory _sessionFactory;
         private static ISystemSetting _systemSetting;
 
-        SessionFactory(ISystemSetting systemSetting)
+        public SessionFactory(ISystemSetting systemSetting)
         {
             _systemSetting = systemSetting;
 
@@ -29,7 +29,7 @@
                 .BuildSessionFactory();
         }
 
-        public static ISession OpenSession()
+        public ISession OpenSession()
         {
             return _sessionFactory.OpenSession();
         }
