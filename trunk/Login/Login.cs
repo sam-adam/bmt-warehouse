@@ -1,48 +1,48 @@
-﻿using System.Windows.Forms;
-
-namespace Warehouse.Presentation
+﻿namespace Warehouse.Presentation
 {
+    using Autofac;
     using System;
-    using DevExpress.XtraEditors;
+    using System.Windows.Forms;
     using Warehouse.Business;
     using Warehouse.Data.Model;
 
-    public partial class Login : XtraForm
+    public partial class Login : Form
     {
+        private readonly IContainer _container;
         private readonly UserBl _userBl;
 
-        public Login()
+        public Login(IContainer container)
         {
-            _userBl = new UserBl();
+            _container = container;
+            _userBl = _container.Resolve<UserBl>();
 
             InitializeComponent();
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            if (txtUsername.Text == "")
-            {
-                MessageBox.Show("Username have to be filled");
-            }
-            else if (txtPassword.Text == "")
-            {
-                MessageBox.Show("Password have to be filled");
-            }
-            else
-            {
-                var userList = _userBl.Get(new User()
-                    {
-                        Username = txtUsername.Text,
-                        Password = txtPassword.Text
-                    });
-
-                MessageBox.Show(userList != null ? "Login success" : "Username or password is incorrect");
-            }
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if (txtUsername.Text == ""  || txtPassword.Text == "")
+            {
+                MessageBox.Show(@"Username and password must be filled");
+            }
+            else
+            {
+                var users = _userBl.Get(new User {Username = txtUsername.Text, Password = txtPassword.Text});
+                
+                if (users == null)
+                {
+                    MessageBox.Show(@"Username or password is wrong");
+                }
+                else
+                {
+                    MessageBox.Show(@"Login success");
+                }
+            }
         }
     }
 }

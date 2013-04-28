@@ -2,7 +2,6 @@
 {
     using Data.Contract;
     using Data.Model;
-    using NHibernate;
     using Warehouse.Data.Repository;
     using System.Collections.Generic;
     using System.Linq;
@@ -11,9 +10,9 @@
     {
         private readonly IUserRepository _userRepository;
 
-        public UserBl()
+        public UserBl(IUserRepository userRepository)
         {
-            _userRepository = new UserRepository();
+            _userRepository = userRepository;
         }
 
         public IEnumerable<User> Get(User user)
