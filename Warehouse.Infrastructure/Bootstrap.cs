@@ -1,9 +1,7 @@
-﻿using Warehouse.Business;
-
-namespace Warehouse.Infrastructure
+﻿namespace Warehouse.Infrastructure
 {
     using Autofac;
-    using NHibernate;
+    using Warehouse.Business;
     using Warehouse.Data;
     using Warehouse.Data.Contract;
     using Warehouse.Data.Repository;
@@ -14,7 +12,9 @@ namespace Warehouse.Infrastructure
         {
             var builder = new ContainerBuilder();
 
+            builder.RegisterType<Bootstrap>().AsSelf();
             builder.RegisterType<UserBl>();
+            builder.Register(c => c.Resolve<SessionFactory>().OpenSession());
             builder.RegisterType<SessionFactory>();
             builder.RegisterType<SystemSetting>().As<ISystemSetting>();
             builder.RegisterType<UserRepository>().As<IUserRepository>();

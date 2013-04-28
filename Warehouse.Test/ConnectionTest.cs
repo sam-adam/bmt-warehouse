@@ -1,39 +1,25 @@
-﻿using System;
-using System.ComponentModel;
-using MySql.Data.MySqlClient;
+﻿using Autofac;
+using NUnit.Framework;
+using Warehouse.Data.Model;
 using Warehouse.Infrastructure;
+using Warehouse.Data.Contract;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Warehouse.Test
 {
-    using Autofac;
-    using NUnit.Framework;
-    using NHibernate;
-    using Warehouse.Data;
-    using Warehouse.Data.Contract;
-
     [TestFixture]
     public class ConnectionTest
     {
         [Test]
-        public void CanConnect()
-        {
-            ISystemSetting systemSetting = new SystemSetting();
-            ISession session = new SessionFactory(systemSetting).OpenSession();
-        }
-
-        [Test]
-        public void AutofactTest()
+        public void AutofacTest()
         {
             var bootstrap = new Bootstrap();
             var container = bootstrap.Configure();
 
-            using (var session = container.Resolve<SessionFactory>().OpenSession())
-            {
-                using (session)
-                {
-                    
-                }
-            }
+            var userRepository = container.Resolve<IUserRepository>();
+
+            List<User> userList = userRepository.GetAllAsEnumerable().ToList();
         }
     }
 }

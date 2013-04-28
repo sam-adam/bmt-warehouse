@@ -1,10 +1,8 @@
-﻿using NHibernate;
-
-namespace Warehouse.Data.Repository
+﻿namespace Warehouse.Data.Repository
 {
-    using System;
+    using NHibernate;
+    using System.Linq;
     using System.Collections.Generic;
-    using System.Linq.Expressions;
     using Warehouse.Data.Contract;
     using Warehouse.Data.Model;
 
@@ -12,7 +10,11 @@ namespace Warehouse.Data.Repository
     {
         public UserRepository(ISession session) : base(session)
         {
+        }
 
+        public IEnumerable<User> GetAllAsEnumerable()
+        {
+            return base.GetAll().AsEnumerable();
         }
     }
 }
