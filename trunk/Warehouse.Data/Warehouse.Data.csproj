@@ -71,15 +71,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Contract\IFluentConfiguration.cs" />
+    <Compile Include="Contract\IProductCategoryRepository.cs" />
+    <Compile Include="Contract\IProductSubcategoryRepository.cs" />
     <Compile Include="Contract\IReadOnlyRepository.cs" />
+    <Compile Include="Contract\IRentalProductRepository.cs" />
     <Compile Include="Contract\IRepository.cs" />
     <Compile Include="Contract\ISystemSetting.cs" />
     <Compile Include="Contract\IUserRepository.cs" />
     <Compile Include="Helper\EncryptionService.cs" />
     <Compile Include="Mapping\EmployeeMap.cs" />
+    <Compile Include="Mapping\ProductCategoryMap.cs" />
+    <Compile Include="Mapping\ProductSubcategoryMap.cs" />
+    <Compile Include="Mapping\RentalProductMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Entity.cs" />
+    <Compile Include="Model\ProductCategory.cs" />
+    <Compile Include="Model\ProductSubcategory.cs" />
+    <Compile Include="Model\RentalProduct.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="MySqlFluentConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +97,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Repository\ProductCategoryRepository.cs" />
+    <Compile Include="Repository\ProductSubcategoryRepository.cs" />
+    <Compile Include="Repository\RentalProductRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="SessionFactory.cs" />

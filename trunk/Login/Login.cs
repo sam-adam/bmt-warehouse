@@ -11,17 +11,18 @@
         private readonly IContainer _container;
         private readonly UserBl _userBl;
 
+        private bool _loggedIn;
+
+        public bool LoggedIn { get { return _loggedIn; } }
+
         public Login(IContainer container)
         {
             _container = container;
             _userBl = _container.Resolve<UserBl>();
 
+            _loggedIn = false;
+
             InitializeComponent();
-        }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -41,6 +42,10 @@
                 else
                 {
                     MessageBox.Show(@"Login success");
+
+                    _loggedIn = true;
+
+                    Dispose(true);
                 }
             }
         }

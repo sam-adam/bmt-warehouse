@@ -14,7 +14,7 @@
 
         public IEnumerable<User> GetAllAsEnumerable()
         {
-            return base.GetAll().AsEnumerable();
+            return GetAll().AsEnumerable();
         }
     }
 }

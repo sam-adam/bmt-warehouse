@@ -7,17 +7,21 @@
     {
         public EmployeeMap()
         {
-            Id(x => x.Id);
+            Table("tbl_msemployee");
+
+            Id(x => x.Id, "id_employee");
             Map(x => x.Name);
             Map(x => x.Position);
             Map(x => x.Address);
             Map(x => x.Phone);
             Map(x => x.Cellphone);
             Map(x => x.Email);
-            Map(x => x.Branch);
-            Map(x => x.JoinDate);
+            Map(x => x.Branch, "id_branch");
+            Map(x => x.JoinDate, "join_date");
             Map(x => x.Status);
             Map(x => x.BirthDate);
+
+            HasOne<User>(x => x.Id).PropertyRef(y => y.Employee);
         }
     }
 }
