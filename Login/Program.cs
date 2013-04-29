@@ -1,10 +1,8 @@
 ﻿namespace Warehouse.Presentation
 {
-    using Autofac;
     using System;
     using System.Globalization;
     using System.Windows.Forms;
-    using Warehouse.Business;
     using Warehouse.Infrastructure;
 
     static class Program
@@ -21,7 +19,14 @@
 
             using (var container = bootstrap.Configure())
             {
-                Application.Run(new Login(container));   
+                var login = new Login(container);
+
+                login.ShowDialog();
+
+                if (login.LoggedIn)
+                {
+                    Application.Run(new Home(container));   
+                }
             }
         }
     }

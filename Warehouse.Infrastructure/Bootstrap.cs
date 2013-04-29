@@ -17,7 +17,9 @@
             builder.Register(c => c.Resolve<SessionFactory>().OpenSession());
             builder.RegisterType<SessionFactory>();
             builder.RegisterType<SystemSetting>().As<ISystemSetting>();
+
             builder.RegisterType<UserRepository>().As<IUserRepository>();
+            builder.RegisterType<RentalProductRepository>().As<IRentalProductRepository>();
 
             return builder.Build();
         }

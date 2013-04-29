@@ -61,7 +61,7 @@
             this.txtUsername.Location = new System.Drawing.Point(28, 53);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(251, 22);
-            this.txtUsername.TabIndex = 2;
+            this.txtUsername.TabIndex = 1;
             // 
             // txtPassword
             // 
@@ -70,7 +70,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(251, 22);
-            this.txtPassword.TabIndex = 1;
+            this.txtPassword.TabIndex = 2;
             // 
             // btnLogin
             // 
@@ -94,7 +94,6 @@
             this.Controls.Add(this.lblUsername);
             this.Name = "Login";
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

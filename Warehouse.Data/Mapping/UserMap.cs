@@ -11,7 +11,9 @@
 
             Id(x => x.Username);
             Map(x => x.Password);
-            References(x => x.Employee, "id_employee");
+            References(x => x.Employee)
+                .Column("id_employee")
+                .Unique();
         }
     }
 }
