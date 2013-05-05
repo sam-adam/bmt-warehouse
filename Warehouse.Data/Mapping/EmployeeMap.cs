@@ -20,8 +20,6 @@
             Map(x => x.JoinDate, "join_date");
             Map(x => x.Status);
             Map(x => x.BirthDate);
-
-            HasOne<User>(x => x.Id).PropertyRef(y => y.Employee);
         }
     }
 }

@@ -9,7 +9,7 @@
         {
             Table("tbl_msproductcategory");
 
-            Id(x => x.Id, "id_vategory");
+            Id(x => x.Id, "id_category");
             Map(x => x.Category);
         }
     }

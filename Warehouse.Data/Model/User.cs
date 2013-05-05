@@ -1,6 +1,6 @@
 ﻿namespace Warehouse.Data.Model
 {
-    using Warehouse.Data.Helper;
+    using Warehouse.Helper;
 
     public class User : Entity
     {
@@ -10,8 +10,13 @@
         public virtual string Password
         {
             get { return _password; }
-            set { _password = EncryptionService.MD5String(value); }
+            set { _password = value; }
         }
         public virtual Employee Employee { get; set; }
+
+        public virtual void EncryptPassword()
+        {
+            _password = EncryptionService.Md5String(_password);
+        }
     }
 }
