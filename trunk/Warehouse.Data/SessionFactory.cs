@@ -10,6 +10,7 @@
     {
         private static ISessionFactory _sessionFactory;
         private static ISystemSetting _systemSetting;
+        private static ISession _session;
 
         public SessionFactory()
         {
@@ -31,7 +32,12 @@
 
         public ISession OpenSession()
         {
-            return _sessionFactory.OpenSession();
+            if (_session == null || !_session.IsOpen)
+            {
+                _session = _sessionFactory.OpenSession();
+            }
+
+            return _session;
         }
     }
 }

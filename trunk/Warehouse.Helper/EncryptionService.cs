@@ -1,4 +1,4 @@
-﻿namespace Warehouse.Data.Helper
+﻿namespace Warehouse.Helper
 {
     using System;
     using System.Security.Cryptography;
@@ -6,7 +6,7 @@
 
     public static class EncryptionService
     {
-        public static string MD5String(string value)
+        public static string Md5String(string value)
         {
             byte[] originalBytes;
             byte[] encodedBytes;

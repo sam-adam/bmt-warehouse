@@ -11,7 +11,8 @@ namespace Warehouse.Data.Repository
 
     public abstract class Repository<T> : IRepository<T> where T : class
     {
-        private readonly ISession _session ;
+        private ITransaction _transaction;
+        private readonly ISession _session;
 
         protected Repository(ISession session)
         {
@@ -21,6 +22,7 @@ namespace Warehouse.Data.Repository
             }
 
             _session = session;
+            _transaction = _session.BeginTransaction();
         }
 
         #region IReadonlyRepository<T> members
@@ -40,9 +42,9 @@ namespace Warehouse.Data.Repository
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T> Get(Expression<Func<T, bool>> predicate)
+        public IQueryable<T> Get(Expression<Func<T, bool>> predicate)
         {
-            return GetAll().Where(predicate).ToList();
+            return GetAll().Where(predicate).AsQueryable();
         }
 
         #endregion
@@ -51,7 +53,9 @@ namespace Warehouse.Data.Repository
 
         public void Add(T t)
         {
-            throw new NotImplementedException();
+            _session.Save(t);
+
+            _transaction.Commit();
         }
 
         public void Delete(T t)

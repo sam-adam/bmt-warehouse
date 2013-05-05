@@ -70,24 +70,31 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Contract\ICustomerRepository.cs" />
     <Compile Include="Contract\IFluentConfiguration.cs" />
     <Compile Include="Contract\IProductCategoryRepository.cs" />
     <Compile Include="Contract\IProductSubcategoryRepository.cs" />
     <Compile Include="Contract\IReadOnlyRepository.cs" />
+    <Compile Include="Contract\IRentalAgreementRepository.cs" />
     <Compile Include="Contract\IRentalProductRepository.cs" />
     <Compile Include="Contract\IRepository.cs" />
     <Compile Include="Contract\ISystemSetting.cs" />
     <Compile Include="Contract\IUserRepository.cs" />
-    <Compile Include="Helper\EncryptionService.cs" />
+    <Compile Include="Mapping\CustomerMap.cs" />
     <Compile Include="Mapping\EmployeeMap.cs" />
     <Compile Include="Mapping\ProductCategoryMap.cs" />
     <Compile Include="Mapping\ProductSubcategoryMap.cs" />
+    <Compile Include="Mapping\RentalAgreementDetailMap.cs" />
+    <Compile Include="Mapping\RentalAgreementMap.cs" />
     <Compile Include="Mapping\RentalProductMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
+    <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\ProductCategory.cs" />
     <Compile Include="Model\ProductSubcategory.cs" />
+    <Compile Include="Model\RentalAgreement.cs" />
+    <Compile Include="Model\RentalAgreementDetail.cs" />
     <Compile Include="Model\RentalProduct.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="MySqlFluentConfiguration.cs" />
@@ -97,8 +104,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Repository\ProductCategoryRepository.cs" />
     <Compile Include="Repository\ProductSubcategoryRepository.cs" />
+    <Compile Include="Repository\RentalAgreementRepository.cs" />
     <Compile Include="Repository\RentalProductRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
@@ -125,6 +134,7 @@
     <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MySql.Data.6.6.5\lib\net40\MySql.Data.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\packages\NHibernate.3.3.3.4000\lib\Net35\NHibernate.dll</HintPath>
@@ -133,6 +143,12 @@
     <Reference Include="System.Data">
       <Private>True</Private>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Warehouse.Helper\Warehouse.Helper.csproj">
+      <Project>{B19CACE6-7384-442B-BB2D-D3043BA354C8}</Project>
+      <Name>Warehouse.Helper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

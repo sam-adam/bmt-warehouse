@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.Presentation", "Login\Warehouse.Presentation.csproj", "{595E1619-645B-4131-8D8E-E01F2B37BC97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.Presentation", "Warehouse.Presentation\Warehouse.Presentation.csproj", "{595E1619-645B-4131-8D8E-E01F2B37BC97}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.Business", "Warehouse.Business\Warehouse.Business.csproj", "{CD92CB10-ED72-4236-B3EF-CBEF67EF4891}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.Test", "Warehouse.Test\Warehouse.Test.csproj", "{4AF48E1F-032B-41ED-B8E6-FBE4A5BC05A6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.Infrastructure", "Warehouse.Infrastructure\Warehouse.Infrastructure.csproj", "{CF55C5E2-E570-46A6-B9C0-E1CC04196225}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.Helper", "Warehouse.Helper\Warehouse.Helper.csproj", "{B19CACE6-7384-442B-BB2D-D3043BA354C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,8 +54,8 @@ Global
 		{1C916A36-7768-4AFD-B7C6-90F8F00229B0}.Release|x86.ActiveCfg = Release|x86
 		{1C916A36-7768-4AFD-B7C6-90F8F00229B0}.Release|x86.Build.0 = Release|x86
 		{4AF48E1F-032B-41ED-B8E6-FBE4A5BC05A6}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{4AF48E1F-032B-41ED-B8E6-FBE4A5BC05A6}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{4AF48E1F-032B-41ED-B8E6-FBE4A5BC05A6}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{4AF48E1F-032B-41ED-B8E6-FBE4A5BC05A6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4AF48E1F-032B-41ED-B8E6-FBE4A5BC05A6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{4AF48E1F-032B-41ED-B8E6-FBE4A5BC05A6}.Debug|x86.ActiveCfg = Debug|x86
 		{4AF48E1F-032B-41ED-B8E6-FBE4A5BC05A6}.Debug|x86.Build.0 = Debug|x86
 		{4AF48E1F-032B-41ED-B8E6-FBE4A5BC05A6}.Release|Any CPU.ActiveCfg = Release|x86
@@ -71,6 +73,16 @@ Global
 		{CF55C5E2-E570-46A6-B9C0-E1CC04196225}.Release|Mixed Platforms.Build.0 = Release|x86
 		{CF55C5E2-E570-46A6-B9C0-E1CC04196225}.Release|x86.ActiveCfg = Release|x86
 		{CF55C5E2-E570-46A6-B9C0-E1CC04196225}.Release|x86.Build.0 = Release|x86
+		{B19CACE6-7384-442B-BB2D-D3043BA354C8}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B19CACE6-7384-442B-BB2D-D3043BA354C8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B19CACE6-7384-442B-BB2D-D3043BA354C8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B19CACE6-7384-442B-BB2D-D3043BA354C8}.Debug|x86.ActiveCfg = Debug|x86
+		{B19CACE6-7384-442B-BB2D-D3043BA354C8}.Debug|x86.Build.0 = Debug|x86
+		{B19CACE6-7384-442B-BB2D-D3043BA354C8}.Release|Any CPU.ActiveCfg = Release|x86
+		{B19CACE6-7384-442B-BB2D-D3043BA354C8}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{B19CACE6-7384-442B-BB2D-D3043BA354C8}.Release|Mixed Platforms.Build.0 = Release|x86
+		{B19CACE6-7384-442B-BB2D-D3043BA354C8}.Release|x86.ActiveCfg = Release|x86
+		{B19CACE6-7384-442B-BB2D-D3043BA354C8}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

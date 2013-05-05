@@ -70,7 +70,14 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="UserBL.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RentalAgreementBl.cs" />
+    <Compile Include="LoginBl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +88,16 @@
       <Project>{1C916A36-7768-4AFD-B7C6-90F8F00229B0}</Project>
       <Name>Warehouse.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Warehouse.Helper\Warehouse.Helper.csproj">
+      <Project>{B19CACE6-7384-442B-BB2D-D3043BA354C8}</Project>
+      <Name>Warehouse.Helper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
