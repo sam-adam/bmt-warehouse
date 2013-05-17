@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Warehouse.Presentation
 {
-    public partial class RentalProduct : Form
+    public partial class RentalProductFrm : Form
     {
-        public RentalProduct()
+        public RentalProductFrm()
         {
             InitializeComponent();
         }

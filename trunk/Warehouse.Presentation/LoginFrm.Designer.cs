@@ -1,6 +1,6 @@
 ﻿namespace Warehouse.Presentation
 {
-    partial class Login
+    partial class LoginFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -83,8 +83,9 @@
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // Login
+            // LoginFrm
             // 
+            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(282, 173);
@@ -93,7 +94,7 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
-            this.Name = "Login";
+            this.Name = "LoginFrm";
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();

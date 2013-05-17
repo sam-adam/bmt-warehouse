@@ -1,6 +1,6 @@
 ﻿namespace Warehouse.Presentation
 {
-    partial class RentalProduct
+    partial class RentalProductFrm
     {
         /// <summary>
         /// Required designer variable.

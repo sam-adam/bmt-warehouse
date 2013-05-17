@@ -1,11 +1,9 @@
-﻿using Warehouse.Data.Model;
-
-namespace Warehouse.Presentation
+﻿namespace Warehouse.Presentation
 {
+    using Autofac;
     using System;
     using System.Globalization;
     using System.Windows.Forms;
-    using Warehouse.Infrastructure;
 
     static class Program
     {
@@ -21,13 +19,13 @@ namespace Warehouse.Presentation
             
             using (var container = bootstrap.Configure())
             {
-                var login = new Login(container);
+                var login = container.Resolve<LoginFrm>();
 
                 login.ShowDialog();
 
                 if (login.LoggedIn)
                 {
-                    Application.Run(new RentalAgreement(container));
+                    Application.Run(container.Resolve<RentalReceiptFrm>());
                 }
             }
         }

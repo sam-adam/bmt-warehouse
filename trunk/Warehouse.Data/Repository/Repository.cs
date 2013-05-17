@@ -70,7 +70,7 @@ namespace Warehouse.Data.Repository
 
         public void Update(T t)
         {
-            throw new NotImplementedException();
+            _session.Update(t);
         }
 
         #endregion

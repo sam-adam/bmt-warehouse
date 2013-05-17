@@ -8,6 +8,7 @@
     {
         public RentalAgreementRepository(ISession session) : base(session)
         {
+
         }
     }
 }
