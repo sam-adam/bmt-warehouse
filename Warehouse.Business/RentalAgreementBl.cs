@@ -19,10 +19,11 @@
         private readonly List<Customer> _customers;
         private readonly List<ProductCategory> _productCategories;
         private readonly List<ProductSubcategory> _productSubcategories;
+        private readonly List<RentalAgreementDetail> _details = new List<RentalAgreementDetail>();
 
         private Customer _selectedCustomer;
         private RentalAgreement _rentalAgreement;
-
+        
         public RentalAgreementBl(ICustomerRepository customerRepository,
                                  IProductCategoryRepository productCategoryRepository,
                                  IProductSubcategoryRepository productSubcategoryRepository,
@@ -85,14 +86,15 @@
             return productSubcategory.Any() ? productSubcategory.First() : null;
         }
 
-        public void AddNewRentalAgreement(DateTime agreementDate, string reference)
+        public void AddNewRentalAgreement(DateTime agreementDate, int cutOffDate, string reference)
         {
-            _rentalAgreement = new RentalAgreement
+            _rentalAgreement = new RentalAgreement(_details)
                 {
                     Id = GenerateNewId(),
                     Customer = _selectedCustomer,
-                    AgreementDate = agreementDate.ToLongTimeString(),
-                    CreatedDate = DateTime.Now.ToLongTimeString(),
+                    AgreementDate = agreementDate,
+                    CreatedDate = DateTime.Now,
+                    CutOffDate = cutOffDate,
                     Reference = reference,
                     CreatedBy = _common.LoggedInUser.Employee,
                     Status = "ACTIVE"
@@ -101,7 +103,7 @@
 
         public void AddNewRentalAgreementDetail(string categoryId, string subCategoryId, double price)
         {
-            _rentalAgreement.AddRentalAgreementDetail(new RentalAgreementDetail()
+            _details.Add(new RentalAgreementDetail()
                 {
                     RentalAgreement = _rentalAgreement,
                     Category = GetProductCategory(cat => cat.Id == categoryId),
@@ -112,9 +114,26 @@
 
         public string SaveNewRentalAgreement()
         {
+            var message = "";
+
             _rentalAgreementRepository.Add(_rentalAgreement);
 
-            return _rentalAgreement.Id;
+            message = string.Format("Rental Agreement : {0} is created", _rentalAgreement.Id);
+
+            if (_rentalAgreement.Customer.HasRentalAgreement())
+            {
+                var activeRental = _rentalAgreement.Customer.GetActiveRental();
+
+                activeRental.Status = "INACTIVE";
+
+                _rentalAgreementRepository.Update(activeRental);
+
+                var updateMessage = string.Format("Rental Agreement : {0} is now inactive", activeRental.Id);
+
+                message = message + Environment.NewLine + updateMessage;
+            }
+
+            return message;
         }
 
         private string GenerateNewId()
@@ -124,14 +143,14 @@
             var branch = _common.LoggedInUser.Employee.Branch;
             var newId = "0001";
 
-            var rentalList = _rentalAgreementRepository.GetAll().ToList();
+            var rentalList = _rentalAgreementRepository.Get(rent => rent.CreatedDate.Month == DateTime.Now.Month).ToList();
             var lastRental = rentalList.Any() ? rentalList.Last() : null;
 
             if (lastRental != null)
             {
                 string[] lastRentalId = lastRental.Id.Split('.');
 
-                int newIntId = int.Parse(lastRentalId[1]) + 1;
+                var newIntId = int.Parse(lastRentalId[1]) + 1;
 
                 if (newIntId < 10)
                 {

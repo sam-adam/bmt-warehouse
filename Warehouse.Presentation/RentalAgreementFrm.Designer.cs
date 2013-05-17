@@ -1,6 +1,6 @@
 ﻿namespace Warehouse.Presentation
 {
-    partial class RentalAgreement
+    partial class RentalAgreementFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -42,6 +42,7 @@
             this.txtCustomerId = new System.Windows.Forms.TextBox();
             this.stpRentalAgreement = new System.Windows.Forms.StatusStrip();
             this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssHelpCustomerSelection = new System.Windows.Forms.ToolStripStatusLabel();
             this.dtpTransactionDate = new System.Windows.Forms.DateTimePicker();
             this.btnViewCustomer = new System.Windows.Forms.Button();
             this.txtCustomerTitle = new System.Windows.Forms.TextBox();
@@ -68,8 +69,11 @@
             this.lblOtherGroup = new System.Windows.Forms.Label();
             this.lblDetailGroup = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
+            this.lblCutOffDate = new System.Windows.Forms.Label();
+            this.numCutOffDate = new System.Windows.Forms.NumericUpDown();
             this.stpRentalAgreement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductCategoryPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCutOffDate)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTransactionDate
@@ -96,7 +100,7 @@
             // 
             this.lblCustomerEmail.AutoSize = true;
             this.lblCustomerEmail.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblCustomerEmail.Location = new System.Drawing.Point(399, 149);
+            this.lblCustomerEmail.Location = new System.Drawing.Point(417, 149);
             this.lblCustomerEmail.Name = "lblCustomerEmail";
             this.lblCustomerEmail.Size = new System.Drawing.Size(35, 13);
             this.lblCustomerEmail.TabIndex = 13;
@@ -116,7 +120,7 @@
             // 
             this.lblCustomerAddress.AutoSize = true;
             this.lblCustomerAddress.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblCustomerAddress.Location = new System.Drawing.Point(399, 69);
+            this.lblCustomerAddress.Location = new System.Drawing.Point(417, 69);
             this.lblCustomerAddress.Name = "lblCustomerAddress";
             this.lblCustomerAddress.Size = new System.Drawing.Size(50, 13);
             this.lblCustomerAddress.TabIndex = 7;
@@ -169,6 +173,7 @@
             this.txtCustomerId.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCustomerId.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.txtCustomerId.Location = new System.Drawing.Point(134, 65);
+            this.txtCustomerId.MaxLength = 6;
             this.txtCustomerId.Name = "txtCustomerId";
             this.txtCustomerId.Size = new System.Drawing.Size(100, 21);
             this.txtCustomerId.TabIndex = 1;
@@ -180,7 +185,8 @@
             this.stpRentalAgreement.BackColor = System.Drawing.Color.White;
             this.stpRentalAgreement.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.stpRentalAgreement.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tssHelp});
+            this.tssHelp,
+            this.tssHelpCustomerSelection});
             this.stpRentalAgreement.Location = new System.Drawing.Point(0, 582);
             this.stpRentalAgreement.Name = "stpRentalAgreement";
             this.stpRentalAgreement.Size = new System.Drawing.Size(840, 31);
@@ -189,9 +195,19 @@
             // tssHelp
             // 
             this.tssHelp.BackColor = System.Drawing.Color.Transparent;
+            this.tssHelp.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.tssHelp.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.tssHelp.Name = "tssHelp";
-            this.tssHelp.Size = new System.Drawing.Size(149, 26);
+            this.tssHelp.Padding = new System.Windows.Forms.Padding(10);
+            this.tssHelp.Size = new System.Drawing.Size(173, 26);
             this.tssHelp.Text = "Create new rental agreement";
+            // 
+            // tssHelpCustomerSelection
+            // 
+            this.tssHelpCustomerSelection.Name = "tssHelpCustomerSelection";
+            this.tssHelpCustomerSelection.Padding = new System.Windows.Forms.Padding(10);
+            this.tssHelpCustomerSelection.Size = new System.Drawing.Size(173, 26);
+            this.tssHelpCustomerSelection.Text = "F1 :  Open Customer Selection";
             // 
             // dtpTransactionDate
             // 
@@ -212,6 +228,7 @@
             this.btnViewCustomer.TabIndex = 2;
             this.btnViewCustomer.Text = "...";
             this.btnViewCustomer.UseVisualStyleBackColor = true;
+            this.btnViewCustomer.Click += new System.EventHandler(this.btnViewCustomer_Click);
             // 
             // txtCustomerTitle
             // 
@@ -245,11 +262,11 @@
             this.txtCustomerAddress.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtCustomerAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCustomerAddress.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtCustomerAddress.Location = new System.Drawing.Point(455, 64);
+            this.txtCustomerAddress.Location = new System.Drawing.Point(516, 64);
             this.txtCustomerAddress.Multiline = true;
             this.txtCustomerAddress.Name = "txtCustomerAddress";
             this.txtCustomerAddress.ReadOnly = true;
-            this.txtCustomerAddress.Size = new System.Drawing.Size(358, 76);
+            this.txtCustomerAddress.Size = new System.Drawing.Size(294, 76);
             this.txtCustomerAddress.TabIndex = 18;
             this.txtCustomerAddress.TabStop = false;
             // 
@@ -259,7 +276,7 @@
             this.txtCustomerEmail.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtCustomerEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCustomerEmail.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtCustomerEmail.Location = new System.Drawing.Point(455, 146);
+            this.txtCustomerEmail.Location = new System.Drawing.Point(516, 146);
             this.txtCustomerEmail.Name = "txtCustomerEmail";
             this.txtCustomerEmail.ReadOnly = true;
             this.txtCustomerEmail.Size = new System.Drawing.Size(250, 21);
@@ -272,7 +289,7 @@
             this.txtSender.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtSender.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSender.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtSender.Location = new System.Drawing.Point(134, 228);
+            this.txtSender.Location = new System.Drawing.Point(135, 228);
             this.txtSender.Name = "txtSender";
             this.txtSender.Size = new System.Drawing.Size(250, 21);
             this.txtSender.TabIndex = 4;
@@ -293,16 +310,16 @@
             this.txtReference.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtReference.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtReference.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtReference.Location = new System.Drawing.Point(134, 255);
+            this.txtReference.Location = new System.Drawing.Point(516, 228);
             this.txtReference.Name = "txtReference";
             this.txtReference.Size = new System.Drawing.Size(141, 21);
-            this.txtReference.TabIndex = 5;
+            this.txtReference.TabIndex = 6;
             // 
             // lblExtReference
             // 
             this.lblExtReference.AutoSize = true;
             this.lblExtReference.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblExtReference.Location = new System.Drawing.Point(35, 258);
+            this.lblExtReference.Location = new System.Drawing.Point(417, 231);
             this.lblExtReference.Name = "lblExtReference";
             this.lblExtReference.Size = new System.Drawing.Size(84, 13);
             this.lblExtReference.TabIndex = 22;
@@ -341,12 +358,12 @@
             this.Price});
             this.dgvProductCategoryPrice.EnableHeadersVisualStyles = false;
             this.dgvProductCategoryPrice.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvProductCategoryPrice.Location = new System.Drawing.Point(15, 317);
+            this.dgvProductCategoryPrice.Location = new System.Drawing.Point(15, 286);
             this.dgvProductCategoryPrice.Name = "dgvProductCategoryPrice";
             this.dgvProductCategoryPrice.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvProductCategoryPrice.RowHeadersVisible = false;
-            this.dgvProductCategoryPrice.Size = new System.Drawing.Size(806, 252);
-            this.dgvProductCategoryPrice.TabIndex = 6;
+            this.dgvProductCategoryPrice.Size = new System.Drawing.Size(806, 283);
+            this.dgvProductCategoryPrice.TabIndex = 7;
             this.dgvProductCategoryPrice.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvProductCategoryPrice_CellBeginEdit);
             this.dgvProductCategoryPrice.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductCategoryPrice_CellValueChanged);
             this.dgvProductCategoryPrice.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvProductCategoryPrice_UserDeletingRow);
@@ -421,15 +438,15 @@
             this.lineShape1.Name = "lineShape1";
             this.lineShape1.X1 = 61;
             this.lineShape1.X2 = 820;
-            this.lineShape1.Y1 = 294;
-            this.lineShape1.Y2 = 294;
+            this.lineShape1.Y1 = 264;
+            this.lineShape1.Y2 = 264;
             // 
             // lneOtherGroup
             // 
             this.lneOtherGroup.BorderColor = System.Drawing.SystemColors.ScrollBar;
             this.lneOtherGroup.Name = "lneOtherGroup";
             this.lneOtherGroup.X1 = 55;
-            this.lneOtherGroup.X2 = 390;
+            this.lneOtherGroup.X2 = 820;
             this.lneOtherGroup.Y1 = 184;
             this.lneOtherGroup.Y2 = 184;
             // 
@@ -456,7 +473,7 @@
             // 
             this.lblDetailGroup.AutoSize = true;
             this.lblDetailGroup.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lblDetailGroup.Location = new System.Drawing.Point(12, 287);
+            this.lblDetailGroup.Location = new System.Drawing.Point(12, 257);
             this.lblDetailGroup.Name = "lblDetailGroup";
             this.lblDetailGroup.Size = new System.Drawing.Size(46, 13);
             this.lblDetailGroup.TabIndex = 26;
@@ -472,11 +489,47 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // RentalAgreement
+            // lblCutOffDate
             // 
+            this.lblCutOffDate.AutoSize = true;
+            this.lblCutOffDate.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.lblCutOffDate.Location = new System.Drawing.Point(417, 205);
+            this.lblCutOffDate.Name = "lblCutOffDate";
+            this.lblCutOffDate.Size = new System.Drawing.Size(73, 13);
+            this.lblCutOffDate.TabIndex = 29;
+            this.lblCutOffDate.Text = "Cut Off Date:";
+            // 
+            // numCutOffDate
+            // 
+            this.numCutOffDate.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.numCutOffDate.Location = new System.Drawing.Point(516, 201);
+            this.numCutOffDate.Maximum = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
+            this.numCutOffDate.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numCutOffDate.Name = "numCutOffDate";
+            this.numCutOffDate.Size = new System.Drawing.Size(53, 21);
+            this.numCutOffDate.TabIndex = 30;
+            this.numCutOffDate.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            // 
+            // RentalAgreementFrm
+            // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(840, 613);
+            this.Controls.Add(this.numCutOffDate);
+            this.Controls.Add(this.lblCutOffDate);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblDetailGroup);
             this.Controls.Add(this.lblOtherGroup);
@@ -506,12 +559,12 @@
             this.Controls.Add(this.lblTransactionDate);
             this.Controls.Add(this.shapeContainer1);
             this.MinimumSize = new System.Drawing.Size(850, 645);
-            this.Name = "RentalAgreement";
+            this.Name = "RentalAgreementFrm";
             this.Text = "Rental Agreement";
-            this.Load += new System.EventHandler(this.RentalAgreement_Load);
             this.stpRentalAgreement.ResumeLayout(false);
             this.stpRentalAgreement.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductCategoryPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCutOffDate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -556,5 +609,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductSubcategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.ToolStripStatusLabel tssHelpCustomerSelection;
+        private System.Windows.Forms.Label lblCutOffDate;
+        private System.Windows.Forms.NumericUpDown numCutOffDate;
     }
 }

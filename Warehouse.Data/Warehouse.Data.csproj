@@ -71,12 +71,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Contract\ICustomerRepository.cs" />
+    <Compile Include="Contract\IEmployeeRepository.cs" />
     <Compile Include="Contract\IFluentConfiguration.cs" />
     <Compile Include="Contract\IProductCategoryRepository.cs" />
     <Compile Include="Contract\IProductSubcategoryRepository.cs" />
     <Compile Include="Contract\IReadOnlyRepository.cs" />
     <Compile Include="Contract\IRentalAgreementRepository.cs" />
     <Compile Include="Contract\IRentalProductRepository.cs" />
+    <Compile Include="Contract\IRentalReceiptRepository.cs" />
     <Compile Include="Contract\IRepository.cs" />
     <Compile Include="Contract\ISystemSetting.cs" />
     <Compile Include="Contract\IUserRepository.cs" />
@@ -87,6 +89,8 @@
     <Compile Include="Mapping\RentalAgreementDetailMap.cs" />
     <Compile Include="Mapping\RentalAgreementMap.cs" />
     <Compile Include="Mapping\RentalProductMap.cs" />
+    <Compile Include="Mapping\RentalReceiptDetailMap.cs" />
+    <Compile Include="Mapping\RentalReceiptMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Employee.cs" />
@@ -96,6 +100,8 @@
     <Compile Include="Model\RentalAgreement.cs" />
     <Compile Include="Model\RentalAgreementDetail.cs" />
     <Compile Include="Model\RentalProduct.cs" />
+    <Compile Include="Model\RentalReceipt.cs" />
+    <Compile Include="Model\RentalReceiptDetail.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="MySqlFluentConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -105,10 +111,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Repository\CustomerRepository.cs" />
+    <Compile Include="Repository\EmployeeRepository.cs" />
     <Compile Include="Repository\ProductCategoryRepository.cs" />
     <Compile Include="Repository\ProductSubcategoryRepository.cs" />
     <Compile Include="Repository\RentalAgreementRepository.cs" />
     <Compile Include="Repository\RentalProductRepository.cs" />
+    <Compile Include="Repository\RentalReceiptRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="SessionFactory.cs" />

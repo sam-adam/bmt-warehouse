@@ -72,6 +72,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -87,37 +88,50 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrap.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="LoginFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="LoginFrm.Designer.cs">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RentalAgreement.cs">
+    <Compile Include="RentalAgreementFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RentalAgreement.Designer.cs">
-      <DependentUpon>RentalAgreement.cs</DependentUpon>
+    <Compile Include="RentalAgreementFrm.Designer.cs">
+      <DependentUpon>RentalAgreementFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RentalProduct.cs">
+    <Compile Include="RentalProductFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RentalProduct.Designer.cs">
-      <DependentUpon>RentalProduct.cs</DependentUpon>
+    <Compile Include="RentalProductFrm.Designer.cs">
+      <DependentUpon>RentalProductFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RentalReceiptFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RentalReceiptFrm.Designer.cs">
+      <DependentUpon>RentalReceiptFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CustomerView.Designer.cs">
+      <DependentUpon>CustomerView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="LoginFrm.resx">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -130,11 +144,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RentalAgreement.resx">
-      <DependentUpon>RentalAgreement.cs</DependentUpon>
+    <EmbeddedResource Include="RentalAgreementFrm.resx">
+      <DependentUpon>RentalAgreementFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RentalProduct.resx">
-      <DependentUpon>RentalProduct.cs</DependentUpon>
+    <EmbeddedResource Include="RentalProductFrm.resx">
+      <DependentUpon>RentalProductFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RentalReceiptFrm.resx">
+      <DependentUpon>RentalReceiptFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CustomerView.resx">
+      <DependentUpon>CustomerView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
@@ -180,6 +200,7 @@
       <Name>Warehouse.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

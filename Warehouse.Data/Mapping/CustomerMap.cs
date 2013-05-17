@@ -20,6 +20,11 @@
             Map(x => x.JoinDate, "tgl_join");
             Map(x => x.Status);
             Map(x => x.ContactPerson, "cprsn");
+            Map(x => x.TaxId, "NPWP");
+            Map(x => x.CreditLimit, "crlimit");
+            HasMany(x => x.RentalAgreements)
+                .KeyColumn("id_customer")
+                .Not.LazyLoad();
         }
     }
 }

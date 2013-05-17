@@ -3,22 +3,20 @@
     using FluentNHibernate.Mapping;
     using Warehouse.Data.Model;
 
-    public class RentalAgreementMap : ClassMap<RentalAgreement>
+    public class RentalReceiptMap : ClassMap<RentalReceipt>
     {
-        public RentalAgreementMap()
+        public RentalReceiptMap()
         {
-            Table("tbl_trrentalagreement");
+            Table("tbl_trrentalreceipt");
 
             Id(x => x.Id);
-            References(x => x.Customer, "id_customer");
+            References(x => x.RentalAgreement, "id_rentalagreement");
             Map(x => x.CreatedDate, "created_date");
-            Map(x => x.AgreementDate, "agreement_date");
-            Map(x => x.CutOffDate, "cut_off_date");
+            Map(x => x.ReceiptDate, "receipt_date");
             Map(x => x.Reference);
             References(x => x.CreatedBy, "created_by");
-            Map(x => x.Status);
             HasMany(x => x.Details)
-                .KeyColumn("id_rentalagreement")
+                .KeyColumn("id_rentalreceipt")
                 .Inverse()
                 .Cascade.All();
         }

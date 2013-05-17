@@ -1,27 +1,21 @@
 ﻿namespace Warehouse.Presentation
 {
-    using Autofac;
     using System;
-    using System.Collections.Generic;
     using System.Windows.Forms;
     using Warehouse.Business;
     using Warehouse.Data.Model;
 
-    public partial class Login : Form
+    public partial class LoginFrm : Form
     {
-        private readonly IContainer _container;
         private readonly LoginBl _loginBl;
 
-        private bool _loggedIn;
+        public bool LoggedIn { get; private set; }
 
-        public bool LoggedIn { get { return _loggedIn; } }
-
-        public Login(IContainer container)
+        public LoginFrm(LoginBl loginBl)
         {
-            _container = container;
-            _loginBl = _container.Resolve<LoginBl>();
+            _loginBl = loginBl;
 
-            _loggedIn = false;
+            LoggedIn = false;
 
             InitializeComponent();
         }
@@ -34,9 +28,9 @@
             }
             else
             {
-                _loggedIn = _loginBl.DoLogin(new User {Username = txtUsername.Text, Password = txtPassword.Text});
+                LoggedIn = _loginBl.DoLogin(new User {Username = txtUsername.Text, Password = txtPassword.Text});
                 
-                if (!_loggedIn)
+                if (!LoggedIn)
                 {
                     MessageBox.Show(@"Username or password is wrong");
                 }
@@ -44,7 +38,7 @@
                 {
                     MessageBox.Show(@"Login success");
 
-                    Dispose(true);
+                    Dispose();
                 }
             }
         }

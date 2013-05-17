@@ -63,24 +63,24 @@ namespace Warehouse.Test
         {
             var rentalAgreementBl = _container.Resolve<RentalAgreementBl>();
 
-            var newRental = new RentalAgreement
+            var newRental = new RentalAgreement(null)
                 {
                     Id = "newid",
-                    AgreementDate = "newagreementdate",
+                    //AgreementDate = "newagreementdate",
                     CreatedBy = new Employee(),
-                    CreatedDate = "newcreateddate",
+                    //CreatedDate = "newcreateddate",
                     Customer = new Customer(),
                     Reference = "newreference",
                     Status = "newstatus"
                 };
 
-            newRental.AddRentalAgreementDetail(new RentalAgreementDetail()
-                {
-                    Category = new ProductCategory(),
-                    Price = 123,
-                    RentalAgreement = newRental,
-                    Subcategory = new ProductSubcategory()
-                });
+            //newRental.AddRentalAgreementDetail(new RentalAgreementDetail()
+            //    {
+            //        Category = new ProductCategory(),
+            //        Price = 123,
+            //        RentalAgreement = newRental,
+            //        Subcategory = new ProductSubcategory()
+            //    });
 
             //rentalAgreementBl.AddNewRentalAgreement(newRental);
 
