@@ -2,16 +2,16 @@
 {
     using System;
     using System.Windows.Forms;
-    using Warehouse.Business;
+    using Warehouse.Business.Contract;
     using Warehouse.Data.Model;
 
     public partial class LoginFrm : Form
     {
-        private readonly LoginBl _loginBl;
+        private readonly ILoginBl _loginBl;
 
         public bool LoggedIn { get; private set; }
 
-        public LoginFrm(LoginBl loginBl)
+        public LoginFrm(ILoginBl loginBl)
         {
             _loginBl = loginBl;
 

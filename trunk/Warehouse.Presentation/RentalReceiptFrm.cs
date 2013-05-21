@@ -116,6 +116,10 @@
             txtCustomerId.Text = rentalAgreement.Customer.Id;
             txtCustomerName.Text = rentalAgreement.Customer.Name;
             txtCustomerPhone.Text = rentalAgreement.Customer.Phone;
+            txtCustomerAddress.Text = rentalAgreement.Customer.Address1 + Environment.NewLine +
+                                      rentalAgreement.Customer.Address2 + Environment.NewLine +
+                                      rentalAgreement.Customer.Address3;
+            txtCustomerEmail.Text = rentalAgreement.Customer.Email ?? "";
         }
 
         private void ClearForm(object sender)

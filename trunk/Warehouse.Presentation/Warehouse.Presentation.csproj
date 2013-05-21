@@ -127,6 +127,18 @@
     <Compile Include="View\CustomerView.Designer.cs">
       <DependentUpon>CustomerView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ProductSubcategoryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ProductSubcategoryView.Designer.cs">
+      <DependentUpon>ProductSubcategoryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\RentalAgreementView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RentalAgreementView.Designer.cs">
+      <DependentUpon>RentalAgreementView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,6 +167,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\CustomerView.resx">
       <DependentUpon>CustomerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ProductSubcategoryView.resx">
+      <DependentUpon>ProductSubcategoryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RentalAgreementView.resx">
+      <DependentUpon>RentalAgreementView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />

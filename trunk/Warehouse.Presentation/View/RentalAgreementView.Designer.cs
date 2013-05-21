@@ -1,6 +1,6 @@
 ﻿namespace Warehouse.Presentation.View
 {
-    partial class CustomerView
+    partial class RentalAgreementView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.cboCriteria = new System.Windows.Forms.ComboBox();
             this.txtKeyword = new System.Windows.Forms.TextBox();
-            this.dgvCustomers = new System.Windows.Forms.DataGridView();
+            this.dgvRentalAgreement = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerNPWP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AgreementDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reference = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvRentalAgreementDetail = new System.Windows.Forms.DataGridView();
+            this.pnlSeparator = new System.Windows.Forms.Panel();
             this.pnlBottom = new System.Windows.Forms.Panel();
             this.lblAddress3Value = new System.Windows.Forms.Label();
             this.lblAddress2Value = new System.Windows.Forms.Label();
@@ -59,15 +60,18 @@
             this.lblTitleValue = new System.Windows.Forms.Label();
             this.lblTitleTitle = new System.Windows.Forms.Label();
             this.lblCustomer = new System.Windows.Forms.Label();
-            this.stpCustomerList = new System.Windows.Forms.StatusStrip();
+            this.stpRentalAgreementList = new System.Windows.Forms.StatusStrip();
             this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssHelpEnter = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lblActiveRentalValue = new System.Windows.Forms.Label();
-            this.lblActiveRentalTitle = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRentalAgreement)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRentalAgreementDetail)).BeginInit();
             this.pnlBottom.SuspendLayout();
-            this.stpCustomerList.SuspendLayout();
+            this.stpRentalAgreementList.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTop
@@ -79,7 +83,7 @@
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.Size = new System.Drawing.Size(959, 38);
-            this.pnlTop.TabIndex = 0;
+            this.pnlTop.TabIndex = 1;
             // 
             // cboCriteria
             // 
@@ -87,14 +91,14 @@
             this.cboCriteria.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.cboCriteria.FormattingEnabled = true;
             this.cboCriteria.Items.AddRange(new object[] {
-            "Name",
-            "Title",
-            "Phone",
-            "Email",
-            "NPWP"});
+            "RentalAgreement Id",
+            "Customer",
+            "Agreement Date",
+            "Reference",
+            "Sales"});
             this.cboCriteria.Location = new System.Drawing.Point(263, 8);
             this.cboCriteria.Name = "cboCriteria";
-            this.cboCriteria.Size = new System.Drawing.Size(121, 21);
+            this.cboCriteria.Size = new System.Drawing.Size(193, 21);
             this.cboCriteria.TabIndex = 2;
             // 
             // txtKeyword
@@ -105,110 +109,128 @@
             this.txtKeyword.Name = "txtKeyword";
             this.txtKeyword.Size = new System.Drawing.Size(250, 21);
             this.txtKeyword.TabIndex = 1;
-            this.txtKeyword.TextChanged += new System.EventHandler(this.txtKeyword_TextChanged);
             // 
-            // dgvCustomers
+            // dgvRentalAgreement
             // 
-            this.dgvCustomers.AllowUserToAddRows = false;
-            this.dgvCustomers.AllowUserToDeleteRows = false;
-            this.dgvCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvCustomers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCustomers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvCustomers.ColumnHeadersHeight = 25;
-            this.dgvCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvRentalAgreement.AllowUserToAddRows = false;
+            this.dgvRentalAgreement.AllowUserToDeleteRows = false;
+            this.dgvRentalAgreement.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvRentalAgreement.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRentalAgreement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            this.dgvRentalAgreement.ColumnHeadersHeight = 25;
+            this.dgvRentalAgreement.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
-            this.CustomerName,
-            this.CustomerTitle,
-            this.CustomerPhone,
-            this.CustomerEmail,
-            this.CustomerNPWP});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCustomers.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvCustomers.EnableHeadersVisualStyles = false;
-            this.dgvCustomers.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvCustomers.Location = new System.Drawing.Point(0, 38);
-            this.dgvCustomers.MultiSelect = false;
-            this.dgvCustomers.Name = "dgvCustomers";
-            this.dgvCustomers.ReadOnly = true;
-            this.dgvCustomers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCustomers.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvCustomers.RowHeadersVisible = false;
-            this.dgvCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCustomers.Size = new System.Drawing.Size(959, 288);
-            this.dgvCustomers.TabIndex = 4;
-            this.dgvCustomers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellDoubleClick);
-            this.dgvCustomers.SelectionChanged += new System.EventHandler(this.dgvCustomers_SelectionChanged);
-            this.dgvCustomers.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvCustomers_KeyPress);
+            this.Customer,
+            this.AgreementDate,
+            this.Reference,
+            this.Sales});
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRentalAgreement.DefaultCellStyle = dataGridViewCellStyle14;
+            this.dgvRentalAgreement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvRentalAgreement.EnableHeadersVisualStyles = false;
+            this.dgvRentalAgreement.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvRentalAgreement.Location = new System.Drawing.Point(0, 38);
+            this.dgvRentalAgreement.MultiSelect = false;
+            this.dgvRentalAgreement.Name = "dgvRentalAgreement";
+            this.dgvRentalAgreement.ReadOnly = true;
+            this.dgvRentalAgreement.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRentalAgreement.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            this.dgvRentalAgreement.RowHeadersVisible = false;
+            this.dgvRentalAgreement.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRentalAgreement.Size = new System.Drawing.Size(959, 348);
+            this.dgvRentalAgreement.TabIndex = 5;
             // 
             // Id
             // 
-            this.Id.HeaderText = "Id";
+            this.Id.HeaderText = "RentalAgreement Id";
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            this.Id.Width = 39;
+            this.Id.Width = 126;
             // 
-            // CustomerName
+            // Customer
             // 
-            this.CustomerName.HeaderText = "Name";
-            this.CustomerName.Name = "CustomerName";
-            this.CustomerName.ReadOnly = true;
-            this.CustomerName.Width = 60;
+            this.Customer.HeaderText = "Customer";
+            this.Customer.Name = "Customer";
+            this.Customer.ReadOnly = true;
+            this.Customer.Width = 76;
             // 
-            // CustomerTitle
+            // AgreementDate
             // 
-            this.CustomerTitle.HeaderText = "Title";
-            this.CustomerTitle.Name = "CustomerTitle";
-            this.CustomerTitle.ReadOnly = true;
-            this.CustomerTitle.Width = 52;
+            this.AgreementDate.HeaderText = "Agreement Date";
+            this.AgreementDate.Name = "AgreementDate";
+            this.AgreementDate.ReadOnly = true;
+            this.AgreementDate.Width = 109;
             // 
-            // CustomerPhone
+            // Reference
             // 
-            this.CustomerPhone.HeaderText = "Phone";
-            this.CustomerPhone.Name = "CustomerPhone";
-            this.CustomerPhone.ReadOnly = true;
-            this.CustomerPhone.Width = 63;
+            this.Reference.HeaderText = "Reference";
+            this.Reference.Name = "Reference";
+            this.Reference.ReadOnly = true;
+            this.Reference.Width = 82;
             // 
-            // CustomerEmail
+            // Sales
             // 
-            this.CustomerEmail.HeaderText = "Email";
-            this.CustomerEmail.Name = "CustomerEmail";
-            this.CustomerEmail.ReadOnly = true;
-            this.CustomerEmail.Width = 57;
+            this.Sales.HeaderText = "Sales";
+            this.Sales.Name = "Sales";
+            this.Sales.ReadOnly = true;
+            this.Sales.Width = 58;
             // 
-            // CustomerNPWP
+            // dgvRentalAgreementDetail
             // 
-            this.CustomerNPWP.HeaderText = "NPWP";
-            this.CustomerNPWP.Name = "CustomerNPWP";
-            this.CustomerNPWP.ReadOnly = true;
-            this.CustomerNPWP.Width = 65;
+            this.dgvRentalAgreementDetail.AllowUserToAddRows = false;
+            this.dgvRentalAgreementDetail.AllowUserToDeleteRows = false;
+            this.dgvRentalAgreementDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvRentalAgreementDetail.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.dgvRentalAgreementDetail.ColumnHeadersHeight = 25;
+            this.dgvRentalAgreementDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.dgvRentalAgreementDetail.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvRentalAgreementDetail.EnableHeadersVisualStyles = false;
+            this.dgvRentalAgreementDetail.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvRentalAgreementDetail.Location = new System.Drawing.Point(0, 396);
+            this.dgvRentalAgreementDetail.MultiSelect = false;
+            this.dgvRentalAgreementDetail.Name = "dgvRentalAgreementDetail";
+            this.dgvRentalAgreementDetail.ReadOnly = true;
+            this.dgvRentalAgreementDetail.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvRentalAgreementDetail.RowHeadersVisible = false;
+            this.dgvRentalAgreementDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRentalAgreementDetail.Size = new System.Drawing.Size(959, 151);
+            this.dgvRentalAgreementDetail.TabIndex = 10;
+            // 
+            // pnlSeparator
+            // 
+            this.pnlSeparator.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlSeparator.Location = new System.Drawing.Point(0, 386);
+            this.pnlSeparator.Name = "pnlSeparator";
+            this.pnlSeparator.Size = new System.Drawing.Size(959, 10);
+            this.pnlSeparator.TabIndex = 7;
             // 
             // pnlBottom
             // 
             this.pnlBottom.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlBottom.Controls.Add(this.lblActiveRentalValue);
-            this.pnlBottom.Controls.Add(this.lblActiveRentalTitle);
             this.pnlBottom.Controls.Add(this.lblAddress3Value);
             this.pnlBottom.Controls.Add(this.lblAddress2Value);
             this.pnlBottom.Controls.Add(this.lblContactPersonValue);
@@ -227,16 +249,16 @@
             this.pnlBottom.Controls.Add(this.lblTitleTitle);
             this.pnlBottom.Controls.Add(this.lblCustomer);
             this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBottom.Location = new System.Drawing.Point(0, 326);
+            this.pnlBottom.Location = new System.Drawing.Point(0, 547);
             this.pnlBottom.Name = "pnlBottom";
             this.pnlBottom.Size = new System.Drawing.Size(959, 170);
-            this.pnlBottom.TabIndex = 8;
+            this.pnlBottom.TabIndex = 10;
             // 
             // lblAddress3Value
             // 
             this.lblAddress3Value.AutoSize = true;
             this.lblAddress3Value.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblAddress3Value.Location = new System.Drawing.Point(458, 120);
+            this.lblAddress3Value.Location = new System.Drawing.Point(413, 120);
             this.lblAddress3Value.Name = "lblAddress3Value";
             this.lblAddress3Value.Size = new System.Drawing.Size(81, 13);
             this.lblAddress3Value.TabIndex = 18;
@@ -246,7 +268,7 @@
             // 
             this.lblAddress2Value.AutoSize = true;
             this.lblAddress2Value.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblAddress2Value.Location = new System.Drawing.Point(458, 93);
+            this.lblAddress2Value.Location = new System.Drawing.Point(413, 93);
             this.lblAddress2Value.Name = "lblAddress2Value";
             this.lblAddress2Value.Size = new System.Drawing.Size(81, 13);
             this.lblAddress2Value.TabIndex = 17;
@@ -276,7 +298,7 @@
             // 
             this.lblAddress1Value.AutoSize = true;
             this.lblAddress1Value.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblAddress1Value.Location = new System.Drawing.Point(458, 66);
+            this.lblAddress1Value.Location = new System.Drawing.Point(413, 66);
             this.lblAddress1Value.Name = "lblAddress1Value";
             this.lblAddress1Value.Size = new System.Drawing.Size(81, 13);
             this.lblAddress1Value.TabIndex = 14;
@@ -296,7 +318,7 @@
             // 
             this.lblJoinDateValue.AutoSize = true;
             this.lblJoinDateValue.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblJoinDateValue.Location = new System.Drawing.Point(458, 39);
+            this.lblJoinDateValue.Location = new System.Drawing.Point(413, 39);
             this.lblJoinDateValue.Name = "lblJoinDateValue";
             this.lblJoinDateValue.Size = new System.Drawing.Size(81, 13);
             this.lblJoinDateValue.TabIndex = 12;
@@ -402,18 +424,18 @@
             this.lblCustomer.TabIndex = 0;
             this.lblCustomer.Text = "CUS001 : ABANG";
             // 
-            // stpCustomerList
+            // stpRentalAgreementList
             // 
-            this.stpCustomerList.AutoSize = false;
-            this.stpCustomerList.BackColor = System.Drawing.Color.White;
-            this.stpCustomerList.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.stpCustomerList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stpRentalAgreementList.AutoSize = false;
+            this.stpRentalAgreementList.BackColor = System.Drawing.Color.White;
+            this.stpRentalAgreementList.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.stpRentalAgreementList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssHelp,
             this.tssHelpEnter});
-            this.stpCustomerList.Location = new System.Drawing.Point(0, 496);
-            this.stpCustomerList.Name = "stpCustomerList";
-            this.stpCustomerList.Size = new System.Drawing.Size(959, 31);
-            this.stpCustomerList.TabIndex = 9;
+            this.stpRentalAgreementList.Location = new System.Drawing.Point(0, 717);
+            this.stpRentalAgreementList.Name = "stpRentalAgreementList";
+            this.stpRentalAgreementList.Size = new System.Drawing.Size(959, 31);
+            this.stpRentalAgreementList.TabIndex = 11;
             // 
             // tssHelp
             // 
@@ -421,56 +443,65 @@
             this.tssHelp.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
             this.tssHelp.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.tssHelp.Name = "tssHelp";
-            this.tssHelp.Size = new System.Drawing.Size(132, 26);
-            this.tssHelp.Text = "View and select customer";
+            this.tssHelp.Size = new System.Drawing.Size(171, 26);
+            this.tssHelp.Text = "View and select rental agreement";
             // 
             // tssHelpEnter
             // 
             this.tssHelpEnter.Name = "tssHelpEnter";
-            this.tssHelpEnter.Size = new System.Drawing.Size(171, 26);
-            this.tssHelpEnter.Text = "Press <Enter> to select Customer";
+            this.tssHelpEnter.Size = new System.Drawing.Size(212, 26);
+            this.tssHelpEnter.Text = "Press <Enter> to select Rental Agreement";
             // 
-            // lblActiveRentalValue
+            // dataGridViewTextBoxColumn1
             // 
-            this.lblActiveRentalValue.AutoSize = true;
-            this.lblActiveRentalValue.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblActiveRentalValue.Location = new System.Drawing.Point(458, 147);
-            this.lblActiveRentalValue.Name = "lblActiveRentalValue";
-            this.lblActiveRentalValue.Size = new System.Drawing.Size(100, 13);
-            this.lblActiveRentalValue.TabIndex = 20;
-            this.lblActiveRentalValue.Text = "Active Rental Value";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Category Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 86;
             // 
-            // lblActiveRentalTitle
+            // dataGridViewTextBoxColumn2
             // 
-            this.lblActiveRentalTitle.AutoSize = true;
-            this.lblActiveRentalTitle.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblActiveRentalTitle.Location = new System.Drawing.Point(321, 147);
-            this.lblActiveRentalTitle.Name = "lblActiveRentalTitle";
-            this.lblActiveRentalTitle.Size = new System.Drawing.Size(131, 13);
-            this.lblActiveRentalTitle.TabIndex = 19;
-            this.lblActiveRentalTitle.Text = "Active Rental Agreement:";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Category";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 74;
             // 
-            // CustomerView
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Subcategory Id";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 104;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Subcategory";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 92;
+            // 
+            // RentalAgreementView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(959, 527);
-            this.Controls.Add(this.dgvCustomers);
+            this.ClientSize = new System.Drawing.Size(959, 748);
+            this.Controls.Add(this.dgvRentalAgreement);
             this.Controls.Add(this.pnlTop);
+            this.Controls.Add(this.pnlSeparator);
+            this.Controls.Add(this.dgvRentalAgreementDetail);
             this.Controls.Add(this.pnlBottom);
-            this.Controls.Add(this.stpCustomerList);
-            this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(700, 504);
-            this.Name = "CustomerView";
-            this.Text = "Customer";
-            this.Load += new System.EventHandler(this.Customer_Load);
+            this.Controls.Add(this.stpRentalAgreementList);
+            this.Name = "RentalAgreementView";
+            this.Text = "Rental Agreement";
+            this.Load += new System.EventHandler(this.RentalAgreementView_Load);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRentalAgreement)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRentalAgreementDetail)).EndInit();
             this.pnlBottom.ResumeLayout(false);
             this.pnlBottom.PerformLayout();
-            this.stpCustomerList.ResumeLayout(false);
-            this.stpCustomerList.PerformLayout();
+            this.stpRentalAgreementList.ResumeLayout(false);
+            this.stpRentalAgreementList.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -478,14 +509,19 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlTop;
-        private System.Windows.Forms.TextBox txtKeyword;
         private System.Windows.Forms.ComboBox cboCriteria;
-        private System.Windows.Forms.DataGridView dgvCustomers;
+        private System.Windows.Forms.TextBox txtKeyword;
+        private System.Windows.Forms.DataGridView dgvRentalAgreement;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AgreementDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reference;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sales;
+        private System.Windows.Forms.DataGridView dgvRentalAgreementDetail;
+        private System.Windows.Forms.Panel pnlSeparator;
         private System.Windows.Forms.Panel pnlBottom;
-        private System.Windows.Forms.StatusStrip stpCustomerList;
-        private System.Windows.Forms.ToolStripStatusLabel tssHelp;
-        private System.Windows.Forms.Label lblTitleTitle;
-        private System.Windows.Forms.Label lblCustomer;
+        private System.Windows.Forms.Label lblAddress3Value;
+        private System.Windows.Forms.Label lblAddress2Value;
         private System.Windows.Forms.Label lblContactPersonValue;
         private System.Windows.Forms.Label lblContactPersonTitle;
         private System.Windows.Forms.Label lblAddress1Value;
@@ -499,16 +535,14 @@
         private System.Windows.Forms.Label lblEmailValue;
         private System.Windows.Forms.Label lblEmailTitle;
         private System.Windows.Forms.Label lblTitleValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerTitle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerPhone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerNPWP;
-        private System.Windows.Forms.Label lblAddress3Value;
-        private System.Windows.Forms.Label lblAddress2Value;
+        private System.Windows.Forms.Label lblTitleTitle;
+        private System.Windows.Forms.Label lblCustomer;
+        private System.Windows.Forms.StatusStrip stpRentalAgreementList;
+        private System.Windows.Forms.ToolStripStatusLabel tssHelp;
         private System.Windows.Forms.ToolStripStatusLabel tssHelpEnter;
-        private System.Windows.Forms.Label lblActiveRentalValue;
-        private System.Windows.Forms.Label lblActiveRentalTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }
