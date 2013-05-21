@@ -44,6 +44,8 @@
             this.lblRentalAgreementGroup = new System.Windows.Forms.Label();
             this.lneRentalAgreementGroup = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lneOtherGroup = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lneCustomerGroup = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.stpRentalReceipt = new System.Windows.Forms.StatusStrip();
             this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
@@ -60,7 +62,6 @@
             this.lblCustomerTitle = new System.Windows.Forms.Label();
             this.lblDetailGroup = new System.Windows.Forms.Label();
             this.lblOtherGroup = new System.Windows.Forms.Label();
-            this.lneOtherGroup = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.dtpAgreementDate = new System.Windows.Forms.DateTimePicker();
             this.lblRentalDate = new System.Windows.Forms.Label();
             this.txtReference = new System.Windows.Forms.TextBox();
@@ -69,13 +70,14 @@
             this.txtCustomerAddress = new System.Windows.Forms.TextBox();
             this.lblCustomerEmail = new System.Windows.Forms.Label();
             this.lblCustomerAddress = new System.Windows.Forms.Label();
-            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.dgvRentalReceiptDetail = new System.Windows.Forms.DataGridView();
             this.ProductCategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductSubcategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductSubcategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnRemoveLine = new System.Windows.Forms.Button();
             this.stpRentalReceipt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRentalReceiptDetail)).BeginInit();
             this.SuspendLayout();
@@ -229,6 +231,24 @@
             this.shapeContainer1.Size = new System.Drawing.Size(840, 689);
             this.shapeContainer1.TabIndex = 34;
             this.shapeContainer1.TabStop = false;
+            // 
+            // lineShape1
+            // 
+            this.lineShape1.BorderColor = System.Drawing.SystemColors.ScrollBar;
+            this.lineShape1.Name = "lineShape1";
+            this.lineShape1.X1 = 59;
+            this.lineShape1.X2 = 818;
+            this.lineShape1.Y1 = 346;
+            this.lineShape1.Y2 = 346;
+            // 
+            // lneOtherGroup
+            // 
+            this.lneOtherGroup.BorderColor = System.Drawing.SystemColors.ScrollBar;
+            this.lneOtherGroup.Name = "lneOtherGroup";
+            this.lneOtherGroup.X1 = 53;
+            this.lneOtherGroup.X2 = 818;
+            this.lneOtherGroup.Y1 = 292;
+            this.lneOtherGroup.Y2 = 292;
             // 
             // lneCustomerGroup
             // 
@@ -402,15 +422,6 @@
             this.lblOtherGroup.TabIndex = 43;
             this.lblOtherGroup.Text = "Other";
             // 
-            // lneOtherGroup
-            // 
-            this.lneOtherGroup.BorderColor = System.Drawing.SystemColors.ScrollBar;
-            this.lneOtherGroup.Name = "lneOtherGroup";
-            this.lneOtherGroup.X1 = 53;
-            this.lneOtherGroup.X2 = 818;
-            this.lneOtherGroup.Y1 = 292;
-            this.lneOtherGroup.Y2 = 292;
-            // 
             // dtpAgreementDate
             // 
             this.dtpAgreementDate.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -497,15 +508,6 @@
             this.lblCustomerAddress.TabIndex = 49;
             this.lblCustomerAddress.Text = "Address:";
             // 
-            // lineShape1
-            // 
-            this.lineShape1.BorderColor = System.Drawing.SystemColors.ScrollBar;
-            this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = 59;
-            this.lineShape1.X2 = 818;
-            this.lineShape1.Y1 = 346;
-            this.lineShape1.Y2 = 346;
-            // 
             // dgvRentalReceiptDetail
             // 
             this.dgvRentalReceiptDetail.AllowUserToAddRows = false;
@@ -521,11 +523,11 @@
             this.Price});
             this.dgvRentalReceiptDetail.EnableHeadersVisualStyles = false;
             this.dgvRentalReceiptDetail.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvRentalReceiptDetail.Location = new System.Drawing.Point(16, 367);
+            this.dgvRentalReceiptDetail.Location = new System.Drawing.Point(16, 399);
             this.dgvRentalReceiptDetail.Name = "dgvRentalReceiptDetail";
             this.dgvRentalReceiptDetail.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvRentalReceiptDetail.RowHeadersVisible = false;
-            this.dgvRentalReceiptDetail.Size = new System.Drawing.Size(806, 283);
+            this.dgvRentalReceiptDetail.Size = new System.Drawing.Size(806, 251);
             this.dgvRentalReceiptDetail.TabIndex = 53;
             // 
             // ProductCategoryId
@@ -534,7 +536,7 @@
             this.ProductCategoryId.Name = "ProductCategoryId";
             this.ProductCategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ProductCategoryId.Visible = false;
-            this.ProductCategoryId.Width = 86;
+            this.ProductCategoryId.Width = 84;
             // 
             // ProductCategory
             // 
@@ -551,7 +553,7 @@
             this.ProductSubcategoryId.Name = "ProductSubcategoryId";
             this.ProductSubcategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ProductSubcategoryId.Visible = false;
-            this.ProductSubcategoryId.Width = 104;
+            this.ProductSubcategoryId.Width = 102;
             // 
             // ProductSubcategory
             // 
@@ -571,11 +573,33 @@
             this.Price.Name = "Price";
             this.Price.Width = 56;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.btnAdd.Location = new System.Drawing.Point(16, 368);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(70, 25);
+            this.btnAdd.TabIndex = 54;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnRemoveLine
+            // 
+            this.btnRemoveLine.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.btnRemoveLine.Location = new System.Drawing.Point(92, 368);
+            this.btnRemoveLine.Name = "btnRemoveLine";
+            this.btnRemoveLine.Size = new System.Drawing.Size(70, 25);
+            this.btnRemoveLine.TabIndex = 56;
+            this.btnRemoveLine.Text = "Remove";
+            this.btnRemoveLine.UseVisualStyleBackColor = true;
+            // 
             // RentalReceiptFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(840, 689);
+            this.Controls.Add(this.btnRemoveLine);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dgvRentalReceiptDetail);
             this.Controls.Add(this.txtCustomerEmail);
             this.Controls.Add(this.txtCustomerAddress);
@@ -666,5 +690,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductSubcategoryId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductSubcategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnRemoveLine;
     }
 }

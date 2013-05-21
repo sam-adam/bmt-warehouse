@@ -1,6 +1,6 @@
 ﻿namespace Warehouse.Presentation.View
 {
-    using Warehouse.Business;
+    using Warehouse.Business.Contract;
     using Warehouse.Data.Model;
     using System;
     using System.Collections.Generic;
@@ -9,29 +9,49 @@
 
     public partial class CustomerView : Form
     {
-        private readonly CustomerBl _customerBl;
+        private readonly ICustomerBl _customerBl;
         
-        private List<Customer> _customers;
+        private IList<Customer> _customers;
 
-        public Customer SelectedCustomer { get; set; }
+        public Customer SelectedCustomer { get; private set; }
 
-        public CustomerView(CustomerBl customerBl)
+        public CustomerView(ICustomerBl customerBl)
         {
             _customerBl = customerBl;
 
             InitializeComponent();
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Enter)
+            {
+                if (SelectedCustomer == null)
+                {
+                    MessageBox.Show(@"No selected customer");
+                }
+                else
+                {
+                    Close();
+                }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         private void Customer_Load(object sender, System.EventArgs e)
         {
             cboCriteria.SelectedIndex = 0;
 
-            RefreshCustomerList();
+            txtKeyword.Text = string.Empty;
+            txtKeyword.Focus();
+
+            RefreshList();
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void txtKeyword_TextChanged(object sender, EventArgs e)
         {
-            RefreshCustomerList();
+            RefreshList();
         }
 
         private void dgvCustomers_SelectionChanged(object sender, EventArgs e)
@@ -39,43 +59,43 @@
             SetCustomerPreview();
         }
 
-        private void RefreshCustomerList()
+        private void RefreshList()
         {
             dgvCustomers.Rows.Clear();
             
             if (txtKeyword.Text == string.Empty)
             {
-                _customers = _customerBl.GetCustomers();
+                _customers = _customerBl.GetAll();
             }
             else
             {
                 switch (cboCriteria.SelectedItem.ToString())
                 {
                     case "Name":
-                        _customers = _customerBl.GetCustomers(cust => cust.Name.Contains(txtKeyword.Text));
+                        _customers = _customerBl.Get(cust => cust.Name.Contains(txtKeyword.Text));
                         break;
 
                     case "Title":
-                        _customers = _customerBl.GetCustomers(cust => cust.Title.Contains(txtKeyword.Text));
+                        _customers = _customerBl.Get(cust => cust.Title.Contains(txtKeyword.Text));
                         break;
 
                     case "Phone":
-                        _customers = _customerBl.GetCustomers(cust => cust.Phone.Contains(txtKeyword.Text));
+                        _customers = _customerBl.Get(cust => cust.Phone.Contains(txtKeyword.Text));
                         break;
 
                     case "Email":
-                        _customers = _customerBl.GetCustomers(cust => cust.Email.Contains(txtKeyword.Text));
+                        _customers = _customerBl.Get(cust => cust.Email.Contains(txtKeyword.Text));
                         break;
 
                     case "NPWP":
-                        _customers = _customerBl.GetCustomers(cust => cust.TaxId.Contains(txtKeyword.Text));
+                        _customers = _customerBl.Get(cust => cust.TaxId.Contains(txtKeyword.Text));
                         break;
                 }
             }
 
             if (_customers != null)
             {
-                foreach (Customer customer in _customers)
+                foreach (var customer in _customers)
                 {
                     dgvCustomers.Rows.Add(customer.Id, customer.Name, customer.Title, customer.Phone, customer.Email, customer.TaxId);
                 }
@@ -88,11 +108,8 @@
         {
             if (dgvCustomers.CurrentRow != null)
             {
-                SelectedCustomer = _customers.First(cust => cust.Id == dgvCustomers.CurrentRow.Cells["Id"].Value.ToString());   
-            }
+                SelectedCustomer = _customers.First(cust => cust.Id == dgvCustomers.CurrentRow.Cells["Id"].Value.ToString());
 
-            if (SelectedCustomer != null && dgvCustomers.CurrentRow != null)
-            {
                 lblCustomer.Text = string.Format("{0} : {1}", SelectedCustomer.Id, SelectedCustomer.Name);
                 lblTitleValue.Text = string.Format("{0}", SelectedCustomer.Title);
                 lblEmailValue.Text = string.Format("{0}", SelectedCustomer.Email);
@@ -103,9 +120,12 @@
                 lblAddress2Value.Text = string.Format("{0}", SelectedCustomer.Address2);
                 lblAddress3Value.Text = string.Format("{0}", SelectedCustomer.Address3);
                 lblContactPersonValue.Text = string.Format("{0}", SelectedCustomer.ContactPerson);
+                lblActiveRentalValue.Text = SelectedCustomer.HasRentalAgreement() ? string.Format("{0}", SelectedCustomer.GetActiveRental().Id) : @"-";
             }
             else
             {
+                SelectedCustomer = null;
+
                 lblCustomer.Text = @"-";
                 lblTitleValue.Text = @"-";
                 lblEmailValue.Text = @"-";
@@ -122,6 +142,11 @@
         private void dgvCustomers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Close();
+        }
+
+        private void dgvCustomers_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = false;
         }
     }
 }

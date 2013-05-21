@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTransactionDate = new System.Windows.Forms.Label();
             this.lblCustomerId = new System.Windows.Forms.Label();
             this.lblCustomerEmail = new System.Windows.Forms.Label();
@@ -56,11 +56,6 @@
             this.dtpAgreementDate = new System.Windows.Forms.DateTimePicker();
             this.lblAgreementDate = new System.Windows.Forms.Label();
             this.dgvProductCategoryPrice = new System.Windows.Forms.DataGridView();
-            this.ProductCategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductSubcategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductSubcategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomerGroup = new System.Windows.Forms.Label();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
@@ -71,6 +66,14 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.lblCutOffDate = new System.Windows.Forms.Label();
             this.numCutOffDate = new System.Windows.Forms.NumericUpDown();
+            this.btnRemoveLine = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.tssHelpCategorySelection = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ProductCategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductSubcategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductSubcategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stpRentalAgreement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductCategoryPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCutOffDate)).BeginInit();
@@ -186,7 +189,8 @@
             this.stpRentalAgreement.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.stpRentalAgreement.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssHelp,
-            this.tssHelpCustomerSelection});
+            this.tssHelpCustomerSelection,
+            this.tssHelpCategorySelection});
             this.stpRentalAgreement.Location = new System.Drawing.Point(0, 582);
             this.stpRentalAgreement.Name = "stpRentalAgreement";
             this.stpRentalAgreement.Size = new System.Drawing.Size(840, 31);
@@ -204,9 +208,11 @@
             // 
             // tssHelpCustomerSelection
             // 
+            this.tssHelpCustomerSelection.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.tssHelpCustomerSelection.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.tssHelpCustomerSelection.Name = "tssHelpCustomerSelection";
             this.tssHelpCustomerSelection.Padding = new System.Windows.Forms.Padding(10);
-            this.tssHelpCustomerSelection.Size = new System.Drawing.Size(173, 26);
+            this.tssHelpCustomerSelection.Size = new System.Drawing.Size(177, 26);
             this.tssHelpCustomerSelection.Text = "F1 :  Open Customer Selection";
             // 
             // dtpTransactionDate
@@ -358,56 +364,14 @@
             this.Price});
             this.dgvProductCategoryPrice.EnableHeadersVisualStyles = false;
             this.dgvProductCategoryPrice.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvProductCategoryPrice.Location = new System.Drawing.Point(15, 286);
+            this.dgvProductCategoryPrice.Location = new System.Drawing.Point(15, 315);
             this.dgvProductCategoryPrice.Name = "dgvProductCategoryPrice";
             this.dgvProductCategoryPrice.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvProductCategoryPrice.RowHeadersVisible = false;
-            this.dgvProductCategoryPrice.Size = new System.Drawing.Size(806, 283);
+            this.dgvProductCategoryPrice.Size = new System.Drawing.Size(806, 254);
             this.dgvProductCategoryPrice.TabIndex = 7;
             this.dgvProductCategoryPrice.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvProductCategoryPrice_CellBeginEdit);
-            this.dgvProductCategoryPrice.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductCategoryPrice_CellValueChanged);
             this.dgvProductCategoryPrice.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvProductCategoryPrice_UserDeletingRow);
-            // 
-            // ProductCategoryId
-            // 
-            this.ProductCategoryId.HeaderText = "Category Id";
-            this.ProductCategoryId.Name = "ProductCategoryId";
-            this.ProductCategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProductCategoryId.Width = 86;
-            // 
-            // ProductCategory
-            // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductCategory.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ProductCategory.HeaderText = "Category";
-            this.ProductCategory.Name = "ProductCategory";
-            this.ProductCategory.ReadOnly = true;
-            this.ProductCategory.Width = 74;
-            // 
-            // ProductSubcategoryId
-            // 
-            this.ProductSubcategoryId.HeaderText = "Subcategory Id";
-            this.ProductSubcategoryId.Name = "ProductSubcategoryId";
-            this.ProductSubcategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProductSubcategoryId.Width = 104;
-            // 
-            // ProductSubcategory
-            // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ProductSubcategory.HeaderText = "Subcategory";
-            this.ProductSubcategory.Name = "ProductSubcategory";
-            this.ProductSubcategory.ReadOnly = true;
-            this.ProductSubcategory.Width = 92;
-            // 
-            // Price
-            // 
-            dataGridViewCellStyle6.Format = "C2";
-            dataGridViewCellStyle6.NullValue = "0";
-            this.Price.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            this.Price.Width = 56;
             // 
             // lblCustomerGroup
             // 
@@ -481,6 +445,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.btnSave.Location = new System.Drawing.Point(749, 585);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(70, 25);
@@ -522,12 +487,85 @@
             0,
             0});
             // 
+            // btnRemoveLine
+            // 
+            this.btnRemoveLine.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.btnRemoveLine.Location = new System.Drawing.Point(91, 284);
+            this.btnRemoveLine.Name = "btnRemoveLine";
+            this.btnRemoveLine.Size = new System.Drawing.Size(70, 25);
+            this.btnRemoveLine.TabIndex = 58;
+            this.btnRemoveLine.Text = "Remove";
+            this.btnRemoveLine.UseVisualStyleBackColor = true;
+            this.btnRemoveLine.Click += new System.EventHandler(this.btnRemoveLine_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.btnAdd.Location = new System.Drawing.Point(15, 284);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(70, 25);
+            this.btnAdd.TabIndex = 57;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // tssHelpCategorySelection
+            // 
+            this.tssHelpCategorySelection.Name = "tssHelpCategorySelection";
+            this.tssHelpCategorySelection.Size = new System.Drawing.Size(189, 26);
+            this.tssHelpCategorySelection.Text = "F2 : Open Product Category Selection";
+            // 
+            // ProductCategoryId
+            // 
+            this.ProductCategoryId.HeaderText = "Category Id";
+            this.ProductCategoryId.Name = "ProductCategoryId";
+            this.ProductCategoryId.ReadOnly = true;
+            this.ProductCategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProductCategoryId.Width = 86;
+            // 
+            // ProductCategory
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductCategory.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ProductCategory.HeaderText = "Category";
+            this.ProductCategory.Name = "ProductCategory";
+            this.ProductCategory.ReadOnly = true;
+            this.ProductCategory.Width = 74;
+            // 
+            // ProductSubcategoryId
+            // 
+            this.ProductSubcategoryId.HeaderText = "Subcategory Id";
+            this.ProductSubcategoryId.Name = "ProductSubcategoryId";
+            this.ProductSubcategoryId.ReadOnly = true;
+            this.ProductSubcategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProductSubcategoryId.Width = 104;
+            // 
+            // ProductSubcategory
+            // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ProductSubcategory.HeaderText = "Subcategory";
+            this.ProductSubcategory.Name = "ProductSubcategory";
+            this.ProductSubcategory.ReadOnly = true;
+            this.ProductSubcategory.Width = 92;
+            // 
+            // Price
+            // 
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = "0";
+            this.Price.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            this.Price.Width = 56;
+            // 
             // RentalAgreementFrm
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(840, 613);
+            this.Controls.Add(this.btnRemoveLine);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.numCutOffDate);
             this.Controls.Add(this.lblCutOffDate);
             this.Controls.Add(this.btnSave);
@@ -603,14 +641,17 @@
         private System.Windows.Forms.Label lblOtherGroup;
         private System.Windows.Forms.Label lblDetailGroup;
         private System.Windows.Forms.ToolStripStatusLabel tssHelp;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.ToolStripStatusLabel tssHelpCustomerSelection;
+        private System.Windows.Forms.Label lblCutOffDate;
+        private System.Windows.Forms.NumericUpDown numCutOffDate;
+        private System.Windows.Forms.Button btnRemoveLine;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.ToolStripStatusLabel tssHelpCategorySelection;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductCategoryId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductSubcategoryId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductSubcategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.ToolStripStatusLabel tssHelpCustomerSelection;
-        private System.Windows.Forms.Label lblCutOffDate;
-        private System.Windows.Forms.NumericUpDown numCutOffDate;
     }
 }

@@ -2,6 +2,8 @@
 {
     using Autofac;
     using Warehouse.Business;
+    using Warehouse.Business.Contract;
+    using Warehouse.Business.Facade;
     using Warehouse.Data;
     using Warehouse.Data.Contract;
     using Warehouse.Data.Repository;
@@ -29,16 +31,21 @@
             builder.RegisterType<RentalAgreementRepository>().As<IRentalAgreementRepository>();
             builder.RegisterType<RentalReceiptRepository>().As<IRentalReceiptRepository>();
 
-            builder.RegisterType<LoginBl>().InstancePerLifetimeScope();
-            builder.RegisterType<RentalAgreementBl>().InstancePerDependency();
+            builder.RegisterType<LoginBl>().As<ILoginBl>();
+            builder.RegisterType<RentalAgreementBl>().As<IRentalAgreementBl>();
             builder.RegisterType<RentalReceiptBl>().InstancePerDependency();
-            builder.RegisterType<CustomerBl>().InstancePerDependency();
+            builder.RegisterType<CustomerBl>().As<ICustomerBl>();
+            builder.RegisterType<ProductCategoryBl>().As<IProductCategoryBl>();
+            builder.RegisterType<ProductSubcategoryBl>().As<IProductSubcategoryBl>();
+
+            builder.RegisterType<RentalAgreementDetailFacade>();
 
             builder.RegisterType<LoginFrm>().InstancePerLifetimeScope();
             builder.RegisterType<RentalAgreementFrm>();
             builder.RegisterType<RentalReceiptFrm>();
 
             builder.RegisterType<CustomerView>().InstancePerLifetimeScope();
+            builder.RegisterType<ProductSubcategoryView>().InstancePerLifetimeScope();
 
             return builder.Build();
         }
