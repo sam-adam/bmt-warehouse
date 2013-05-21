@@ -20,11 +20,6 @@
         public virtual double CreditLimit { get; set; }
         protected internal virtual IList<RentalAgreement> RentalAgreements { get; protected set; }
 
-        public virtual IList<RentalAgreement> GetCustomerRentals()
-        {
-            return RentalAgreements;
-        }
-
         public virtual RentalAgreement GetActiveRental()
         {
             return RentalAgreements.FirstOrDefault(rental => rental.Status == "ACTIVE");

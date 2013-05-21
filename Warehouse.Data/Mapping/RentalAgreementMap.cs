@@ -15,6 +15,7 @@
             Map(x => x.AgreementDate, "agreement_date");
             Map(x => x.CutOffDate, "cut_off_date");
             Map(x => x.Reference);
+            Map(x => x.Sender);
             References(x => x.CreatedBy, "created_by");
             Map(x => x.Status);
             HasMany(x => x.Details)
