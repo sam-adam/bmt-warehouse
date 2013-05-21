@@ -1,10 +1,11 @@
 ﻿namespace Warehouse.Business
 {
+    using Warehouse.Business.Contract;
     using Warehouse.Data.Contract;
     using Warehouse.Data.Model;
     using System.Linq;
 
-    public class LoginBl
+    public class LoginBl : ILoginBl
     {
         private User _user;
         private readonly Common _common;
@@ -28,10 +29,16 @@
             if (userList.Any())
             {
                 _user = userList.First();
-                _common.LoggedInUser = _user;
+
+                SetLoggedInUser(_user);
             }
 
             return _user != null;
+        }
+
+        public void SetLoggedInUser(User user)
+        {
+            _common.LoggedInUser = _user;
         }
     }
 }
