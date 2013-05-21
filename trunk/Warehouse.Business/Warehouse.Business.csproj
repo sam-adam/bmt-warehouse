@@ -71,7 +71,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
+    <Compile Include="Contract\IBusinessLogic.cs" />
+    <Compile Include="Contract\ICustomerBl.cs" />
+    <Compile Include="Contract\ILoginBl.cs" />
+    <Compile Include="Contract\IProductCategoryBl.cs" />
+    <Compile Include="Contract\IProductSubcategoryBl.cs" />
+    <Compile Include="Contract\IReadOnlyBusinessLogic.cs" />
+    <Compile Include="Contract\IRentalAgreementBl.cs" />
+    <Compile Include="Contract\IUserBl.cs" />
     <Compile Include="CustomerBl.cs" />
+    <Compile Include="ProductCategoryBl.cs" />
+    <Compile Include="ProductSubcategoryBl.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -80,6 +90,7 @@
     <Compile Include="RentalAgreementBl.cs" />
     <Compile Include="LoginBl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Facade\RentalAgreementDetailFacade.cs" />
     <Compile Include="RentalReceiptBl.cs" />
   </ItemGroup>
   <ItemGroup>
