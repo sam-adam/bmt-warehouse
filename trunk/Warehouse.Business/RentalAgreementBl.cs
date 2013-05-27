@@ -137,5 +137,23 @@
 
             return rentalAgreementList.Any() ? rentalAgreementList.ToList() : null;
         }
+
+        public IList<RentalAgreement> GetAllActive()
+        {
+            var rentalAgreementList = _rentalAgreementRepository
+                .GetAll()
+                .Where(rent => rent.Status == "ACTIVE");
+
+            return rentalAgreementList.Any() ? rentalAgreementList.ToList() : null;
+        }
+
+        public IList<RentalAgreement> GetActive(Expression<Func<RentalAgreement, bool>> predicate)
+        {
+            var rentalAgreementList = _rentalAgreementRepository
+                .Get(predicate)
+                .Where(rent => rent.Status == "ACTIVE");
+
+            return rentalAgreementList.Any() ? rentalAgreementList.ToList() : null;
+        }
     }
 }

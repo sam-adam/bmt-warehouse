@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtpTransactionDate = new System.Windows.Forms.DateTimePicker();
             this.lblTransactionDate = new System.Windows.Forms.Label();
             this.lblAgreement = new System.Windows.Forms.Label();
@@ -49,9 +49,10 @@
             this.lneCustomerGroup = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.stpRentalReceipt = new System.Windows.Forms.StatusStrip();
             this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tssHelpCustomerSelection = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssHelpRentalAgreementSelection = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtCustomerId = new System.Windows.Forms.TextBox();
+            this.tssHelpCustomerSelection = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssHelpDetailSelection = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnSave = new Warehouse.Presentation.Controls.ButtonStripItem();
             this.btnViewCustomer = new System.Windows.Forms.Button();
             this.txtAgreementSales = new System.Windows.Forms.TextBox();
             this.lblAgreementSales = new System.Windows.Forms.Label();
@@ -62,7 +63,7 @@
             this.lblCustomerTitle = new System.Windows.Forms.Label();
             this.lblDetailGroup = new System.Windows.Forms.Label();
             this.lblOtherGroup = new System.Windows.Forms.Label();
-            this.dtpAgreementDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpRentalDate = new System.Windows.Forms.DateTimePicker();
             this.lblRentalDate = new System.Windows.Forms.Label();
             this.txtReference = new System.Windows.Forms.TextBox();
             this.lblExtReference = new System.Windows.Forms.Label();
@@ -75,9 +76,13 @@
             this.ProductCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductSubcategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductSubcategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn();
+            this.Remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRemoveLine = new System.Windows.Forms.Button();
+            this.txtCustomerId = new System.Windows.Forms.TextBox();
             this.stpRentalReceipt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRentalReceiptDetail)).BeginInit();
             this.SuspendLayout();
@@ -266,8 +271,10 @@
             this.stpRentalReceipt.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.stpRentalReceipt.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssHelp,
+            this.tssHelpRentalAgreementSelection,
             this.tssHelpCustomerSelection,
-            this.tssHelpRentalAgreementSelection});
+            this.tssHelpDetailSelection,
+            this.btnSave});
             this.stpRentalReceipt.Location = new System.Drawing.Point(0, 658);
             this.stpRentalReceipt.Name = "stpRentalReceipt";
             this.stpRentalReceipt.Size = new System.Drawing.Size(840, 31);
@@ -283,6 +290,15 @@
             this.tssHelp.Size = new System.Drawing.Size(154, 26);
             this.tssHelp.Text = "Create new rental receipt";
             // 
+            // tssHelpRentalAgreementSelection
+            // 
+            this.tssHelpRentalAgreementSelection.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.tssHelpRentalAgreementSelection.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.tssHelpRentalAgreementSelection.Name = "tssHelpRentalAgreementSelection";
+            this.tssHelpRentalAgreementSelection.Padding = new System.Windows.Forms.Padding(10);
+            this.tssHelpRentalAgreementSelection.Size = new System.Drawing.Size(218, 26);
+            this.tssHelpRentalAgreementSelection.Text = "F1 :  Open Rental Agreement Selection";
+            // 
             // tssHelpCustomerSelection
             // 
             this.tssHelpCustomerSelection.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
@@ -290,27 +306,26 @@
             this.tssHelpCustomerSelection.Name = "tssHelpCustomerSelection";
             this.tssHelpCustomerSelection.Padding = new System.Windows.Forms.Padding(10);
             this.tssHelpCustomerSelection.Size = new System.Drawing.Size(177, 26);
-            this.tssHelpCustomerSelection.Text = "F1 :  Open Customer Selection";
+            this.tssHelpCustomerSelection.Text = "F2 :  Open Customer Selection";
             // 
-            // tssHelpRentalAgreementSelection
+            // tssHelpDetailSelection
             // 
-            this.tssHelpRentalAgreementSelection.Name = "tssHelpRentalAgreementSelection";
-            this.tssHelpRentalAgreementSelection.Padding = new System.Windows.Forms.Padding(10);
-            this.tssHelpRentalAgreementSelection.Size = new System.Drawing.Size(214, 26);
-            this.tssHelpRentalAgreementSelection.Text = "F2 :  Open Rental Agreement Selection";
+            this.tssHelpDetailSelection.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.tssHelpDetailSelection.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
+            this.tssHelpDetailSelection.Name = "tssHelpDetailSelection";
+            this.tssHelpDetailSelection.Padding = new System.Windows.Forms.Padding(10);
+            this.tssHelpDetailSelection.Size = new System.Drawing.Size(165, 26);
+            this.tssHelpDetailSelection.Spring = true;
+            this.tssHelpDetailSelection.Text = "F3 :  Open Detail Selection";
+            this.tssHelpDetailSelection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtCustomerId
+            // btnSave
             // 
-            this.txtCustomerId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtCustomerId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtCustomerId.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCustomerId.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtCustomerId.Location = new System.Drawing.Point(134, 174);
-            this.txtCustomerId.MaxLength = 6;
-            this.txtCustomerId.Name = "txtCustomerId";
-            this.txtCustomerId.Size = new System.Drawing.Size(100, 21);
-            this.txtCustomerId.TabIndex = 10;
-            this.txtCustomerId.TextChanged += new System.EventHandler(this.txtCustomerId_TextChanged);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(70, 27);
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnViewCustomer
             // 
@@ -422,13 +437,13 @@
             this.lblOtherGroup.TabIndex = 43;
             this.lblOtherGroup.Text = "Other";
             // 
-            // dtpAgreementDate
+            // dtpRentalDate
             // 
-            this.dtpAgreementDate.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.dtpAgreementDate.Location = new System.Drawing.Point(134, 310);
-            this.dtpAgreementDate.Name = "dtpAgreementDate";
-            this.dtpAgreementDate.Size = new System.Drawing.Size(250, 21);
-            this.dtpAgreementDate.TabIndex = 45;
+            this.dtpRentalDate.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.dtpRentalDate.Location = new System.Drawing.Point(134, 310);
+            this.dtpRentalDate.Name = "dtpRentalDate";
+            this.dtpRentalDate.Size = new System.Drawing.Size(250, 21);
+            this.dtpRentalDate.TabIndex = 45;
             // 
             // lblRentalDate
             // 
@@ -520,7 +535,10 @@
             this.ProductCategory,
             this.ProductSubcategoryId,
             this.ProductSubcategory,
-            this.Price});
+            this.Brand,
+            this.Description,
+            this.Quantity,
+            this.Remark});
             this.dgvRentalReceiptDetail.EnableHeadersVisualStyles = false;
             this.dgvRentalReceiptDetail.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvRentalReceiptDetail.Location = new System.Drawing.Point(16, 399);
@@ -529,19 +547,21 @@
             this.dgvRentalReceiptDetail.RowHeadersVisible = false;
             this.dgvRentalReceiptDetail.Size = new System.Drawing.Size(806, 251);
             this.dgvRentalReceiptDetail.TabIndex = 53;
+            this.dgvRentalReceiptDetail.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRentalReceiptDetail_CellValueChanged);
             // 
             // ProductCategoryId
             // 
             this.ProductCategoryId.HeaderText = "Category Id";
             this.ProductCategoryId.Name = "ProductCategoryId";
+            this.ProductCategoryId.ReadOnly = true;
             this.ProductCategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ProductCategoryId.Visible = false;
             this.ProductCategoryId.Width = 84;
             // 
             // ProductCategory
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductCategory.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductCategory.DefaultCellStyle = dataGridViewCellStyle10;
             this.ProductCategory.HeaderText = "Category";
             this.ProductCategory.Name = "ProductCategory";
             this.ProductCategory.ReadOnly = true;
@@ -551,27 +571,50 @@
             // 
             this.ProductSubcategoryId.HeaderText = "Subcategory Id";
             this.ProductSubcategoryId.Name = "ProductSubcategoryId";
+            this.ProductSubcategoryId.ReadOnly = true;
             this.ProductSubcategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ProductSubcategoryId.Visible = false;
             this.ProductSubcategoryId.Width = 102;
             // 
             // ProductSubcategory
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle11;
             this.ProductSubcategory.HeaderText = "Subcategory";
             this.ProductSubcategory.Name = "ProductSubcategory";
             this.ProductSubcategory.ReadOnly = true;
             this.ProductSubcategory.Width = 92;
             // 
-            // Price
+            // Brand
             // 
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = "0";
-            this.Price.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            this.Price.Width = 56;
+            dataGridViewCellStyle12.Format = "C2";
+            this.Brand.DefaultCellStyle = dataGridViewCellStyle12;
+            this.Brand.HeaderText = "Brand";
+            this.Brand.Name = "Brand";
+            this.Brand.Width = 60;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.Width = 85;
+            // 
+            // Quantity
+            // 
+            // 
+            // 
+            // 
+            this.Quantity.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.Quantity.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.Width = 71;
+            // 
+            // Remark
+            // 
+            this.Remark.HeaderText = "Remark";
+            this.Remark.Name = "Remark";
+            this.Remark.Width = 69;
             // 
             // btnAdd
             // 
@@ -582,6 +625,7 @@
             this.btnAdd.TabIndex = 54;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnRemoveLine
             // 
@@ -592,6 +636,20 @@
             this.btnRemoveLine.TabIndex = 56;
             this.btnRemoveLine.Text = "Remove";
             this.btnRemoveLine.UseVisualStyleBackColor = true;
+            this.btnRemoveLine.Click += new System.EventHandler(this.btnRemoveLine_Click);
+            // 
+            // txtCustomerId
+            // 
+            this.txtCustomerId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtCustomerId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtCustomerId.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCustomerId.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.txtCustomerId.Location = new System.Drawing.Point(134, 174);
+            this.txtCustomerId.MaxLength = 6;
+            this.txtCustomerId.Name = "txtCustomerId";
+            this.txtCustomerId.Size = new System.Drawing.Size(100, 21);
+            this.txtCustomerId.TabIndex = 10;
+            this.txtCustomerId.TextChanged += new System.EventHandler(this.txtCustomerId_TextChanged);
             // 
             // RentalReceiptFrm
             // 
@@ -605,7 +663,7 @@
             this.Controls.Add(this.txtCustomerAddress);
             this.Controls.Add(this.lblCustomerEmail);
             this.Controls.Add(this.lblCustomerAddress);
-            this.Controls.Add(this.dtpAgreementDate);
+            this.Controls.Add(this.dtpRentalDate);
             this.Controls.Add(this.lblRentalDate);
             this.Controls.Add(this.txtReference);
             this.Controls.Add(this.lblExtReference);
@@ -675,7 +733,7 @@
         private System.Windows.Forms.Label lblDetailGroup;
         private System.Windows.Forms.Label lblOtherGroup;
         private Microsoft.VisualBasic.PowerPacks.LineShape lneOtherGroup;
-        private System.Windows.Forms.DateTimePicker dtpAgreementDate;
+        private System.Windows.Forms.DateTimePicker dtpRentalDate;
         private System.Windows.Forms.Label lblRentalDate;
         private System.Windows.Forms.TextBox txtReference;
         private System.Windows.Forms.Label lblExtReference;
@@ -685,12 +743,17 @@
         private System.Windows.Forms.Label lblCustomerAddress;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
         private System.Windows.Forms.DataGridView dgvRentalReceiptDetail;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnRemoveLine;
+        private System.Windows.Forms.ToolStripStatusLabel tssHelpDetailSelection;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductCategoryId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductSubcategoryId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductSubcategory;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnRemoveLine;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Brand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Remark;
+        private Controls.ButtonStripItem btnSave;
     }
 }

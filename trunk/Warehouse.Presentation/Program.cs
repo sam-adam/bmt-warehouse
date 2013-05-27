@@ -25,7 +25,7 @@
 
                 if (login.LoggedIn)
                 {
-                    Application.Run(container.Resolve<RentalReceiptFrm>());
+                    Application.Run(container.Resolve<RentalWithdrawalFrm>());
                 }
             }
         }

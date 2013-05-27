@@ -30,22 +30,29 @@
             builder.RegisterType<ProductSubcategoryRepository>().As<IProductSubcategoryRepository>();
             builder.RegisterType<RentalAgreementRepository>().As<IRentalAgreementRepository>();
             builder.RegisterType<RentalReceiptRepository>().As<IRentalReceiptRepository>();
+            builder.RegisterType<RentalWithdrawalRepository>().As<IRentalWithdrawalRepository>();
 
             builder.RegisterType<LoginBl>().As<ILoginBl>();
             builder.RegisterType<RentalAgreementBl>().As<IRentalAgreementBl>();
-            builder.RegisterType<RentalReceiptBl>().InstancePerDependency();
+            builder.RegisterType<RentalReceiptBl>().As<IRentalReceiptBl>();
+            builder.RegisterType<RentalWithdrawalBl>().As<IRentalWithdrawalBl>();
             builder.RegisterType<CustomerBl>().As<ICustomerBl>();
             builder.RegisterType<ProductCategoryBl>().As<IProductCategoryBl>();
             builder.RegisterType<ProductSubcategoryBl>().As<IProductSubcategoryBl>();
 
             builder.RegisterType<RentalAgreementDetailFacade>();
+            builder.RegisterType<RentalReceiptFacade>();
+            builder.RegisterType<RentalWithdrawalFacade>();
 
             builder.RegisterType<LoginFrm>().InstancePerLifetimeScope();
             builder.RegisterType<RentalAgreementFrm>();
             builder.RegisterType<RentalReceiptFrm>();
+            builder.RegisterType<RentalWithdrawalFrm>();
 
             builder.RegisterType<CustomerView>().InstancePerLifetimeScope();
             builder.RegisterType<ProductSubcategoryView>().InstancePerLifetimeScope();
+            builder.RegisterType<RentalAgreementView>().InstancePerLifetimeScope();
+            builder.RegisterType<RentalAgreementDetailView>().InstancePerLifetimeScope();
 
             return builder.Build();
         }

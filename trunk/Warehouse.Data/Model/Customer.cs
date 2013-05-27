@@ -19,6 +19,7 @@
         public virtual string TaxId { get; set; }
         public virtual double CreditLimit { get; set; }
         protected internal virtual IList<RentalAgreement> RentalAgreements { get; protected set; }
+        protected internal virtual IList<RentalWithdrawal> RentalWithdrawals { get; protected set; }
 
         public virtual RentalAgreement GetActiveRental()
         {

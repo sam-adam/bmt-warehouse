@@ -42,6 +42,8 @@
             this.CustomerEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerNPWP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlBottom = new System.Windows.Forms.Panel();
+            this.lblActiveRentalValue = new System.Windows.Forms.Label();
+            this.lblActiveRentalTitle = new System.Windows.Forms.Label();
             this.lblAddress3Value = new System.Windows.Forms.Label();
             this.lblAddress2Value = new System.Windows.Forms.Label();
             this.lblContactPersonValue = new System.Windows.Forms.Label();
@@ -62,8 +64,6 @@
             this.stpCustomerList = new System.Windows.Forms.StatusStrip();
             this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssHelpEnter = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lblActiveRentalValue = new System.Windows.Forms.Label();
-            this.lblActiveRentalTitle = new System.Windows.Forms.Label();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.pnlBottom.SuspendLayout();
@@ -159,6 +159,7 @@
             this.dgvCustomers.TabIndex = 4;
             this.dgvCustomers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellDoubleClick);
             this.dgvCustomers.SelectionChanged += new System.EventHandler(this.dgvCustomers_SelectionChanged);
+            this.dgvCustomers.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvCustomers_KeyDown);
             this.dgvCustomers.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvCustomers_KeyPress);
             // 
             // Id
@@ -231,6 +232,26 @@
             this.pnlBottom.Name = "pnlBottom";
             this.pnlBottom.Size = new System.Drawing.Size(959, 170);
             this.pnlBottom.TabIndex = 8;
+            // 
+            // lblActiveRentalValue
+            // 
+            this.lblActiveRentalValue.AutoSize = true;
+            this.lblActiveRentalValue.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.lblActiveRentalValue.Location = new System.Drawing.Point(458, 147);
+            this.lblActiveRentalValue.Name = "lblActiveRentalValue";
+            this.lblActiveRentalValue.Size = new System.Drawing.Size(100, 13);
+            this.lblActiveRentalValue.TabIndex = 20;
+            this.lblActiveRentalValue.Text = "Active Rental Value";
+            // 
+            // lblActiveRentalTitle
+            // 
+            this.lblActiveRentalTitle.AutoSize = true;
+            this.lblActiveRentalTitle.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.lblActiveRentalTitle.Location = new System.Drawing.Point(321, 147);
+            this.lblActiveRentalTitle.Name = "lblActiveRentalTitle";
+            this.lblActiveRentalTitle.Size = new System.Drawing.Size(131, 13);
+            this.lblActiveRentalTitle.TabIndex = 19;
+            this.lblActiveRentalTitle.Text = "Active Rental Agreement:";
             // 
             // lblAddress3Value
             // 
@@ -429,26 +450,6 @@
             this.tssHelpEnter.Name = "tssHelpEnter";
             this.tssHelpEnter.Size = new System.Drawing.Size(171, 26);
             this.tssHelpEnter.Text = "Press <Enter> to select Customer";
-            // 
-            // lblActiveRentalValue
-            // 
-            this.lblActiveRentalValue.AutoSize = true;
-            this.lblActiveRentalValue.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblActiveRentalValue.Location = new System.Drawing.Point(458, 147);
-            this.lblActiveRentalValue.Name = "lblActiveRentalValue";
-            this.lblActiveRentalValue.Size = new System.Drawing.Size(100, 13);
-            this.lblActiveRentalValue.TabIndex = 20;
-            this.lblActiveRentalValue.Text = "Active Rental Value";
-            // 
-            // lblActiveRentalTitle
-            // 
-            this.lblActiveRentalTitle.AutoSize = true;
-            this.lblActiveRentalTitle.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblActiveRentalTitle.Location = new System.Drawing.Point(321, 147);
-            this.lblActiveRentalTitle.Name = "lblActiveRentalTitle";
-            this.lblActiveRentalTitle.Size = new System.Drawing.Size(131, 13);
-            this.lblActiveRentalTitle.TabIndex = 19;
-            this.lblActiveRentalTitle.Text = "Active Rental Agreement:";
             // 
             // CustomerView
             // 

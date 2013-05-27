@@ -75,6 +75,7 @@
     <Compile Include="ProductCategoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentalAgreementTest.cs" />
+    <Compile Include="RentalWithdrawalTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Autofac">
@@ -115,6 +116,10 @@
     <ProjectReference Include="..\Warehouse.Infrastructure\Warehouse.Infrastructure.csproj">
       <Project>{CF55C5E2-E570-46A6-B9C0-E1CC04196225}</Project>
       <Name>Warehouse.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Warehouse.Presentation\Warehouse.Presentation.csproj">
+      <Project>{595E1619-645B-4131-8D8E-E01F2B37BC97}</Project>
+      <Name>Warehouse.Presentation</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -100,6 +100,10 @@
                     dgvCustomers.Rows.Add(customer.Id, customer.Name, customer.Title, customer.Phone, customer.Email, customer.TaxId);
                 }
             }
+            else
+            {
+                dgvCustomers.Rows.Clear();
+            }
             
             SetCustomerPreview();
         }
@@ -147,6 +151,14 @@
         private void dgvCustomers_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = false;
+        }
+
+        private void dgvCustomers_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter && !dgvCustomers.IsCurrentCellInEditMode)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -1,50 +1,109 @@
 ﻿namespace Warehouse.Business
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Linq.Expressions;
+    using Warehouse.Business.Contract;
     using Warehouse.Data.Model;
     using Warehouse.Data.Contract;
-    using System.Linq;
+    using Warehouse.Helper;
 
-    public class RentalReceiptBl
+    public class RentalReceiptBl : IRentalReceiptBl
     {
-        private readonly ICustomerRepository _customerRepository;
-        private readonly IRentalAgreementRepository _rentalAgreementRepository;
+        private readonly Common _common;
         private readonly IRentalReceiptRepository _rentalReceiptRepository;
 
-        public RentalReceiptBl(ICustomerRepository customerRepository, IRentalAgreementRepository rentalAgreementRepository, IRentalReceiptRepository rentalReceiptRepository)
+        public RentalReceiptBl(Common common, IRentalReceiptRepository rentalReceiptRepository)
         {
-            _customerRepository = customerRepository;
-            _rentalAgreementRepository = rentalAgreementRepository;
+            _common = common;
             _rentalReceiptRepository = rentalReceiptRepository;
         }
 
-        public RentalAgreement GetRentalAgreement(string rentalAgreementId)
+        public string GenerateNewId()
         {
-            var rentalAgreement = _rentalAgreementRepository.Get(x => x.Id == rentalAgreementId).ToList();
+            var currentMonth = DateTimeHelper.ConvertMonthToAlphabet(DateTime.Now.Month);
+            var currentYear = DateTime.Now.Year.ToString(CultureInfo.InvariantCulture).Substring(2, 2);
+            var branch = _common.LoggedInUser.Employee.Branch;
+            var newId = "0001";
 
-            return rentalAgreement.Any() ? rentalAgreement.First() : null;
-        }
+            var rentalList = _rentalReceiptRepository.Get(rent => rent.CreatedDate.Month == DateTime.Now.Month).ToList();
+            var lastRental = rentalList.Any() ? rentalList.Last() : null;
 
-        public bool IsActiveRentalAgreement(RentalAgreement rentalAgreement)
-        {
-            return rentalAgreement.Status.ToUpperInvariant() == "ACTIVE";
-        }
-
-        public RentalAgreement GetCustomerRentalAgreement(string customerId)
-        {
-            var customerList = _customerRepository.Get(cust => cust.Id == customerId).ToList();
-
-            if (customerList.Any())
+            if (lastRental != null)
             {
-                var customer = customerList.First();
-                var rentalAgreement = customer.GetActiveRental();
+                var lastRentalIds = lastRental.Id.Split('.');
+                var newIntId = int.Parse(lastRentalIds[1]) + 1;
 
-                if (rentalAgreement != null)
+                if (newIntId < 10)
                 {
-                    return rentalAgreement;
+                    newId = "000" + newIntId.ToString(CultureInfo.InvariantCulture);
+                }
+                else if (newIntId < 100)
+                {
+                    newId = "00" + newIntId.ToString(CultureInfo.InvariantCulture);
+                }
+                else if (newIntId < 1000)
+                {
+                    newId = "0" + newIntId.ToString(CultureInfo.InvariantCulture);
+                }
+                else
+                {
+                    newId = newIntId.ToString(CultureInfo.InvariantCulture);
                 }
             }
 
-            return null;
+            return string.Format("{0}{1}/{2}{3}.{4}", "RCP", branch, currentMonth, currentYear, newId);
+        }
+
+        public string Save(RentalReceipt rentalReceipt)
+        {
+            Validate(rentalReceipt);
+
+            rentalReceipt.Status = "ACTIVE";
+            rentalReceipt.CreatedDate = DateTime.Now;
+            rentalReceipt.CreatedBy = _common.LoggedInUser.Employee;
+
+            _rentalReceiptRepository.Add(rentalReceipt);
+
+            return string.Format("Rental receipt : {0} is created", rentalReceipt.Id);
+        }
+
+        public string Update(RentalReceipt rentalReceipt)
+        {
+            Validate(rentalReceipt);
+
+            _rentalReceiptRepository.Update(rentalReceipt);
+
+            return string.Format("Rental receipt : {0} is updated", rentalReceipt.Id);
+        }
+
+        public void Validate(RentalReceipt rentalReceipt)
+        {
+            if (rentalReceipt == null) throw new Exception("Rental receipt is empty");
+            if (rentalReceipt.Details.Count <= 0) throw new Exception("Rental receipt detail cannot be empty");
+        }
+
+        public IList<RentalReceipt> GetAll()
+        {
+            var rentalReceiptList = _rentalReceiptRepository.GetAll();
+
+            return rentalReceiptList.Any() ? rentalReceiptList.ToList() : null;
+        }
+
+        public IList<RentalReceipt> Get(string id)
+        {
+            var rentalReceiptList = _rentalReceiptRepository.Get(recp => recp.Id == id);
+
+            return rentalReceiptList.Any() ? rentalReceiptList.ToList() : null;
+        }
+
+        public IList<RentalReceipt> Get(Expression<Func<RentalReceipt, bool>> predicate)
+        {
+            var rentalReceiptList = _rentalReceiptRepository.Get(predicate);
+
+            return rentalReceiptList.Any() ? rentalReceiptList.ToList() : null;
         }
     }
 }

@@ -78,8 +78,13 @@
     <Compile Include="Contract\IProductSubcategoryBl.cs" />
     <Compile Include="Contract\IReadOnlyBusinessLogic.cs" />
     <Compile Include="Contract\IRentalAgreementBl.cs" />
+    <Compile Include="Contract\IRentalReceiptBl.cs" />
+    <Compile Include="Contract\IRentalWithdrawalBl.cs" />
     <Compile Include="Contract\IUserBl.cs" />
     <Compile Include="CustomerBl.cs" />
+    <Compile Include="Facade\RentalReceiptFacade.cs" />
+    <Compile Include="Facade\RentalWithdrawalFacade.cs" />
+    <Compile Include="Model\CustomerRentalItem.cs" />
     <Compile Include="ProductCategoryBl.cs" />
     <Compile Include="ProductSubcategoryBl.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -92,6 +97,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Facade\RentalAgreementDetailFacade.cs" />
     <Compile Include="RentalReceiptBl.cs" />
+    <Compile Include="RentalWithdrawalBl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -112,6 +118,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
