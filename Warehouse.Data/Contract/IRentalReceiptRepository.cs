@@ -1,6 +1,8 @@
 ﻿namespace Warehouse.Data.Contract
 {
-    public interface IRentalReceiptRepository
+    using Warehouse.Data.Model;
+
+    public interface IRentalReceiptRepository : IRepository<RentalReceipt>
     {
     }
 }

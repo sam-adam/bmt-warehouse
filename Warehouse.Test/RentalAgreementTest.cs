@@ -61,18 +61,18 @@ namespace Warehouse.Test
         [Test]
         public void AddNew()
         {
-            var rentalAgreementBl = _container.Resolve<RentalAgreementBl>();
+            //var rentalAgreementBl = _container.Resolve<RentalAgreementBl>();
 
-            var newRental = new RentalAgreement(null)
-                {
-                    Id = "newid",
-                    //AgreementDate = "newagreementdate",
-                    CreatedBy = new Employee(),
-                    //CreatedDate = "newcreateddate",
-                    Customer = new Customer(),
-                    Reference = "newreference",
-                    Status = "newstatus"
-                };
+            //var newRental = new RentalAgreement(null)
+            //    {
+            //        Id = "newid",
+            //        //AgreementDate = "newagreementdate",
+            //        CreatedBy = new Employee(),
+            //        //CreatedDate = "newcreateddate",
+            //        Customer = new Customer(),
+            //        Reference = "newreference",
+            //        Status = "newstatus"
+            //    };
 
             //newRental.AddRentalAgreementDetail(new RentalAgreementDetail()
             //    {

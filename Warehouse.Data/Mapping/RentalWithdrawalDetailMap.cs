@@ -3,19 +3,18 @@
     using FluentNHibernate.Mapping;
     using Warehouse.Data.Model;
 
-    public class RentalReceiptDetailMap : ClassMap<RentalReceiptDetail>
+    public class RentalWithdrawalDetailMap : ClassMap<RentalWithdrawalDetail>
     {
-        public RentalReceiptDetailMap()
+        public RentalWithdrawalDetailMap()
         {
-            Table("tbl_detailrentalreceipt");
+            Table("tbl_detailrentalwithdrawal");
 
             CompositeId()
-                .KeyReference(x => x.RentalReceipt, "id_rentalreceipt")
+                .KeyReference(x => x.RentalWithdrawal, "id_rentalwithdrawal")
                 .KeyReference(x => x.ProductCategory, "id_category")
                 .KeyReference(x => x.ProductSubcategory, "id_subcategory");
             Map(x => x.Brand);
             Map(x => x.Description);
-            Map(x => x.Remark);
             Map(x => x.Quantity);
         }
     }

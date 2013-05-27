@@ -89,6 +89,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
+    <Compile Include="Controls\ButtonStripItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +124,12 @@
     <Compile Include="RentalReceiptFrm.Designer.cs">
       <DependentUpon>RentalReceiptFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RentalWithdrawalFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RentalWithdrawalFrm.Designer.cs">
+      <DependentUpon>RentalWithdrawalFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\CustomerView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +141,12 @@
     </Compile>
     <Compile Include="View\ProductSubcategoryView.Designer.cs">
       <DependentUpon>ProductSubcategoryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\RentalAgreementDetailView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RentalAgreementDetailView.Designer.cs">
+      <DependentUpon>RentalAgreementDetailView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\RentalAgreementView.cs">
       <SubType>Form</SubType>
@@ -165,11 +180,17 @@
     <EmbeddedResource Include="RentalReceiptFrm.resx">
       <DependentUpon>RentalReceiptFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RentalWithdrawalFrm.resx">
+      <DependentUpon>RentalWithdrawalFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\CustomerView.resx">
       <DependentUpon>CustomerView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ProductSubcategoryView.resx">
       <DependentUpon>ProductSubcategoryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RentalAgreementDetailView.resx">
+      <DependentUpon>RentalAgreementDetailView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\RentalAgreementView.resx">
       <DependentUpon>RentalAgreementView.cs</DependentUpon>

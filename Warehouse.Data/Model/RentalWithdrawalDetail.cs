@@ -1,8 +1,8 @@
 ﻿namespace Warehouse.Data.Model
 {
-    public class RentalReceiptDetail : Entity
+    public class RentalWithdrawalDetail : Entity
     {
-        public virtual RentalReceipt RentalReceipt { get; set; }
+        public virtual RentalWithdrawal RentalWithdrawal { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }
         public virtual ProductSubcategory ProductSubcategory { get; set; }
         public virtual string Brand { get; set; }
@@ -12,12 +12,12 @@
 
         public override bool Equals(object obj)
         {
-            var other = obj as RentalReceiptDetail;
+            var other = obj as RentalWithdrawalDetail;
 
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
-            return RentalReceipt == other.RentalReceipt
+            return RentalWithdrawal == other.RentalWithdrawal
                    && ProductCategory == other.ProductCategory
                    && ProductSubcategory == other.ProductSubcategory
                    && Brand == other.Brand
