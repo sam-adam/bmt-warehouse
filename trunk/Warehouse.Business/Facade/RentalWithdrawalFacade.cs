@@ -5,7 +5,6 @@
     using System.Linq;
     using System.Linq.Expressions;
     using Warehouse.Business.Contract;
-    using Warehouse.Business.Model;
     using Warehouse.Data.Model;
 
     public class RentalWithdrawalFacade
@@ -14,13 +13,17 @@
         private readonly IRentalReceiptBl _rentalReceiptBl;
         private readonly IProductCategoryBl _categoryBl;
         private readonly IProductSubcategoryBl _subcategoryBl;
+        private readonly IRentalProductBl _rentalProductBl;
+        private readonly IInvoiceWithdrawalBl _invoiceWithdrawalBl;
 
-        public RentalWithdrawalFacade(ICustomerBl customerBl, IRentalReceiptBl rentalReceiptBl, IProductCategoryBl categoryBl, IProductSubcategoryBl subcategoryBl)
+        public RentalWithdrawalFacade(ICustomerBl customerBl, IRentalReceiptBl rentalReceiptBl, IProductCategoryBl categoryBl, IProductSubcategoryBl subcategoryBl, IRentalProductBl rentalProductBl, IInvoiceWithdrawalBl invoiceWithdrawalBl)
         {
             _customerBl = customerBl;
             _rentalReceiptBl = rentalReceiptBl;
             _categoryBl = categoryBl;
             _subcategoryBl = subcategoryBl;
+            _rentalProductBl = rentalProductBl;
+            _invoiceWithdrawalBl = invoiceWithdrawalBl;
         }
 
         public IList<RentalReceiptDetail> GetRentalReceiptDetail(string customerId)
@@ -65,6 +68,46 @@
             var rentalReceipts = _rentalReceiptBl.Get(predicate);
 
             return rentalReceipts.Any() ? rentalReceipts : null;
+        }
+
+        public IList<RentalProduct> GetCustomerRentalProducts(Customer customer)
+        {
+            return _rentalProductBl.Get(prod => prod.Customer == customer);
+        }
+
+        public string UpdateRentalProduct(RentalProduct rentalProduct)
+        {
+            return _rentalProductBl.Update(rentalProduct);
+        }
+
+        public string AddInvoiceWithdrawal(RentalWithdrawal rentalWithdrawal)
+        {
+            var activeRentalAgreement = _customerBl.Get(cust => cust.Id == rentalWithdrawal.Customer.Id).First().GetActiveRental();
+            var invoiceWithdrawal = new InvoiceWithdrawal()
+                {
+                    Id = _invoiceWithdrawalBl.GenerateNewId(),
+                    RentalWithdrawal = rentalWithdrawal,
+                    RentalAgreement = activeRentalAgreement,
+                    CreatedDate = rentalWithdrawal.CreatedDate,
+                    InvoiceDate = rentalWithdrawal.WithdrawalDate,
+                };
+
+            foreach (var withdrawalDetail in rentalWithdrawal.Details)
+            {
+                var rentalProduct = withdrawalDetail.RentalProduct;
+                var rentalProductPrice = activeRentalAgreement.Details.First(dtl => dtl.Category == rentalProduct.ProductCategory && dtl.Subcategory == rentalProduct.ProductSubcategory).Price;
+                var invoiceWithdrawalDetail = new InvoiceWithdrawalDetail()
+                    {
+                        InvoiceWithdrawal = invoiceWithdrawal,
+                        RentalProduct = rentalProduct,
+                        Quantity = withdrawalDetail.Quantity,
+                        Price = rentalProductPrice
+                    };
+
+                invoiceWithdrawal.AddDetail(invoiceWithdrawalDetail);
+            }
+
+            return _invoiceWithdrawalBl.Save(invoiceWithdrawal);
         }
     }
 }

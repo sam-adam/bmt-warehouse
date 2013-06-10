@@ -159,7 +159,7 @@
         private void LoadRentalAgreementView()
         {
             _rentalAgreementView.ShowDialog();
-
+            
             txtAgreementId.Text = _rentalAgreementView.SelectedRentalAgreement.Id;
         }
 
@@ -235,11 +235,15 @@
                 newRentalReceipt.AddDetail(new RentalReceiptDetail()
                     {
                         RentalReceipt = newRentalReceipt,
-                        Brand = row.Cells["Brand"].Value.ToString(),
-                        Description = row.Cells["Description"].Value.ToString(),
+                        RentalProduct = new RentalProduct()
+                            {
+                                Brand = row.Cells["Brand"].Value.ToString(),
+                                Customer = _rentalAgreement.Customer,
+                                Description = row.Cells["Description"].Value.ToString(),
+                                ProductCategory = _facade.GetCategory(row.Cells["ProductCategoryId"].Value.ToString()),
+                                ProductSubcategory = _facade.GetSubcategory(row.Cells["ProductSubcategoryId"].Value.ToString()),
+                            },
                         Remark = row.Cells["Remark"].Value.ToString(),
-                        ProductCategory = _facade.GetCategory(row.Cells["ProductCategoryId"].Value.ToString()),
-                        ProductSubcategory = _facade.GetSubcategory(row.Cells["ProductSubcategoryId"].Value.ToString()),
                         Quantity = int.Parse(row.Cells["Quantity"].Value.ToString()),
                     });   
             }

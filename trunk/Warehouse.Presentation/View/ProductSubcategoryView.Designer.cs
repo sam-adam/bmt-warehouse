@@ -125,6 +125,7 @@
             this.dgvProductSubcategory.TabIndex = 11;
             this.dgvProductSubcategory.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductSubcategory_CellDoubleClick);
             this.dgvProductSubcategory.SelectionChanged += new System.EventHandler(this.dgvProductSubcategory_SelectionChanged);
+            this.dgvProductSubcategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvProductSubcategory_KeyDown);
             // 
             // SubcategoryId
             // 

@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using NUnit.Framework;
 using Warehouse.Data.Model;
-using Warehouse.Infrastructure;
+using Warehouse.Presentation;
 using Warehouse.Data.Contract;
 using System.Collections.Generic;
 using System.Linq;

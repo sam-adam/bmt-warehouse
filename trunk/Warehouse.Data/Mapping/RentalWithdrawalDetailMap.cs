@@ -11,10 +11,7 @@
 
             CompositeId()
                 .KeyReference(x => x.RentalWithdrawal, "id_rentalwithdrawal")
-                .KeyReference(x => x.ProductCategory, "id_category")
-                .KeyReference(x => x.ProductSubcategory, "id_subcategory");
-            Map(x => x.Brand);
-            Map(x => x.Description);
+                .KeyReference(x => x.RentalProduct, "id_rentalproduct");
             Map(x => x.Quantity);
         }
     }

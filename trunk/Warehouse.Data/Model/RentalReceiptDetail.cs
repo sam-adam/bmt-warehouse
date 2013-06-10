@@ -3,10 +3,7 @@
     public class RentalReceiptDetail : Entity
     {
         public virtual RentalReceipt RentalReceipt { get; set; }
-        public virtual ProductCategory ProductCategory { get; set; }
-        public virtual ProductSubcategory ProductSubcategory { get; set; }
-        public virtual string Brand { get; set; }
-        public virtual string Description { get; set; }
+        public virtual RentalProduct RentalProduct { get; set; }
         public virtual string Remark { get; set; }
         public virtual int Quantity { get; set; }
 
@@ -18,10 +15,7 @@
             if (ReferenceEquals(this, other)) return true;
 
             return RentalReceipt == other.RentalReceipt
-                   && ProductCategory == other.ProductCategory
-                   && ProductSubcategory == other.ProductSubcategory
-                   && Brand == other.Brand
-                   && Description == other.Description;
+                   && RentalProduct == other.RentalProduct;
         }
 
         public override int GetHashCode()

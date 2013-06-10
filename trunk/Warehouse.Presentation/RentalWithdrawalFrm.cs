@@ -1,6 +1,7 @@
 ﻿namespace Warehouse.Presentation
 {
     using System;
+    using System.Linq;
     using System.Windows.Forms;
     using Warehouse.Business.Contract;
     using Warehouse.Data.Model;
@@ -10,11 +11,13 @@
     {
         private readonly CustomerView _customerView;
         private readonly IRentalWithdrawalBl _rentalWithdrawalBl;
+        private readonly IRentalProductBl _rentalProductBl;
 
-        public RentalWithdrawalFrm(IRentalWithdrawalBl rentalWithdrawalBl, CustomerView customerView)
+        public RentalWithdrawalFrm(IRentalWithdrawalBl rentalWithdrawalBl, CustomerView customerView, IRentalProductBl rentalProductBl)
         {
             _rentalWithdrawalBl = rentalWithdrawalBl;
             _customerView = customerView;
+            _rentalProductBl = rentalProductBl;
 
             InitializeComponent();
         }
@@ -46,7 +49,7 @@
                 if (customer != null)
                 {
                     SetCustomer(customer);
-                    SetRentalItems(customer);
+                    SetRentalProducts(customer);
 
                     txtReference.Focus();
                 }
@@ -74,15 +77,14 @@
                 {
                     if (int.Parse(row.Cells["Quantity"].Value.ToString()) > 0)
                     {
-                        var withdrawalDetail = new RentalWithdrawalDetail();
+                        var product = _rentalProductBl.Get(row.Cells["ProductId"].Value.ToString()).First();
 
-                        withdrawalDetail.RentalWithdrawal = withdrawal;
-                        withdrawalDetail.ProductCategory = _rentalWithdrawalBl.GetCategory(row.Cells["ProductCategoryId"].Value.ToString());
-                        withdrawalDetail.ProductSubcategory = _rentalWithdrawalBl.GetSubcategory(row.Cells["ProductSubcategoryId"].Value.ToString());
-                        withdrawalDetail.Brand = row.Cells["Brand"].Value.ToString();
-                        withdrawalDetail.Description = row.Cells["Description"].Value.ToString();
-                        withdrawalDetail.Quantity = int.Parse(row.Cells["Quantity"].Value.ToString());
-                        withdrawalDetail.Remark = row.Cells["Remark"].Value.ToString();
+                        var withdrawalDetail = new RentalWithdrawalDetail
+                            {
+                                RentalWithdrawal = withdrawal,
+                                RentalProduct = product,
+                                Quantity = int.Parse(row.Cells["Quantity"].Value.ToString())
+                            };
 
                         withdrawal.AddDetail(withdrawalDetail);
                     }
@@ -125,23 +127,24 @@
             txtCustomerEmail.Text = customer.Email;
         }
         
-        private void SetRentalItems(Customer customer)
+        private void SetRentalProducts(Customer customer)
         {
-            var rentalItems = _rentalWithdrawalBl.GetRentalItems(customer.Id);
+            var rentalProducts = _rentalWithdrawalBl.GetCustomerRentalProducts(customer);
 
             dgvRentalWithdrawalDetail.Rows.Clear();
 
-            if (rentalItems != null)
+            if (rentalProducts != null)
             {
-                foreach (var rentalItem in rentalItems)
+                foreach (var rentalProduct in rentalProducts)
                 {
-                    dgvRentalWithdrawalDetail.Rows.Add(rentalItem.ProductCategory.Id,
-                                                        rentalItem.ProductCategory.Category,
-                                                        rentalItem.ProductSubcategory.Id,
-                                                        rentalItem.ProductSubcategory.Subcategory,
-                                                        rentalItem.Brand,
-                                                        rentalItem.Description,
-                                                        rentalItem.Quantity,
+                    dgvRentalWithdrawalDetail.Rows.Add(rentalProduct.Id,
+                                                        rentalProduct.ProductCategory.Id,
+                                                        rentalProduct.ProductCategory.Category,
+                                                        rentalProduct.ProductSubcategory.Id,
+                                                        rentalProduct.ProductSubcategory.Subcategory,
+                                                        rentalProduct.Brand,
+                                                        rentalProduct.Description,
+                                                        rentalProduct.Stock,
                                                         "0", "");
                 }
             }

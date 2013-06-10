@@ -114,5 +114,13 @@
                 ProductSubcategory = null;
             }
         }
+
+        private void dgvProductSubcategory_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && !dgvProductSubcategory.IsCurrentCellInEditMode)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

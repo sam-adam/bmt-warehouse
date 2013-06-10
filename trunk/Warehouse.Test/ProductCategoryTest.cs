@@ -6,7 +6,7 @@
     using Warehouse.Business;
     using Warehouse.Data.Contract;
     using Warehouse.Data.Model;
-    using Warehouse.Infrastructure;
+    using Warehouse.Presentation;
 
     [TestFixture]
     public class ProductCategoryTest

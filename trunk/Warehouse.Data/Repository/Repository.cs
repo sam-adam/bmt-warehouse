@@ -22,7 +22,6 @@ namespace Warehouse.Data.Repository
             }
 
             _session = session;
-            _transaction = _session.BeginTransaction();
         }
 
         #region IReadonlyRepository<T> members
@@ -53,6 +52,8 @@ namespace Warehouse.Data.Repository
 
         public void Add(T t)
         {
+            _transaction = _session.BeginTransaction();
+
             _session.Save(t);
 
             _transaction.Commit();
@@ -70,7 +71,11 @@ namespace Warehouse.Data.Repository
 
         public void Update(T t)
         {
+            _transaction = _session.BeginTransaction();
+
             _session.Update(t);
+
+            _transaction.Commit();
         }
 
         #endregion

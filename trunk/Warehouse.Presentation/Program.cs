@@ -25,7 +25,8 @@
 
                 if (login.LoggedIn)
                 {
-                    Application.Run(container.Resolve<RentalWithdrawalFrm>());
+                    var home = new Home(container);
+                    Application.Run(home);
                 }
             }
         }

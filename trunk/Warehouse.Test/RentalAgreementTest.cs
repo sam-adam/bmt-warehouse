@@ -11,7 +11,7 @@ namespace Warehouse.Test
     using NUnit.Framework;
     using Warehouse.Business;
     using Warehouse.Data.Model;
-    using Warehouse.Infrastructure;
+    using Warehouse.Presentation;
 
     [TestFixture]
     public class RentalAgreementTest
