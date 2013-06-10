@@ -73,6 +73,8 @@
     <Compile Include="Contract\ICustomerRepository.cs" />
     <Compile Include="Contract\IEmployeeRepository.cs" />
     <Compile Include="Contract\IFluentConfiguration.cs" />
+    <Compile Include="Contract\IInvoiceMonthlyRepository.cs" />
+    <Compile Include="Contract\IInvoiceWithdrawalRepository.cs" />
     <Compile Include="Contract\IProductCategoryRepository.cs" />
     <Compile Include="Contract\IProductSubcategoryRepository.cs" />
     <Compile Include="Contract\IReadOnlyRepository.cs" />
@@ -83,8 +85,13 @@
     <Compile Include="Contract\IRepository.cs" />
     <Compile Include="Contract\ISystemSetting.cs" />
     <Compile Include="Contract\IUserRepository.cs" />
+    <Compile Include="Repository\InvoiceMonthlyRepository.cs" />
     <Compile Include="Mapping\CustomerMap.cs" />
     <Compile Include="Mapping\EmployeeMap.cs" />
+    <Compile Include="Mapping\InvoiceMonthlyDetailMap.cs" />
+    <Compile Include="Mapping\InvoiceMonthlyMap.cs" />
+    <Compile Include="Mapping\InvoiceWithdrawalDetailMap.cs" />
+    <Compile Include="Mapping\InvoiceWithdrawalMap.cs" />
     <Compile Include="Mapping\ProductCategoryMap.cs" />
     <Compile Include="Mapping\ProductSubcategoryMap.cs" />
     <Compile Include="Mapping\RentalAgreementDetailMap.cs" />
@@ -98,6 +105,10 @@
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Entity.cs" />
+    <Compile Include="Model\InvoiceMonthly.cs" />
+    <Compile Include="Model\InvoiceMonthlyDetail.cs" />
+    <Compile Include="Model\InvoiceWithdrawal.cs" />
+    <Compile Include="Model\InvoiceWithdrawalDetail.cs" />
     <Compile Include="Model\ProductCategory.cs" />
     <Compile Include="Model\ProductSubcategory.cs" />
     <Compile Include="Model\RentalAgreement.cs" />
@@ -117,6 +128,7 @@
     </Compile>
     <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Repository\EmployeeRepository.cs" />
+    <Compile Include="Repository\InvoiceWithdrawalRepository.cs" />
     <Compile Include="Repository\ProductCategoryRepository.cs" />
     <Compile Include="Repository\ProductSubcategoryRepository.cs" />
     <Compile Include="Repository\RentalAgreementRepository.cs" />

@@ -61,6 +61,7 @@
             this.lblExtReference = new System.Windows.Forms.Label();
             this.lblOtherGroup = new System.Windows.Forms.Label();
             this.dgvRentalWithdrawalDetail = new System.Windows.Forms.DataGridView();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductCategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductSubcategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -325,7 +326,7 @@
             this.tssHelpCustomerSelection.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
             this.tssHelpCustomerSelection.Name = "tssHelpCustomerSelection";
             this.tssHelpCustomerSelection.Padding = new System.Windows.Forms.Padding(10);
-            this.tssHelpCustomerSelection.Size = new System.Drawing.Size(572, 26);
+            this.tssHelpCustomerSelection.Size = new System.Drawing.Size(541, 26);
             this.tssHelpCustomerSelection.Spring = true;
             this.tssHelpCustomerSelection.Text = "F1 :  Open Customer Selection";
             this.tssHelpCustomerSelection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -395,6 +396,7 @@
             this.dgvRentalWithdrawalDetail.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedVertical;
             this.dgvRentalWithdrawalDetail.ColumnHeadersHeight = 25;
             this.dgvRentalWithdrawalDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductId,
             this.ProductCategoryId,
             this.ProductCategory,
             this.ProductSubcategoryId,
@@ -413,6 +415,14 @@
             this.dgvRentalWithdrawalDetail.Size = new System.Drawing.Size(806, 251);
             this.dgvRentalWithdrawalDetail.TabIndex = 75;
             this.dgvRentalWithdrawalDetail.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRentalWithdrawalDetail_CellValueChanged);
+            // 
+            // ProductId
+            // 
+            this.ProductId.HeaderText = "Product Id";
+            this.ProductId.Name = "ProductId";
+            this.ProductId.ReadOnly = true;
+            this.ProductId.Visible = false;
+            this.ProductId.Width = 79;
             // 
             // ProductCategoryId
             // 
@@ -573,6 +583,7 @@
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
         private System.Windows.Forms.DataGridView dgvRentalWithdrawalDetail;
         private System.Windows.Forms.Label lblDetailGroup;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductCategoryId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductSubcategoryId;

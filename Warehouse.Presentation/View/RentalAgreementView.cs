@@ -32,7 +32,7 @@
                 }
                 else
                 {
-                    Close();   
+                    Close();
                 }
             }
 
@@ -88,9 +88,9 @@
             {
                 dgvRentalAgreement.Rows.Clear();
             }
-
+            
             SelectedRentalAgreement = dgvRentalAgreement.CurrentRow != null ? _rentalAgreementBl.Get(rent => rent.Id == dgvRentalAgreement.CurrentRow.Cells["Id"].Value.ToString()).First() : null;
-
+            
             SetDetails();
         }
 

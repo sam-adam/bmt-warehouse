@@ -10,6 +10,6 @@
         Customer GetCustomer(string id);
         ProductCategory GetCategory(string id);
         ProductSubcategory GetSubcategory(string id);
-        IList<CustomerRentalItem> GetRentalItems(string customerId);
+        IList<RentalProduct> GetCustomerRentalProducts(Customer customer);
     }
 }

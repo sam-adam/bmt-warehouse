@@ -19,18 +19,6 @@ namespace Warehouse.Data
             _systemSetting = new SystemSetting();
 
             InitializeSessionFactory();
-
-            //try
-            //{
-            //    InitializeSessionFactory();
-            //}
-            //catch (Exception ex)
-            //{
-            //    if (ex.GetType() == typeof(FluentConfigurationException))
-            //    {
-            //        throw new Exception("MySQL not connected");
-            //    }
-            //}
         }
 
         private static void InitializeSessionFactory()

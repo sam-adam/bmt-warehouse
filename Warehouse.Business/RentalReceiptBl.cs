@@ -14,11 +14,13 @@
     {
         private readonly Common _common;
         private readonly IRentalReceiptRepository _rentalReceiptRepository;
+        private readonly IRentalProductBl _rentalProductBl;
 
-        public RentalReceiptBl(Common common, IRentalReceiptRepository rentalReceiptRepository)
+        public RentalReceiptBl(Common common, IRentalReceiptRepository rentalReceiptRepository, IRentalProductBl rentalProductBl)
         {
             _common = common;
             _rentalReceiptRepository = rentalReceiptRepository;
+            _rentalProductBl = rentalProductBl;
         }
 
         public string GenerateNewId()
@@ -65,9 +67,48 @@
             rentalReceipt.CreatedDate = DateTime.Now;
             rentalReceipt.CreatedBy = _common.LoggedInUser.Employee;
 
+            CheckRentalProduct(rentalReceipt);
+
             _rentalReceiptRepository.Add(rentalReceipt);
 
             return string.Format("Rental receipt : {0} is created", rentalReceipt.Id);
+        }
+
+        private void CheckRentalProduct(RentalReceipt rentalReceipt)
+        {
+            var customer = rentalReceipt.RentalAgreement.Customer;
+
+            foreach (var detail in rentalReceipt.Details)
+            {
+                var detailProduct = detail.RentalProduct;
+
+                var rentalProducts =
+                    _rentalProductBl.Get(
+                        prod =>
+                        prod.Customer == customer && prod.ProductCategory == detailProduct.ProductCategory &&
+                        prod.ProductSubcategory == detailProduct.ProductSubcategory && prod.Brand == detailProduct.Brand &&
+                        prod.Description == detailProduct.Description);
+
+                if (rentalProducts != null)
+                {
+                    var rentalProduct = rentalProducts.First();
+
+                    rentalProduct.Stock += detail.Quantity;
+
+                    detail.RentalProduct.Id = rentalProduct.Id;
+
+                    _rentalProductBl.Update(rentalProduct);
+                }
+                else
+                {
+                    detailProduct.CreatedDate = DateTime.Now;
+                    detailProduct.Stock += detail.Quantity;
+
+                    var newProductId = _rentalProductBl.Save(detailProduct);
+
+                    detail.RentalProduct.Id = newProductId;
+                }
+            }
         }
 
         public string Update(RentalReceipt rentalReceipt)

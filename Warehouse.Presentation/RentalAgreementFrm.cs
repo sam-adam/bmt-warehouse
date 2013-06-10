@@ -7,6 +7,7 @@
     using Warehouse.Business.Contract;
     using Warehouse.Business.Facade;
     using Warehouse.Data.Model;
+    using Warehouse.Presentation.Print;
     using Warehouse.Presentation.View;
 
     public partial class RentalAgreementFrm : Form
@@ -16,10 +17,12 @@
         private readonly RentalAgreementDetailFacade _detailFacade;
         private readonly CustomerView _customerView;
         private readonly ProductSubcategoryView _productSubcategoryView;
+        private readonly PrintFrm _printFrm;
+        private readonly RentalAgreementRpt _report;
 
         private Customer _customer;
 
-        public RentalAgreementFrm(IRentalAgreementBl rentalAgreementBl, ICustomerBl customerBl, RentalAgreementDetailFacade detailFacade, CustomerView customerView, ProductSubcategoryView productSubcategoryView)
+        public RentalAgreementFrm(IRentalAgreementBl rentalAgreementBl, ICustomerBl customerBl, RentalAgreementDetailFacade detailFacade, CustomerView customerView, ProductSubcategoryView productSubcategoryView, PrintFrm printFrm, RentalAgreementRpt report)
         {   
             InitializeComponent();
 
@@ -27,6 +30,8 @@
             _detailFacade = detailFacade;
             _customerView = customerView;
             _productSubcategoryView = productSubcategoryView;
+            _printFrm = printFrm;
+            _report = report;
             _rentalAgreementBl = rentalAgreementBl;
         }
 
@@ -177,6 +182,8 @@
                 var message = _rentalAgreementBl.Save(newRentalAgreement);
 
                 MessageBox.Show(message);
+                 
+                Print(newRentalAgreement, _report.ResourceName);
 
                 foreach (Control control in this.Controls)
                 {
@@ -224,7 +231,7 @@
             }
             else
             {
-                if (dgvProductCategoryPrice.Rows.Count < 2)
+                if (dgvProductCategoryPrice.Rows.Count < 1)
                 {
                     MessageBox.Show(@"Rental agreement need minimum of one detail");
 
@@ -315,6 +322,14 @@
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void Print(Entity dataSource, string reportFileName)
+        {
+            _printFrm.DataSource = dataSource;
+            _printFrm.ReportFilename = reportFileName;
+
+            _printFrm.ShowDialog();
         }
     }
 }

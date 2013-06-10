@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtpTransactionDate = new System.Windows.Forms.DateTimePicker();
             this.lblTransactionDate = new System.Windows.Forms.Label();
             this.lblAgreement = new System.Windows.Forms.Label();
@@ -314,7 +314,7 @@
             this.tssHelpDetailSelection.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
             this.tssHelpDetailSelection.Name = "tssHelpDetailSelection";
             this.tssHelpDetailSelection.Padding = new System.Windows.Forms.Padding(10);
-            this.tssHelpDetailSelection.Size = new System.Drawing.Size(165, 26);
+            this.tssHelpDetailSelection.Size = new System.Drawing.Size(196, 26);
             this.tssHelpDetailSelection.Spring = true;
             this.tssHelpDetailSelection.Text = "F3 :  Open Detail Selection";
             this.tssHelpDetailSelection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -560,8 +560,8 @@
             // 
             // ProductCategory
             // 
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductCategory.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductCategory.DefaultCellStyle = dataGridViewCellStyle1;
             this.ProductCategory.HeaderText = "Category";
             this.ProductCategory.Name = "ProductCategory";
             this.ProductCategory.ReadOnly = true;
@@ -578,8 +578,8 @@
             // 
             // ProductSubcategory
             // 
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle2;
             this.ProductSubcategory.HeaderText = "Subcategory";
             this.ProductSubcategory.Name = "ProductSubcategory";
             this.ProductSubcategory.ReadOnly = true;
@@ -587,8 +587,8 @@
             // 
             // Brand
             // 
-            dataGridViewCellStyle12.Format = "C2";
-            this.Brand.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Format = "C2";
+            this.Brand.DefaultCellStyle = dataGridViewCellStyle3;
             this.Brand.HeaderText = "Brand";
             this.Brand.Name = "Brand";
             this.Brand.Width = 60;

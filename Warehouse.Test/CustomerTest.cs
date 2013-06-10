@@ -5,7 +5,7 @@
     using Warehouse.Business;
     using Warehouse.Data.Contract;
     using Warehouse.Data.Model;
-    using Warehouse.Infrastructure;
+    using Warehouse.Presentation;
     using System.Linq;
 
     [TestFixture]

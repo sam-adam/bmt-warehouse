@@ -9,7 +9,7 @@
         {
             Table("tbl_trrentalreceipt");
 
-            Id(x => x.Id);
+            Id(x => x.Id, "id_rentalreceipt");
             References(x => x.RentalAgreement, "id_rentalagreement");
             Map(x => x.CreatedDate, "created_date");
             Map(x => x.ReceiptDate, "receipt_date");

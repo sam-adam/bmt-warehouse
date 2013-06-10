@@ -1,14 +1,12 @@
 ﻿namespace Warehouse.Business
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Globalization;
     using Warehouse.Business.Contract;
     using Warehouse.Business.Facade;
-    using Warehouse.Business.Model;
     using Warehouse.Data.Contract;
     using Warehouse.Data.Model;
     using Warehouse.Helper;
@@ -18,8 +16,6 @@
         private readonly Common _common;
         private readonly IRentalWithdrawalRepository _repository;
         private readonly RentalWithdrawalFacade _facade;
-
-        private IList<CustomerRentalItem> _rentalItems;
 
         public RentalWithdrawalBl(Common common, IRentalWithdrawalRepository repository, RentalWithdrawalFacade facade)
         {
@@ -73,7 +69,18 @@
             Validate(rentalWithdrawal);
             ValidateNew(rentalWithdrawal);
 
+            foreach (var detail in rentalWithdrawal.Details)
+            {
+                var rentalProduct = detail.RentalProduct;
+
+                rentalProduct.Stock -= detail.Quantity;
+
+                _facade.UpdateRentalProduct(rentalProduct);
+            }
+
             _repository.Add(rentalWithdrawal);
+
+            var addInvoiceWithdrawalMessage = _facade.AddInvoiceWithdrawal(rentalWithdrawal);
 
             return string.Format("Rental withdrawal : {0} is created", rentalWithdrawal.Id);
         }
@@ -135,79 +142,9 @@
             return _facade.GetSubcategory(id);
         }
 
-        public IList<CustomerRentalItem> GetRentalItems(string customerId)
+        public IList<RentalProduct> GetCustomerRentalProducts(Customer customer)
         {
-            _rentalItems = new List<CustomerRentalItem>();
-
-            var customer = GetCustomer(customerId);
-
-            if (customer == null) return null;
-
-            var customerRentals = _facade.GetRentalReceipt(rent => rent.RentalAgreement.Customer == customer 
-                                                               && rent.Status == "ACTIVE");
-
-            if (customerRentals == null) return null;
-
-            foreach (var customerRental in customerRentals)
-            {
-                FillRentalItems(customerRental);
-            }
-
-            CountRentalItemsStock(customer);
-
-            return _rentalItems.Any() ? _rentalItems : null;
-        }
-
-        private void FillRentalItems(RentalReceipt rentalReceipt)
-        {
-            foreach (var receiptDetail in rentalReceipt.Details)
-            {
-                var tempRentalItem =
-                        _rentalItems.FirstOrDefault(item => item.ProductCategory == receiptDetail.ProductCategory
-                            && item.ProductSubcategory == receiptDetail.ProductSubcategory
-                            && item.Brand == receiptDetail.Brand
-                            && item.Description == receiptDetail.Description);
-
-                if (tempRentalItem != null)
-                {
-                    tempRentalItem.Quantity += receiptDetail.Quantity;
-                }
-                else
-                {
-                    _rentalItems.Add(new CustomerRentalItem()
-                    {
-                        ProductCategory = receiptDetail.ProductCategory,
-                        ProductSubcategory = receiptDetail.ProductSubcategory,
-                        Brand = receiptDetail.Brand,
-                        Description = receiptDetail.Description,
-                        Quantity = receiptDetail.Quantity
-                    });
-                }
-            }
-        }
-
-        private void CountRentalItemsStock(Customer customer)
-        {
-            var withdrawals = Get(with => with.Customer == customer);
-
-            if (withdrawals != null)
-            {
-                foreach (var withdrawal in withdrawals)
-                {
-                    foreach (var detail in withdrawal.Details)
-                    {
-                        var rentalItem = _rentalItems.FirstOrDefault(item => item.ProductCategory == detail.ProductCategory
-                            && item.ProductSubcategory == detail.ProductSubcategory
-                            && item.Brand == detail.Brand
-                            && item.Description == detail.Description);
-
-                        if (rentalItem != null)
-                        {
-                            rentalItem.Quantity -= detail.Quantity;
-                        }
-                    }
-                }   
-            }
+            return _facade.GetCustomerRentalProducts(customer);
         }
     }
 }
