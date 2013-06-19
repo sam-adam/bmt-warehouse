@@ -4,5 +4,6 @@
 
     public interface IInvoiceWithdrawalBl : IBusinessLogic<InvoiceWithdrawal>, IReadOnlyBusinessLogic<InvoiceWithdrawal>
     {
+        InvoiceWithdrawal GetSingle(string id);
     }
 }

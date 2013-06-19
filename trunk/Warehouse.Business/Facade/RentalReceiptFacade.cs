@@ -1,34 +1,37 @@
 ﻿namespace Warehouse.Business.Facade
 {
+    using System;
     using System.Linq;
+    using System.Linq.Expressions;
     using Warehouse.Business.Contract;
+    using Warehouse.Data.Contract;
     using Warehouse.Data.Model;
 
     public class RentalReceiptFacade
     {
-        private readonly ICustomerBl _customerBl;
-        private readonly IRentalAgreementBl _rentalAgreementBl;
-        private readonly IRentalReceiptBl _rentalReceiptBl;
+        private readonly ICustomerRepository _customerRepository;
+        private readonly IRentalAgreementRepository _rentalAgreementRepository;
+        private readonly IRentalProductBl _rentalProductBl;
         private readonly RentalAgreementDetailFacade _rentalAgreementDetailFacade;
 
-        public RentalReceiptFacade(ICustomerBl customerBl, IRentalAgreementBl rentalAgreementBl, IRentalReceiptBl rentalReceiptBl, RentalAgreementDetailFacade rentalAgreementDetailFacade)
+        public RentalReceiptFacade(ICustomerRepository customerRepository, IRentalAgreementRepository rentalAgreementRepository, RentalAgreementDetailFacade rentalAgreementDetailFacade, IRentalProductBl rentalProductBl)
         {
-            _customerBl = customerBl;
-            _rentalAgreementBl = rentalAgreementBl;
-            _rentalReceiptBl = rentalReceiptBl;
+            _customerRepository = customerRepository;
+            _rentalAgreementRepository = rentalAgreementRepository;
             _rentalAgreementDetailFacade = rentalAgreementDetailFacade;
+            _rentalProductBl = rentalProductBl;
         }
 
         public RentalAgreement GetRentalAgreement(string id)
         {
-            var rentalAgreement = _rentalAgreementBl.Get(id);
+            var rentalAgreements = _rentalAgreementRepository.Get(rent => rent.Id == id);
 
-            return rentalAgreement != null ? rentalAgreement.First() : null;
+            return rentalAgreements != null ? rentalAgreements.First() : null;
         }
 
-        public RentalAgreement GetCustomerRentalAgreement(string customerId)
+        public RentalAgreement GetCustomerRentalAgreement(string id)
         {
-            var customer = _customerBl.Get(customerId);
+            var customer = _customerRepository.Get(cust => cust.Id == id);
 
             return customer != null ? customer.First().GetActiveRental() : null;
         }
@@ -43,14 +46,21 @@
             return _rentalAgreementDetailFacade.GetSingleSubcategory(id);
         }
 
-        public string Save(RentalReceipt rentalReceipt)
+        public RentalProduct GetRentalProduct(Expression<Func<RentalProduct, bool>> func)
         {
-            return _rentalReceiptBl.Save(rentalReceipt);
+            var rentalProducts = _rentalProductBl.Get(func);
+
+            return rentalProducts == null ? null : rentalProducts.First();
         }
 
-        public string GetNewId()
+        public void UpdateRentalProductStock(RentalProduct rentalProduct)
         {
-            return _rentalReceiptBl.GenerateNewId();
+            _rentalProductBl.Update(rentalProduct);
+        }
+
+        public string SaveRentalProduct(RentalProduct rentalProduct)
+        {
+            return _rentalProductBl.Save(rentalProduct);
         }
     }
 }

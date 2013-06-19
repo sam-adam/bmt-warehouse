@@ -73,6 +73,7 @@
     <Compile Include="CollectionHelper.cs" />
     <Compile Include="DateTimeHelper.cs" />
     <Compile Include="EncryptionService.cs" />
+    <Compile Include="MathHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

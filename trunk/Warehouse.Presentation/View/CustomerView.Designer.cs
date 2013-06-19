@@ -155,7 +155,7 @@
             this.dgvCustomers.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCustomers.RowHeadersVisible = false;
             this.dgvCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCustomers.Size = new System.Drawing.Size(959, 288);
+            this.dgvCustomers.Size = new System.Drawing.Size(959, 497);
             this.dgvCustomers.TabIndex = 4;
             this.dgvCustomers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellDoubleClick);
             this.dgvCustomers.SelectionChanged += new System.EventHandler(this.dgvCustomers_SelectionChanged);
@@ -228,7 +228,7 @@
             this.pnlBottom.Controls.Add(this.lblTitleTitle);
             this.pnlBottom.Controls.Add(this.lblCustomer);
             this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBottom.Location = new System.Drawing.Point(0, 326);
+            this.pnlBottom.Location = new System.Drawing.Point(0, 535);
             this.pnlBottom.Name = "pnlBottom";
             this.pnlBottom.Size = new System.Drawing.Size(959, 170);
             this.pnlBottom.TabIndex = 8;
@@ -431,7 +431,7 @@
             this.stpCustomerList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssHelp,
             this.tssHelpEnter});
-            this.stpCustomerList.Location = new System.Drawing.Point(0, 496);
+            this.stpCustomerList.Location = new System.Drawing.Point(0, 705);
             this.stpCustomerList.Name = "stpCustomerList";
             this.stpCustomerList.Size = new System.Drawing.Size(959, 31);
             this.stpCustomerList.TabIndex = 9;
@@ -455,7 +455,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(959, 527);
+            this.ClientSize = new System.Drawing.Size(959, 736);
             this.Controls.Add(this.dgvCustomers);
             this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.pnlBottom);
@@ -464,6 +464,7 @@
             this.MinimumSize = new System.Drawing.Size(700, 504);
             this.Name = "CustomerView";
             this.Text = "Customer";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Customer_Load);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();

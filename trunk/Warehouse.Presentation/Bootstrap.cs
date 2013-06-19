@@ -11,8 +11,15 @@
     using Warehouse.Presentation.Print;
     using Warehouse.Presentation.View;
 
+    /// <summary>
+    /// Bootsraper class for application configuration
+    /// </summary>
     public class Bootstrap
     {
+        /// <summary>
+        /// Configuration main function
+        /// </summary>
+        /// <returns>IContainer</returns>
         public IContainer Configure()
         {
             var builder = new ContainerBuilder();
@@ -59,6 +66,7 @@
             builder.RegisterType<RentalReceiptFrm>().InstancePerLifetimeScope();
             builder.RegisterType<RentalWithdrawalFrm>().InstancePerLifetimeScope();
             builder.RegisterType<InvoiceMonthlyFrm>().InstancePerLifetimeScope();
+            builder.RegisterType<InvoiceWithdrawalFrm>().InstancePerLifetimeScope();
 
             builder.RegisterType<CustomerView>().InstancePerLifetimeScope();
             builder.RegisterType<ProductSubcategoryView>().InstancePerLifetimeScope();
@@ -68,6 +76,10 @@
             builder.RegisterType<ReportDocument>();
 
             builder.RegisterType<RentalAgreementRpt>();
+            builder.RegisterType<RentalReceiptRpt>();
+            builder.RegisterType<RentalWithdrawalRpt>();
+            builder.RegisterType<InvoiceWithdrawalRpt>();
+            builder.RegisterType<InvoiceMonthlyRpt>();
 
             return builder.Build();
         }

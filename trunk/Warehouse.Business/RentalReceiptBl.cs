@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Linq.Expressions;
     using Warehouse.Business.Contract;
+    using Warehouse.Business.Facade;
     using Warehouse.Data.Model;
     using Warehouse.Data.Contract;
     using Warehouse.Helper;
@@ -13,14 +14,14 @@
     public class RentalReceiptBl : IRentalReceiptBl
     {
         private readonly Common _common;
+        private readonly RentalReceiptFacade _facade;
         private readonly IRentalReceiptRepository _rentalReceiptRepository;
-        private readonly IRentalProductBl _rentalProductBl;
 
-        public RentalReceiptBl(Common common, IRentalReceiptRepository rentalReceiptRepository, IRentalProductBl rentalProductBl)
+        public RentalReceiptBl(Common common, IRentalReceiptRepository rentalReceiptRepository, RentalReceiptFacade facade)
         {
             _common = common;
             _rentalReceiptRepository = rentalReceiptRepository;
-            _rentalProductBl = rentalProductBl;
+            _facade = facade;
         }
 
         public string GenerateNewId()
@@ -82,29 +83,27 @@
             {
                 var detailProduct = detail.RentalProduct;
 
-                var rentalProducts =
-                    _rentalProductBl.Get(
+                var rentalProduct =
+                    _facade.GetRentalProduct(
                         prod =>
                         prod.Customer == customer && prod.ProductCategory == detailProduct.ProductCategory &&
                         prod.ProductSubcategory == detailProduct.ProductSubcategory && prod.Brand == detailProduct.Brand &&
                         prod.Description == detailProduct.Description);
 
-                if (rentalProducts != null)
+                if (rentalProduct != null)
                 {
-                    var rentalProduct = rentalProducts.First();
-
                     rentalProduct.Stock += detail.Quantity;
 
                     detail.RentalProduct.Id = rentalProduct.Id;
 
-                    _rentalProductBl.Update(rentalProduct);
+                    _facade.UpdateRentalProductStock(rentalProduct);
                 }
                 else
                 {
                     detailProduct.CreatedDate = DateTime.Now;
                     detailProduct.Stock += detail.Quantity;
 
-                    var newProductId = _rentalProductBl.Save(detailProduct);
+                    var newProductId = _facade.SaveRentalProduct(detailProduct);
 
                     detail.RentalProduct.Id = newProductId;
                 }
@@ -123,7 +122,11 @@
         public void Validate(RentalReceipt rentalReceipt)
         {
             if (rentalReceipt == null) throw new Exception("Rental receipt is empty");
-            if (rentalReceipt.Details.Count <= 0) throw new Exception("Rental receipt detail cannot be empty");
+            if (rentalReceipt.RentalAgreement == null) throw new Exception("Rental agreement cannot be empty");
+            if (string.IsNullOrEmpty(rentalReceipt.Sender)) throw new Exception("Sender cannot be empty");
+            if (string.IsNullOrEmpty(rentalReceipt.Reference)) throw new Exception("External reference cannot be empty");
+            if (rentalReceipt.Details == null || rentalReceipt.Details.Count <= 0) throw new Exception("Rental receipt detail cannot be empty");
+            if (rentalReceipt.LoadingDetails == null || rentalReceipt.LoadingDetails.Count <= 0) throw new Exception("Rental receipt loading detail cannot be empty");
         }
 
         public IList<RentalReceipt> GetAll()
@@ -145,6 +148,21 @@
             var rentalReceiptList = _rentalReceiptRepository.Get(predicate);
 
             return rentalReceiptList.Any() ? rentalReceiptList.ToList() : null;
+        }
+
+        public RentalAgreement GetCustomerActiveAgreement(string customerId)
+        {
+            return _facade.GetCustomerRentalAgreement(customerId);
+        }
+
+        public ProductCategory GetCategory(string id)
+        {
+            return _facade.GetCategory(id);
+        }
+
+        public ProductSubcategory GetSubcategory(string id)
+        {
+            return _facade.GetSubcategory(id);
         }
     }
 }

@@ -5,6 +5,7 @@
     using System.Windows.Forms;
     using Warehouse.Business.Contract;
     using Warehouse.Data.Model;
+    using Warehouse.Presentation.Print;
     using Warehouse.Presentation.View;
 
     public partial class RentalWithdrawalFrm : Form
@@ -12,16 +13,25 @@
         private readonly CustomerView _customerView;
         private readonly IRentalWithdrawalBl _rentalWithdrawalBl;
         private readonly IRentalProductBl _rentalProductBl;
+        private readonly PrintFrm _printFrm;
+        private readonly RentalWithdrawalRpt _report;
 
-        public RentalWithdrawalFrm(IRentalWithdrawalBl rentalWithdrawalBl, CustomerView customerView, IRentalProductBl rentalProductBl)
+        private RentalWithdrawal _rentalWithdrawal;
+
+        #region Constructors
+        public RentalWithdrawalFrm(IRentalWithdrawalBl rentalWithdrawalBl, CustomerView customerView, IRentalProductBl rentalProductBl, PrintFrm printFrm, RentalWithdrawalRpt report)
         {
             _rentalWithdrawalBl = rentalWithdrawalBl;
             _customerView = customerView;
             _rentalProductBl = rentalProductBl;
+            _printFrm = printFrm;
+            _report = report;
 
             InitializeComponent();
         }
+        #endregion
 
+        #region Overrides
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.F1)
@@ -31,7 +41,9 @@
 
             return base.ProcessCmdKey(ref msg, keyData);
         }
+        #endregion
 
+        #region Events
         private void btnViewCustomer_Click(object sender, EventArgs e)
         {
             LoadCustomerView();
@@ -40,7 +52,6 @@
         private void txtCustomerId_TextChanged(object sender, EventArgs e)
         {
             ClearForm(txtCustomerId);
-            dgvRentalWithdrawalDetail.Rows.Clear();
 
             if (txtCustomerId.Text.Length >= 6)
             {
@@ -62,58 +73,144 @@
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(@"Create new rental withdrawal?", @"Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            try
             {
-                var withdrawal = new RentalWithdrawal();
-
-                var customer = _rentalWithdrawalBl.GetCustomer(txtCustomerId.Text);
-
-                withdrawal.Customer = customer;
-                withdrawal.CreatedDate = dtpTransactionDate.Value;
-                withdrawal.WithdrawalDate = dtpRentalDate.Value;
-                withdrawal.Reference = txtReference.Text;
-
-                foreach (DataGridViewRow row in dgvRentalWithdrawalDetail.Rows)
+                if (MessageBox.Show(@"Create new rental withdrawal?", @"Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    if (int.Parse(row.Cells["Quantity"].Value.ToString()) > 0)
-                    {
-                        var product = _rentalProductBl.Get(row.Cells["ProductId"].Value.ToString()).First();
+                    _rentalWithdrawal = new RentalWithdrawal();
 
-                        var withdrawalDetail = new RentalWithdrawalDetail
+                    var customer = _rentalWithdrawalBl.GetCustomer(txtCustomerId.Text);
+
+                    _rentalWithdrawal.Customer = customer;
+                    _rentalWithdrawal.CreatedDate = dtpTransactionDate.Value;
+                    _rentalWithdrawal.WithdrawalDate = dtpRentalDate.Value;
+                    _rentalWithdrawal.Reference = txtReference.Text;
+
+                    foreach (DataGridViewRow row in dgvItemDetail.Rows)
+                    {
+                        if (int.Parse(row.Cells["Quantity"].Value.ToString()) > 0)
+                        {
+                            var product = _rentalProductBl.Get(row.Cells["ProductId"].Value.ToString()).First();
+
+                            var withdrawalDetail = new RentalWithdrawalDetail()
                             {
-                                RentalWithdrawal = withdrawal,
+                                RentalWithdrawal = _rentalWithdrawal,
                                 RentalProduct = product,
                                 Quantity = int.Parse(row.Cells["Quantity"].Value.ToString())
                             };
 
-                        withdrawal.AddDetail(withdrawalDetail);
+                            _rentalWithdrawal.AddDetail(withdrawalDetail);
+                        }
                     }
+
+                    foreach (DataGridViewRow row in dgvUnloadingDetail.Rows)
+                    {
+                        if (row.Cells["UnloadingDescription"].Value != null && row.Cells["UnloadingPrice"].Value != null)
+                        {
+                            var unloadingDetail = new RentalWithdrawalUnloadingDetail()
+                            {
+                                RentalWithdrawal = _rentalWithdrawal,
+                                Description = row.Cells["UnloadingDescription"].Value.ToString(),
+                                Price = Double.Parse(row.Cells["UnloadingPrice"].Value.ToString())
+                            };
+
+                            _rentalWithdrawal.AddUnloadingDetail(unloadingDetail);
+                        }
+                    }
+
+                    var message = _rentalWithdrawalBl.Save(_rentalWithdrawal);
+
+                    MessageBox.Show(message);
+
+                    Print(_rentalWithdrawal, _report.ResourceName);
+
+                    ClearForm();
                 }
-
-                var message = _rentalWithdrawalBl.Save(withdrawal);
-
-                MessageBox.Show(message);
-
-                ClearForm(null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
+        private void dgvRentalWithdrawalDetail_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            var currentRow = dgvItemDetail.CurrentRow;
+
+            if (currentRow != null)
+            {
+                var stockColumn = dgvItemDetail.Columns["Stock"];
+                var quantityColumn = dgvItemDetail.Columns["Quantity"];
+
+                if (quantityColumn != null && stockColumn != null && e.ColumnIndex == quantityColumn.Index)
+                {
+                    if (int.Parse(currentRow.Cells[quantityColumn.Index].Value.ToString()) > int.Parse(currentRow.Cells[stockColumn.Index].Value.ToString()))
+                    {
+                        MessageBox.Show(@"Quantity cannot be larger than stock");
+
+                        currentRow.Cells[quantityColumn.Index].Value = 0;
+                    }
+                }
+            }
+        }
+
+        private void dgvUnloadingDetail_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            btnRemoveUnloading.Enabled = dgvUnloadingDetail.Rows.Count > 0;
+        }
+
+        private void dgvUnloadingDetail_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            btnRemoveUnloading.Enabled = dgvUnloadingDetail.Rows.Count > 0;
+        }
+
+        private void btnRemoveUnloading_Click(object sender, EventArgs e)
+        {
+            if (dgvUnloadingDetail.CurrentRow != null)
+            {
+                var rowIdx = dgvUnloadingDetail.CurrentRow.Index;
+
+                dgvUnloadingDetail.Rows.RemoveAt(rowIdx);
+            }
+        }
+
+        private void btnAddUnloading_Click(object sender, EventArgs e)
+        {
+            dgvUnloadingDetail.Rows.Add();
+        }
+        #endregion
+
+        #region Functions
         private void LoadCustomerView()
         {
             _customerView.ShowDialog();
 
-            txtCustomerId.Text = _customerView.SelectedCustomer.Id;
+            if (_customerView.Customer != null)
+            {
+                txtCustomerId.Text = _customerView.Customer.Id;   
+            }
         }
 
-        private void ClearForm(object sender)
+        private void ClearForm(object sender = null, Control.ControlCollection controlCollection = null)
         {
-            foreach (Control control in this.Controls)
+            _rentalWithdrawal = null;
+
+            if (controlCollection == null) controlCollection = Controls;
+
+            foreach (Control control in controlCollection)
             {
-                if (control.GetType() == typeof(TextBox) && !ReferenceEquals(control, sender))
+                if (control is TextBox && !ReferenceEquals(control, sender))
                 {
-                    control.Text = string.Empty;
+                    var txtControl = control as TextBox;
+
+                    txtControl.Clear();
                 }
+
+                if (control.Controls.Count > 0) ClearForm(sender, control.Controls);
             }
+
+            dgvItemDetail.Rows.Clear();
+            dgvUnloadingDetail.Rows.Clear();
         }
 
         private void SetCustomer(Customer customer)
@@ -131,21 +228,21 @@
         {
             var rentalProducts = _rentalWithdrawalBl.GetCustomerRentalProducts(customer);
 
-            dgvRentalWithdrawalDetail.Rows.Clear();
+            dgvItemDetail.Rows.Clear();
 
             if (rentalProducts != null)
             {
                 foreach (var rentalProduct in rentalProducts)
                 {
-                    dgvRentalWithdrawalDetail.Rows.Add(rentalProduct.Id,
-                                                        rentalProduct.ProductCategory.Id,
-                                                        rentalProduct.ProductCategory.Category,
-                                                        rentalProduct.ProductSubcategory.Id,
-                                                        rentalProduct.ProductSubcategory.Subcategory,
-                                                        rentalProduct.Brand,
-                                                        rentalProduct.Description,
-                                                        rentalProduct.Stock,
-                                                        "0", "");
+                    dgvItemDetail.Rows.Add(rentalProduct.Id,
+                                            rentalProduct.ProductCategory.Id,
+                                            rentalProduct.ProductCategory.Category,
+                                            rentalProduct.ProductSubcategory.Id,
+                                            rentalProduct.ProductSubcategory.Subcategory,
+                                            rentalProduct.Brand,
+                                            rentalProduct.Description,
+                                            rentalProduct.Stock,
+                                            "0", "");
                 }
             }
             else
@@ -154,26 +251,22 @@
             }
         }
 
-        private void dgvRentalWithdrawalDetail_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void Print(RentalWithdrawal rentalWithdrawal, string reportFileName)
         {
-            var currentRow = dgvRentalWithdrawalDetail.CurrentRow;
+            _printFrm.RecordSelectionFormula = "{tbl_trrentalwithdrawal1.id_rentalwithdrawal}='" + rentalWithdrawal.Id + "'";
+            _printFrm.ReportFilename = reportFileName;
 
-            if (currentRow != null)
+            _printFrm.ShowDialog();
+        }
+        #endregion
+
+        private void dgvUnloadingDetail_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvUnloadingDetail.CurrentRow != null)
             {
-                var stockColumn = dgvRentalWithdrawalDetail.Columns["Stock"];
-                var quantityColumn = dgvRentalWithdrawalDetail.Columns["Quantity"];
-
-                if (quantityColumn != null && stockColumn != null && e.ColumnIndex == quantityColumn.Index)
-                {
-                    if (int.Parse(currentRow.Cells[quantityColumn.Index].Value.ToString()) > int.Parse(currentRow.Cells[stockColumn.Index].Value.ToString()))
-                    {
-                        MessageBox.Show(@"Quantity cannot be larger than stock");
-
-                        currentRow.Cells[quantityColumn.Index].Value = 0;
-                    }
-                }
+                dgvUnloadingDetail.Rows[e.RowIndex].Cells[e.ColumnIndex].Value =
+                    dgvUnloadingDetail.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().ToUpper();
             }
-            
         }
     }
 }
