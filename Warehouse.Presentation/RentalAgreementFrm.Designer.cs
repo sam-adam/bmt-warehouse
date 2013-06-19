@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTransactionDate = new System.Windows.Forms.Label();
             this.lblCustomerId = new System.Windows.Forms.Label();
             this.lblCustomerEmail = new System.Windows.Forms.Label();
@@ -43,47 +43,51 @@
             this.stpRentalAgreement = new System.Windows.Forms.StatusStrip();
             this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssHelpCustomerSelection = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssHelpCategorySelection = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnSave = new Warehouse.Presentation.Controls.ButtonStripItem();
             this.dtpTransactionDate = new System.Windows.Forms.DateTimePicker();
             this.btnViewCustomer = new System.Windows.Forms.Button();
             this.txtCustomerTitle = new System.Windows.Forms.TextBox();
             this.txtCustomerPhone = new System.Windows.Forms.TextBox();
             this.txtCustomerAddress = new System.Windows.Forms.TextBox();
             this.txtCustomerEmail = new System.Windows.Forms.TextBox();
-            this.txtSender = new System.Windows.Forms.TextBox();
-            this.lblSender = new System.Windows.Forms.Label();
             this.txtReference = new System.Windows.Forms.TextBox();
             this.lblExtReference = new System.Windows.Forms.Label();
             this.dtpAgreementDate = new System.Windows.Forms.DateTimePicker();
             this.lblAgreementDate = new System.Windows.Forms.Label();
             this.dgvProductCategoryPrice = new System.Windows.Forms.DataGridView();
-            this.lblCustomerGroup = new System.Windows.Forms.Label();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lneOtherGroup = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lneCustomerGroup = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lblOtherGroup = new System.Windows.Forms.Label();
-            this.lblDetailGroup = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.lblCutOffDate = new System.Windows.Forms.Label();
-            this.numCutOffDate = new System.Windows.Forms.NumericUpDown();
-            this.btnRemoveLine = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.tssHelpCategorySelection = new System.Windows.Forms.ToolStripStatusLabel();
             this.ProductCategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductSubcategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductSubcategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
+            this.IsRemovable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblCutOffDate = new System.Windows.Forms.Label();
+            this.numCutOffDate = new System.Windows.Forms.NumericUpDown();
+            this.btnRemoveLine = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.pnlDetail = new System.Windows.Forms.Panel();
+            this.pnlAgreementDetailAction = new System.Windows.Forms.Panel();
+            this.gbxCustomer = new System.Windows.Forms.GroupBox();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.gbxOther = new System.Windows.Forms.GroupBox();
             this.stpRentalAgreement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductCategoryPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCutOffDate)).BeginInit();
+            this.pnlDetail.SuspendLayout();
+            this.pnlAgreementDetailAction.SuspendLayout();
+            this.gbxCustomer.SuspendLayout();
+            this.pnlTop.SuspendLayout();
+            this.pnlHeader.SuspendLayout();
+            this.gbxOther.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTransactionDate
             // 
             this.lblTransactionDate.AutoSize = true;
             this.lblTransactionDate.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblTransactionDate.Location = new System.Drawing.Point(12, 15);
+            this.lblTransactionDate.Location = new System.Drawing.Point(13, 13);
             this.lblTransactionDate.Name = "lblTransactionDate";
             this.lblTransactionDate.Size = new System.Drawing.Size(93, 13);
             this.lblTransactionDate.TabIndex = 0;
@@ -93,7 +97,7 @@
             // 
             this.lblCustomerId.AutoSize = true;
             this.lblCustomerId.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblCustomerId.Location = new System.Drawing.Point(35, 69);
+            this.lblCustomerId.Location = new System.Drawing.Point(25, 20);
             this.lblCustomerId.Name = "lblCustomerId";
             this.lblCustomerId.Size = new System.Drawing.Size(21, 13);
             this.lblCustomerId.TabIndex = 1;
@@ -103,7 +107,7 @@
             // 
             this.lblCustomerEmail.AutoSize = true;
             this.lblCustomerEmail.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblCustomerEmail.Location = new System.Drawing.Point(417, 149);
+            this.lblCustomerEmail.Location = new System.Drawing.Point(428, 101);
             this.lblCustomerEmail.Name = "lblCustomerEmail";
             this.lblCustomerEmail.Size = new System.Drawing.Size(35, 13);
             this.lblCustomerEmail.TabIndex = 13;
@@ -113,7 +117,7 @@
             // 
             this.lblCustomerPhone.AutoSize = true;
             this.lblCustomerPhone.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblCustomerPhone.Location = new System.Drawing.Point(35, 149);
+            this.lblCustomerPhone.Location = new System.Drawing.Point(25, 101);
             this.lblCustomerPhone.Name = "lblCustomerPhone";
             this.lblCustomerPhone.Size = new System.Drawing.Size(41, 13);
             this.lblCustomerPhone.TabIndex = 11;
@@ -123,7 +127,7 @@
             // 
             this.lblCustomerAddress.AutoSize = true;
             this.lblCustomerAddress.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblCustomerAddress.Location = new System.Drawing.Point(417, 69);
+            this.lblCustomerAddress.Location = new System.Drawing.Point(428, 20);
             this.lblCustomerAddress.Name = "lblCustomerAddress";
             this.lblCustomerAddress.Size = new System.Drawing.Size(50, 13);
             this.lblCustomerAddress.TabIndex = 7;
@@ -133,7 +137,7 @@
             // 
             this.lblCustomerTitle.AutoSize = true;
             this.lblCustomerTitle.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblCustomerTitle.Location = new System.Drawing.Point(35, 96);
+            this.lblCustomerTitle.Location = new System.Drawing.Point(25, 47);
             this.lblCustomerTitle.Name = "lblCustomerTitle";
             this.lblCustomerTitle.Size = new System.Drawing.Size(31, 13);
             this.lblCustomerTitle.TabIndex = 5;
@@ -145,7 +149,7 @@
             this.txtCustomerName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtCustomerName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCustomerName.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtCustomerName.Location = new System.Drawing.Point(134, 119);
+            this.txtCustomerName.Location = new System.Drawing.Point(124, 71);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.ReadOnly = true;
             this.txtCustomerName.Size = new System.Drawing.Size(250, 21);
@@ -156,7 +160,7 @@
             // 
             this.lblCustomerName.AutoSize = true;
             this.lblCustomerName.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblCustomerName.Location = new System.Drawing.Point(35, 123);
+            this.lblCustomerName.Location = new System.Drawing.Point(25, 74);
             this.lblCustomerName.Name = "lblCustomerName";
             this.lblCustomerName.Size = new System.Drawing.Size(38, 13);
             this.lblCustomerName.TabIndex = 3;
@@ -164,18 +168,11 @@
             // 
             // txtCustomerId
             // 
-            this.txtCustomerId.AutoCompleteCustomSource.AddRange(new string[] {
-            "HALO",
-            "NAMA",
-            "SAYA",
-            "SAMUEL",
-            "ADAM",
-            "SUHENDRA"});
             this.txtCustomerId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtCustomerId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtCustomerId.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCustomerId.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtCustomerId.Location = new System.Drawing.Point(134, 65);
+            this.txtCustomerId.Location = new System.Drawing.Point(124, 17);
             this.txtCustomerId.MaxLength = 6;
             this.txtCustomerId.Name = "txtCustomerId";
             this.txtCustomerId.Size = new System.Drawing.Size(100, 21);
@@ -190,10 +187,11 @@
             this.stpRentalAgreement.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssHelp,
             this.tssHelpCustomerSelection,
-            this.tssHelpCategorySelection});
-            this.stpRentalAgreement.Location = new System.Drawing.Point(0, 582);
+            this.tssHelpCategorySelection,
+            this.btnSave});
+            this.stpRentalAgreement.Location = new System.Drawing.Point(0, 537);
             this.stpRentalAgreement.Name = "stpRentalAgreement";
-            this.stpRentalAgreement.Size = new System.Drawing.Size(840, 31);
+            this.stpRentalAgreement.Size = new System.Drawing.Size(835, 31);
             this.stpRentalAgreement.TabIndex = 3;
             // 
             // tssHelp
@@ -215,11 +213,28 @@
             this.tssHelpCustomerSelection.Size = new System.Drawing.Size(177, 26);
             this.tssHelpCustomerSelection.Text = "F1 :  Open Customer Selection";
             // 
+            // tssHelpCategorySelection
+            // 
+            this.tssHelpCategorySelection.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
+            this.tssHelpCategorySelection.Name = "tssHelpCategorySelection";
+            this.tssHelpCategorySelection.Size = new System.Drawing.Size(330, 26);
+            this.tssHelpCategorySelection.Spring = true;
+            this.tssHelpCategorySelection.Text = "F2 : Open Product Category Selection";
+            this.tssHelpCategorySelection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(99, 29);
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // dtpTransactionDate
             // 
             this.dtpTransactionDate.Enabled = false;
             this.dtpTransactionDate.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.dtpTransactionDate.Location = new System.Drawing.Point(111, 12);
+            this.dtpTransactionDate.Location = new System.Drawing.Point(112, 10);
             this.dtpTransactionDate.Name = "dtpTransactionDate";
             this.dtpTransactionDate.Size = new System.Drawing.Size(250, 21);
             this.dtpTransactionDate.TabIndex = 4;
@@ -228,7 +243,7 @@
             // btnViewCustomer
             // 
             this.btnViewCustomer.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.btnViewCustomer.Location = new System.Drawing.Point(240, 64);
+            this.btnViewCustomer.Location = new System.Drawing.Point(230, 16);
             this.btnViewCustomer.Name = "btnViewCustomer";
             this.btnViewCustomer.Size = new System.Drawing.Size(35, 23);
             this.btnViewCustomer.TabIndex = 2;
@@ -242,7 +257,7 @@
             this.txtCustomerTitle.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtCustomerTitle.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCustomerTitle.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtCustomerTitle.Location = new System.Drawing.Point(134, 92);
+            this.txtCustomerTitle.Location = new System.Drawing.Point(124, 44);
             this.txtCustomerTitle.Name = "txtCustomerTitle";
             this.txtCustomerTitle.ReadOnly = true;
             this.txtCustomerTitle.Size = new System.Drawing.Size(141, 21);
@@ -255,7 +270,7 @@
             this.txtCustomerPhone.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtCustomerPhone.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCustomerPhone.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtCustomerPhone.Location = new System.Drawing.Point(134, 146);
+            this.txtCustomerPhone.Location = new System.Drawing.Point(124, 98);
             this.txtCustomerPhone.Name = "txtCustomerPhone";
             this.txtCustomerPhone.ReadOnly = true;
             this.txtCustomerPhone.Size = new System.Drawing.Size(141, 21);
@@ -268,11 +283,11 @@
             this.txtCustomerAddress.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtCustomerAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCustomerAddress.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtCustomerAddress.Location = new System.Drawing.Point(516, 64);
+            this.txtCustomerAddress.Location = new System.Drawing.Point(515, 17);
             this.txtCustomerAddress.Multiline = true;
             this.txtCustomerAddress.Name = "txtCustomerAddress";
             this.txtCustomerAddress.ReadOnly = true;
-            this.txtCustomerAddress.Size = new System.Drawing.Size(294, 76);
+            this.txtCustomerAddress.Size = new System.Drawing.Size(308, 75);
             this.txtCustomerAddress.TabIndex = 18;
             this.txtCustomerAddress.TabStop = false;
             // 
@@ -282,33 +297,12 @@
             this.txtCustomerEmail.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtCustomerEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCustomerEmail.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtCustomerEmail.Location = new System.Drawing.Point(516, 146);
+            this.txtCustomerEmail.Location = new System.Drawing.Point(515, 98);
             this.txtCustomerEmail.Name = "txtCustomerEmail";
             this.txtCustomerEmail.ReadOnly = true;
             this.txtCustomerEmail.Size = new System.Drawing.Size(250, 21);
             this.txtCustomerEmail.TabIndex = 19;
             this.txtCustomerEmail.TabStop = false;
-            // 
-            // txtSender
-            // 
-            this.txtSender.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtSender.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtSender.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSender.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtSender.Location = new System.Drawing.Point(135, 228);
-            this.txtSender.Name = "txtSender";
-            this.txtSender.Size = new System.Drawing.Size(250, 21);
-            this.txtSender.TabIndex = 4;
-            // 
-            // lblSender
-            // 
-            this.lblSender.AutoSize = true;
-            this.lblSender.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblSender.Location = new System.Drawing.Point(35, 231);
-            this.lblSender.Name = "lblSender";
-            this.lblSender.Size = new System.Drawing.Size(45, 13);
-            this.lblSender.TabIndex = 20;
-            this.lblSender.Text = "Sender:";
             // 
             // txtReference
             // 
@@ -316,7 +310,7 @@
             this.txtReference.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtReference.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtReference.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtReference.Location = new System.Drawing.Point(516, 228);
+            this.txtReference.Location = new System.Drawing.Point(124, 47);
             this.txtReference.Name = "txtReference";
             this.txtReference.Size = new System.Drawing.Size(141, 21);
             this.txtReference.TabIndex = 6;
@@ -325,7 +319,7 @@
             // 
             this.lblExtReference.AutoSize = true;
             this.lblExtReference.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblExtReference.Location = new System.Drawing.Point(417, 231);
+            this.lblExtReference.Location = new System.Drawing.Point(25, 50);
             this.lblExtReference.Name = "lblExtReference";
             this.lblExtReference.Size = new System.Drawing.Size(84, 13);
             this.lblExtReference.TabIndex = 22;
@@ -334,7 +328,7 @@
             // dtpAgreementDate
             // 
             this.dtpAgreementDate.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.dtpAgreementDate.Location = new System.Drawing.Point(134, 201);
+            this.dtpAgreementDate.Location = new System.Drawing.Point(124, 20);
             this.dtpAgreementDate.Name = "dtpAgreementDate";
             this.dtpAgreementDate.Size = new System.Drawing.Size(250, 21);
             this.dtpAgreementDate.TabIndex = 3;
@@ -343,7 +337,7 @@
             // 
             this.lblAgreementDate.AutoSize = true;
             this.lblAgreementDate.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblAgreementDate.Location = new System.Drawing.Point(35, 205);
+            this.lblAgreementDate.Location = new System.Drawing.Point(25, 22);
             this.lblAgreementDate.Name = "lblAgreementDate";
             this.lblAgreementDate.Size = new System.Drawing.Size(90, 13);
             this.lblAgreementDate.TabIndex = 24;
@@ -361,104 +355,85 @@
             this.ProductCategory,
             this.ProductSubcategoryId,
             this.ProductSubcategory,
-            this.Price});
-            this.dgvProductCategoryPrice.EnableHeadersVisualStyles = false;
+            this.Price,
+            this.IsRemovable});
+            this.dgvProductCategoryPrice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProductCategoryPrice.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvProductCategoryPrice.Location = new System.Drawing.Point(15, 315);
+            this.dgvProductCategoryPrice.Location = new System.Drawing.Point(0, 37);
             this.dgvProductCategoryPrice.Name = "dgvProductCategoryPrice";
             this.dgvProductCategoryPrice.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvProductCategoryPrice.RowHeadersVisible = false;
-            this.dgvProductCategoryPrice.Size = new System.Drawing.Size(806, 254);
+            this.dgvProductCategoryPrice.Size = new System.Drawing.Size(835, 227);
             this.dgvProductCategoryPrice.TabIndex = 7;
             this.dgvProductCategoryPrice.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvProductCategoryPrice_CellBeginEdit);
+            this.dgvProductCategoryPrice.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductCategoryPrice_CellEnter);
             this.dgvProductCategoryPrice.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvProductCategoryPrice_UserDeletingRow);
             // 
-            // lblCustomerGroup
+            // ProductCategoryId
             // 
-            this.lblCustomerGroup.AutoSize = true;
-            this.lblCustomerGroup.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lblCustomerGroup.Location = new System.Drawing.Point(12, 42);
-            this.lblCustomerGroup.Name = "lblCustomerGroup";
-            this.lblCustomerGroup.Size = new System.Drawing.Size(62, 13);
-            this.lblCustomerGroup.TabIndex = 7;
-            this.lblCustomerGroup.Text = "Customer";
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductCategoryId.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ProductCategoryId.HeaderText = "Category Id";
+            this.ProductCategoryId.Name = "ProductCategoryId";
+            this.ProductCategoryId.ReadOnly = true;
+            this.ProductCategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProductCategoryId.Width = 84;
             // 
-            // shapeContainer1
+            // ProductCategory
             // 
-            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape1,
-            this.lneOtherGroup,
-            this.lneCustomerGroup});
-            this.shapeContainer1.Size = new System.Drawing.Size(840, 613);
-            this.shapeContainer1.TabIndex = 8;
-            this.shapeContainer1.TabStop = false;
+            this.ProductCategory.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ProductCategory.HeaderText = "Category";
+            this.ProductCategory.Name = "ProductCategory";
+            this.ProductCategory.ReadOnly = true;
+            this.ProductCategory.Width = 72;
             // 
-            // lineShape1
+            // ProductSubcategoryId
             // 
-            this.lineShape1.BorderColor = System.Drawing.SystemColors.ScrollBar;
-            this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = 61;
-            this.lineShape1.X2 = 820;
-            this.lineShape1.Y1 = 264;
-            this.lineShape1.Y2 = 264;
+            this.ProductSubcategoryId.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ProductSubcategoryId.HeaderText = "Subcategory Id";
+            this.ProductSubcategoryId.Name = "ProductSubcategoryId";
+            this.ProductSubcategoryId.ReadOnly = true;
+            this.ProductSubcategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProductSubcategoryId.Width = 102;
             // 
-            // lneOtherGroup
+            // ProductSubcategory
             // 
-            this.lneOtherGroup.BorderColor = System.Drawing.SystemColors.ScrollBar;
-            this.lneOtherGroup.Name = "lneOtherGroup";
-            this.lneOtherGroup.X1 = 55;
-            this.lneOtherGroup.X2 = 820;
-            this.lneOtherGroup.Y1 = 184;
-            this.lneOtherGroup.Y2 = 184;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ProductSubcategory.HeaderText = "Subcategory";
+            this.ProductSubcategory.Name = "ProductSubcategory";
+            this.ProductSubcategory.ReadOnly = true;
+            this.ProductSubcategory.Width = 90;
             // 
-            // lneCustomerGroup
+            // Price
             // 
-            this.lneCustomerGroup.BorderColor = System.Drawing.SystemColors.ScrollBar;
-            this.lneCustomerGroup.Name = "lneCustomerGroup";
-            this.lneCustomerGroup.X1 = 78;
-            this.lneCustomerGroup.X2 = 820;
-            this.lneCustomerGroup.Y1 = 49;
-            this.lneCustomerGroup.Y2 = 49;
             // 
-            // lblOtherGroup
             // 
-            this.lblOtherGroup.AutoSize = true;
-            this.lblOtherGroup.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lblOtherGroup.Location = new System.Drawing.Point(12, 177);
-            this.lblOtherGroup.Name = "lblOtherGroup";
-            this.lblOtherGroup.Size = new System.Drawing.Size(39, 13);
-            this.lblOtherGroup.TabIndex = 25;
-            this.lblOtherGroup.Text = "Other";
             // 
-            // lblDetailGroup
+            this.Price.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.Price.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            dataGridViewCellStyle6.Format = "C2";
+            dataGridViewCellStyle6.NullValue = "0";
+            this.Price.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Price.HeaderText = "Price";
+            this.Price.Increment = 1D;
+            this.Price.Name = "Price";
+            this.Price.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Price.Width = 54;
             // 
-            this.lblDetailGroup.AutoSize = true;
-            this.lblDetailGroup.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lblDetailGroup.Location = new System.Drawing.Point(12, 257);
-            this.lblDetailGroup.Name = "lblDetailGroup";
-            this.lblDetailGroup.Size = new System.Drawing.Size(46, 13);
-            this.lblDetailGroup.TabIndex = 26;
-            this.lblDetailGroup.Text = "Details";
+            // IsRemovable
             // 
-            // btnSave
-            // 
-            this.btnSave.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.btnSave.Location = new System.Drawing.Point(749, 585);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(70, 25);
-            this.btnSave.TabIndex = 27;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.IsRemovable.HeaderText = "IsRemovable";
+            this.IsRemovable.Name = "IsRemovable";
+            this.IsRemovable.ReadOnly = true;
+            this.IsRemovable.Visible = false;
+            this.IsRemovable.Width = 92;
             // 
             // lblCutOffDate
             // 
             this.lblCutOffDate.AutoSize = true;
             this.lblCutOffDate.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblCutOffDate.Location = new System.Drawing.Point(417, 205);
+            this.lblCutOffDate.Location = new System.Drawing.Point(428, 22);
             this.lblCutOffDate.Name = "lblCutOffDate";
             this.lblCutOffDate.Size = new System.Drawing.Size(73, 13);
             this.lblCutOffDate.TabIndex = 29;
@@ -467,7 +442,7 @@
             // numCutOffDate
             // 
             this.numCutOffDate.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.numCutOffDate.Location = new System.Drawing.Point(516, 201);
+            this.numCutOffDate.Location = new System.Drawing.Point(515, 20);
             this.numCutOffDate.Maximum = new decimal(new int[] {
             31,
             0,
@@ -489,8 +464,9 @@
             // 
             // btnRemoveLine
             // 
+            this.btnRemoveLine.Enabled = false;
             this.btnRemoveLine.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.btnRemoveLine.Location = new System.Drawing.Point(91, 284);
+            this.btnRemoveLine.Location = new System.Drawing.Point(79, 3);
             this.btnRemoveLine.Name = "btnRemoveLine";
             this.btnRemoveLine.Size = new System.Drawing.Size(70, 25);
             this.btnRemoveLine.TabIndex = 58;
@@ -501,7 +477,7 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.btnAdd.Location = new System.Drawing.Point(15, 284);
+            this.btnAdd.Location = new System.Drawing.Point(3, 3);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(70, 25);
             this.btnAdd.TabIndex = 57;
@@ -509,102 +485,114 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // tssHelpCategorySelection
+            // pnlDetail
             // 
-            this.tssHelpCategorySelection.Name = "tssHelpCategorySelection";
-            this.tssHelpCategorySelection.Size = new System.Drawing.Size(189, 26);
-            this.tssHelpCategorySelection.Text = "F2 : Open Product Category Selection";
+            this.pnlDetail.Controls.Add(this.dgvProductCategoryPrice);
+            this.pnlDetail.Controls.Add(this.pnlAgreementDetailAction);
+            this.pnlDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDetail.Location = new System.Drawing.Point(0, 273);
+            this.pnlDetail.Name = "pnlDetail";
+            this.pnlDetail.Size = new System.Drawing.Size(835, 264);
+            this.pnlDetail.TabIndex = 59;
             // 
-            // ProductCategoryId
+            // pnlAgreementDetailAction
             // 
-            this.ProductCategoryId.HeaderText = "Category Id";
-            this.ProductCategoryId.Name = "ProductCategoryId";
-            this.ProductCategoryId.ReadOnly = true;
-            this.ProductCategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProductCategoryId.Width = 86;
+            this.pnlAgreementDetailAction.Controls.Add(this.btnAdd);
+            this.pnlAgreementDetailAction.Controls.Add(this.btnRemoveLine);
+            this.pnlAgreementDetailAction.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlAgreementDetailAction.Location = new System.Drawing.Point(0, 0);
+            this.pnlAgreementDetailAction.Name = "pnlAgreementDetailAction";
+            this.pnlAgreementDetailAction.Size = new System.Drawing.Size(835, 37);
+            this.pnlAgreementDetailAction.TabIndex = 59;
             // 
-            // ProductCategory
+            // gbxCustomer
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductCategory.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ProductCategory.HeaderText = "Category";
-            this.ProductCategory.Name = "ProductCategory";
-            this.ProductCategory.ReadOnly = true;
-            this.ProductCategory.Width = 74;
+            this.gbxCustomer.Controls.Add(this.lblCustomerId);
+            this.gbxCustomer.Controls.Add(this.lblCustomerPhone);
+            this.gbxCustomer.Controls.Add(this.lblCustomerTitle);
+            this.gbxCustomer.Controls.Add(this.btnViewCustomer);
+            this.gbxCustomer.Controls.Add(this.txtCustomerName);
+            this.gbxCustomer.Controls.Add(this.txtCustomerTitle);
+            this.gbxCustomer.Controls.Add(this.lblCustomerName);
+            this.gbxCustomer.Controls.Add(this.txtCustomerPhone);
+            this.gbxCustomer.Controls.Add(this.txtCustomerId);
+            this.gbxCustomer.Controls.Add(this.lblCustomerAddress);
+            this.gbxCustomer.Controls.Add(this.txtCustomerEmail);
+            this.gbxCustomer.Controls.Add(this.lblCustomerEmail);
+            this.gbxCustomer.Controls.Add(this.txtCustomerAddress);
+            this.gbxCustomer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbxCustomer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gbxCustomer.Location = new System.Drawing.Point(0, 0);
+            this.gbxCustomer.Name = "gbxCustomer";
+            this.gbxCustomer.Size = new System.Drawing.Size(835, 129);
+            this.gbxCustomer.TabIndex = 60;
+            this.gbxCustomer.TabStop = false;
+            this.gbxCustomer.Text = "Customer";
             // 
-            // ProductSubcategoryId
+            // pnlTop
             // 
-            this.ProductSubcategoryId.HeaderText = "Subcategory Id";
-            this.ProductSubcategoryId.Name = "ProductSubcategoryId";
-            this.ProductSubcategoryId.ReadOnly = true;
-            this.ProductSubcategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProductSubcategoryId.Width = 104;
+            this.pnlTop.Controls.Add(this.lblTransactionDate);
+            this.pnlTop.Controls.Add(this.dtpTransactionDate);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(835, 39);
+            this.pnlTop.TabIndex = 61;
             // 
-            // ProductSubcategory
+            // pnlHeader
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ProductSubcategory.HeaderText = "Subcategory";
-            this.ProductSubcategory.Name = "ProductSubcategory";
-            this.ProductSubcategory.ReadOnly = true;
-            this.ProductSubcategory.Width = 92;
+            this.pnlHeader.Controls.Add(this.gbxOther);
+            this.pnlHeader.Controls.Add(this.gbxCustomer);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(0, 39);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(835, 234);
+            this.pnlHeader.TabIndex = 62;
             // 
-            // Price
+            // gbxOther
             // 
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = "0";
-            this.Price.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            this.Price.Width = 56;
+            this.gbxOther.Controls.Add(this.lblAgreementDate);
+            this.gbxOther.Controls.Add(this.lblExtReference);
+            this.gbxOther.Controls.Add(this.txtReference);
+            this.gbxOther.Controls.Add(this.numCutOffDate);
+            this.gbxOther.Controls.Add(this.dtpAgreementDate);
+            this.gbxOther.Controls.Add(this.lblCutOffDate);
+            this.gbxOther.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbxOther.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gbxOther.Location = new System.Drawing.Point(0, 129);
+            this.gbxOther.Name = "gbxOther";
+            this.gbxOther.Size = new System.Drawing.Size(835, 100);
+            this.gbxOther.TabIndex = 63;
+            this.gbxOther.TabStop = false;
+            this.gbxOther.Text = "Other";
             // 
             // RentalAgreementFrm
             // 
-            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 613);
-            this.Controls.Add(this.btnRemoveLine);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.numCutOffDate);
-            this.Controls.Add(this.lblCutOffDate);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.lblDetailGroup);
-            this.Controls.Add(this.lblOtherGroup);
-            this.Controls.Add(this.dtpAgreementDate);
-            this.Controls.Add(this.lblAgreementDate);
-            this.Controls.Add(this.lblSender);
-            this.Controls.Add(this.txtReference);
-            this.Controls.Add(this.txtSender);
-            this.Controls.Add(this.lblExtReference);
-            this.Controls.Add(this.txtCustomerEmail);
-            this.Controls.Add(this.lblCustomerId);
-            this.Controls.Add(this.txtCustomerAddress);
-            this.Controls.Add(this.txtCustomerId);
-            this.Controls.Add(this.txtCustomerPhone);
-            this.Controls.Add(this.lblCustomerName);
-            this.Controls.Add(this.txtCustomerTitle);
-            this.Controls.Add(this.txtCustomerName);
-            this.Controls.Add(this.btnViewCustomer);
-            this.Controls.Add(this.lblCustomerTitle);
-            this.Controls.Add(this.lblCustomerEmail);
-            this.Controls.Add(this.lblCustomerAddress);
-            this.Controls.Add(this.lblCustomerPhone);
-            this.Controls.Add(this.lblCustomerGroup);
-            this.Controls.Add(this.dgvProductCategoryPrice);
-            this.Controls.Add(this.dtpTransactionDate);
+            this.ClientSize = new System.Drawing.Size(835, 568);
+            this.Controls.Add(this.pnlDetail);
+            this.Controls.Add(this.pnlHeader);
+            this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.stpRentalAgreement);
-            this.Controls.Add(this.lblTransactionDate);
-            this.Controls.Add(this.shapeContainer1);
-            this.MinimumSize = new System.Drawing.Size(850, 645);
+            this.MinimumSize = new System.Drawing.Size(845, 600);
             this.Name = "RentalAgreementFrm";
             this.Text = "Rental Agreement";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.stpRentalAgreement.ResumeLayout(false);
             this.stpRentalAgreement.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductCategoryPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCutOffDate)).EndInit();
+            this.pnlDetail.ResumeLayout(false);
+            this.pnlAgreementDetailAction.ResumeLayout(false);
+            this.gbxCustomer.ResumeLayout(false);
+            this.gbxCustomer.PerformLayout();
+            this.pnlTop.ResumeLayout(false);
+            this.pnlTop.PerformLayout();
+            this.pnlHeader.ResumeLayout(false);
+            this.gbxOther.ResumeLayout(false);
+            this.gbxOther.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -628,30 +616,28 @@
         private System.Windows.Forms.TextBox txtCustomerTitle;
         private System.Windows.Forms.TextBox txtReference;
         private System.Windows.Forms.Label lblExtReference;
-        private System.Windows.Forms.TextBox txtSender;
-        private System.Windows.Forms.Label lblSender;
         private System.Windows.Forms.DateTimePicker dtpAgreementDate;
         private System.Windows.Forms.Label lblAgreementDate;
         private System.Windows.Forms.DataGridView dgvProductCategoryPrice;
-        private System.Windows.Forms.Label lblCustomerGroup;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lneOtherGroup;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lneCustomerGroup;
-        private System.Windows.Forms.Label lblOtherGroup;
-        private System.Windows.Forms.Label lblDetailGroup;
         private System.Windows.Forms.ToolStripStatusLabel tssHelp;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ToolStripStatusLabel tssHelpCustomerSelection;
         private System.Windows.Forms.Label lblCutOffDate;
         private System.Windows.Forms.NumericUpDown numCutOffDate;
         private System.Windows.Forms.Button btnRemoveLine;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ToolStripStatusLabel tssHelpCategorySelection;
+        private Controls.ButtonStripItem btnSave;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductCategoryId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductSubcategoryId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductSubcategory;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IsRemovable;
+        private System.Windows.Forms.Panel pnlDetail;
+        private System.Windows.Forms.Panel pnlAgreementDetailAction;
+        private System.Windows.Forms.GroupBox gbxCustomer;
+        private System.Windows.Forms.Panel pnlTop;
+        private System.Windows.Forms.Panel pnlHeader;
+        private System.Windows.Forms.GroupBox gbxOther;
     }
 }

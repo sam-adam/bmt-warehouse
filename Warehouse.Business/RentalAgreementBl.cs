@@ -6,19 +6,24 @@
     using System.Linq.Expressions;
     using System.Collections.Generic;
     using Warehouse.Business.Contract;
+    using Warehouse.Business.Facade;
     using Warehouse.Data.Model;
     using Warehouse.Data.Contract;
     using Warehouse.Helper;
 
     public class RentalAgreementBl : IRentalAgreementBl
     {
-        private readonly IRentalAgreementRepository _rentalAgreementRepository;
         private readonly Common _common;
+        private readonly IRentalAgreementRepository _rentalAgreementRepository;
+        private readonly ICustomerRepository _customerRepository;
+        private readonly RentalAgreementDetailFacade _detailFacade;
         
-        public RentalAgreementBl(IRentalAgreementRepository rentalAgreementRepository, Common common)
+        public RentalAgreementBl(IRentalAgreementRepository rentalAgreementRepository, Common common, RentalAgreementDetailFacade detailFacade, ICustomerRepository customerRepository)
         {
-            _rentalAgreementRepository = rentalAgreementRepository;
             _common = common;
+            _rentalAgreementRepository = rentalAgreementRepository;
+            _detailFacade = detailFacade;
+            _customerRepository = customerRepository;
         }
 
         public string Save(RentalAgreement rentalAgreement)
@@ -136,6 +141,21 @@
             var rentalAgreementList = _rentalAgreementRepository.Get(predicate);
 
             return rentalAgreementList.Any() ? rentalAgreementList.ToList() : null;
+        }
+
+        public Customer GetCustomer(string id)
+        {
+            return _customerRepository.Get(cust => cust.Id == id).FirstOrDefault();
+        }
+
+        public ProductCategory GetCategory(string id)
+        {
+            return _detailFacade.GetSingleCategory(id);
+        }
+
+        public ProductSubcategory GetSubcategory(string id)
+        {
+            return _detailFacade.GetSingleSubcategory(id);
         }
 
         public IList<RentalAgreement> GetAllActive()

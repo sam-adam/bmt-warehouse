@@ -2,19 +2,15 @@
 {
     using System;
     using System.Globalization;
-    using System.Linq;
     using System.Windows.Forms;
     using Warehouse.Business.Contract;
-    using Warehouse.Business.Facade;
     using Warehouse.Data.Model;
     using Warehouse.Presentation.Print;
     using Warehouse.Presentation.View;
 
     public partial class RentalAgreementFrm : Form
     {
-        private readonly ICustomerBl _customerBl;
         private readonly IRentalAgreementBl _rentalAgreementBl;
-        private readonly RentalAgreementDetailFacade _detailFacade;
         private readonly CustomerView _customerView;
         private readonly ProductSubcategoryView _productSubcategoryView;
         private readonly PrintFrm _printFrm;
@@ -22,31 +18,27 @@
 
         private Customer _customer;
 
-        public RentalAgreementFrm(IRentalAgreementBl rentalAgreementBl, ICustomerBl customerBl, RentalAgreementDetailFacade detailFacade, CustomerView customerView, ProductSubcategoryView productSubcategoryView, PrintFrm printFrm, RentalAgreementRpt report)
+        #region Constructors
+        public RentalAgreementFrm(IRentalAgreementBl rentalAgreementBl, CustomerView customerView, ProductSubcategoryView productSubcategoryView, PrintFrm printFrm, RentalAgreementRpt report)
         {   
             InitializeComponent();
 
-            _customerBl = customerBl;
-            _detailFacade = detailFacade;
             _customerView = customerView;
             _productSubcategoryView = productSubcategoryView;
             _printFrm = printFrm;
             _report = report;
             _rentalAgreementBl = rentalAgreementBl;
         }
+        #endregion
 
+        #region Events
         private void txtCustomerId_TextChanged(object sender, System.EventArgs e)
         {
-            if (txtCustomerId.Text.Length != 6)
-            {
-                ClearCustomerData();
+            ClearCustomerData(txtCustomerId);
 
-                dgvProductCategoryPrice.Rows.Clear();
-
-                return;
-            }
-
-            _customer = _customerBl.Get(cust => cust.Id == txtCustomerId.Text).First();
+            if (txtCustomerId.Text.Length != 6) return;
+            
+            _customer = _rentalAgreementBl.GetCustomer(txtCustomerId.Text);
 
             if (_customer != null)
             {
@@ -58,10 +50,8 @@
                     }
                     else
                     {
-                        txtCustomerId.Text = string.Empty;
+                        txtCustomerId.Clear();
                         txtCustomerId.Focus();
-
-                        ClearCustomerData();
                     }
                 }
                 else
@@ -69,10 +59,137 @@
                     SetCustomerData(_customer);
                 }
             }
-            else
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            LoadProductSubcategoryView();
+        }
+
+        private void btnRemoveLine_Click(object sender, EventArgs e)
+        {
+            RemoveDetail();
+        }
+
+        private void btnViewCustomer_Click(object sender, EventArgs e)
+        {
+            LoadCustomerView();
+        }
+
+        private void dgvProductCategoryPrice_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (dgvProductCategoryPrice.Columns["ProductCategoryId"] != null)
             {
-                ClearCustomerData();
+                if (e.ColumnIndex != dgvProductCategoryPrice.Columns["ProductCategoryId"].Index && dgvProductCategoryPrice.Rows[e.RowIndex].Cells["ProductCategoryId"].Value == null)
+                {
+                    MessageBox.Show(@"Please fill product category first");
+
+                    e.Cancel = true;
+                }
             }
+        }
+
+        private void dgvProductCategoryPrice_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            if (dgvProductCategoryPrice.Rows.Count == 1)
+            {
+                MessageBox.Show(@"Minimum of one price detail");
+
+                e.Cancel = true;
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(@"Add new rental agreement?", @"Confirmation", MessageBoxButtons.YesNo) != DialogResult.Yes) return;
+
+            try
+            {
+                var rentalAgreement = new RentalAgreement
+                {
+                    Id = _rentalAgreementBl.GenerateNewId(),
+                    Customer = _customer,
+                    CutOffDate = (int)numCutOffDate.Value,
+                    Reference = txtReference.Text,
+                    AgreementDate = dtpAgreementDate.Value,
+                    CreatedDate = dtpTransactionDate.Value
+                };
+
+                foreach (DataGridViewRow row in dgvProductCategoryPrice.Rows)
+                {
+                    rentalAgreement.AddRentalDetails(new RentalAgreementDetail()
+                        {
+                            RentalAgreement = rentalAgreement,
+                            Category = _rentalAgreementBl.GetCategory(row.Cells["ProductCategoryId"].Value.ToString()),
+                            Subcategory = _rentalAgreementBl.GetSubcategory(row.Cells["ProductSubcategoryId"].Value.ToString()),
+                            Price = Double.Parse(row.Cells["Price"].Value.ToString())
+                        });
+                }
+
+                var message = _rentalAgreementBl.Save(rentalAgreement);
+
+                MessageBox.Show(message);
+
+                Print(rentalAgreement, _report.ResourceName);
+
+                ClearCustomerData();
+
+                txtCustomerId.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void dgvProductCategoryPrice_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvProductCategoryPrice.CurrentRow != null && dgvProductCategoryPrice.CurrentRow.Cells["IsRemovable"] != null)
+            {
+                var isRemovable = dgvProductCategoryPrice.CurrentRow.Cells["IsRemovable"].Value;
+
+                btnRemoveLine.Enabled = isRemovable != null && (bool)isRemovable;
+            }
+        }
+        #endregion
+
+        #region Overrides
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F1:
+                    LoadCustomerView();
+                    break;
+                case Keys.F2:
+                    LoadProductSubcategoryView();
+                    break;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+        #endregion
+        
+        #region Functions
+        private void ClearCustomerData(object sender = null, Control.ControlCollection controlCollection = null)
+        {
+            _customer = null;
+
+            if (controlCollection == null) controlCollection = Controls;
+
+            foreach (Control control in controlCollection)
+            {
+                if (control is TextBox && !ReferenceEquals(sender, control))
+                {
+                    var txtControl = control as TextBox;
+
+                    txtControl.Clear();
+                }
+
+                if (control.Controls.Count > 0) ClearCustomerData(sender, control.Controls);
+            }
+
+            dgvProductCategoryPrice.Rows.Clear();
         }
 
         private void SetCustomerData(Customer customer)
@@ -89,6 +206,7 @@
                                       customer.Address2 + Environment.NewLine +
                                       customer.Address3;
             txtCustomerEmail.Text = customer.Email ?? "";
+            numCutOffDate.Value = 25;
 
             if (customerRentalAgreement != null)
             {
@@ -102,159 +220,21 @@
                     dgvRow.Cells["ProductSubcategoryId"].Value = rentalAgreementDetail.Subcategory.Id;
                     dgvRow.Cells["ProductSubcategory"].Value = rentalAgreementDetail.Subcategory.Subcategory;
                     dgvRow.Cells["Price"].Value = rentalAgreementDetail.Price.ToString(CultureInfo.InvariantCulture);
+                    dgvRow.Cells["IsRemovable"].Value = false;
                 }
             }
-        }
-
-        private void ClearCustomerData()
-        {
-            txtCustomerTitle.Text = string.Empty;
-            txtCustomerName.Text = string.Empty;
-            txtCustomerPhone.Text = string.Empty;
-            txtCustomerAddress.Text = string.Empty;
-            txtCustomerEmail.Text = string.Empty;
-
-            dgvProductCategoryPrice.Rows.Clear();
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            LoadProductSubcategoryView();
-        }
-
-        private void btnRemoveLine_Click(object sender, EventArgs e)
-        {
-            RemoveDetail();
-        }
-
-        private void dgvProductCategoryPrice_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            if (dgvProductCategoryPrice.Columns["ProductCategoryId"] != null)
-            {
-                if (e.ColumnIndex != dgvProductCategoryPrice.Columns["ProductCategoryId"].Index && dgvProductCategoryPrice.Rows[e.RowIndex].Cells["ProductCategoryId"].Value == null)
-                {
-                    MessageBox.Show(@"Please fill product category first");
-
-                    e.Cancel = true;
-                }   
-            }
-        }
-
-        private void dgvProductCategoryPrice_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            if (dgvProductCategoryPrice.Rows.Count == 1)
-            {
-                MessageBox.Show(@"Minimum of one price detail");
-
-                e.Cancel = true;
-            }
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (!ValidateRentalAgreement()) return;
-            if (MessageBox.Show(@"Add new rental agreement?", @"Confirmation", MessageBoxButtons.YesNo) != DialogResult.Yes) return;
-            
-            try
-            {
-                var newRentalAgreement = new RentalAgreement
-                    {
-                        Id = _rentalAgreementBl.GenerateNewId(),
-                        Customer = _customer,
-                        CutOffDate = int.Parse(numCutOffDate.Value.ToString(CultureInfo.InvariantCulture)),
-                        Reference = txtReference.Text,
-                        Sender = txtSender.Text,
-                        AgreementDate = dtpAgreementDate.Value,
-                        CreatedDate = DateTime.Now
-                    };
-
-                for (var i = 0; i < dgvProductCategoryPrice.Rows.Count; i++)
-                {
-                    newRentalAgreement.AddRentalDetails(new RentalAgreementDetail()
-                        {
-                            RentalAgreement = newRentalAgreement,
-                            Category = _detailFacade.GetSingleCategory(dgvProductCategoryPrice.Rows[i].Cells["ProductCategoryId"].Value.ToString()),
-                            Subcategory = _detailFacade.GetSingleSubcategory(dgvProductCategoryPrice.Rows[i].Cells["ProductSubcategoryId"].Value.ToString()),
-                            Price = Double.Parse(dgvProductCategoryPrice.Rows[i].Cells["Price"].Value.ToString())
-                        });
-                }
-
-                var message = _rentalAgreementBl.Save(newRentalAgreement);
-
-                MessageBox.Show(message);
-                 
-                Print(newRentalAgreement, _report.ResourceName);
-
-                foreach (Control control in this.Controls)
-                {
-                    if (control.GetType() == typeof(TextBox))
-                    {
-                        control.Text = string.Empty;
-                    }
-                }
-
-                dgvProductCategoryPrice.Rows.Clear();
-
-                txtCustomerId.Focus();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
-        private bool ValidateRentalAgreement()
-        {
-            if (txtCustomerName.Text == string.Empty)
-            {
-                MessageBox.Show(@"Customer cannot be empty");
-
-                txtCustomerId.Focus();
-
-                return false;
-            }
-            else if (txtSender.Text == string.Empty)
-            {
-                MessageBox.Show(@"Sender cannot be empty");
-
-                txtSender.Focus();
-
-                return false;
-            }
-            else if (txtReference.Text == string.Empty)
-            {
-                MessageBox.Show(@"External Reference cannot be empty");
-
-                txtReference.Focus();
-
-                return false;
-            }
-            else
-            {
-                if (dgvProductCategoryPrice.Rows.Count < 1)
-                {
-                    MessageBox.Show(@"Rental agreement need minimum of one detail");
-
-                    dgvProductCategoryPrice.Focus();
-
-                    return false;
-                }
-            }
-
-            return true;
         }
 
         private void LoadCustomerView()
         {
             _customerView.ShowDialog();
-            
-            txtCustomerId.Text = _customerView.SelectedCustomer.Id;
-            txtSender.Focus();
-        }
 
-        private void btnViewCustomer_Click(object sender, EventArgs e)
-        {
-            LoadCustomerView();
+            var customer = _customerView.Customer;
+
+            if (customer != null)
+            {
+                txtCustomerId.Text = customer.Id;
+            }
         }
 
         private void LoadProductSubcategoryView()
@@ -279,10 +259,11 @@
                 if (isUnique)
                 {
                     dgvProductCategoryPrice.Rows.Add(productSubcategory.Category.Id,
-                                                     productSubcategory.Category.Category, 
+                                                     productSubcategory.Category.Category,
                                                      productSubcategory.Id,
-                                                     productSubcategory.Subcategory, 
-                                                     "0");
+                                                     productSubcategory.Subcategory,
+                                                     "0",
+                                                     true);
                 }
                 else
                 {
@@ -309,27 +290,13 @@
             }
         }
 
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        private void Print(RentalAgreement rentalAgreement, string reportFileName)
         {
-            switch (keyData)
-            {
-                case Keys.F1:
-                    LoadCustomerView();
-                    break;
-                case Keys.F2:
-                    LoadProductSubcategoryView();
-                    break;
-            }
-
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
-
-        private void Print(Entity dataSource, string reportFileName)
-        {
-            _printFrm.DataSource = dataSource;
+            _printFrm.RecordSelectionFormula = "{tbl_trrentalagreement1.id_rentalagreement}='" + rentalAgreement.Id + "'";
             _printFrm.ReportFilename = reportFileName;
 
             _printFrm.ShowDialog();
         }
+        #endregion
     }
 }

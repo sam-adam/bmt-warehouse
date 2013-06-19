@@ -8,7 +8,7 @@
     public partial class RentalAgreementDetailView : Form
     {
         public RentalAgreement RentalAgreement { get; set; }
-        public RentalAgreementDetail RentalAgreementDetail { get; set; }
+        public RentalAgreementDetail RentalAgreementDetail { get; internal set; }
 
         public RentalAgreementDetailView()
         {
@@ -89,6 +89,11 @@
         private void dgvRentalAgreementDetail_SelectionChanged(object sender, EventArgs e)
         {
             SetSelectedDetail();
+        }
+
+        private void dgvRentalAgreementDetail_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Close();
         }
     }
 }

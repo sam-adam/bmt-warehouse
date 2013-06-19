@@ -13,15 +13,26 @@
         public virtual Employee CreatedBy { get; set; }
         public virtual string Status { get; set; }
         public virtual IList<RentalWithdrawalDetail> Details { get; protected set; }
+        public virtual IList<RentalWithdrawalUnloadingDetail> UnloadingDetails { get; protected set; }
 
-        public virtual void AddDetail(RentalWithdrawalDetail rentalWithdrawalDetail)
+        public virtual void AddDetail(RentalWithdrawalDetail itemDetail)
         {
             if (Details == null)
             {
                 Details = new List<RentalWithdrawalDetail>();
             }
 
-            Details.Add(rentalWithdrawalDetail);
+            Details.Add(itemDetail);
+        }
+
+        public virtual void AddUnloadingDetail(RentalWithdrawalUnloadingDetail unloadingDetail)
+        {
+            if (UnloadingDetails == null)
+            {
+                UnloadingDetails = new List<RentalWithdrawalUnloadingDetail>(); ;
+            }
+
+            UnloadingDetails.Add(unloadingDetail);
         }
     }
 }

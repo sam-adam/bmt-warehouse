@@ -8,8 +8,8 @@
     {
         private readonly ReportDocument _reportDocument;
 
-        public object DataSource { get; set; }
         public string ReportFilename { get; set; }
+        public string RecordSelectionFormula { get; set; }
 
         public PrintFrm(ReportDocument reportDocument)
         {
@@ -26,17 +26,27 @@
             {
                 reportDir = reportDir.Replace("\\bin\\Debug", "");
             }
+            else if (reportDir.EndsWith("\\bin\\x86\\Debug"))
+            {
+                reportDir = reportDir.Replace("\\bin\\x86\\Debug", "");
+            }
 
             var reportPath = reportDir + "\\Print\\" + ReportFilename;
 
             if (string.IsNullOrEmpty(ReportFilename)) { throw new NullReferenceException("Report Filename"); }
-            if (DataSource.Equals(null)) { throw new NullReferenceException("Data Source"); }
 
             _reportDocument.Load(reportPath);
-            _reportDocument.SetDataSource(DataSource);
 
+            if (!string.IsNullOrEmpty(RecordSelectionFormula))
+            {
+                _reportDocument.RecordSelectionFormula = RecordSelectionFormula;
+            }
+
+            _reportDocument.Refresh();
+            
+            crystalReportViewer.PrintReport();
             crystalReportViewer.ReportSource = _reportDocument;
-            crystalReportViewer.RefreshReport();
+            crystalReportViewer.Refresh();
         }
     }
 }

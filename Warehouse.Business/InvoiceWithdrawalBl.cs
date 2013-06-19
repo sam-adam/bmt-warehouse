@@ -102,5 +102,12 @@
 
             return invoiceWithdrawals.Any() ? invoiceWithdrawals.ToList() : null;
         }
+
+        public InvoiceWithdrawal GetSingle(string id)
+        {
+            var invoiceWithdrawals = _repository.Get(inv => inv.Id == id);
+
+            return invoiceWithdrawals.Any() ? invoiceWithdrawals.First() : null;
+        }
     }
 }

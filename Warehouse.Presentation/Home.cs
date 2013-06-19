@@ -44,5 +44,11 @@ namespace Warehouse.Presentation
             var form = _container.Resolve<InvoiceMonthlyFrm>();
             form.ShowDialog();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var form = _container.Resolve<InvoiceWithdrawalFrm>();
+            form.ShowDialog();
+        }
     }
 }

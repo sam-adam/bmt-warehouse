@@ -11,7 +11,6 @@
         public virtual DateTime AgreementDate { get; set; }
         public virtual int CutOffDate { get; set; }
         public virtual string Reference { get; set; }
-        public virtual string Sender { get; set; }
         public virtual Employee CreatedBy { get; set; }
         public virtual string Status { get; set; }
         public virtual IList<RentalAgreementDetail> Details { get; protected set; }

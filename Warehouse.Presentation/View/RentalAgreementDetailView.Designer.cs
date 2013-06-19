@@ -92,6 +92,7 @@
             this.dgvRentalAgreementDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRentalAgreementDetail.Size = new System.Drawing.Size(537, 229);
             this.dgvRentalAgreementDetail.TabIndex = 13;
+            this.dgvRentalAgreementDetail.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRentalAgreementDetail_CellDoubleClick);
             this.dgvRentalAgreementDetail.SelectionChanged += new System.EventHandler(this.dgvRentalAgreementDetail_SelectionChanged);
             this.dgvRentalAgreementDetail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvRentalAgreementDetail_KeyDown);
             // 

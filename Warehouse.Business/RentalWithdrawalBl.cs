@@ -98,7 +98,9 @@
         {
             if (rentalWithdrawal == null) throw new Exception("Rental withdrawal is empty");
             if (rentalWithdrawal.Customer == null) throw new Exception("Rental withdrawal customer cannot be empty");
-            if (rentalWithdrawal.Details.Count <= 0) throw new Exception("Rental withdrawal detail cannot be empty");
+            if (string.IsNullOrEmpty(rentalWithdrawal.Reference)) throw new Exception("Rental withdrawal external reference cannot be empty");
+            if (rentalWithdrawal.Details == null || rentalWithdrawal.Details.Count <= 0) throw new Exception("Rental withdrawal detail cannot be empty");
+            if (rentalWithdrawal.UnloadingDetails == null || rentalWithdrawal.UnloadingDetails.Count <= 0) throw new Exception("Rental withdrawal unloading detail cannot be empty");
         }
 
         public void ValidateNew(RentalWithdrawal withdrawal)
