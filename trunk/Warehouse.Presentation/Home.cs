@@ -1,10 +1,10 @@
-﻿using System;
-using System.Windows.Forms;
-using Autofac;
-using Autofac.Core;
-
-namespace Warehouse.Presentation
+﻿namespace Warehouse.Presentation
 {
+    using System;
+    using System.Windows.Forms;
+    using Autofac;
+    using Warehouse.Presentation.View;
+
     public partial class Home : Form
     {
         private readonly IContainer _container;
@@ -49,6 +49,44 @@ namespace Warehouse.Presentation
         {
             var form = _container.Resolve<InvoiceWithdrawalFrm>();
             form.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            var form = _container.Resolve<RentalAgreementView>();
+            form.ShowDialog();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            using (var form = _container.Resolve<RentalWithdrawalView>())
+            {
+                form.ShowDialog();   
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            using (var form = _container.Resolve<RentalReceiptView>())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            using (var form = _container.Resolve<InvoiceWithdrawalView>())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            using (var form = _container.Resolve<InvoiceMonthlyView>())
+            {
+                form.ShowDialog();
+            }
         }
     }
 }
