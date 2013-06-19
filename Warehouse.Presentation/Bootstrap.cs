@@ -71,6 +71,10 @@
             builder.RegisterType<CustomerView>().InstancePerLifetimeScope();
             builder.RegisterType<ProductSubcategoryView>().InstancePerLifetimeScope();
             builder.RegisterType<RentalAgreementView>().InstancePerLifetimeScope();
+            builder.RegisterType<RentalWithdrawalView>().InstancePerLifetimeScope();
+            builder.RegisterType<RentalReceiptView>().InstancePerLifetimeScope();
+            builder.RegisterType<InvoiceWithdrawalView>().InstancePerLifetimeScope();
+            builder.RegisterType<InvoiceMonthlyView>().InstancePerLifetimeScope();
             builder.RegisterType<RentalAgreementDetailView>().InstancePerLifetimeScope();
 
             builder.RegisterType<ReportDocument>();

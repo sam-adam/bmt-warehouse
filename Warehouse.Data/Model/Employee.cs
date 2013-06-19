@@ -15,5 +15,10 @@
         public virtual DateTime JoinDate { get; set; }
         public virtual string Status { get; set; }
         public virtual DateTime BirthDate { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

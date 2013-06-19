@@ -122,6 +122,10 @@
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=10.9.0.4, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -243,6 +247,18 @@
     <Compile Include="View\CustomerView.Designer.cs">
       <DependentUpon>CustomerView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\InvoiceMonthlyView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\InvoiceMonthlyView.Designer.cs">
+      <DependentUpon>InvoiceMonthlyView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\InvoiceWithdrawalView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\InvoiceWithdrawalView.Designer.cs">
+      <DependentUpon>InvoiceWithdrawalView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ProductSubcategoryView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -260,6 +276,12 @@
     </Compile>
     <Compile Include="View\RentalAgreementView.Designer.cs">
       <DependentUpon>RentalAgreementView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\RentalReceiptView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RentalReceiptView.Designer.cs">
+      <DependentUpon>RentalReceiptView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\RentalWithdrawalView.cs">
       <SubType>Form</SubType>
@@ -328,6 +350,12 @@
     <EmbeddedResource Include="View\CustomerView.resx">
       <DependentUpon>CustomerView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\InvoiceMonthlyView.resx">
+      <DependentUpon>InvoiceMonthlyView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\InvoiceWithdrawalView.resx">
+      <DependentUpon>InvoiceWithdrawalView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ProductSubcategoryView.resx">
       <DependentUpon>ProductSubcategoryView.cs</DependentUpon>
     </EmbeddedResource>
@@ -336,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\RentalAgreementView.resx">
       <DependentUpon>RentalAgreementView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RentalReceiptView.resx">
+      <DependentUpon>RentalReceiptView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\RentalWithdrawalView.resx">
       <DependentUpon>RentalWithdrawalView.cs</DependentUpon>
