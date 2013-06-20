@@ -10,12 +10,9 @@
     public partial class CustomerView : Form
     {
         private readonly ICustomerBl _customerBl;
+        public Form Caller { get; set; }
         private Customer _customer;
-        public Customer Customer
-        {
-            get { return _customer; }
-            internal set { _customer = value; }
-        }
+        public Customer Customer { get; private set; }
 
         public CustomerView(ICustomerBl customerBl)
         {
@@ -153,7 +150,7 @@
         {
             Customer = _customer;
 
-            if (keyData == Keys.Enter)
+            if (keyData == Keys.Enter && Caller != null)
             {
                 if (Customer == null)
                 {

@@ -2,6 +2,7 @@
 {
     using Autofac;
     using CrystalDecisions.CrystalReports.Engine;
+    using System.ServiceProcess;
     using Warehouse.Business;
     using Warehouse.Business.Contract;
     using Warehouse.Business.Facade;
@@ -23,6 +24,10 @@
         public IContainer Configure()
         {
             var builder = new ContainerBuilder();
+            var serviceController = new ServiceController();
+
+            serviceController.MachineName = ".";
+            serviceController.ServiceName = "mysql";
 
             builder.RegisterType<Bootstrap>().AsSelf();
             
@@ -61,21 +66,21 @@
 
             builder.RegisterType<Home>();
             builder.RegisterType<PrintFrm>();
-            builder.RegisterType<LoginFrm>().InstancePerLifetimeScope();
-            builder.RegisterType<RentalAgreementFrm>().InstancePerLifetimeScope();
-            builder.RegisterType<RentalReceiptFrm>().InstancePerLifetimeScope();
-            builder.RegisterType<RentalWithdrawalFrm>().InstancePerLifetimeScope();
-            builder.RegisterType<InvoiceMonthlyFrm>().InstancePerLifetimeScope();
-            builder.RegisterType<InvoiceWithdrawalFrm>().InstancePerLifetimeScope();
+            builder.RegisterType<LoginFrm>();
+            builder.RegisterType<RentalAgreementFrm>();
+            builder.RegisterType<RentalReceiptFrm>();
+            builder.RegisterType<RentalWithdrawalFrm>();
+            builder.RegisterType<InvoiceMonthlyFrm>();
+            builder.RegisterType<InvoiceWithdrawalFrm>();
 
-            builder.RegisterType<CustomerView>().InstancePerLifetimeScope();
-            builder.RegisterType<ProductSubcategoryView>().InstancePerLifetimeScope();
-            builder.RegisterType<RentalAgreementView>().InstancePerLifetimeScope();
-            builder.RegisterType<RentalWithdrawalView>().InstancePerLifetimeScope();
-            builder.RegisterType<RentalReceiptView>().InstancePerLifetimeScope();
-            builder.RegisterType<InvoiceWithdrawalView>().InstancePerLifetimeScope();
-            builder.RegisterType<InvoiceMonthlyView>().InstancePerLifetimeScope();
-            builder.RegisterType<RentalAgreementDetailView>().InstancePerLifetimeScope();
+            builder.RegisterType<CustomerView>();
+            builder.RegisterType<ProductSubcategoryView>();
+            builder.RegisterType<RentalAgreementView>();
+            builder.RegisterType<RentalWithdrawalView>();
+            builder.RegisterType<RentalReceiptView>();
+            builder.RegisterType<InvoiceWithdrawalView>();
+            builder.RegisterType<InvoiceMonthlyView>();
+            builder.RegisterType<RentalAgreementDetailView>();
 
             builder.RegisterType<ReportDocument>();
 

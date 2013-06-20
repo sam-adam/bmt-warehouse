@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTransactionDate = new System.Windows.Forms.Label();
             this.lblCustomerId = new System.Windows.Forms.Label();
             this.lblCustomerEmail = new System.Windows.Forms.Label();
@@ -217,7 +217,7 @@
             // 
             this.tssHelpCategorySelection.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
             this.tssHelpCategorySelection.Name = "tssHelpCategorySelection";
-            this.tssHelpCategorySelection.Size = new System.Drawing.Size(330, 26);
+            this.tssHelpCategorySelection.Size = new System.Drawing.Size(361, 26);
             this.tssHelpCategorySelection.Spring = true;
             this.tssHelpCategorySelection.Text = "F2 : Open Product Category Selection";
             this.tssHelpCategorySelection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -371,8 +371,8 @@
             // 
             // ProductCategoryId
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductCategoryId.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductCategoryId.DefaultCellStyle = dataGridViewCellStyle1;
             this.ProductCategoryId.HeaderText = "Category Id";
             this.ProductCategoryId.Name = "ProductCategoryId";
             this.ProductCategoryId.ReadOnly = true;
@@ -381,7 +381,7 @@
             // 
             // ProductCategory
             // 
-            this.ProductCategory.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ProductCategory.DefaultCellStyle = dataGridViewCellStyle1;
             this.ProductCategory.HeaderText = "Category";
             this.ProductCategory.Name = "ProductCategory";
             this.ProductCategory.ReadOnly = true;
@@ -389,7 +389,7 @@
             // 
             // ProductSubcategoryId
             // 
-            this.ProductSubcategoryId.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ProductSubcategoryId.DefaultCellStyle = dataGridViewCellStyle1;
             this.ProductSubcategoryId.HeaderText = "Subcategory Id";
             this.ProductSubcategoryId.Name = "ProductSubcategoryId";
             this.ProductSubcategoryId.ReadOnly = true;
@@ -398,8 +398,8 @@
             // 
             // ProductSubcategory
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle2;
             this.ProductSubcategory.HeaderText = "Subcategory";
             this.ProductSubcategory.Name = "ProductSubcategory";
             this.ProductSubcategory.ReadOnly = true;
@@ -412,9 +412,9 @@
             // 
             this.Price.BackgroundStyle.Class = "DataGridViewNumericBorder";
             this.Price.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            dataGridViewCellStyle6.Format = "C2";
-            dataGridViewCellStyle6.NullValue = "0";
-            this.Price.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = "0";
+            this.Price.DefaultCellStyle = dataGridViewCellStyle3;
             this.Price.HeaderText = "Price";
             this.Price.Increment = 1D;
             this.Price.Name = "Price";
@@ -578,7 +578,6 @@
             this.MinimumSize = new System.Drawing.Size(845, 600);
             this.Name = "RentalAgreementFrm";
             this.Text = "Rental Agreement";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.stpRentalAgreement.ResumeLayout(false);
             this.stpRentalAgreement.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductCategoryPrice)).EndInit();
