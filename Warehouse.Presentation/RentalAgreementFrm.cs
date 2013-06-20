@@ -227,6 +227,7 @@
 
         private void LoadCustomerView()
         {
+            _customerView.Caller = this;
             _customerView.ShowDialog();
 
             var customer = _customerView.Customer;

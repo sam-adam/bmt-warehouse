@@ -8,6 +8,7 @@
     public partial class Home : Form
     {
         private readonly IContainer _container;
+        private Form _frm;
 
         public Home(IContainer container)
         {
@@ -16,10 +17,14 @@
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void createNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = _container.Resolve<RentalAgreementFrm>();
-            form.ShowDialog();
+            _frm = _container.Resolve<RentalAgreementFrm>();
+            
+            _frm.MdiParent = this;
+            _frm.Show();
+            _frm.BringToFront();
+            _frm.WindowState = FormWindowState.Maximized;
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -27,66 +32,94 @@
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = _container.Resolve<RentalReceiptFrm>();
-            form.ShowDialog();
+            _frm = _container.Resolve<RentalAgreementView>();
+
+            _frm.MdiParent = this;
+            _frm.Show();
+            _frm.BringToFront();
+            _frm.WindowState = FormWindowState.Maximized;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void createNewToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var form = _container.Resolve<RentalWithdrawalFrm>();
-            form.ShowDialog();
+            _frm = _container.Resolve<RentalWithdrawalFrm>();
+
+            _frm.MdiParent = this;
+            _frm.Show();
+            _frm.BringToFront();
+            _frm.WindowState = FormWindowState.Maximized;
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void viewToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var form = _container.Resolve<InvoiceMonthlyFrm>();
-            form.ShowDialog();
+            _frm = _container.Resolve<RentalWithdrawalView>();
+
+            _frm.MdiParent = this;
+            _frm.Show();
+            _frm.BringToFront();
+            _frm.WindowState = FormWindowState.Maximized;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void createNewToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            var form = _container.Resolve<InvoiceWithdrawalFrm>();
-            form.ShowDialog();
+            _frm = _container.Resolve<RentalReceiptFrm>();
+
+            _frm.MdiParent = this;
+            _frm.Show();
+            _frm.BringToFront();
+            _frm.WindowState = FormWindowState.Maximized;
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void viewToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            var form = _container.Resolve<RentalAgreementView>();
-            form.ShowDialog();
+            _frm = _container.Resolve<RentalReceiptView>();
+
+            _frm.MdiParent = this;
+            _frm.Show();
+            _frm.BringToFront();
+            _frm.WindowState = FormWindowState.Maximized;
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var form = _container.Resolve<RentalWithdrawalView>())
-            {
-                form.ShowDialog();   
-            }
+            _frm = _container.Resolve<InvoiceWithdrawalFrm>();
+
+            _frm.MdiParent = this;
+            _frm.Show();
+            _frm.BringToFront();
+            _frm.WindowState = FormWindowState.Maximized;
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void viewToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            using (var form = _container.Resolve<RentalReceiptView>())
-            {
-                form.ShowDialog();
-            }
+            _frm = _container.Resolve<InvoiceWithdrawalView>();
+
+            _frm.MdiParent = this;
+            _frm.Show();
+            _frm.BringToFront();
+            _frm.WindowState = FormWindowState.Maximized;
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void createNewToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            using (var form = _container.Resolve<InvoiceWithdrawalView>())
-            {
-                form.ShowDialog();
-            }
+            _frm = _container.Resolve<InvoiceMonthlyFrm>();
+
+            _frm.MdiParent = this;
+            _frm.Show();
+            _frm.BringToFront();
+            _frm.WindowState = FormWindowState.Maximized;
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void vIewToolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            using (var form = _container.Resolve<InvoiceMonthlyView>())
-            {
-                form.ShowDialog();
-            }
+            _frm = _container.Resolve<InvoiceMonthlyView>();
+
+            _frm.MdiParent = this;
+            _frm.Show();
+            _frm.BringToFront();
+            _frm.WindowState = FormWindowState.Maximized;
         }
     }
 }

@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace Warehouse.Data
+﻿namespace Warehouse.Data
 {
     using FluentNHibernate.Cfg;
     using FluentNHibernate.Cfg.Db;
+    using MySql.Data.MySqlClient;
     using NHibernate;
+    using System;
     using Warehouse.Data.Contract;
     using Warehouse.Data.Mapping;
 
@@ -18,7 +18,17 @@ namespace Warehouse.Data
         {
             _systemSetting = new SystemSetting();
 
-            InitializeSessionFactory();
+            try
+            {
+                InitializeSessionFactory();
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException is MySqlException)
+                {
+                    throw new Exception("Database is not ready, contact system admin");
+                }
+            }
         }
 
         private static void InitializeSessionFactory()

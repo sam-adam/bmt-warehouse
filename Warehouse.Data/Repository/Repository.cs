@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Warehouse.Data.Repository
+﻿namespace Warehouse.Data.Repository
 {
     using System;
     using System.Linq;
@@ -9,10 +7,11 @@ namespace Warehouse.Data.Repository
     using NHibernate.Linq;
     using Warehouse.Data.Contract;
 
-    public abstract class Repository<T> : IRepository<T> where T : class
+    public abstract class Repository<T> : IDisposable, IRepository<T> where T : class
     {
-        private ITransaction _transaction;
         private readonly ISession _session;
+        private ITransaction _transaction;
+        private bool _disposed = false;
 
         protected Repository(ISession session)
         {
@@ -77,7 +76,31 @@ namespace Warehouse.Data.Repository
 
             _transaction.Commit();
         }
-
         #endregion
+
+        public void Dispose()
+        {
+            Dispose(true);
+
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this._disposed)
+            {
+                if (disposing)
+                {
+                    _session.Dispose();
+                }
+
+                _disposed = true;
+            }
+        }
+
+        ~Repository()
+        {
+            Dispose(false);
+        }
     }
 }
