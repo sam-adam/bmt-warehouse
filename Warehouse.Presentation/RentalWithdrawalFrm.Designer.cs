@@ -180,9 +180,9 @@
             this.lblCustomerTitle.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.lblCustomerTitle.Location = new System.Drawing.Point(25, 47);
             this.lblCustomerTitle.Name = "lblCustomerTitle";
-            this.lblCustomerTitle.Size = new System.Drawing.Size(31, 13);
+            this.lblCustomerTitle.Size = new System.Drawing.Size(35, 13);
             this.lblCustomerTitle.TabIndex = 61;
-            this.lblCustomerTitle.Text = "Title:";
+            this.lblCustomerTitle.Text = "Type:";
             // 
             // btnViewCustomer
             // 
@@ -250,9 +250,9 @@
             this.lblRentalAgreementCustomer.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.lblRentalAgreementCustomer.Location = new System.Drawing.Point(25, 20);
             this.lblRentalAgreementCustomer.Name = "lblRentalAgreementCustomer";
-            this.lblRentalAgreementCustomer.Size = new System.Drawing.Size(57, 13);
+            this.lblRentalAgreementCustomer.Size = new System.Drawing.Size(21, 13);
             this.lblRentalAgreementCustomer.TabIndex = 57;
-            this.lblRentalAgreementCustomer.Text = "Customer:";
+            this.lblRentalAgreementCustomer.Text = "Id:";
             // 
             // lblCustomerPhone
             // 

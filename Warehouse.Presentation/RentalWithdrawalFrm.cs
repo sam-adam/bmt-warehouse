@@ -15,17 +15,19 @@
         private readonly IRentalProductBl _rentalProductBl;
         private readonly PrintFrm _printFrm;
         private readonly RentalWithdrawalRpt _report;
+        private readonly UnloadingReceiptRpt _unloadingReceipt;
 
         private RentalWithdrawal _rentalWithdrawal;
 
         #region Constructors
-        public RentalWithdrawalFrm(IRentalWithdrawalBl rentalWithdrawalBl, CustomerView customerView, IRentalProductBl rentalProductBl, PrintFrm printFrm, RentalWithdrawalRpt report)
+        public RentalWithdrawalFrm(IRentalWithdrawalBl rentalWithdrawalBl, CustomerView customerView, IRentalProductBl rentalProductBl, PrintFrm printFrm, RentalWithdrawalRpt report, UnloadingReceiptRpt unloadingReceipt)
         {
             _rentalWithdrawalBl = rentalWithdrawalBl;
             _customerView = customerView;
             _rentalProductBl = rentalProductBl;
             _printFrm = printFrm;
             _report = report;
+            _unloadingReceipt = unloadingReceipt;
 
             InitializeComponent();
         }
@@ -123,6 +125,7 @@
                     MessageBox.Show(message);
 
                     Print(_rentalWithdrawal, _report.ResourceName);
+                    Print(_rentalWithdrawal, _unloadingReceipt.ResourceName);
 
                     ClearForm();
                 }

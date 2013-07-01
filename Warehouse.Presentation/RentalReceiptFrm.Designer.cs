@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtpTransactionDate = new System.Windows.Forms.DateTimePicker();
             this.lblTransactionDate = new System.Windows.Forms.Label();
             this.txtCustomerPhone = new System.Windows.Forms.TextBox();
@@ -81,9 +81,9 @@
             this.pnlTop = new System.Windows.Forms.Panel();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.gbxOther = new System.Windows.Forms.GroupBox();
-            this.gbxCustomer = new System.Windows.Forms.GroupBox();
             this.lblRentalAgreement = new System.Windows.Forms.Label();
             this.txtRentalAgreement = new System.Windows.Forms.TextBox();
+            this.gbxCustomer = new System.Windows.Forms.GroupBox();
             this.stpRentalReceipt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRentalReceiptDetail)).BeginInit();
             this.tabReceiptDetails.SuspendLayout();
@@ -214,7 +214,7 @@
             this.tssHelpDetailSelection.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
             this.tssHelpDetailSelection.Name = "tssHelpDetailSelection";
             this.tssHelpDetailSelection.Padding = new System.Windows.Forms.Padding(10);
-            this.tssHelpDetailSelection.Size = new System.Drawing.Size(383, 26);
+            this.tssHelpDetailSelection.Size = new System.Drawing.Size(414, 26);
             this.tssHelpDetailSelection.Spring = true;
             this.tssHelpDetailSelection.Text = "F2 :  Open Item Detail Selection";
             this.tssHelpDetailSelection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -257,9 +257,9 @@
             this.lblCustomerTitle.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.lblCustomerTitle.Location = new System.Drawing.Point(25, 47);
             this.lblCustomerTitle.Name = "lblCustomerTitle";
-            this.lblCustomerTitle.Size = new System.Drawing.Size(31, 13);
+            this.lblCustomerTitle.Size = new System.Drawing.Size(35, 13);
             this.lblCustomerTitle.TabIndex = 41;
-            this.lblCustomerTitle.Text = "Title:";
+            this.lblCustomerTitle.Text = "Type:";
             // 
             // dtpRentalDate
             // 
@@ -385,8 +385,8 @@
             // 
             // ProductCategory
             // 
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductCategory.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductCategory.DefaultCellStyle = dataGridViewCellStyle1;
             this.ProductCategory.HeaderText = "Category";
             this.ProductCategory.Name = "ProductCategory";
             this.ProductCategory.ReadOnly = true;
@@ -403,8 +403,8 @@
             // 
             // ProductSubcategory
             // 
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle2;
             this.ProductSubcategory.HeaderText = "Subcategory";
             this.ProductSubcategory.Name = "ProductSubcategory";
             this.ProductSubcategory.ReadOnly = true;
@@ -412,8 +412,8 @@
             // 
             // Brand
             // 
-            dataGridViewCellStyle15.Format = "C2";
-            this.Brand.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Format = "C2";
+            this.Brand.DefaultCellStyle = dataGridViewCellStyle3;
             this.Brand.HeaderText = "Brand";
             this.Brand.Name = "Brand";
             this.Brand.Width = 60;
@@ -655,6 +655,28 @@
             this.gbxOther.TabStop = false;
             this.gbxOther.Text = "Other";
             // 
+            // lblRentalAgreement
+            // 
+            this.lblRentalAgreement.AutoSize = true;
+            this.lblRentalAgreement.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.lblRentalAgreement.Location = new System.Drawing.Point(25, 49);
+            this.lblRentalAgreement.Name = "lblRentalAgreement";
+            this.lblRentalAgreement.Size = new System.Drawing.Size(98, 13);
+            this.lblRentalAgreement.TabIndex = 60;
+            this.lblRentalAgreement.Text = "Rental Agreement:";
+            // 
+            // txtRentalAgreement
+            // 
+            this.txtRentalAgreement.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtRentalAgreement.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtRentalAgreement.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtRentalAgreement.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.txtRentalAgreement.Location = new System.Drawing.Point(124, 46);
+            this.txtRentalAgreement.Name = "txtRentalAgreement";
+            this.txtRentalAgreement.ReadOnly = true;
+            this.txtRentalAgreement.Size = new System.Drawing.Size(141, 21);
+            this.txtRentalAgreement.TabIndex = 59;
+            // 
             // gbxCustomer
             // 
             this.gbxCustomer.Controls.Add(this.lblCustomerId);
@@ -679,28 +701,6 @@
             this.gbxCustomer.TabStop = false;
             this.gbxCustomer.Text = "Customer";
             // 
-            // lblRentalAgreement
-            // 
-            this.lblRentalAgreement.AutoSize = true;
-            this.lblRentalAgreement.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblRentalAgreement.Location = new System.Drawing.Point(25, 49);
-            this.lblRentalAgreement.Name = "lblRentalAgreement";
-            this.lblRentalAgreement.Size = new System.Drawing.Size(98, 13);
-            this.lblRentalAgreement.TabIndex = 60;
-            this.lblRentalAgreement.Text = "Rental Agreement:";
-            // 
-            // txtRentalAgreement
-            // 
-            this.txtRentalAgreement.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtRentalAgreement.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtRentalAgreement.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtRentalAgreement.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtRentalAgreement.Location = new System.Drawing.Point(124, 46);
-            this.txtRentalAgreement.Name = "txtRentalAgreement";
-            this.txtRentalAgreement.ReadOnly = true;
-            this.txtRentalAgreement.Size = new System.Drawing.Size(141, 21);
-            this.txtRentalAgreement.TabIndex = 59;
-            // 
             // RentalReceiptFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -710,7 +710,7 @@
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.stpRentalReceipt);
-            this.MinimumSize = new System.Drawing.Size(850, 766);
+            this.MinimumSize = new System.Drawing.Size(850, 740);
             this.Name = "RentalReceiptFrm";
             this.Text = "Rental Receipt";
             this.stpRentalReceipt.ResumeLayout(false);

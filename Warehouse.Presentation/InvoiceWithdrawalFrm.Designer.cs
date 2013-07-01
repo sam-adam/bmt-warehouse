@@ -28,14 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvInvoiceWithdrawalDetail = new System.Windows.Forms.DataGridView();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductCategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductSubcategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductSubcategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
+            this.Subtotal = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
             this.dtpAgreementCreatedDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpAgreementDate = new System.Windows.Forms.DateTimePicker();
@@ -80,16 +90,6 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.pnlDetail = new System.Windows.Forms.Panel();
             this.pnlDetailTotal = new System.Windows.Forms.Panel();
-            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductCategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductSubcategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductSubcategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
-            this.Subtotal = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceWithdrawalDetail)).BeginInit();
             this.stpInvoiceWithdrawal.SuspendLayout();
             this.pnlTop.SuspendLayout();
@@ -129,6 +129,110 @@
             this.dgvInvoiceWithdrawalDetail.RowHeadersVisible = false;
             this.dgvInvoiceWithdrawalDetail.Size = new System.Drawing.Size(840, 312);
             this.dgvInvoiceWithdrawalDetail.TabIndex = 151;
+            // 
+            // ProductId
+            // 
+            this.ProductId.HeaderText = "Product Id";
+            this.ProductId.Name = "ProductId";
+            this.ProductId.ReadOnly = true;
+            this.ProductId.Visible = false;
+            this.ProductId.Width = 79;
+            // 
+            // ProductCategoryId
+            // 
+            this.ProductCategoryId.HeaderText = "Category Id";
+            this.ProductCategoryId.Name = "ProductCategoryId";
+            this.ProductCategoryId.ReadOnly = true;
+            this.ProductCategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProductCategoryId.Visible = false;
+            this.ProductCategoryId.Width = 84;
+            // 
+            // ProductCategory
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductCategory.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ProductCategory.HeaderText = "Category";
+            this.ProductCategory.Name = "ProductCategory";
+            this.ProductCategory.ReadOnly = true;
+            this.ProductCategory.Width = 74;
+            // 
+            // ProductSubcategoryId
+            // 
+            this.ProductSubcategoryId.HeaderText = "Subcategory Id";
+            this.ProductSubcategoryId.Name = "ProductSubcategoryId";
+            this.ProductSubcategoryId.ReadOnly = true;
+            this.ProductSubcategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProductSubcategoryId.Visible = false;
+            this.ProductSubcategoryId.Width = 102;
+            // 
+            // ProductSubcategory
+            // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ProductSubcategory.HeaderText = "Subcategory";
+            this.ProductSubcategory.Name = "ProductSubcategory";
+            this.ProductSubcategory.ReadOnly = true;
+            this.ProductSubcategory.Width = 92;
+            // 
+            // Brand
+            // 
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle3.Format = "C2";
+            this.Brand.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Brand.HeaderText = "Brand";
+            this.Brand.Name = "Brand";
+            this.Brand.ReadOnly = true;
+            this.Brand.Width = 60;
+            // 
+            // Description
+            // 
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Description.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Width = 85;
+            // 
+            // Quantity
+            // 
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Quantity.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 71;
+            // 
+            // Price
+            // 
+            // 
+            // 
+            // 
+            this.Price.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.Price.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Price.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Price.HeaderText = "Price";
+            this.Price.Increment = 1D;
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            this.Price.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Price.Width = 56;
+            // 
+            // Subtotal
+            // 
+            // 
+            // 
+            // 
+            this.Subtotal.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.Subtotal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Subtotal.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Subtotal.HeaderText = "Subtotal";
+            this.Subtotal.Increment = 1D;
+            this.Subtotal.Name = "Subtotal";
+            this.Subtotal.ReadOnly = true;
+            this.Subtotal.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Subtotal.Width = 71;
             // 
             // dtpAgreementCreatedDate
             // 
@@ -482,9 +586,9 @@
             this.lblCustomerTitle.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.lblCustomerTitle.Location = new System.Drawing.Point(25, 47);
             this.lblCustomerTitle.Name = "lblCustomerTitle";
-            this.lblCustomerTitle.Size = new System.Drawing.Size(31, 13);
+            this.lblCustomerTitle.Size = new System.Drawing.Size(35, 13);
             this.lblCustomerTitle.TabIndex = 163;
-            this.lblCustomerTitle.Text = "Title:";
+            this.lblCustomerTitle.Text = "Type:";
             // 
             // txtCustomerId
             // 
@@ -667,110 +771,6 @@
             this.pnlDetailTotal.Name = "pnlDetailTotal";
             this.pnlDetailTotal.Size = new System.Drawing.Size(840, 34);
             this.pnlDetailTotal.TabIndex = 152;
-            // 
-            // ProductId
-            // 
-            this.ProductId.HeaderText = "Product Id";
-            this.ProductId.Name = "ProductId";
-            this.ProductId.ReadOnly = true;
-            this.ProductId.Visible = false;
-            this.ProductId.Width = 81;
-            // 
-            // ProductCategoryId
-            // 
-            this.ProductCategoryId.HeaderText = "Category Id";
-            this.ProductCategoryId.Name = "ProductCategoryId";
-            this.ProductCategoryId.ReadOnly = true;
-            this.ProductCategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProductCategoryId.Visible = false;
-            this.ProductCategoryId.Width = 86;
-            // 
-            // ProductCategory
-            // 
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductCategory.DefaultCellStyle = dataGridViewCellStyle8;
-            this.ProductCategory.HeaderText = "Category";
-            this.ProductCategory.Name = "ProductCategory";
-            this.ProductCategory.ReadOnly = true;
-            this.ProductCategory.Width = 74;
-            // 
-            // ProductSubcategoryId
-            // 
-            this.ProductSubcategoryId.HeaderText = "Subcategory Id";
-            this.ProductSubcategoryId.Name = "ProductSubcategoryId";
-            this.ProductSubcategoryId.ReadOnly = true;
-            this.ProductSubcategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProductSubcategoryId.Visible = false;
-            this.ProductSubcategoryId.Width = 104;
-            // 
-            // ProductSubcategory
-            // 
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle9;
-            this.ProductSubcategory.HeaderText = "Subcategory";
-            this.ProductSubcategory.Name = "ProductSubcategory";
-            this.ProductSubcategory.ReadOnly = true;
-            this.ProductSubcategory.Width = 92;
-            // 
-            // Brand
-            // 
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle10.Format = "C2";
-            this.Brand.DefaultCellStyle = dataGridViewCellStyle10;
-            this.Brand.HeaderText = "Brand";
-            this.Brand.Name = "Brand";
-            this.Brand.ReadOnly = true;
-            this.Brand.Width = 60;
-            // 
-            // Description
-            // 
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Description.DefaultCellStyle = dataGridViewCellStyle11;
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            this.Description.Width = 85;
-            // 
-            // Quantity
-            // 
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Quantity.DefaultCellStyle = dataGridViewCellStyle12;
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            this.Quantity.Width = 71;
-            // 
-            // Price
-            // 
-            // 
-            // 
-            // 
-            this.Price.BackgroundStyle.Class = "DataGridViewNumericBorder";
-            this.Price.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Price.DefaultCellStyle = dataGridViewCellStyle13;
-            this.Price.HeaderText = "Price";
-            this.Price.Increment = 1D;
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            this.Price.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Price.Width = 56;
-            // 
-            // Subtotal
-            // 
-            // 
-            // 
-            // 
-            this.Subtotal.BackgroundStyle.Class = "DataGridViewNumericBorder";
-            this.Subtotal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Subtotal.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Subtotal.HeaderText = "Subtotal";
-            this.Subtotal.Increment = 1D;
-            this.Subtotal.Name = "Subtotal";
-            this.Subtotal.ReadOnly = true;
-            this.Subtotal.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Subtotal.Width = 71;
             // 
             // InvoiceWithdrawalFrm
             // 

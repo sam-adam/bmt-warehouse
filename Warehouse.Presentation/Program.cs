@@ -1,4 +1,6 @@
-﻿namespace Warehouse.Presentation
+﻿using Warehouse.Presentation.Common;
+
+namespace Warehouse.Presentation
 {
     using Autofac;
     using System;
@@ -7,7 +9,7 @@
 
     static class Program
     {
-        [MTAThread]
+        [STAThread]
         static void Main()
         {
             var bootstrap = new Bootstrap();
@@ -16,9 +18,11 @@
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
+
             using (var container = bootstrap.Configure())
             {
+                //var test = container.Resolve<Test>();
+                //test.ShowDialog();
                 var login = container.Resolve<LoginFrm>();
 
                 login.ShowDialog();

@@ -5,6 +5,7 @@
     using System.Windows.Forms;
     using Warehouse.Business.Contract;
     using Warehouse.Data.Model;
+    using Warehouse.Presentation.Delegates;
     using Warehouse.Presentation.Print;
     using Warehouse.Presentation.View;
 
@@ -32,6 +33,16 @@
         #endregion
 
         #region Events
+        private void RentalAgreementFrm_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
+
         private void txtCustomerId_TextChanged(object sender, System.EventArgs e)
         {
             ClearCustomerData(txtCustomerId);
@@ -171,6 +182,14 @@
         #endregion
         
         #region Functions
+        public void ViewRentalAgreement(RentalAgreementSelectEventArgs e)
+        {
+            if (e.RentalAgreement != null)
+            {
+                SetViewMode();
+            }            
+        }
+
         private void ClearCustomerData(object sender = null, Control.ControlCollection controlCollection = null)
         {
             _customer = null;
@@ -227,14 +246,16 @@
 
         private void LoadCustomerView()
         {
-            _customerView.Caller = this;
             _customerView.ShowDialog();
 
-            var customer = _customerView.Customer;
+            _customerView.CustomerSelected += CustomerView_CustomerSelected;
+        }
 
-            if (customer != null)
+        private void CustomerView_CustomerSelected(object sender, CustomerSelectedEventArgs e)
+        {
+            if (e.Customer != null)
             {
-                txtCustomerId.Text = customer.Id;
+                txtCustomerId.Text = e.Customer.Id;
             }
         }
 
@@ -297,6 +318,20 @@
             _printFrm.ReportFilename = reportFileName;
 
             _printFrm.ShowDialog();
+        }
+
+        private void SetViewMode()
+        {
+            btnViewCustomer.Enabled = false;
+            btnAdd.Enabled = false;
+            btnRemoveLine.Enabled = false;
+            txtCustomerId.ReadOnly = true;
+            txtReference.ReadOnly = true;
+            numCutOffDate.ReadOnly = true;
+            dgvProductCategoryPrice.ReadOnly = true;
+            tssHelp.Visible = false;
+            tssHelpCategorySelection.Visible = false;
+            tssHelpCustomerSelection.Visible = false;
         }
         #endregion
     }

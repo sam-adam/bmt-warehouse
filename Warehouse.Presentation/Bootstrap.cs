@@ -31,7 +31,7 @@
 
             builder.RegisterType<Bootstrap>().AsSelf();
             
-            builder.RegisterType<Common>().SingleInstance();
+            builder.RegisterType<Warehouse.Business.Common>().SingleInstance();
             builder.RegisterType<Bootstrap>().AsSelf().SingleInstance();
 
             builder.RegisterType<SessionFactory>();
@@ -89,6 +89,8 @@
             builder.RegisterType<RentalWithdrawalRpt>();
             builder.RegisterType<InvoiceWithdrawalRpt>();
             builder.RegisterType<InvoiceMonthlyRpt>();
+            builder.RegisterType<UnloadingReceiptRpt>();
+            builder.RegisterType<LoadingReceiptRpt>();
 
             return builder.Build();
         }

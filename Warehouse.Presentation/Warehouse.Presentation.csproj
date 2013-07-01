@@ -30,7 +30,7 @@
     <TargetCulture>en-US</TargetCulture>
     <ProductName>Warehouse</ProductName>
     <PublisherName>CodeBros</PublisherName>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -157,9 +157,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
+    <Compile Include="Bootstrap2.cs" />
+    <Compile Include="Common\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\BasePresenter.cs" />
+    <Compile Include="Contract\IForm.cs" />
+    <Compile Include="Contract\ILoginForm.cs" />
+    <Compile Include="Contract\IPresenter.cs" />
+    <Compile Include="Contract\IRentalAgreementForm.cs" />
     <Compile Include="Controls\ButtonStripItem.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Delegates\CustomerSelectedEventArgs.cs" />
+    <Compile Include="Delegates\RentalAgreementSelectEventArgs.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,12 +192,20 @@
     <Compile Include="InvoiceWithdrawalFrm.Designer.cs">
       <DependentUpon>InvoiceWithdrawalFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginFrm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginFrm.Designer.cs">
       <DependentUpon>LoginFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presenter\LoginPresenter.cs" />
+    <Compile Include="Presenter\RentalAgreementPresenter.cs" />
     <Compile Include="PrintFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +222,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>InvoiceWithdrawalRpt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Print\LoadingReceiptRpt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoadingReceiptRpt.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Print\RentalAgreementRpt.cs">
@@ -220,8 +248,20 @@
       <DependentUpon>RentalWithdrawalRpt.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Print\UnloadingReceiptRpt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnloadingReceiptRpt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RentalAgreementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RentalAgreementForm.Designer.cs">
+      <DependentUpon>RentalAgreementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RentalAgreementFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +286,7 @@
     <Compile Include="RentalWithdrawalFrm.Designer.cs">
       <DependentUpon>RentalWithdrawalFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SampleClass.cs" />
     <Compile Include="View\CustomerView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,8 +295,15 @@
     </Compile>
     <Compile Include="View\InvoiceMonthlyView.cs">
       <SubType>Form</SubType>
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InvoiceMonthlyView1.cs</LastGenOutput>
     </Compile>
     <Compile Include="View\InvoiceMonthlyView.Designer.cs">
+      <DependentUpon>InvoiceMonthlyView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\InvoiceMonthlyView1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>InvoiceMonthlyView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\InvoiceWithdrawalView.cs">
@@ -294,6 +342,9 @@
     <Compile Include="View\RentalWithdrawalView.Designer.cs">
       <DependentUpon>RentalWithdrawalView.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Common\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -303,31 +354,47 @@
     <EmbeddedResource Include="InvoiceWithdrawalFrm.resx">
       <DependentUpon>InvoiceWithdrawalFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginFrm.resx">
       <DependentUpon>LoginFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintFrm.resx">
       <DependentUpon>PrintFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Print\InvoiceMonthlyRpt.rpt">
+    <Content Include="Print\InvoiceMonthlyRpt.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>InvoiceMonthlyRpt.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Print\InvoiceWithdrawalRpt.rpt">
+    </Content>
+    <Content Include="Print\InvoiceWithdrawalRpt.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>InvoiceWithdrawalRpt.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Print\RentalAgreementRpt.rpt">
+    </Content>
+    <Content Include="Print\RentalAgreementRpt.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RentalAgreementRpt.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Print\RentalReceiptRpt.rpt">
+    </Content>
+    <Content Include="Print\RentalReceiptRpt.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RentalReceiptRpt.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Print\RentalWithdrawalRpt.rpt">
+    </Content>
+    <Content Include="Print\RentalWithdrawalRpt.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RentalWithdrawalRpt.cs</LastGenOutput>
+    </Content>
+    <EmbeddedResource Include="Print\LoadingReceiptRpt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>LoadingReceiptRpt.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Print\UnloadingReceiptRpt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>UnloadingReceiptRpt.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -340,6 +407,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RentalAgreementForm.resx">
+      <DependentUpon>RentalAgreementForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RentalAgreementFrm.resx">
       <DependentUpon>RentalAgreementFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -429,6 +499,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Warehouse.Application\Warehouse.Application.csproj">
+      <Project>{4CD4A28F-C07E-47C5-81CC-0119848D3EFC}</Project>
+      <Name>Warehouse.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Warehouse.Business\Warehouse.Business.csproj">
       <Project>{CD92CB10-ED72-4236-B3EF-CBEF67EF4891}</Project>
       <Name>Warehouse.Business</Name>
@@ -456,6 +530,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
