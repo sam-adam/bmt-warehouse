@@ -1,18 +1,19 @@
 ﻿namespace Warehouse.Presentation.View
 {
-    using Warehouse.Business.Contract;
-    using Warehouse.Data.Model;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Windows.Forms;
+    using System.Windows.Forms;    
+    using Warehouse.Business.Contract;
+    using Warehouse.Data.Model;
+    using Warehouse.Presentation.Delegates;
 
     public partial class CustomerView : Form
     {
+        public delegate void CustomerSelectedHandler(object sender, CustomerSelectedEventArgs e);
+        public event CustomerSelectedHandler CustomerSelected;
+
         private readonly ICustomerBl _customerBl;
-        public Form Caller { get; set; }
-        private Customer _customer;
-        public Customer Customer { get; private set; }
 
         public CustomerView(ICustomerBl customerBl)
         {
@@ -21,11 +22,13 @@
             InitializeComponent();
         }
 
+        public Customer Customer { get; set; }
+
         private void Customer_Load(object sender, System.EventArgs e)
         {
             cboCriteria.SelectedIndex = 0;
 
-            _customer = null;
+            Customer = null;
 
             txtKeyword.Clear();
             txtKeyword.Focus();
@@ -95,21 +98,21 @@
 
         private void SetCustomerPreview(string customerId)
         {
-            _customer = _customerBl.Get(cust => cust.Id == customerId).FirstOrDefault();
+            Customer = _customerBl.Get(cust => cust.Id == customerId).FirstOrDefault();
 
-            if (_customer != null)
+            if (Customer != null)
             {
-                lblCustomer.Text = string.Format("{0} : {1}", _customer.Id, _customer.Name);
-                lblTitleValue.Text = string.Format("{0}", _customer.Title);
-                lblEmailValue.Text = string.Format("{0}", _customer.Email);
-                lblPhoneValue.Text = string.Format("{0}", _customer.Phone);
-                lblCreditLimitValue.Text = string.Format("{0}", _customer.CreditLimit);
-                lblJoinDateValue.Text = DateTime.Parse(_customer.JoinDate).ToLongDateString();
-                lblAddress1Value.Text = string.Format("{0}", _customer.Address1);
-                lblAddress2Value.Text = string.Format("{0}", _customer.Address2);
-                lblAddress3Value.Text = string.Format("{0}", _customer.Address3);
-                lblContactPersonValue.Text = string.Format("{0}", _customer.ContactPerson);
-                lblActiveRentalValue.Text = _customer.HasRentalAgreement() ? string.Format("{0}", _customer.GetActiveRental().Id) : @"-";
+                lblCustomer.Text = string.Format("{0} : {1}", Customer.Id, Customer.Name);
+                lblTitleValue.Text = string.Format("{0}", Customer.Title);
+                lblEmailValue.Text = string.Format("{0}", Customer.Email);
+                lblPhoneValue.Text = string.Format("{0}", Customer.Phone);
+                lblCreditLimitValue.Text = string.Format("{0}", Customer.CreditLimit);
+                lblJoinDateValue.Text = DateTime.Parse(Customer.JoinDate).ToLongDateString();
+                lblAddress1Value.Text = string.Format("{0}", Customer.Address1);
+                lblAddress2Value.Text = string.Format("{0}", Customer.Address2);
+                lblAddress3Value.Text = string.Format("{0}", Customer.Address3);
+                lblContactPersonValue.Text = string.Format("{0}", Customer.ContactPerson);
+                lblActiveRentalValue.Text = Customer.HasRentalAgreement() ? string.Format("{0}", Customer.GetActiveRental().Id) : @"-";
             }
             else
             {
@@ -128,9 +131,7 @@
 
         private void dgvCustomers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Customer = _customer;
-
-            Close();
+            SetCustomer();
         }
 
         private void dgvCustomers_KeyPress(object sender, KeyPressEventArgs e)
@@ -148,9 +149,9 @@
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            Customer = _customer;
+            Customer = Customer;
 
-            if (keyData == Keys.Enter && Caller != null)
+            if (keyData == Keys.Enter)
             {
                 if (Customer == null)
                 {
@@ -158,11 +159,20 @@
                 }
                 else
                 {
-                    Close();
+                    SetCustomer();
                 }
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void SetCustomer()
+        {
+            var args = new CustomerSelectedEventArgs(Customer);
+
+            CustomerSelected(this, args);
+
+            Close();
         }
     }
 }

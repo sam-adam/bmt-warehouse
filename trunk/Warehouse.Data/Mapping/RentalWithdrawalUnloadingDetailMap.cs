@@ -7,9 +7,11 @@
     {
         public RentalWithdrawalUnloadingDetailMap()
         {
+            Table("tbl_detailrentalwithdrawalunloading");
+
             CompositeId()
-                .KeyReference(x => x.RentalWithdrawal, "id_rentalwithdrawal");
-            Map(x => x.Description);
+                .KeyReference(x => x.RentalWithdrawal, "id_rentalwithdrawal")
+                .KeyProperty(x => x.Description);
             Map(x => x.Price);
         }
     }

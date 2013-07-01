@@ -14,11 +14,12 @@
         private readonly RentalAgreementDetailView _rentalAgreementDetailView;
         private readonly PrintFrm _printFrm;
         private readonly RentalReceiptRpt _report;
+        private readonly LoadingReceiptRpt _loadingReceipt;
 
         private RentalAgreement _rentalAgreement;
 
         #region Constructors
-        public RentalReceiptFrm(CustomerView customerView, RentalAgreementDetailView rentalAgreementDetailView, PrintFrm printFrm, RentalReceiptRpt report, IRentalReceiptBl receiptBl)
+        public RentalReceiptFrm(CustomerView customerView, RentalAgreementDetailView rentalAgreementDetailView, PrintFrm printFrm, RentalReceiptRpt report, IRentalReceiptBl receiptBl, LoadingReceiptRpt loadingReceipt)
         {
             InitializeComponent();
 
@@ -27,6 +28,7 @@
             _printFrm = printFrm;
             _report = report;
             _receiptBl = receiptBl;
+            _loadingReceipt = loadingReceipt;
         }
         #endregion
 
@@ -165,14 +167,14 @@
                         RentalReceipt = newRentalReceipt,
                         RentalProduct = new RentalProduct()
                         {
-                            Brand = row.Cells["Brand"].Value.ToString(),
+                            Brand = row.Cells["Brand"].Value != null ? row.Cells["Brand"].Value.ToString() : null,
                             Customer = _rentalAgreement.Customer,
-                            Description = row.Cells["Description"].Value.ToString(),
-                            ProductCategory = _receiptBl.GetCategory(row.Cells["ProductCategoryId"].Value.ToString()),
-                            ProductSubcategory = _receiptBl.GetSubcategory(row.Cells["ProductSubcategoryId"].Value.ToString()),
+                            Description = row.Cells["Description"].Value != null ? row.Cells["Description"].Value.ToString() : null,
+                            ProductCategory = row.Cells["ProductCategoryId"].Value != null ? _receiptBl.GetCategory(row.Cells["ProductCategoryId"].Value.ToString()) : null,
+                            ProductSubcategory = row.Cells["ProductSubcategoryId"].Value != null ? _receiptBl.GetSubcategory(row.Cells["ProductSubcategoryId"].Value.ToString()) : null,
                         },
-                        Remark = row.Cells["Remark"].Value.ToString(),
-                        Quantity = int.Parse(row.Cells["Quantity"].Value.ToString()),
+                        Remark = row.Cells["Remark"].Value != null ? row.Cells["Remark"].Value.ToString() : string.Empty,
+                        Quantity = row.Cells["Quantity"].Value != null ? int.Parse(row.Cells["Quantity"].Value.ToString()) : 0,
                     });
                 }
 
@@ -191,6 +193,7 @@
                 MessageBox.Show(message);
 
                 Print(newRentalReceipt, _report.ResourceName);
+                Print(newRentalReceipt, _loadingReceipt.ResourceName);
 
                 ClearForm();
 

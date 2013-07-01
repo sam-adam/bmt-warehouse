@@ -203,14 +203,14 @@ namespace Warehouse.Presentation
                     dgvInvoiceMonthlyDetail.Rows.Add(product.Id, product.ProductCategory.Id,
                                                      product.ProductCategory.Category, product.ProductSubcategory.Id,
                                                      product.ProductSubcategory.Subcategory, product.Brand,
-                                                     product.Description, product.Stock, productPrice,
-                                                     subtotal);
+                                                     product.Description, product.Stock, productPrice.ToString("N2"),
+                                                     subtotal.ToString("N2"));
                 }
             }
 
             var total = CountTotal();
 
-            txtTotal.Text = total.ToString(CultureInfo.InvariantCulture);
+            txtTotal.Text = total.ToString("N2");
 
             txtDiscount.Focus();
         }

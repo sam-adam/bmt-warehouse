@@ -1,4 +1,6 @@
-﻿namespace Warehouse.Data
+﻿using System.Windows.Forms;
+
+namespace Warehouse.Data
 {
     using FluentNHibernate.Cfg;
     using FluentNHibernate.Cfg.Db;

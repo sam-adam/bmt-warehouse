@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTransactionDate = new System.Windows.Forms.Label();
             this.lblCustomerId = new System.Windows.Forms.Label();
             this.lblCustomerEmail = new System.Windows.Forms.Label();
@@ -45,6 +45,7 @@
             this.tssHelpCustomerSelection = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssHelpCategorySelection = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnSave = new Warehouse.Presentation.Controls.ButtonStripItem();
+            this.btnClose = new Warehouse.Presentation.Controls.ButtonStripItem();
             this.dtpTransactionDate = new System.Windows.Forms.DateTimePicker();
             this.btnViewCustomer = new System.Windows.Forms.Button();
             this.txtCustomerTitle = new System.Windows.Forms.TextBox();
@@ -139,9 +140,9 @@
             this.lblCustomerTitle.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.lblCustomerTitle.Location = new System.Drawing.Point(25, 47);
             this.lblCustomerTitle.Name = "lblCustomerTitle";
-            this.lblCustomerTitle.Size = new System.Drawing.Size(31, 13);
+            this.lblCustomerTitle.Size = new System.Drawing.Size(35, 13);
             this.lblCustomerTitle.TabIndex = 5;
-            this.lblCustomerTitle.Text = "Title:";
+            this.lblCustomerTitle.Text = "Type:";
             // 
             // txtCustomerName
             // 
@@ -188,7 +189,8 @@
             this.tssHelp,
             this.tssHelpCustomerSelection,
             this.tssHelpCategorySelection,
-            this.btnSave});
+            this.btnSave,
+            this.btnClose});
             this.stpRentalAgreement.Location = new System.Drawing.Point(0, 537);
             this.stpRentalAgreement.Name = "stpRentalAgreement";
             this.stpRentalAgreement.Size = new System.Drawing.Size(835, 31);
@@ -229,6 +231,14 @@
             this.btnSave.Size = new System.Drawing.Size(99, 29);
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(99, 29);
+            this.btnClose.Text = "Close";
+            this.btnClose.Visible = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // dtpTransactionDate
             // 
@@ -371,8 +381,8 @@
             // 
             // ProductCategoryId
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductCategoryId.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductCategoryId.DefaultCellStyle = dataGridViewCellStyle6;
             this.ProductCategoryId.HeaderText = "Category Id";
             this.ProductCategoryId.Name = "ProductCategoryId";
             this.ProductCategoryId.ReadOnly = true;
@@ -381,7 +391,6 @@
             // 
             // ProductCategory
             // 
-            this.ProductCategory.DefaultCellStyle = dataGridViewCellStyle1;
             this.ProductCategory.HeaderText = "Category";
             this.ProductCategory.Name = "ProductCategory";
             this.ProductCategory.ReadOnly = true;
@@ -389,7 +398,6 @@
             // 
             // ProductSubcategoryId
             // 
-            this.ProductSubcategoryId.DefaultCellStyle = dataGridViewCellStyle1;
             this.ProductSubcategoryId.HeaderText = "Subcategory Id";
             this.ProductSubcategoryId.Name = "ProductSubcategoryId";
             this.ProductSubcategoryId.ReadOnly = true;
@@ -398,8 +406,8 @@
             // 
             // ProductSubcategory
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle9;
             this.ProductSubcategory.HeaderText = "Subcategory";
             this.ProductSubcategory.Name = "ProductSubcategory";
             this.ProductSubcategory.ReadOnly = true;
@@ -412,9 +420,9 @@
             // 
             this.Price.BackgroundStyle.Class = "DataGridViewNumericBorder";
             this.Price.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = "0";
-            this.Price.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle10.Format = "C2";
+            dataGridViewCellStyle10.NullValue = "0";
+            this.Price.DefaultCellStyle = dataGridViewCellStyle10;
             this.Price.HeaderText = "Price";
             this.Price.Increment = 1D;
             this.Price.Name = "Price";
@@ -578,6 +586,7 @@
             this.MinimumSize = new System.Drawing.Size(845, 600);
             this.Name = "RentalAgreementFrm";
             this.Text = "Rental Agreement";
+            this.Load += new System.EventHandler(this.RentalAgreementFrm_Load);
             this.stpRentalAgreement.ResumeLayout(false);
             this.stpRentalAgreement.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductCategoryPrice)).EndInit();
@@ -638,5 +647,6 @@
         private System.Windows.Forms.Panel pnlTop;
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.GroupBox gbxOther;
+        private Controls.ButtonStripItem btnClose;
     }
 }

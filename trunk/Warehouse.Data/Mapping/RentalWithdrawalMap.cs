@@ -20,6 +20,10 @@
                 .KeyColumn("id_rentalwithdrawal")
                 .Inverse()
                 .Cascade.All();
+            HasMany(x => x.UnloadingDetails)
+                .KeyColumn("id_rentalwithdrawal")
+                .Inverse()
+                .Cascade.All();
         }
     }
 }

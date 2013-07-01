@@ -1,37 +1,42 @@
 ﻿namespace Warehouse.Presentation.View
 {
     using System;
-    using System.ComponentModel;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
+    using Warehouse.Application;
     using Warehouse.Business.Contract;
     using Warehouse.Data.Model;
-
+    using Warehouse.Presentation.Delegates;
+    
     public partial class RentalAgreementView : Form
     {
+        public delegate void RentalAgreementSelectHandler(object sender, RentalAgreementSelectEventArgs e);
+        public event RentalAgreementSelectHandler RentalAgreementSelected;
+        
         private readonly IRentalAgreementBl _rentalAgreementBl;
+        private readonly RentalAgreementFrm _rentalAgreementFrm;
         private RentalAgreement _rentalAgreement;
-        public Form Caller { get; set; }
-        public RentalAgreement RentalAgreement { get; private set; }
-
+        
         #region Constructors
-        public RentalAgreementView(IRentalAgreementBl rentalAgreementBl)
+        public RentalAgreementView(IRentalAgreementBl rentalAgreementBl, RentalAgreementFrm rentalAgreementFrm)
         {
             _rentalAgreementBl = rentalAgreementBl;
+            _rentalAgreementFrm = rentalAgreementFrm;
 
             InitializeComponent();
         }
-
         #endregion
+
+        public RentalAgreement RentalAgreement { get; private set; }
 
         #region Overrides
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             RentalAgreement = _rentalAgreement;
 
-            if (keyData == Keys.Enter && Caller != null)
+            if (keyData == Keys.Enter)
             {
                 if (RentalAgreement == null)
                 {
@@ -39,7 +44,7 @@
                 }
                 else
                 {
-                    Close();
+                    SetRentalAgreement();
                 }
             }
 
@@ -50,8 +55,6 @@
         #region Events
         private void RentalAgreementView_Load(object sender, EventArgs e)
         {
-            if (Caller == null) tssHelpEnter.Visible = false;
-
             txtKeyword.Clear();
             cboCriteria.SelectedIndex = 0;
 
@@ -86,6 +89,19 @@
         #endregion
 
         #region Functions
+        private void SetRentalAgreement()
+        {
+            var args = new RentalAgreementSelectEventArgs(RentalAgreement);
+
+            RentalAgreementSelected(this, args);
+
+            _rentalAgreementFrm.Show();
+
+            
+
+            Close();
+        }
+
         private void RefreshList()
         {
             dgvRentalAgreement.Rows.Clear();
@@ -149,9 +165,9 @@
 
                 if (rentalAgreements != null)
                 {
-                    var rentalAgreement = rentalAgreements.First();
+                    _rentalAgreement = rentalAgreements.First();
 
-                    foreach (var detail in rentalAgreement.Details)
+                    foreach (var detail in _rentalAgreement.Details)
                     {
                         dgvRentalAgreementDetail.Rows.Add(
                             detail.Category.Id,

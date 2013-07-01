@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Warehouse.Business.Contract;
-using Warehouse.Data.Model;
-
-namespace Warehouse.Presentation.View
+﻿namespace Warehouse.Presentation.View
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Windows.Forms;
+    using Warehouse.Business.Contract;
+    using Warehouse.Data.Model;
+
     public partial class InvoiceMonthlyView : Form
     {
         private readonly IInvoiceMonthlyBl _invoiceMonthlyBl;

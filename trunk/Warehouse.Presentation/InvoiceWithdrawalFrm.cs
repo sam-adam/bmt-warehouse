@@ -15,15 +15,17 @@
         private readonly PrintFrm _printFrm;
         private readonly InvoiceWithdrawalRpt _report;
         private readonly IInvoiceWithdrawalBl _invoiceWithdrawalBl;
+        private readonly InvoiceWithdrawalView _view;
 
         private InvoiceWithdrawal _invoice;
 
         #region Constructors
-        public InvoiceWithdrawalFrm(PrintFrm printFrm, InvoiceWithdrawalRpt report, IInvoiceWithdrawalBl invoiceWithdrawalBl)
+        public InvoiceWithdrawalFrm(PrintFrm printFrm, InvoiceWithdrawalRpt report, IInvoiceWithdrawalBl invoiceWithdrawalBl, InvoiceWithdrawalView view)
         {
             _printFrm = printFrm;
             _report = report;
             _invoiceWithdrawalBl = invoiceWithdrawalBl;
+            _view = view;
 
             InitializeComponent();
         }
@@ -67,9 +69,26 @@
                 MessageBox.Show(@"No invoice selected");
             }
         }
+
+        private void btnViewInvoiceWithdrawal_Click(object sender, EventArgs e)
+        {
+            LoadWithdrawalView();
+        }
         #endregion
 
         #region Functions
+        private void LoadWithdrawalView()
+        {
+            _view.ShowDialog();
+
+            _invoice = _view.InvoiceWithdrawal;
+
+            if (_invoice != null)
+            {
+                txtCustomerId.Text = _invoice.Id;
+            }
+        }
+
         private void ClearForm(object sender = null, Control.ControlCollection controlCollection = null)
         {
             _invoice = null;
@@ -140,9 +159,16 @@
         }
         #endregion
 
-        private void btnViewInvoiceWithdrawal_Click(object sender, EventArgs e)
+        #region Overrides
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
+            if (keyData == Keys.F1)
+            {
+                LoadWithdrawalView();
+            }
 
+            return base.ProcessCmdKey(ref msg, keyData);
         }
+        #endregion
     }
 }

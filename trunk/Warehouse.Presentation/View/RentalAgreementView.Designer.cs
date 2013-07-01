@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.cboCriteria = new System.Windows.Forms.ComboBox();
             this.txtKeyword = new System.Windows.Forms.TextBox();
@@ -45,15 +45,15 @@
             this.Sales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvRentalAgreementDetail = new System.Windows.Forms.DataGridView();
-            this.CategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubcategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Subcategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
             this.pnlSeparator = new System.Windows.Forms.Panel();
             this.stpRentalAgreementList = new System.Windows.Forms.StatusStrip();
             this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssHelpEnter = new System.Windows.Forms.ToolStripStatusLabel();
+            this.CategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubcategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Subcategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRentalAgreement)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRentalAgreementDetail)).BeginInit();
@@ -104,14 +104,14 @@
             this.dgvRentalAgreement.AllowUserToDeleteRows = false;
             this.dgvRentalAgreement.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvRentalAgreement.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRentalAgreement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRentalAgreement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRentalAgreement.ColumnHeadersHeight = 25;
             this.dgvRentalAgreement.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -123,14 +123,14 @@
             this.SalesId,
             this.Sales,
             this.Status});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRentalAgreement.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRentalAgreement.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRentalAgreement.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRentalAgreement.EnableHeadersVisualStyles = false;
             this.dgvRentalAgreement.GridColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -139,14 +139,14 @@
             this.dgvRentalAgreement.Name = "dgvRentalAgreement";
             this.dgvRentalAgreement.ReadOnly = true;
             this.dgvRentalAgreement.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRentalAgreement.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRentalAgreement.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvRentalAgreement.RowHeadersVisible = false;
             this.dgvRentalAgreement.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRentalAgreement.Size = new System.Drawing.Size(959, 269);
@@ -246,49 +246,6 @@
             this.dgvRentalAgreementDetail.Size = new System.Drawing.Size(959, 222);
             this.dgvRentalAgreementDetail.TabIndex = 10;
             // 
-            // CategoryId
-            // 
-            this.CategoryId.HeaderText = "CategoryId";
-            this.CategoryId.Name = "CategoryId";
-            this.CategoryId.ReadOnly = true;
-            this.CategoryId.Visible = false;
-            this.CategoryId.Width = 81;
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            this.Category.Width = 74;
-            // 
-            // SubcategoryId
-            // 
-            this.SubcategoryId.HeaderText = "SubcategoryId";
-            this.SubcategoryId.Name = "SubcategoryId";
-            this.SubcategoryId.ReadOnly = true;
-            this.SubcategoryId.Visible = false;
-            this.SubcategoryId.Width = 99;
-            // 
-            // Subcategory
-            // 
-            this.Subcategory.HeaderText = "Subcategory";
-            this.Subcategory.Name = "Subcategory";
-            this.Subcategory.ReadOnly = true;
-            this.Subcategory.Width = 92;
-            // 
-            // Price
-            // 
-            // 
-            // 
-            // 
-            this.Price.BackgroundStyle.Class = "DataGridViewNumericBorder";
-            this.Price.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Price.HeaderText = "Price";
-            this.Price.Increment = 1D;
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            this.Price.Width = 56;
-            // 
             // pnlSeparator
             // 
             this.pnlSeparator.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -324,6 +281,44 @@
             this.tssHelpEnter.Name = "tssHelpEnter";
             this.tssHelpEnter.Size = new System.Drawing.Size(212, 26);
             this.tssHelpEnter.Text = "Press <Enter> to select Rental Agreement";
+            // 
+            // CategoryId
+            // 
+            this.CategoryId.HeaderText = "CategoryId";
+            this.CategoryId.Name = "CategoryId";
+            this.CategoryId.ReadOnly = true;
+            this.CategoryId.Visible = false;
+            this.CategoryId.Width = 83;
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            this.Category.Width = 74;
+            // 
+            // SubcategoryId
+            // 
+            this.SubcategoryId.HeaderText = "SubcategoryId";
+            this.SubcategoryId.Name = "SubcategoryId";
+            this.SubcategoryId.ReadOnly = true;
+            this.SubcategoryId.Visible = false;
+            this.SubcategoryId.Width = 101;
+            // 
+            // Subcategory
+            // 
+            this.Subcategory.HeaderText = "Subcategory";
+            this.Subcategory.Name = "Subcategory";
+            this.Subcategory.ReadOnly = true;
+            this.Subcategory.Width = 92;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            this.Price.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Price.Width = 56;
             // 
             // RentalAgreementView
             // 
@@ -372,6 +367,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubcategoryId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Subcategory;
-        private DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
     }
 }
