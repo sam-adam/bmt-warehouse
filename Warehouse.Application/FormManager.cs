@@ -26,9 +26,11 @@
 
             foreach (Control control in controls)
             {
-                if (!ReferenceEquals(sender, control) || control == null) continue;
+                if (ReferenceEquals(sender, control) || control == null) continue;
 
                 var controlType = control.GetType();
+
+                if (control.Controls.Count > 0 && controlType != typeof(DataGridView)) CleanForm(sender, control.Controls);
 
                 if (controlType == typeof(TextBox))
                 {

@@ -167,6 +167,7 @@
     <Compile Include="Common\BasePresenter.cs" />
     <Compile Include="Contract\IForm.cs" />
     <Compile Include="Contract\ILoginForm.cs" />
+    <Compile Include="Contract\IMutationViewForm.cs" />
     <Compile Include="Contract\IPresenter.cs" />
     <Compile Include="Contract\IRentalAgreementForm.cs" />
     <Compile Include="Controls\ButtonStripItem.cs">
@@ -203,6 +204,13 @@
     </Compile>
     <Compile Include="LoginFrm.Designer.cs">
       <DependentUpon>LoginFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presenter\MutationViewPresenter.cs" />
+    <Compile Include="View\MutationViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MutationViewForm.Designer.cs">
+      <DependentUpon>MutationViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Presenter\LoginPresenter.cs" />
     <Compile Include="Presenter\RentalAgreementPresenter.cs" />
@@ -359,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginFrm.resx">
       <DependentUpon>LoginFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MutationViewForm.resx">
+      <DependentUpon>MutationViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintFrm.resx">
       <DependentUpon>PrintFrm.cs</DependentUpon>

@@ -44,6 +44,7 @@
             this.invoiceMonthlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createNewToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.vIewToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mutationViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +55,8 @@
             this.rentalWithdrawalToolStripMenuItem,
             this.rentalReceiptToolStripMenuItem,
             this.invoiceWithdrawalToolStripMenuItem,
-            this.invoiceMonthlyToolStripMenuItem});
+            this.invoiceMonthlyToolStripMenuItem,
+            this.mutationViewToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1014, 24);
@@ -73,14 +75,14 @@
             // createNewToolStripMenuItem
             // 
             this.createNewToolStripMenuItem.Name = "createNewToolStripMenuItem";
-            this.createNewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.createNewToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.createNewToolStripMenuItem.Text = "Create New";
             this.createNewToolStripMenuItem.Click += new System.EventHandler(this.createNewToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.viewToolStripMenuItem.Text = "View";
             this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
             // 
@@ -96,14 +98,14 @@
             // createNewToolStripMenuItem1
             // 
             this.createNewToolStripMenuItem1.Name = "createNewToolStripMenuItem1";
-            this.createNewToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.createNewToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.createNewToolStripMenuItem1.Text = "Create New";
             this.createNewToolStripMenuItem1.Click += new System.EventHandler(this.createNewToolStripMenuItem1_Click);
             // 
             // viewToolStripMenuItem1
             // 
             this.viewToolStripMenuItem1.Name = "viewToolStripMenuItem1";
-            this.viewToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.viewToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.viewToolStripMenuItem1.Text = "View";
             this.viewToolStripMenuItem1.Click += new System.EventHandler(this.viewToolStripMenuItem1_Click);
             // 
@@ -119,14 +121,14 @@
             // createNewToolStripMenuItem2
             // 
             this.createNewToolStripMenuItem2.Name = "createNewToolStripMenuItem2";
-            this.createNewToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.createNewToolStripMenuItem2.Size = new System.Drawing.Size(132, 22);
             this.createNewToolStripMenuItem2.Text = "Create New";
             this.createNewToolStripMenuItem2.Click += new System.EventHandler(this.createNewToolStripMenuItem2_Click);
             // 
             // viewToolStripMenuItem2
             // 
             this.viewToolStripMenuItem2.Name = "viewToolStripMenuItem2";
-            this.viewToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.viewToolStripMenuItem2.Size = new System.Drawing.Size(132, 22);
             this.viewToolStripMenuItem2.Text = "View";
             this.viewToolStripMenuItem2.Click += new System.EventHandler(this.viewToolStripMenuItem2_Click);
             // 
@@ -142,14 +144,14 @@
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.printToolStripMenuItem.Text = "Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem3
             // 
             this.viewToolStripMenuItem3.Name = "viewToolStripMenuItem3";
-            this.viewToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.viewToolStripMenuItem3.Size = new System.Drawing.Size(98, 22);
             this.viewToolStripMenuItem3.Text = "View";
             this.viewToolStripMenuItem3.Click += new System.EventHandler(this.viewToolStripMenuItem3_Click);
             // 
@@ -165,16 +167,23 @@
             // createNewToolStripMenuItem3
             // 
             this.createNewToolStripMenuItem3.Name = "createNewToolStripMenuItem3";
-            this.createNewToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.createNewToolStripMenuItem3.Size = new System.Drawing.Size(132, 22);
             this.createNewToolStripMenuItem3.Text = "Create New";
             this.createNewToolStripMenuItem3.Click += new System.EventHandler(this.createNewToolStripMenuItem3_Click);
             // 
             // vIewToolStripMenuItem4
             // 
             this.vIewToolStripMenuItem4.Name = "vIewToolStripMenuItem4";
-            this.vIewToolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
+            this.vIewToolStripMenuItem4.Size = new System.Drawing.Size(132, 22);
             this.vIewToolStripMenuItem4.Text = "View";
             this.vIewToolStripMenuItem4.Click += new System.EventHandler(this.vIewToolStripMenuItem4_Click);
+            // 
+            // mutationViewToolStripMenuItem
+            // 
+            this.mutationViewToolStripMenuItem.Name = "mutationViewToolStripMenuItem";
+            this.mutationViewToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
+            this.mutationViewToolStripMenuItem.Text = "View Mutation";
+            this.mutationViewToolStripMenuItem.Click += new System.EventHandler(this.mutationViewToolStripMenuItem_Click);
             // 
             // Home
             // 
@@ -212,6 +221,7 @@
         private System.Windows.Forms.ToolStripMenuItem invoiceMonthlyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createNewToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem vIewToolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem mutationViewToolStripMenuItem;
 
 
     }

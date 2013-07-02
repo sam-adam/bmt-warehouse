@@ -5,16 +5,19 @@
 
     public partial class BaseForm : Form
     {
+        public FormManager FormManager { get; set; }
+
         public BaseForm()
         {
             InitializeComponent();
         }
 
-        public FormManager FormManager { get; set; }
 
-        public void CleanForm()
+        public void CleanForm(object sender = null)
         {
-            FormManager.ResetForm(this);
+            if (FormManager == null) FormManager = new FormManager();
+
+            FormManager.ResetForm(this, sender);
         }
 
         public enum ViewMode { Create, Edit, View }

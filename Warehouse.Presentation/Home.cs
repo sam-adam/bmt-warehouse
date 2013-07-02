@@ -1,4 +1,6 @@
-﻿namespace Warehouse.Presentation
+﻿using Warehouse.Presentation.Common;
+
+namespace Warehouse.Presentation
 {
     using System;
     using System.Windows.Forms;
@@ -115,6 +117,16 @@
         private void vIewToolStripMenuItem4_Click(object sender, EventArgs e)
         {
             _frm = _container.Resolve<InvoiceMonthlyView>();
+
+            _frm.MdiParent = this;
+            _frm.Show();
+            _frm.BringToFront();
+            _frm.WindowState = FormWindowState.Maximized;
+        }
+
+        private void mutationViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _frm = _container.Resolve<MutationViewForm>();
 
             _frm.MdiParent = this;
             _frm.Show();

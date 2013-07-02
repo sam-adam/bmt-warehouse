@@ -3,12 +3,16 @@
     using Autofac;
     using CrystalDecisions.CrystalReports.Engine;
     using System.ServiceProcess;
+    using Warehouse.Application;
+    using Warehouse.Application.Validator;
     using Warehouse.Business;
     using Warehouse.Business.Contract;
     using Warehouse.Business.Facade;
     using Warehouse.Data;
     using Warehouse.Data.Contract;
     using Warehouse.Data.Repository;
+    using Warehouse.Presentation.Common;
+    using Warehouse.Presentation.Presenter;
     using Warehouse.Presentation.Print;
     using Warehouse.Presentation.View;
 
@@ -81,6 +85,9 @@
             builder.RegisterType<InvoiceWithdrawalView>();
             builder.RegisterType<InvoiceMonthlyView>();
             builder.RegisterType<RentalAgreementDetailView>();
+            builder.RegisterType<MutationViewForm>();
+
+            builder.RegisterType<MutationViewPresenter>();
 
             builder.RegisterType<ReportDocument>();
 
@@ -91,6 +98,18 @@
             builder.RegisterType<InvoiceMonthlyRpt>();
             builder.RegisterType<UnloadingReceiptRpt>();
             builder.RegisterType<LoadingReceiptRpt>();
+
+            builder.RegisterType<EntityValidator>();
+            builder.RegisterType<PropertyValidator>();
+            builder.RegisterType<EntityManager>();
+
+            builder.RegisterType<FormManager>();
+            builder.RegisterType<BaseForm>()
+                .PropertiesAutowired();
+
+            builder.RegisterType<BasePresenter>()
+                .AsSelf()
+                .PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies);
 
             return builder.Build();
         }
