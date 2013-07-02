@@ -57,6 +57,7 @@
 
         private void btnLogin_Click(object sender, System.EventArgs e)
         {
+            CleanForm();
             _presenter.DoLogin();
         }
     }
