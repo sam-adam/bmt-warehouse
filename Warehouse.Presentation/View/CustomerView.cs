@@ -170,7 +170,10 @@
         {
             var args = new CustomerSelectedEventArgs(Customer);
 
-            CustomerSelected(this, args);
+            if (CustomerSelected != null)
+            {
+                CustomerSelected(this, args);
+            }
 
             Close();
         }

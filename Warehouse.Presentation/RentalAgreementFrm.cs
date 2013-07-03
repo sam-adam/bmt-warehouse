@@ -246,9 +246,9 @@
 
         private void LoadCustomerView()
         {
-            _customerView.ShowDialog();
-
             _customerView.CustomerSelected += CustomerView_CustomerSelected;
+
+            _customerView.ShowDialog();
         }
 
         private void CustomerView_CustomerSelected(object sender, CustomerSelectedEventArgs e)

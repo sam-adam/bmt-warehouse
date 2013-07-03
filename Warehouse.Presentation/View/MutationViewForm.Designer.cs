@@ -70,13 +70,14 @@
             this.dtpTransactionDate = new System.Windows.Forms.DateTimePicker();
             this.stpMutationView = new System.Windows.Forms.StatusStrip();
             this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnClose = new Warehouse.Presentation.Controls.ButtonStripItem();
             this.pnlDetail = new System.Windows.Forms.Panel();
             this.dgvMutation = new System.Windows.Forms.DataGridView();
             this.MutationType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Reference = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MutationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tssHelpCustomerSelection = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnClose = new Warehouse.Presentation.Controls.ButtonStripItem();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRentalProduct)).BeginInit();
             this.gbxCustomer.SuspendLayout();
@@ -265,6 +266,7 @@
             this.btnViewCustomer.TabIndex = 2;
             this.btnViewCustomer.Text = "...";
             this.btnViewCustomer.UseVisualStyleBackColor = true;
+            this.btnViewCustomer.Click += new System.EventHandler(this.btnViewCustomer_Click);
             // 
             // txtCustomerName
             // 
@@ -420,6 +422,7 @@
             this.stpMutationView.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.stpMutationView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssHelp,
+            this.tssHelpCustomerSelection,
             this.btnClose});
             this.stpMutationView.Location = new System.Drawing.Point(0, 537);
             this.stpMutationView.Name = "stpMutationView";
@@ -429,19 +432,13 @@
             // tssHelp
             // 
             this.tssHelp.BackColor = System.Drawing.Color.Transparent;
+            this.tssHelp.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
             this.tssHelp.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.tssHelp.Name = "tssHelp";
             this.tssHelp.Padding = new System.Windows.Forms.Padding(10);
-            this.tssHelp.Size = new System.Drawing.Size(721, 26);
-            this.tssHelp.Spring = true;
+            this.tssHelp.Size = new System.Drawing.Size(172, 26);
             this.tssHelp.Text = "View Rental Product Mutation";
             this.tssHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(99, 29);
-            this.btnClose.Text = "Close";
             // 
             // pnlDetail
             // 
@@ -512,6 +509,24 @@
             this.Quantity.ReadOnly = true;
             this.Quantity.Width = 69;
             // 
+            // tssHelpCustomerSelection
+            // 
+            this.tssHelpCustomerSelection.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.tssHelpCustomerSelection.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.tssHelpCustomerSelection.Name = "tssHelpCustomerSelection";
+            this.tssHelpCustomerSelection.Padding = new System.Windows.Forms.Padding(10);
+            this.tssHelpCustomerSelection.Size = new System.Drawing.Size(518, 26);
+            this.tssHelpCustomerSelection.Spring = true;
+            this.tssHelpCustomerSelection.Text = "F1 :  Open Customer Selection";
+            this.tssHelpCustomerSelection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(99, 29);
+            this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // MutationViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -559,7 +574,6 @@
         private System.Windows.Forms.DateTimePicker dtpTransactionDate;
         private System.Windows.Forms.StatusStrip stpMutationView;
         private System.Windows.Forms.ToolStripStatusLabel tssHelp;
-        private Controls.ButtonStripItem btnClose;
         private System.Windows.Forms.Panel pnlDetail;
         private System.Windows.Forms.DataGridView dgvMutation;
         private System.Windows.Forms.DataGridView dgvRentalProduct;
@@ -576,6 +590,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Reference;
         private System.Windows.Forms.DataGridViewTextBoxColumn MutationDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.ToolStripStatusLabel tssHelpCustomerSelection;
+        private Controls.ButtonStripItem btnClose;
 
     }
 }
