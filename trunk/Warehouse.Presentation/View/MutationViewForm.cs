@@ -4,27 +4,45 @@
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Drawing;
+    using System.Windows.Forms;
     using Warehouse.Business.Model;
     using Warehouse.Data.Model;
     using Warehouse.Presentation.Common;
     using Warehouse.Presentation.Contract;
+    using Warehouse.Presentation.Delegates;
     using Warehouse.Presentation.Presenter;
 
     public partial class MutationViewForm : BaseForm, IMutationViewForm
     {
         private readonly MutationViewPresenter _presenter;
+        private readonly CustomerView _customerView;
 
         private Customer _customer;
         private IList<RentalProduct> _rentalProducts;
         private IList<MutationIn> _mutationsIn;
         private IList<MutationOut> _mutationsOut;
 
-        public MutationViewForm(MutationViewPresenter presenter)
+        public MutationViewForm(MutationViewPresenter presenter, CustomerView customerView)
         {
             _presenter = presenter;
+            _customerView = customerView;
 
             InitializeComponent();
         }
+
+        #region Overrides
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F1:
+                    LoadCustomerView();
+                    break;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+        #endregion
 
         #region IMutationView Members
         public Customer Customer
@@ -38,6 +56,7 @@
 
                 if (_customer != null)
                 {
+                    txtCustomerId.Text = Customer.Id;
                     txtCustomerTitle.Text = Customer.Title;
                     txtCustomerName.Text = Customer.Name;
                     txtCustomerPhone.Text = Customer.Phone;
@@ -153,6 +172,28 @@
                 _presenter.GetRentalProductMutationIn(dgvRentalProduct.Rows[e.RowIndex].Cells["ProductId"].Value.ToString());
                 _presenter.GetRentalProductMutationOut(dgvRentalProduct.Rows[e.RowIndex].Cells["ProductId"].Value.ToString());
             }
+        }
+
+        private void btnViewCustomer_Click(object sender, EventArgs e)
+        {
+            LoadCustomerView();
+        }
+
+        private void LoadCustomerView()
+        {
+            _customerView.CustomerSelected += CustomerView_CustomerSelected;
+
+            _customerView.ShowDialog();
+        }
+
+        private void CustomerView_CustomerSelected(object sender, CustomerSelectedEventArgs e)
+        {
+            Customer = e.Customer;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Dispose(true);
         }
     }
 }
