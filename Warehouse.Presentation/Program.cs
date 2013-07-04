@@ -23,7 +23,7 @@ namespace Warehouse.Presentation
             {
                 //var test = container.Resolve<Test>();
                 //test.ShowDialog();
-                var login = container.Resolve<LoginFrm>();
+                var login = container.Resolve<LoginForm>();
 
                 login.ShowDialog();
 

@@ -1,39 +1,25 @@
-﻿using System.Windows.Forms;
-
-namespace Warehouse.Data
+﻿namespace Warehouse.Data
 {
     using FluentNHibernate.Cfg;
     using FluentNHibernate.Cfg.Db;
-    using MySql.Data.MySqlClient;
     using NHibernate;
-    using System;
     using Warehouse.Data.Contract;
     using Warehouse.Data.Mapping;
 
     public class SessionFactory
     {
         private static ISessionFactory _sessionFactory;
-        private static ISystemSetting _systemSetting;
         private static ISession _session;
+        private readonly ISystemSetting _systemSetting;
 
-        public SessionFactory()
+        public SessionFactory(ISystemSetting systemSetting)
         {
-            _systemSetting = new SystemSetting();
+            _systemSetting = systemSetting;
 
-            try
-            {
-                InitializeSessionFactory();
-            }
-            catch (Exception ex)
-            {
-                if (ex.InnerException is MySqlException)
-                {
-                    throw new Exception("Database is not ready, contact system admin");
-                }
-            }
+            InitializeSessionFactory();
         }
 
-        private static void InitializeSessionFactory()
+        private void InitializeSessionFactory()
         {
             _sessionFactory = Fluently.Configure()
                 .Database(MySQLConfiguration
@@ -46,6 +32,11 @@ namespace Warehouse.Data
 
         public ISession OpenSession()
         {
+            if (_sessionFactory == null)
+            {
+                InitializeSessionFactory();    
+            }
+
             if (_session == null || !_session.IsOpen)
             {
                 _session = _sessionFactory.OpenSession();

@@ -177,6 +177,10 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Warehouse.Application\Warehouse.Application.csproj">
+      <Project>{4CD4A28F-C07E-47C5-81CC-0119848D3EFC}</Project>
+      <Name>Warehouse.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Warehouse.Helper\Warehouse.Helper.csproj">
       <Project>{B19CACE6-7384-442B-BB2D-D3043BA354C8}</Project>
       <Name>Warehouse.Helper</Name>

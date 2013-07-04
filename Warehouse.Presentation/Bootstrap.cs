@@ -4,6 +4,7 @@
     using CrystalDecisions.CrystalReports.Engine;
     using System.ServiceProcess;
     using Warehouse.Application;
+    using Warehouse.Application.Contract;
     using Warehouse.Application.Validator;
     using Warehouse.Business;
     using Warehouse.Business.Contract;
@@ -39,6 +40,8 @@
             builder.RegisterType<Bootstrap>().AsSelf().SingleInstance();
 
             builder.RegisterType<SessionFactory>();
+            builder.RegisterType<ApplicationManager>();
+            builder.RegisterType<ApplicationConnection>().As<IApplicationConnection>();
             builder.Register(c => c.Resolve<SessionFactory>().OpenSession()).SingleInstance();
             builder.RegisterType<SystemSetting>().As<ISystemSetting>();
 
@@ -71,6 +74,7 @@
             builder.RegisterType<Home>();
             builder.RegisterType<PrintFrm>();
             builder.RegisterType<LoginFrm>();
+            builder.RegisterType<LoginForm>();
             builder.RegisterType<RentalAgreementFrm>();
             builder.RegisterType<RentalReceiptFrm>();
             builder.RegisterType<RentalWithdrawalFrm>();
@@ -87,7 +91,9 @@
             builder.RegisterType<RentalAgreementDetailView>();
             builder.RegisterType<MutationViewForm>();
 
+            builder.RegisterType<LoginPresenter>();
             builder.RegisterType<MutationViewPresenter>();
+            builder.RegisterType<ConnectionSettingPresenter>();
 
             builder.RegisterType<ReportDocument>();
 
