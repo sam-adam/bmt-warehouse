@@ -22,16 +22,5 @@ namespace Warehouse.Data.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Server=localhost;Database=bmt-backup;User Id=root;Password=root;Allow Zero Dateti" +
-            "me=true;Convert Zero Datetime=true")]
-        public string DevelopmentConnectionString {
-            get {
-                return ((string)(this["DevelopmentConnectionString"]));
-            }
-        }
     }
 }

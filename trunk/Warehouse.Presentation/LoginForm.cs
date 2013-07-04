@@ -5,17 +5,21 @@
     using Warehouse.Presentation.Common;
     using Warehouse.Presentation.Contract;
 
-    public partial class LoginForm : BaseForm, ILoginForm
+    public partial class LoginForm : BaseForm, ILoginForm, IConnectionSettingForm
     {
         private readonly LoginPresenter _presenter;
+        private readonly ConnectionSettingPresenter _connectionSettingPresenter;
         private bool _loggedIn;
 
-        public LoginForm(LoginPresenter presenter)
+        public LoginForm(LoginPresenter presenter, ConnectionSettingPresenter connectionSettingPresenter)
         {
             _presenter = presenter;
-            _presenter.SetForm(this);
-
+            _connectionSettingPresenter = connectionSettingPresenter;
+            
             InitializeComponent();
+
+            _presenter.SetForm(this);
+            _connectionSettingPresenter.SetForm(this);
         }
 
         #region ILoginForm Members
@@ -55,9 +59,44 @@
 
         #endregion
 
+        #region IConnectionSettingForm Members
+        public string Server
+        {
+            get { return txtServer.Text; }
+            set { txtServer.Text = value; }
+        }
+
+        public string Database
+        {
+            get { return txtDatabase.Text; }
+            set { txtDatabase.Text = value; }
+        }
+
+        public string UserId
+        {
+            get { return txtUserId.Text; }
+            set { txtUserId.Text = value; }
+        }
+
+        public string Password
+        {
+            get { return txtConnectionPassword.Text; }
+            set { txtConnectionPassword.Text = value; }
+        }
+        #endregion
+
+        private void btnTest_Click(object sender, System.EventArgs e)
+        {
+            _connectionSettingPresenter.TestConnection();
+        }
+
+        private void btnSave_Click(object sender, System.EventArgs e)
+        {
+            _connectionSettingPresenter.SaveConnection();
+        }
+
         private void btnLogin_Click(object sender, System.EventArgs e)
         {
-            CleanForm();
             _presenter.DoLogin();
         }
     }
