@@ -10,6 +10,8 @@
         Customer Customer { get; set; }
         string CustomerIdInput { get; set; }
         string SelectedProductId { get; }
+        DateTime MutationFrom { get; }
+        DateTime MutationTo { get; }
 
         IList<RentalProduct> RentalProducts { set; }
         IList<MutationIn> MutationsIn { set; }

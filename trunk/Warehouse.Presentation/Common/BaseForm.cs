@@ -3,6 +3,8 @@
     using System.Windows.Forms;
     using Warehouse.Application;
 
+    public enum ViewMode { Create, Edit, View }
+
     public partial class BaseForm : Form
     {
         public FormManager FormManager { get; set; }
@@ -19,7 +21,5 @@
 
             FormManager.ResetForm(this, sender);
         }
-
-        public enum ViewMode { Create, Edit, View }
     }
 }
