@@ -26,8 +26,12 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private new void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -37,19 +41,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.dgvRentalProduct = new System.Windows.Forms.DataGridView();
-            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbxCustomer = new System.Windows.Forms.GroupBox();
             this.lblCustomerId = new System.Windows.Forms.Label();
             this.lblCustomerPhone = new System.Windows.Forms.Label();
@@ -66,18 +59,29 @@
             this.txtCustomerAddress = new System.Windows.Forms.TextBox();
             this.pnlSeparatorTop = new System.Windows.Forms.Panel();
             this.pnlTop = new System.Windows.Forms.Panel();
-            this.lblTransactionDate = new System.Windows.Forms.Label();
-            this.dtpTransactionDate = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtpMutationTo = new System.Windows.Forms.DateTimePicker();
+            this.lblMutationDuration = new System.Windows.Forms.Label();
+            this.dtpMutationFrom = new System.Windows.Forms.DateTimePicker();
             this.stpMutationView = new System.Windows.Forms.StatusStrip();
             this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssHelpCustomerSelection = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnClose = new Warehouse.Presentation.Controls.ButtonStripItem();
             this.pnlDetail = new System.Windows.Forms.Panel();
             this.dgvMutation = new System.Windows.Forms.DataGridView();
             this.MutationType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Reference = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MutationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tssHelpCustomerSelection = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnClose = new Warehouse.Presentation.Controls.ButtonStripItem();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StockAsOf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRentalProduct)).BeginInit();
             this.gbxCustomer.SuspendLayout();
@@ -113,7 +117,8 @@
             this.dataGridViewTextBoxColumn4,
             this.Brand,
             this.Description,
-            this.Stock});
+            this.Stock,
+            this.StockAsOf});
             this.dgvRentalProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRentalProduct.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvRentalProduct.Location = new System.Drawing.Point(0, 129);
@@ -124,84 +129,6 @@
             this.dgvRentalProduct.Size = new System.Drawing.Size(835, 167);
             this.dgvRentalProduct.TabIndex = 61;
             this.dgvRentalProduct.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRentalProduct_RowEnter);
-            // 
-            // ProductId
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductId.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ProductId.HeaderText = "ProductId";
-            this.ProductId.Name = "ProductId";
-            this.ProductId.ReadOnly = true;
-            this.ProductId.Visible = false;
-            this.ProductId.Width = 76;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Category Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            this.dataGridViewTextBoxColumn1.Width = 84;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Category";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 72;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Subcategory Id";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn3.Visible = false;
-            this.dataGridViewTextBoxColumn3.Width = 102;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Subcategory";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 90;
-            // 
-            // Brand
-            // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Brand.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Brand.HeaderText = "Brand";
-            this.Brand.Name = "Brand";
-            this.Brand.ReadOnly = true;
-            this.Brand.Width = 58;
-            // 
-            // Description
-            // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Description.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            this.Description.Width = 83;
-            // 
-            // Stock
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Stock.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Stock.HeaderText = "Stock";
-            this.Stock.Name = "Stock";
-            this.Stock.ReadOnly = true;
-            this.Stock.Width = 58;
             // 
             // gbxCustomer
             // 
@@ -387,33 +314,55 @@
             // 
             // pnlTop
             // 
-            this.pnlTop.Controls.Add(this.lblTransactionDate);
-            this.pnlTop.Controls.Add(this.dtpTransactionDate);
+            this.pnlTop.Controls.Add(this.label1);
+            this.pnlTop.Controls.Add(this.dtpMutationTo);
+            this.pnlTop.Controls.Add(this.lblMutationDuration);
+            this.pnlTop.Controls.Add(this.dtpMutationFrom);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.Size = new System.Drawing.Size(835, 39);
             this.pnlTop.TabIndex = 68;
             // 
-            // lblTransactionDate
+            // label1
             // 
-            this.lblTransactionDate.AutoSize = true;
-            this.lblTransactionDate.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblTransactionDate.Location = new System.Drawing.Point(13, 13);
-            this.lblTransactionDate.Name = "lblTransactionDate";
-            this.lblTransactionDate.Size = new System.Drawing.Size(93, 13);
-            this.lblTransactionDate.TabIndex = 0;
-            this.lblTransactionDate.Text = "Transaction Date:";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.label1.Location = new System.Drawing.Point(291, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(11, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "-";
             // 
-            // dtpTransactionDate
+            // dtpMutationTo
             // 
-            this.dtpTransactionDate.Enabled = false;
-            this.dtpTransactionDate.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.dtpTransactionDate.Location = new System.Drawing.Point(112, 10);
-            this.dtpTransactionDate.Name = "dtpTransactionDate";
-            this.dtpTransactionDate.Size = new System.Drawing.Size(250, 21);
-            this.dtpTransactionDate.TabIndex = 4;
-            this.dtpTransactionDate.TabStop = false;
+            this.dtpMutationTo.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.dtpMutationTo.Location = new System.Drawing.Point(308, 10);
+            this.dtpMutationTo.Name = "dtpMutationTo";
+            this.dtpMutationTo.Size = new System.Drawing.Size(173, 21);
+            this.dtpMutationTo.TabIndex = 5;
+            this.dtpMutationTo.TabStop = false;
+            this.dtpMutationTo.ValueChanged += new System.EventHandler(this.dtpMutationTo_ValueChanged);
+            // 
+            // lblMutationDuration
+            // 
+            this.lblMutationDuration.AutoSize = true;
+            this.lblMutationDuration.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.lblMutationDuration.Location = new System.Drawing.Point(13, 13);
+            this.lblMutationDuration.Name = "lblMutationDuration";
+            this.lblMutationDuration.Size = new System.Drawing.Size(79, 13);
+            this.lblMutationDuration.TabIndex = 0;
+            this.lblMutationDuration.Text = "Mutation Date:";
+            // 
+            // dtpMutationFrom
+            // 
+            this.dtpMutationFrom.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.dtpMutationFrom.Location = new System.Drawing.Point(112, 10);
+            this.dtpMutationFrom.Name = "dtpMutationFrom";
+            this.dtpMutationFrom.Size = new System.Drawing.Size(173, 21);
+            this.dtpMutationFrom.TabIndex = 4;
+            this.dtpMutationFrom.TabStop = false;
+            this.dtpMutationFrom.ValueChanged += new System.EventHandler(this.dtpMutationFrom_ValueChanged);
             // 
             // stpMutationView
             // 
@@ -439,6 +388,24 @@
             this.tssHelp.Size = new System.Drawing.Size(172, 26);
             this.tssHelp.Text = "View Rental Product Mutation";
             this.tssHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tssHelpCustomerSelection
+            // 
+            this.tssHelpCustomerSelection.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.tssHelpCustomerSelection.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.tssHelpCustomerSelection.Name = "tssHelpCustomerSelection";
+            this.tssHelpCustomerSelection.Padding = new System.Windows.Forms.Padding(10);
+            this.tssHelpCustomerSelection.Size = new System.Drawing.Size(549, 26);
+            this.tssHelpCustomerSelection.Spring = true;
+            this.tssHelpCustomerSelection.Text = "F1 :  Open Customer Selection";
+            this.tssHelpCustomerSelection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(99, 29);
+            this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // pnlDetail
             // 
@@ -473,9 +440,9 @@
             // 
             // MutationType
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            this.MutationType.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            this.MutationType.DefaultCellStyle = dataGridViewCellStyle10;
             this.MutationType.HeaderText = "Mutation Type";
             this.MutationType.Name = "MutationType";
             this.MutationType.ReadOnly = true;
@@ -483,8 +450,8 @@
             // 
             // Reference
             // 
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Reference.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Reference.DefaultCellStyle = dataGridViewCellStyle11;
             this.Reference.HeaderText = "Reference";
             this.Reference.Name = "Reference";
             this.Reference.ReadOnly = true;
@@ -492,8 +459,8 @@
             // 
             // MutationDate
             // 
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.MutationDate.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.MutationDate.DefaultCellStyle = dataGridViewCellStyle12;
             this.MutationDate.HeaderText = "Mutation Date";
             this.MutationDate.Name = "MutationDate";
             this.MutationDate.ReadOnly = true;
@@ -501,31 +468,101 @@
             // 
             // Quantity
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Quantity.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Quantity.DefaultCellStyle = dataGridViewCellStyle13;
             this.Quantity.HeaderText = "Quantity";
             this.Quantity.Name = "Quantity";
             this.Quantity.ReadOnly = true;
             this.Quantity.Width = 69;
             // 
-            // tssHelpCustomerSelection
+            // ProductId
             // 
-            this.tssHelpCustomerSelection.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
-            this.tssHelpCustomerSelection.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
-            this.tssHelpCustomerSelection.Name = "tssHelpCustomerSelection";
-            this.tssHelpCustomerSelection.Padding = new System.Windows.Forms.Padding(10);
-            this.tssHelpCustomerSelection.Size = new System.Drawing.Size(518, 26);
-            this.tssHelpCustomerSelection.Spring = true;
-            this.tssHelpCustomerSelection.Text = "F1 :  Open Customer Selection";
-            this.tssHelpCustomerSelection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductId.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ProductId.HeaderText = "ProductId";
+            this.ProductId.Name = "ProductId";
+            this.ProductId.ReadOnly = true;
+            this.ProductId.Visible = false;
+            this.ProductId.Width = 76;
             // 
-            // btnClose
+            // dataGridViewTextBoxColumn1
             // 
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(99, 29);
-            this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Category Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn1.Width = 84;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Category";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 72;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Subcategory Id";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn3.Visible = false;
+            this.dataGridViewTextBoxColumn3.Width = 102;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Subcategory";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 90;
+            // 
+            // Brand
+            // 
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Brand.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Brand.HeaderText = "Brand";
+            this.Brand.Name = "Brand";
+            this.Brand.ReadOnly = true;
+            this.Brand.Width = 58;
+            // 
+            // Description
+            // 
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Description.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Width = 83;
+            // 
+            // Stock
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Stock.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Stock.HeaderText = "Stock";
+            this.Stock.Name = "Stock";
+            this.Stock.ReadOnly = true;
+            this.Stock.Width = 58;
+            // 
+            // StockAsOf
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.StockAsOf.DefaultCellStyle = dataGridViewCellStyle9;
+            this.StockAsOf.HeaderText = "Stock As Of - ";
+            this.StockAsOf.Name = "StockAsOf";
+            this.StockAsOf.ReadOnly = true;
+            this.StockAsOf.Width = 96;
             // 
             // MutationViewForm
             // 
@@ -570,14 +607,22 @@
         private System.Windows.Forms.Label lblCustomerEmail;
         private System.Windows.Forms.TextBox txtCustomerAddress;
         private System.Windows.Forms.Panel pnlTop;
-        private System.Windows.Forms.Label lblTransactionDate;
-        private System.Windows.Forms.DateTimePicker dtpTransactionDate;
+        private System.Windows.Forms.Label lblMutationDuration;
+        private System.Windows.Forms.DateTimePicker dtpMutationFrom;
         private System.Windows.Forms.StatusStrip stpMutationView;
         private System.Windows.Forms.ToolStripStatusLabel tssHelp;
         private System.Windows.Forms.Panel pnlDetail;
         private System.Windows.Forms.DataGridView dgvMutation;
         private System.Windows.Forms.DataGridView dgvRentalProduct;
         private System.Windows.Forms.Panel pnlSeparatorTop;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MutationType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reference;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MutationDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.ToolStripStatusLabel tssHelpCustomerSelection;
+        private Controls.ButtonStripItem btnClose;
+        private System.Windows.Forms.DateTimePicker dtpMutationTo;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -586,12 +631,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Brand;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MutationType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Reference;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MutationDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.ToolStripStatusLabel tssHelpCustomerSelection;
-        private Controls.ButtonStripItem btnClose;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StockAsOf;
 
     }
 }

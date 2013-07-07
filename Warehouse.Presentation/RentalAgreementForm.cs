@@ -9,7 +9,6 @@
     public partial class RentalAgreementForm : BaseForm, IRentalAgreementForm
     {
         private readonly RentalAgreementPresenter _presenter;
-        private RentalAgreement _rentalAgreement;
         private ViewMode _viewMode;
         private Customer _customer;
 
@@ -62,11 +61,8 @@
             }
         }
 
-        public RentalAgreement RentalAgreement
-        {
-            get { return _rentalAgreement; }
-            set { _rentalAgreement = value; }
-        }
+        public RentalAgreement RentalAgreement { get; set; }
+
         #endregion
 
         public ViewMode ViewMode

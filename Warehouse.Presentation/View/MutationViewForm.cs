@@ -84,6 +84,9 @@
             }
         }
 
+        public DateTime MutationFrom { get { return dtpMutationFrom.Value; } }
+        public DateTime MutationTo { get { return dtpMutationTo.Value; } }
+
         public IList<RentalProduct> RentalProducts
         {
             set
@@ -96,6 +99,8 @@
                 {
                     foreach (var rentalProduct in _rentalProducts)
                     {
+                        var beginingBalance = _presenter.GetProductBalance(rentalProduct.Id);
+
                         dgvRentalProduct.Rows.Add(
                             rentalProduct.Id,
                             rentalProduct.ProductCategory.Id,
@@ -104,7 +109,8 @@
                             rentalProduct.ProductSubcategory.Subcategory,
                             rentalProduct.Brand,
                             rentalProduct.Description,
-                            string.Format("{0:#,0}", rentalProduct.Stock)
+                            string.Format("{0:#,0}", rentalProduct.Stock),
+                            string.Format("{0:#,0}", beginingBalance)
                         );   
                     }
                 }
@@ -157,7 +163,7 @@
 
         private void txtCustomerId_TextChanged(object sender, EventArgs e)
         {
-            _presenter.GetCustomer(txtCustomerId.Text);
+            _presenter.GetMutation();
         }
 
         private void MutationViewForm_Load(object sender, EventArgs e)
@@ -169,8 +175,7 @@
         {
             if (dgvRentalProduct.CurrentRow != null && dgvRentalProduct.Rows.Count > 0)
             {
-                _presenter.GetRentalProductMutationIn(dgvRentalProduct.Rows[e.RowIndex].Cells["ProductId"].Value.ToString());
-                _presenter.GetRentalProductMutationOut(dgvRentalProduct.Rows[e.RowIndex].Cells["ProductId"].Value.ToString());
+                _presenter.GetRentalProductMutations(dgvRentalProduct.Rows[e.RowIndex].Cells["ProductId"].Value.ToString());
             }
         }
 
@@ -194,6 +199,16 @@
         private void btnClose_Click(object sender, EventArgs e)
         {
             Dispose(true);
+        }
+
+        private void dtpMutationFrom_ValueChanged(object sender, EventArgs e)
+        {
+            _presenter.GetMutation();
+        }
+
+        private void dtpMutationTo_ValueChanged(object sender, EventArgs e)
+        {
+            _presenter.GetMutation();
         }
     }
 }
