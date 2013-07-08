@@ -203,6 +203,10 @@
 
         private void dtpMutationFrom_ValueChanged(object sender, EventArgs e)
         {
+            var dataGridViewColumn = dgvRentalProduct.Columns["StockAsOf"];
+
+            if (dataGridViewColumn != null) dataGridViewColumn.HeaderText = string.Format("Stock As Of - {0}", dtpMutationFrom.Value.ToString("dd-MMM-yyyy"));
+
             _presenter.GetMutation();
         }
 
