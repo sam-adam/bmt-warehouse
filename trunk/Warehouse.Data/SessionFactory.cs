@@ -1,4 +1,9 @@
-﻿namespace Warehouse.Data
+﻿using System;
+using System.Configuration;
+using System.Web.Configuration;
+using Warehouse.Helper.Logging;
+
+namespace Warehouse.Data
 {
     using FluentNHibernate.Cfg;
     using FluentNHibernate.Cfg.Db;
@@ -10,6 +15,7 @@
     {
         private static ISessionFactory _sessionFactory;
         private static ISession _session;
+
         private readonly ISystemSetting _systemSetting;
 
         public SessionFactory(ISystemSetting systemSetting)
@@ -22,22 +28,22 @@
         private void InitializeSessionFactory()
         {
             _sessionFactory = Fluently.Configure()
-                .Database(MySQLConfiguration
-                    .Standard
-                    .ConnectionString(_systemSetting.ConnectionString)
-                    .Driver<NHibernate.Driver.MySqlDataDriver>())
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<EmployeeMap>())
-                .BuildSessionFactory();
+            .Database(MySQLConfiguration
+                .Standard
+                .ConnectionString(_systemSetting.ConnectionString))
+            .Mappings(m => m.FluentMappings.AddFromAssemblyOf<EmployeeMap>())
+            .ExposeConfiguration(c => c.Properties.Add("hbm2ddl.keywords", "none"))
+            .BuildSessionFactory();
         }
 
         public ISession OpenSession()
         {
             if (_sessionFactory == null)
             {
-                InitializeSessionFactory();    
+                InitializeSessionFactory();
             }
 
-            if (_session == null || !_session.IsOpen)
+            if ((_session == null || !_session.IsOpen) && _sessionFactory != null)
             {
                 _session = _sessionFactory.OpenSession();
             }

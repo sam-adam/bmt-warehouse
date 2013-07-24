@@ -1,4 +1,6 @@
-﻿namespace Warehouse.Application
+﻿using System.Windows.Forms;
+
+namespace Warehouse.Application
 {
     using System.ComponentModel.DataAnnotations;
     using Warehouse.Application.Contract;

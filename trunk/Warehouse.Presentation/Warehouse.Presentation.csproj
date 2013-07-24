@@ -31,11 +31,12 @@
     <ProductName>Warehouse</ProductName>
     <PublisherName>CodeBros</PublisherName>
     <ApplicationRevision>7</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -133,6 +134,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.7.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.2.5\Assemblies\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -201,12 +206,6 @@
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LoginFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LoginFrm.Designer.cs">
-      <DependentUpon>LoginFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Presenter\ConnectionSettingPresenter.cs" />
     <Compile Include="Presenter\MutationViewPresenter.cs" />
@@ -372,9 +371,6 @@
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginFrm.resx">
-      <DependentUpon>LoginFrm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\MutationViewForm.resx">
       <DependentUpon>MutationViewForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -414,7 +410,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>UnloadingReceiptRpt.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -528,6 +523,10 @@
     <ProjectReference Include="..\Warehouse.Data\Warehouse.Data.csproj">
       <Project>{1C916A36-7768-4AFD-B7C6-90F8F00229B0}</Project>
       <Name>Warehouse.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Warehouse.Helper\Warehouse.Helper.csproj">
+      <Project>{B19CACE6-7384-442B-BB2D-D3043BA354C8}</Project>
+      <Name>Warehouse.Helper</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

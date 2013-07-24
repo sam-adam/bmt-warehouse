@@ -69,6 +69,7 @@ Global
 		{44779A2E-1F07-4480-AE38-4E7362DBB166}.Debug|Any CPU.ActiveCfg = Debug
 		{44779A2E-1F07-4480-AE38-4E7362DBB166}.Debug|Any CPU.Build.0 = Debug
 		{44779A2E-1F07-4480-AE38-4E7362DBB166}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{44779A2E-1F07-4480-AE38-4E7362DBB166}.Debug|Mixed Platforms.Build.0 = Debug
 		{44779A2E-1F07-4480-AE38-4E7362DBB166}.Debug|x86.ActiveCfg = Debug
 		{44779A2E-1F07-4480-AE38-4E7362DBB166}.Release|Any CPU.ActiveCfg = Release
 		{44779A2E-1F07-4480-AE38-4E7362DBB166}.Release|Mixed Platforms.ActiveCfg = Release

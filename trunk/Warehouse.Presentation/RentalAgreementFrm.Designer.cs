@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTransactionDate = new System.Windows.Forms.Label();
             this.lblCustomerId = new System.Windows.Forms.Label();
             this.lblCustomerEmail = new System.Windows.Forms.Label();
@@ -40,7 +40,6 @@
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.lblCustomerName = new System.Windows.Forms.Label();
             this.txtCustomerId = new System.Windows.Forms.TextBox();
-            this.stpRentalAgreement = new System.Windows.Forms.StatusStrip();
             this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssHelpCustomerSelection = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssHelpCategorySelection = new System.Windows.Forms.ToolStripStatusLabel();
@@ -73,7 +72,12 @@
             this.pnlTop = new System.Windows.Forms.Panel();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.gbxOther = new System.Windows.Forms.GroupBox();
-            this.stpRentalAgreement.SuspendLayout();
+            this.stpRentalAgreement = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.buttonStripItem1 = new Warehouse.Presentation.Controls.ButtonStripItem();
+            this.buttonStripItem2 = new Warehouse.Presentation.Controls.ButtonStripItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductCategoryPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCutOffDate)).BeginInit();
             this.pnlDetail.SuspendLayout();
@@ -82,6 +86,7 @@
             this.pnlTop.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.gbxOther.SuspendLayout();
+            this.stpRentalAgreement.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTransactionDate
@@ -179,16 +184,6 @@
             this.txtCustomerId.Size = new System.Drawing.Size(100, 21);
             this.txtCustomerId.TabIndex = 1;
             this.txtCustomerId.TextChanged += new System.EventHandler(this.txtCustomerId_TextChanged);
-            // 
-            // stpRentalAgreement
-            // 
-            this.stpRentalAgreement.AutoSize = false;
-            this.stpRentalAgreement.BackColor = System.Drawing.Color.White;
-            this.stpRentalAgreement.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.stpRentalAgreement.Location = new System.Drawing.Point(0, 537);
-            this.stpRentalAgreement.Name = "stpRentalAgreement";
-            this.stpRentalAgreement.Size = new System.Drawing.Size(835, 31);
-            this.stpRentalAgreement.TabIndex = 3;
             // 
             // tssHelp
             // 
@@ -367,7 +362,7 @@
             this.dgvProductCategoryPrice.Name = "dgvProductCategoryPrice";
             this.dgvProductCategoryPrice.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvProductCategoryPrice.RowHeadersVisible = false;
-            this.dgvProductCategoryPrice.Size = new System.Drawing.Size(835, 227);
+            this.dgvProductCategoryPrice.Size = new System.Drawing.Size(835, 229);
             this.dgvProductCategoryPrice.TabIndex = 7;
             this.dgvProductCategoryPrice.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvProductCategoryPrice_CellBeginEdit);
             this.dgvProductCategoryPrice.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductCategoryPrice_CellEnter);
@@ -375,8 +370,8 @@
             // 
             // ProductCategoryId
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductCategoryId.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductCategoryId.DefaultCellStyle = dataGridViewCellStyle6;
             this.ProductCategoryId.HeaderText = "Category Id";
             this.ProductCategoryId.Name = "ProductCategoryId";
             this.ProductCategoryId.ReadOnly = true;
@@ -400,8 +395,8 @@
             // 
             // ProductSubcategory
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle9;
             this.ProductSubcategory.HeaderText = "Subcategory";
             this.ProductSubcategory.Name = "ProductSubcategory";
             this.ProductSubcategory.ReadOnly = true;
@@ -414,9 +409,9 @@
             // 
             this.Price.BackgroundStyle.Class = "DataGridViewNumericBorder";
             this.Price.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            dataGridViewCellStyle8.Format = "C2";
-            dataGridViewCellStyle8.NullValue = "0";
-            this.Price.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle10.Format = "C2";
+            dataGridViewCellStyle10.NullValue = "0";
+            this.Price.DefaultCellStyle = dataGridViewCellStyle10;
             this.Price.HeaderText = "Price";
             this.Price.Increment = 1D;
             this.Price.Name = "Price";
@@ -494,7 +489,7 @@
             this.pnlDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlDetail.Location = new System.Drawing.Point(0, 273);
             this.pnlDetail.Name = "pnlDetail";
-            this.pnlDetail.Size = new System.Drawing.Size(835, 264);
+            this.pnlDetail.Size = new System.Drawing.Size(835, 266);
             this.pnlDetail.TabIndex = 59;
             // 
             // pnlAgreementDetailAction
@@ -568,11 +563,70 @@
             this.gbxOther.TabStop = false;
             this.gbxOther.Text = "Other";
             // 
+            // stpRentalAgreement
+            // 
+            this.stpRentalAgreement.AutoSize = false;
+            this.stpRentalAgreement.BackColor = System.Drawing.Color.White;
+            this.stpRentalAgreement.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.stpRentalAgreement.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel3,
+            this.buttonStripItem1,
+            this.buttonStripItem2});
+            this.stpRentalAgreement.Location = new System.Drawing.Point(0, 539);
+            this.stpRentalAgreement.Name = "stpRentalAgreement";
+            this.stpRentalAgreement.Size = new System.Drawing.Size(835, 31);
+            this.stpRentalAgreement.TabIndex = 64;
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripStatusLabel1.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Padding = new System.Windows.Forms.Padding(10);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(173, 26);
+            this.toolStripStatusLabel1.Text = "Create new rental agreement";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Padding = new System.Windows.Forms.Padding(10);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(177, 26);
+            this.toolStripStatusLabel2.Text = "F1 :  Open Customer Selection";
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(231, 26);
+            this.toolStripStatusLabel3.Spring = true;
+            this.toolStripStatusLabel3.Text = "F2 : Open Product Category Selection";
+            this.toolStripStatusLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // buttonStripItem1
+            // 
+            this.buttonStripItem1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.buttonStripItem1.Name = "buttonStripItem1";
+            this.buttonStripItem1.Size = new System.Drawing.Size(99, 29);
+            this.buttonStripItem1.Text = "Save";
+            this.buttonStripItem1.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // buttonStripItem2
+            // 
+            this.buttonStripItem2.Name = "buttonStripItem2";
+            this.buttonStripItem2.Size = new System.Drawing.Size(99, 29);
+            this.buttonStripItem2.Text = "Close";
+            this.buttonStripItem2.Visible = false;
+            // 
             // RentalAgreementFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(835, 568);
+            this.ClientSize = new System.Drawing.Size(835, 570);
             this.Controls.Add(this.pnlDetail);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlTop);
@@ -581,8 +635,6 @@
             this.Name = "RentalAgreementFrm";
             this.Text = "Rental Agreement";
             this.Load += new System.EventHandler(this.RentalAgreementFrm_Load);
-            this.stpRentalAgreement.ResumeLayout(false);
-            this.stpRentalAgreement.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductCategoryPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCutOffDate)).EndInit();
             this.pnlDetail.ResumeLayout(false);
@@ -594,6 +646,8 @@
             this.pnlHeader.ResumeLayout(false);
             this.gbxOther.ResumeLayout(false);
             this.gbxOther.PerformLayout();
+            this.stpRentalAgreement.ResumeLayout(false);
+            this.stpRentalAgreement.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -609,7 +663,6 @@
         private System.Windows.Forms.Label lblCustomerTitle;
         private System.Windows.Forms.Label lblCustomerEmail;
         private System.Windows.Forms.Label lblCustomerPhone;
-        private System.Windows.Forms.StatusStrip stpRentalAgreement;
         private System.Windows.Forms.DateTimePicker dtpTransactionDate;
         private System.Windows.Forms.Button btnViewCustomer;
         private System.Windows.Forms.TextBox txtCustomerEmail;
@@ -642,5 +695,11 @@
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.GroupBox gbxOther;
         private Controls.ButtonStripItem btnClose;
+        private System.Windows.Forms.StatusStrip stpRentalAgreement;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private Controls.ButtonStripItem buttonStripItem1;
+        private Controls.ButtonStripItem buttonStripItem2;
     }
 }

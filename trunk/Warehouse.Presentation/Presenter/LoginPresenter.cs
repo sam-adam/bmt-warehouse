@@ -1,10 +1,12 @@
 ﻿namespace Warehouse.Presentation.Presenter
 {
+    using System;
     using System.Linq;
     using System.Windows.Forms;
     using Warehouse.Application;
     using Warehouse.Business.Contract;
     using Warehouse.Data.Model;
+    using Warehouse.Helper.Logging;
     using Warehouse.Presentation.Common;
     using Warehouse.Presentation.Contract;
 
@@ -35,17 +37,29 @@
             }
             else
             {
-                var isLoggedIn = _loginBl.DoLogin(user);
-
-                if (!isLoggedIn)
+                try
                 {
-                    MessageBox.Show(@"User not found");
+                    var isLoggedIn = _loginBl.DoLogin(user);
+
+                    if (!isLoggedIn)
+                    {
+                        MessageBox.Show(@"User not found");
+                    }
+                    else
+                    {
+                        _form.LoggedIn = true;
+
+                        MessageBox.Show(@"Logged in");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    _form.LoggedIn = true;
+                    var exceptionLogger = new ExceptionLogger(new TextFileWriter());
+                    exceptionLogger.Log(ex);
 
-                    MessageBox.Show(@"Logged in");
+                    MessageBox.Show(@"Connection failed");
+
+                    throw;
                 }
             }
         }

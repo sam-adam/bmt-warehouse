@@ -1,10 +1,12 @@
 ﻿namespace Warehouse.Presentation.Presenter
 {
+    using MySql.Data.MySqlClient;
     using System;
     using System.Windows.Forms;
     using Warehouse.Application;
-    using Warehouse.Data;
     using Warehouse.Data.Contract;
+    using Warehouse.Helper;
+    using Warehouse.Helper.Logging;
     using Warehouse.Presentation.Common;
     using Warehouse.Presentation.Contract;
 
@@ -42,21 +44,25 @@
                 ConvertZeroDatetime = _applicationManager.ApplicationConnection.ConvertZeroDatetime
             };
 
-            try
+            using (var connection = new MySqlConnection(systemSetting.ConnectionString))
             {
-                var sessionFactory = new SessionFactory(systemSetting);
+                try
+                {
+                    connection.Open();
 
-                sessionFactory.OpenSession();
+                    MessageBox.Show(@"Connection success");
 
-                MessageBox.Show(@"Connection success");
+                    CanConnect = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(@"Connection failed");
 
-                CanConnect = true;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show(@"Connection failed");
+                    CanConnect = false;
 
-                CanConnect = false;
+                    var exceptionLogger = new ExceptionLogger(new TextFileWriter());
+                    exceptionLogger.Log(ex);
+                }
             }
         }
 
