@@ -73,11 +73,21 @@
     <Compile Include="CollectionHelper.cs" />
     <Compile Include="DateTimeHelper.cs" />
     <Compile Include="EncryptionService.cs" />
+    <Compile Include="Logging\BaseFileWriter.cs" />
+    <Compile Include="Logging\ExceptionLogger.cs" />
+    <Compile Include="Logging\IFileWriter.cs" />
+    <Compile Include="Logging\Log.cs" />
+    <Compile Include="Logging\ILog.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\LoggerFactory.cs" />
+    <Compile Include="Logging\LogWriter.cs" />
+    <Compile Include="Logging\TextFileWriter.cs" />
     <Compile Include="MathHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

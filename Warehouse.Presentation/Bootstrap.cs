@@ -2,6 +2,7 @@
 {
     using Autofac;
     using CrystalDecisions.CrystalReports.Engine;
+    using NHibernate;
     using System.ServiceProcess;
     using Warehouse.Application;
     using Warehouse.Application.Contract;
@@ -42,7 +43,7 @@
             builder.RegisterType<SessionFactory>();
             builder.RegisterType<ApplicationManager>();
             builder.RegisterType<ApplicationConnection>().As<IApplicationConnection>();
-            builder.Register(c => c.Resolve<SessionFactory>().OpenSession()).SingleInstance();
+            builder.Register(c => c.Resolve<SessionFactory>().OpenSession()).As<ISession>().SingleInstance();
             builder.RegisterType<SystemSetting>().As<ISystemSetting>();
 
             builder.RegisterType<UserRepository>().As<IUserRepository>();
@@ -73,8 +74,8 @@
 
             builder.RegisterType<Home>();
             builder.RegisterType<PrintFrm>();
-            builder.RegisterType<LoginFrm>();
             builder.RegisterType<LoginForm>();
+            builder.RegisterType<RentalAgreementForm>();
             builder.RegisterType<RentalAgreementFrm>();
             builder.RegisterType<RentalReceiptFrm>();
             builder.RegisterType<RentalWithdrawalFrm>();
@@ -92,6 +93,7 @@
             builder.RegisterType<MutationViewForm>();
 
             builder.RegisterType<LoginPresenter>();
+            builder.RegisterType<RentalAgreementPresenter>();
             builder.RegisterType<MutationViewPresenter>();
             builder.RegisterType<ConnectionSettingPresenter>();
 
