@@ -52,7 +52,7 @@
             builder.RegisterType<RentalAgreementDetailFacade>();
             builder.RegisterType<RentalAgreementPresenter>()
                    .AsSelf();
-            builder.RegisterType<RentalAgreementForm>()
+            builder.RegisterType<RentalAgreementFrm>()
                    .AsSelf()
                    .As<IRentalAgreementForm>();
 

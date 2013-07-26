@@ -19,7 +19,7 @@
             {
                 throw new ArgumentNullException("session");
             }
-
+            
             _session = session;
         }
 
@@ -54,8 +54,10 @@
             _transaction = _session.BeginTransaction();
 
             _session.Save(t);
-
+            
             _transaction.Commit();
+
+            _session.Evict(t);
         }
 
         public void Delete(T t)

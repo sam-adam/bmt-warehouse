@@ -57,6 +57,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2541E874F6FA8B0386494186A66D8685"
+        "OwnerKey" = "8:_4EC6EFBA05E14450ADC8B8481AFB60EF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2A9E6430D63F7C0A9DEE77D35E88EFF5"
         "OwnerKey" = "8:_4EC6EFBA05E14450ADC8B8481AFB60EF"
         "MsmSig" = "8:_UNDEFINED"
@@ -195,20 +201,26 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CD51BC9EAA05C10AD14221150EED41B7"
-        "OwnerKey" = "8:_E424353720BFDA5EAD6CF1FB9D880D83"
+        "MsmKey" = "8:_C584011578DDB1653986C8875FFC21D2"
+        "OwnerKey" = "8:_ADE24530393ED45FBFDB2F9A4D7A12D8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_CD51BC9EAA05C10AD14221150EED41B7"
+        "MsmKey" = "8:_C584011578DDB1653986C8875FFC21D2"
         "OwnerKey" = "8:_4EC6EFBA05E14450ADC8B8481AFB60EF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_CD51BC9EAA05C10AD14221150EED41B7"
-        "OwnerKey" = "8:_ADE24530393ED45FBFDB2F9A4D7A12D8"
+        "MsmKey" = "8:_C584011578DDB1653986C8875FFC21D2"
+        "OwnerKey" = "8:_E424353720BFDA5EAD6CF1FB9D880D83"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CA3D2F0B6C780C190752F1DDE4AF0263"
+        "OwnerKey" = "8:_4EC6EFBA05E14450ADC8B8481AFB60EF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -268,6 +280,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C584011578DDB1653986C8875FFC21D2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_BF1B210EB5721A9DAA147C7394D5F75B"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -286,13 +304,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CD51BC9EAA05C10AD14221150EED41B7"
+        "OwnerKey" = "8:_9349B90A971AFF305B8D8564DC7E0D27"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9349B90A971AFF305B8D8564DC7E0D27"
+        "OwnerKey" = "8:_2541E874F6FA8B0386494186A66D8685"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -329,6 +347,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_48CAF53C41786B24DF848D067D10E281"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_CA3D2F0B6C780C190752F1DDE4AF0263"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -543,6 +567,37 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2541E874F6FA8B0386494186A66D8685"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_2541E874F6FA8B0386494186A66D8685"
+                    {
+                    "Name" = "8:log4net.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:log4net.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_BE28353AF8D045C2A618F3E8F990100F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -969,20 +1024,51 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CD51BC9EAA05C10AD14221150EED41B7"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C584011578DDB1653986C8875FFC21D2"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Warehouse.Helper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_CD51BC9EAA05C10AD14221150EED41B7"
+                    "_C584011578DDB1653986C8875FFC21D2"
                     {
                     "Name" = "8:Warehouse.Helper.dll"
                     "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Warehouse.Helper.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_BE28353AF8D045C2A618F3E8F990100F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CA3D2F0B6C780C190752F1DDE4AF0263"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MySql.Data, Version=6.7.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_CA3D2F0B6C780C190752F1DDE4AF0263"
+                    {
+                    "Name" = "8:MySql.Data.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MySql.Data.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_BE28353AF8D045C2A618F3E8F990100F"

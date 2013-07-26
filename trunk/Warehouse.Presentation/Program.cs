@@ -28,7 +28,7 @@
 
                     if (login.LoggedIn)
                     {
-                        var home = new Home(container);
+                        var home = new HomeWarehouse(container);
                         Application.Run(home);
                     }
                 }

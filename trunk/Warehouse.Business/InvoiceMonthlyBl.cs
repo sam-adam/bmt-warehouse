@@ -140,7 +140,7 @@
 
         public double GetProductPrice(RentalAgreement activeRental, RentalProduct product)
         {
-            return activeRental.Details.First(dtl => dtl.Category == product.ProductCategory && dtl.Subcategory == product.ProductSubcategory).Price;
+            return activeRental.Details.First(dtl => dtl.Category.Category == product.ProductCategory.Category && dtl.Subcategory.Subcategory == product.ProductSubcategory.Subcategory).Price;
         }
 
         public RentalProduct GetRentalProduct(string id)
