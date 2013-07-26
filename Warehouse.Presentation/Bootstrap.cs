@@ -43,7 +43,7 @@
             builder.RegisterType<SessionFactory>();
             builder.RegisterType<ApplicationManager>();
             builder.RegisterType<ApplicationConnection>().As<IApplicationConnection>();
-            builder.Register(c => c.Resolve<SessionFactory>().OpenSession()).As<ISession>().SingleInstance();
+            builder.Register(c => c.Resolve<SessionFactory>().OpenSession()).As<ISession>();
             builder.RegisterType<SystemSetting>().As<ISystemSetting>();
 
             builder.RegisterType<UserRepository>().As<IUserRepository>();
@@ -75,7 +75,6 @@
             builder.RegisterType<Home>();
             builder.RegisterType<PrintFrm>();
             builder.RegisterType<LoginForm>();
-            builder.RegisterType<RentalAgreementForm>();
             builder.RegisterType<RentalAgreementFrm>();
             builder.RegisterType<RentalReceiptFrm>();
             builder.RegisterType<RentalWithdrawalFrm>();

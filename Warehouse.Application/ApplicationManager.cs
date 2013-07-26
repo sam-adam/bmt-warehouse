@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Warehouse.Application
+﻿namespace Warehouse.Application
 {
+    using System;
+    using System.Configuration;
     using Warehouse.Application.Contract;
     using Warehouse.Application.Properties;
 
@@ -41,6 +41,8 @@ namespace Warehouse.Application
             }
 
             Settings.Default.Save();
+
+            ConfigurationManager.RefreshSection("appSetting");
         }
     }
 }

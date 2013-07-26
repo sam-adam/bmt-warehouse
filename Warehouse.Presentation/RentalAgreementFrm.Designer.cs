@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTransactionDate = new System.Windows.Forms.Label();
             this.lblCustomerId = new System.Windows.Forms.Label();
             this.lblCustomerEmail = new System.Windows.Forms.Label();
@@ -78,6 +78,10 @@
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.buttonStripItem1 = new Warehouse.Presentation.Controls.ButtonStripItem();
             this.buttonStripItem2 = new Warehouse.Presentation.Controls.ButtonStripItem();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.buttonStripItem3 = new Warehouse.Presentation.Controls.ButtonStripItem();
+            this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductCategoryPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCutOffDate)).BeginInit();
             this.pnlDetail.SuspendLayout();
@@ -370,20 +374,20 @@
             // 
             // ProductCategoryId
             // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductCategoryId.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductCategoryId.DefaultCellStyle = dataGridViewCellStyle3;
             this.ProductCategoryId.HeaderText = "Category Id";
             this.ProductCategoryId.Name = "ProductCategoryId";
             this.ProductCategoryId.ReadOnly = true;
             this.ProductCategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProductCategoryId.Width = 84;
+            this.ProductCategoryId.Width = 86;
             // 
             // ProductCategory
             // 
             this.ProductCategory.HeaderText = "Category";
             this.ProductCategory.Name = "ProductCategory";
             this.ProductCategory.ReadOnly = true;
-            this.ProductCategory.Width = 72;
+            this.ProductCategory.Width = 74;
             // 
             // ProductSubcategoryId
             // 
@@ -391,16 +395,16 @@
             this.ProductSubcategoryId.Name = "ProductSubcategoryId";
             this.ProductSubcategoryId.ReadOnly = true;
             this.ProductSubcategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProductSubcategoryId.Width = 102;
+            this.ProductSubcategoryId.Width = 104;
             // 
             // ProductSubcategory
             // 
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle7;
             this.ProductSubcategory.HeaderText = "Subcategory";
             this.ProductSubcategory.Name = "ProductSubcategory";
             this.ProductSubcategory.ReadOnly = true;
-            this.ProductSubcategory.Width = 90;
+            this.ProductSubcategory.Width = 92;
             // 
             // Price
             // 
@@ -409,14 +413,14 @@
             // 
             this.Price.BackgroundStyle.Class = "DataGridViewNumericBorder";
             this.Price.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            dataGridViewCellStyle10.Format = "C2";
-            dataGridViewCellStyle10.NullValue = "0";
-            this.Price.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle8.Format = "C2";
+            dataGridViewCellStyle8.NullValue = "0";
+            this.Price.DefaultCellStyle = dataGridViewCellStyle8;
             this.Price.HeaderText = "Price";
             this.Price.Increment = 1D;
             this.Price.Name = "Price";
             this.Price.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Price.Width = 54;
+            this.Price.Width = 56;
             // 
             // IsRemovable
             // 
@@ -424,7 +428,7 @@
             this.IsRemovable.Name = "IsRemovable";
             this.IsRemovable.ReadOnly = true;
             this.IsRemovable.Visible = false;
-            this.IsRemovable.Width = 92;
+            this.IsRemovable.Width = 94;
             // 
             // lblCutOffDate
             // 
@@ -569,11 +573,10 @@
             this.stpRentalAgreement.BackColor = System.Drawing.Color.White;
             this.stpRentalAgreement.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.stpRentalAgreement.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2,
-            this.toolStripStatusLabel3,
-            this.buttonStripItem1,
-            this.buttonStripItem2});
+            this.toolStripStatusLabel4,
+            this.toolStripStatusLabel5,
+            this.toolStripStatusLabel6,
+            this.buttonStripItem3});
             this.stpRentalAgreement.Location = new System.Drawing.Point(0, 539);
             this.stpRentalAgreement.Name = "stpRentalAgreement";
             this.stpRentalAgreement.Size = new System.Drawing.Size(835, 31);
@@ -602,7 +605,7 @@
             // 
             this.toolStripStatusLabel3.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(231, 26);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(361, 26);
             this.toolStripStatusLabel3.Spring = true;
             this.toolStripStatusLabel3.Text = "F2 : Open Product Category Selection";
             this.toolStripStatusLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -621,6 +624,44 @@
             this.buttonStripItem2.Size = new System.Drawing.Size(99, 29);
             this.buttonStripItem2.Text = "Close";
             this.buttonStripItem2.Visible = false;
+            // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripStatusLabel4.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.toolStripStatusLabel4.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Padding = new System.Windows.Forms.Padding(10);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(173, 26);
+            this.toolStripStatusLabel4.Text = "Create new rental agreement";
+            // 
+            // toolStripStatusLabel5
+            // 
+            this.toolStripStatusLabel5.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.toolStripStatusLabel5.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.toolStripStatusLabel5.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
+            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+            this.toolStripStatusLabel5.Padding = new System.Windows.Forms.Padding(10);
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(177, 26);
+            this.toolStripStatusLabel5.Text = "F1 :  Open Customer Selection";
+            this.toolStripStatusLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // buttonStripItem3
+            // 
+            this.buttonStripItem3.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.buttonStripItem3.Name = "buttonStripItem3";
+            this.buttonStripItem3.Size = new System.Drawing.Size(70, 27);
+            this.buttonStripItem3.Text = "Save";
+            this.buttonStripItem3.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // toolStripStatusLabel6
+            // 
+            this.toolStripStatusLabel6.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
+            this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
+            this.toolStripStatusLabel6.Size = new System.Drawing.Size(349, 26);
+            this.toolStripStatusLabel6.Spring = true;
+            this.toolStripStatusLabel6.Text = "F2 : Open Category Selection";
+            this.toolStripStatusLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // RentalAgreementFrm
             // 
@@ -701,5 +742,9 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private Controls.ButtonStripItem buttonStripItem1;
         private Controls.ButtonStripItem buttonStripItem2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
+        private Controls.ButtonStripItem buttonStripItem3;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
     }
 }

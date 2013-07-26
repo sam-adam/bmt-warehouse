@@ -14,7 +14,7 @@ namespace Warehouse.Data
     public class SessionFactory
     {
         private static ISessionFactory _sessionFactory;
-        private static ISession _session;
+        private ISession _session;
 
         private readonly ISystemSetting _systemSetting;
 
@@ -38,15 +38,9 @@ namespace Warehouse.Data
 
         public ISession OpenSession()
         {
-            if (_sessionFactory == null)
-            {
-                InitializeSessionFactory();
-            }
+            InitializeSessionFactory();
 
-            if ((_session == null || !_session.IsOpen) && _sessionFactory != null)
-            {
-                _session = _sessionFactory.OpenSession();
-            }
+            _session = _sessionFactory.OpenSession();
 
             return _session;
         }
