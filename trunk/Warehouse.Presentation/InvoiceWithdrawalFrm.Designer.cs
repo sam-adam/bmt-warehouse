@@ -136,7 +136,7 @@
             this.ProductId.Name = "ProductId";
             this.ProductId.ReadOnly = true;
             this.ProductId.Visible = false;
-            this.ProductId.Width = 79;
+            this.ProductId.Width = 81;
             // 
             // ProductCategoryId
             // 
@@ -145,7 +145,7 @@
             this.ProductCategoryId.ReadOnly = true;
             this.ProductCategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ProductCategoryId.Visible = false;
-            this.ProductCategoryId.Width = 84;
+            this.ProductCategoryId.Width = 86;
             // 
             // ProductCategory
             // 
@@ -163,7 +163,7 @@
             this.ProductSubcategoryId.ReadOnly = true;
             this.ProductSubcategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ProductSubcategoryId.Visible = false;
-            this.ProductSubcategoryId.Width = 102;
+            this.ProductSubcategoryId.Width = 104;
             // 
             // ProductSubcategory
             // 
@@ -362,7 +362,7 @@
             this.tssHelpInvoiceWithdrawalSelection.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
             this.tssHelpInvoiceWithdrawalSelection.Name = "tssHelpInvoiceWithdrawalSelection";
             this.tssHelpInvoiceWithdrawalSelection.Padding = new System.Windows.Forms.Padding(10);
-            this.tssHelpInvoiceWithdrawalSelection.Size = new System.Drawing.Size(561, 26);
+            this.tssHelpInvoiceWithdrawalSelection.Size = new System.Drawing.Size(530, 26);
             this.tssHelpInvoiceWithdrawalSelection.Spring = true;
             this.tssHelpInvoiceWithdrawalSelection.Text = "F1 :  Open Invoice Withdrawal Selection";
             this.tssHelpInvoiceWithdrawalSelection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

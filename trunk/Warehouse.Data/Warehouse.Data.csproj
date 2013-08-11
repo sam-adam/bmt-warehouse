@@ -85,8 +85,12 @@
     <Compile Include="Contract\IRepository.cs" />
     <Compile Include="Contract\ISystemSetting.cs" />
     <Compile Include="Contract\IUserRepository.cs" />
+    <Compile Include="Mapping\RentalProductAdjusmentDetailMap.cs" />
+    <Compile Include="Mapping\RentalProductAdjustmentMap.cs" />
     <Compile Include="Mapping\RentalReceiptLoadingDetailMap.cs" />
     <Compile Include="Mapping\RentalWithdrawalUnloadingDetailMap.cs" />
+    <Compile Include="Model\RentalProductAdjusmentDetail.cs" />
+    <Compile Include="Model\RentalProductAdjustment.cs" />
     <Compile Include="Model\RentalReceiptLoadingDetail.cs" />
     <Compile Include="Model\RentalWithdrawalUnloadingDetail.cs" />
     <Compile Include="Repository\InvoiceMonthlyRepository.cs" />
@@ -136,6 +140,7 @@
     <Compile Include="Repository\ProductCategoryRepository.cs" />
     <Compile Include="Repository\ProductSubcategoryRepository.cs" />
     <Compile Include="Repository\RentalAgreementRepository.cs" />
+    <Compile Include="Repository\RentalProductAdjustmentRepository.cs" />
     <Compile Include="Repository\RentalProductRepository.cs" />
     <Compile Include="Repository\RentalReceiptRepository.cs" />
     <Compile Include="Repository\RentalWithdrawalRepository.cs" />

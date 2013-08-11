@@ -93,6 +93,7 @@
     <Compile Include="Model\Mutation.cs" />
     <Compile Include="Model\MutationIn.cs" />
     <Compile Include="Model\MutationOut.cs" />
+    <Compile Include="RentalProductAdjustmentBl.cs" />
     <Compile Include="ProductCategoryBl.cs" />
     <Compile Include="ProductSubcategoryBl.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

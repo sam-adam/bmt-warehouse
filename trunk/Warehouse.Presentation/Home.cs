@@ -133,5 +133,25 @@ namespace Warehouse.Presentation
             _frm.BringToFront();
             _frm.WindowState = FormWindowState.Maximized;
         }
+
+        private void createToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _frm = _container.Resolve<RentalProductAdjustmentFrm>();
+
+            _frm.MdiParent = this;
+            _frm.Show();
+            _frm.BringToFront();
+            _frm.WindowState = FormWindowState.Maximized;
+        }
+
+        private void viewToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            _frm = _container.Resolve<RentalProductAdjustmentView>();
+
+            _frm.MdiParent = this;
+            _frm.Show();
+            _frm.BringToFront();
+            _frm.WindowState = FormWindowState.Maximized;
+        }
     }
 }

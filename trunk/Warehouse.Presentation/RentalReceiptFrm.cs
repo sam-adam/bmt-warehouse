@@ -198,6 +198,8 @@
                 ClearForm();
 
                 txtCustomerId.Focus();
+
+                Dispose();
             }
             catch (Exception ex)
             {

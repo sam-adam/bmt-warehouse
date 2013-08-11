@@ -63,6 +63,8 @@
             if (_invoice != null)
             {
                 Print(_invoice, _report.ResourceName);
+
+                Dispose();
             }
             else
             {

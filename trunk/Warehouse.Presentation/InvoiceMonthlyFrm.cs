@@ -126,6 +126,8 @@ namespace Warehouse.Presentation
                 Print(invoiceMonthly, _report.ResourceName);
 
                 ClearForm();
+
+                Dispose();
             }
             catch (Exception ex)
             {

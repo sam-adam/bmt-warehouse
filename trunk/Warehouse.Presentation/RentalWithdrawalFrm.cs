@@ -128,6 +128,8 @@
                     Print(_rentalWithdrawal, _unloadingReceipt.ResourceName);
 
                     ClearForm();
+
+                    Dispose();
                 }
             }
             catch (Exception ex)

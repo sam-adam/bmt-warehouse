@@ -32,7 +32,7 @@
     <PublisherName>CodeBros</PublisherName>
     <WebPage>publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>29</ApplicationRevision>
+    <ApplicationRevision>31</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -165,7 +165,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
-    <Compile Include="Bootstrap2.cs" />
     <Compile Include="Common\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +178,7 @@
     <Compile Include="Contract\IMutationViewForm.cs" />
     <Compile Include="Contract\IPresenter.cs" />
     <Compile Include="Contract\IRentalAgreementForm.cs" />
+    <Compile Include="Contract\IRentalProductAdjustmentForm.cs" />
     <Compile Include="Controls\ButtonStripItem.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -216,6 +216,13 @@
     </Compile>
     <Compile Include="Presenter\ConnectionSettingPresenter.cs" />
     <Compile Include="Presenter\MutationViewPresenter.cs" />
+    <Compile Include="Presenter\RentalProductAdjusmentPresenter.cs" />
+    <Compile Include="RentalProductAdjustmentFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RentalProductAdjustmentFrm.Designer.cs">
+      <DependentUpon>RentalProductAdjustmentFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MutationViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -342,6 +349,12 @@
     <Compile Include="View\RentalAgreementView.Designer.cs">
       <DependentUpon>RentalAgreementView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\RentalProductAdjustmentView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RentalProductAdjustmentView.Designer.cs">
+      <DependentUpon>RentalProductAdjustmentView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\RentalReceiptView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -371,6 +384,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RentalProductAdjustmentFrm.resx">
+      <DependentUpon>RentalProductAdjustmentFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MutationViewForm.resx">
       <DependentUpon>MutationViewForm.cs</DependentUpon>
@@ -450,6 +466,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\RentalAgreementView.resx">
       <DependentUpon>RentalAgreementView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RentalProductAdjustmentView.resx">
+      <DependentUpon>RentalProductAdjustmentView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\RentalReceiptView.resx">
       <DependentUpon>RentalReceiptView.cs</DependentUpon>

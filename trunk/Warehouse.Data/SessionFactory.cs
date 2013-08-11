@@ -1,9 +1,4 @@
-﻿using System;
-using System.Configuration;
-using System.Web.Configuration;
-using Warehouse.Helper.Logging;
-
-namespace Warehouse.Data
+﻿namespace Warehouse.Data
 {
     using FluentNHibernate.Cfg;
     using FluentNHibernate.Cfg.Db;
@@ -14,7 +9,7 @@ namespace Warehouse.Data
     public class SessionFactory
     {
         private static ISessionFactory _sessionFactory;
-        private ISession _session;
+        private static ISession _session;
 
         private readonly ISystemSetting _systemSetting;
 
@@ -40,9 +35,7 @@ namespace Warehouse.Data
         {
             InitializeSessionFactory();
 
-            _session = _sessionFactory.OpenSession();
-
-            return _session;
+            return _session ?? _sessionFactory.OpenSession();
         }
     }
 }
