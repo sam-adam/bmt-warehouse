@@ -146,6 +146,8 @@
                 ClearCustomerData();
 
                 txtCustomerId.Focus();
+
+                Dispose();
             }
             catch (Exception ex)
             {

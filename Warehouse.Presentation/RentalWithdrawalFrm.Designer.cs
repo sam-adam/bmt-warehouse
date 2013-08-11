@@ -294,7 +294,7 @@
             this.tssHelpCustomerSelection.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
             this.tssHelpCustomerSelection.Name = "tssHelpCustomerSelection";
             this.tssHelpCustomerSelection.Padding = new System.Windows.Forms.Padding(10);
-            this.tssHelpCustomerSelection.Size = new System.Drawing.Size(630, 26);
+            this.tssHelpCustomerSelection.Size = new System.Drawing.Size(599, 26);
             this.tssHelpCustomerSelection.Spring = true;
             this.tssHelpCustomerSelection.Text = "F1 :  Open Customer Selection";
             this.tssHelpCustomerSelection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -380,7 +380,7 @@
             this.ProductId.Name = "ProductId";
             this.ProductId.ReadOnly = true;
             this.ProductId.Visible = false;
-            this.ProductId.Width = 79;
+            this.ProductId.Width = 81;
             // 
             // ProductCategoryId
             // 
@@ -389,7 +389,7 @@
             this.ProductCategoryId.ReadOnly = true;
             this.ProductCategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ProductCategoryId.Visible = false;
-            this.ProductCategoryId.Width = 84;
+            this.ProductCategoryId.Width = 86;
             // 
             // ProductCategory
             // 
@@ -407,7 +407,7 @@
             this.ProductSubcategoryId.ReadOnly = true;
             this.ProductSubcategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ProductSubcategoryId.Visible = false;
-            this.ProductSubcategoryId.Width = 102;
+            this.ProductSubcategoryId.Width = 104;
             // 
             // ProductSubcategory
             // 

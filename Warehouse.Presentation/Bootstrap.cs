@@ -56,6 +56,7 @@
             builder.RegisterType<RentalWithdrawalRepository>().As<IRentalWithdrawalRepository>();
             builder.RegisterType<InvoiceWithdrawalRepository>().As<IInvoiceWithdrawalRepository>();
             builder.RegisterType<InvoiceMonthlyRepository>().As<IInvoiceMonthlyRepository>();
+            builder.RegisterType<RentalProductAdjustmentRepository>();
 
             builder.RegisterType<LoginBl>().As<ILoginBl>();
             builder.RegisterType<RentalAgreementBl>().As<IRentalAgreementBl>();
@@ -67,6 +68,7 @@
             builder.RegisterType<ProductSubcategoryBl>().As<IProductSubcategoryBl>();
             builder.RegisterType<InvoiceWithdrawalBl>().As<IInvoiceWithdrawalBl>();
             builder.RegisterType<InvoiceMonthlyBl>().As<IInvoiceMonthlyBl>();
+            builder.RegisterType<RentalProductAdjustmentBl>();
 
             builder.RegisterType<RentalAgreementDetailFacade>();
             builder.RegisterType<RentalReceiptFacade>();
@@ -90,11 +92,13 @@
             builder.RegisterType<InvoiceMonthlyView>();
             builder.RegisterType<RentalAgreementDetailView>();
             builder.RegisterType<MutationViewForm>();
+            builder.RegisterType<RentalProductAdjustmentFrm>();
 
             builder.RegisterType<LoginPresenter>();
             builder.RegisterType<RentalAgreementPresenter>();
             builder.RegisterType<MutationViewPresenter>();
             builder.RegisterType<ConnectionSettingPresenter>();
+            builder.RegisterType<RentalProductAdjusmentPresenter>();
 
             builder.RegisterType<ReportDocument>();
 

@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.lblTransactionDate = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblCustomerId = new System.Windows.Forms.Label();
             this.lblCustomerEmail = new System.Windows.Forms.Label();
             this.lblCustomerPhone = new System.Windows.Forms.Label();
@@ -45,7 +44,6 @@
             this.tssHelpCategorySelection = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnSave = new Warehouse.Presentation.Controls.ButtonStripItem();
             this.btnClose = new Warehouse.Presentation.Controls.ButtonStripItem();
-            this.dtpTransactionDate = new System.Windows.Forms.DateTimePicker();
             this.btnViewCustomer = new System.Windows.Forms.Button();
             this.txtCustomerTitle = new System.Windows.Forms.TextBox();
             this.txtCustomerPhone = new System.Windows.Forms.TextBox();
@@ -69,39 +67,31 @@
             this.pnlDetail = new System.Windows.Forms.Panel();
             this.pnlAgreementDetailAction = new System.Windows.Forms.Panel();
             this.gbxCustomer = new System.Windows.Forms.GroupBox();
-            this.pnlTop = new System.Windows.Forms.Panel();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.gbxOther = new System.Windows.Forms.GroupBox();
             this.stpRentalAgreement = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.buttonStripItem3 = new Warehouse.Presentation.Controls.ButtonStripItem();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.buttonStripItem1 = new Warehouse.Presentation.Controls.ButtonStripItem();
             this.buttonStripItem2 = new Warehouse.Presentation.Controls.ButtonStripItem();
-            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.buttonStripItem3 = new Warehouse.Presentation.Controls.ButtonStripItem();
-            this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.dtpTransactionDate = new System.Windows.Forms.DateTimePicker();
+            this.lblTransactionDate = new System.Windows.Forms.Label();
+            this.pnlTop = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductCategoryPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCutOffDate)).BeginInit();
             this.pnlDetail.SuspendLayout();
             this.pnlAgreementDetailAction.SuspendLayout();
             this.gbxCustomer.SuspendLayout();
-            this.pnlTop.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.gbxOther.SuspendLayout();
             this.stpRentalAgreement.SuspendLayout();
+            this.pnlTop.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblTransactionDate
-            // 
-            this.lblTransactionDate.AutoSize = true;
-            this.lblTransactionDate.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblTransactionDate.Location = new System.Drawing.Point(13, 13);
-            this.lblTransactionDate.Name = "lblTransactionDate";
-            this.lblTransactionDate.Size = new System.Drawing.Size(93, 13);
-            this.lblTransactionDate.TabIndex = 0;
-            this.lblTransactionDate.Text = "Transaction Date:";
             // 
             // lblCustomerId
             // 
@@ -232,16 +222,6 @@
             this.btnClose.Text = "Close";
             this.btnClose.Visible = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // dtpTransactionDate
-            // 
-            this.dtpTransactionDate.Enabled = false;
-            this.dtpTransactionDate.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.dtpTransactionDate.Location = new System.Drawing.Point(112, 10);
-            this.dtpTransactionDate.Name = "dtpTransactionDate";
-            this.dtpTransactionDate.Size = new System.Drawing.Size(250, 21);
-            this.dtpTransactionDate.TabIndex = 4;
-            this.dtpTransactionDate.TabStop = false;
             // 
             // btnViewCustomer
             // 
@@ -374,8 +354,8 @@
             // 
             // ProductCategoryId
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductCategoryId.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductCategoryId.DefaultCellStyle = dataGridViewCellStyle4;
             this.ProductCategoryId.HeaderText = "Category Id";
             this.ProductCategoryId.Name = "ProductCategoryId";
             this.ProductCategoryId.ReadOnly = true;
@@ -399,8 +379,8 @@
             // 
             // ProductSubcategory
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ProductSubcategory.DefaultCellStyle = dataGridViewCellStyle5;
             this.ProductSubcategory.HeaderText = "Subcategory";
             this.ProductSubcategory.Name = "ProductSubcategory";
             this.ProductSubcategory.ReadOnly = true;
@@ -413,9 +393,9 @@
             // 
             this.Price.BackgroundStyle.Class = "DataGridViewNumericBorder";
             this.Price.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            dataGridViewCellStyle8.Format = "C2";
-            dataGridViewCellStyle8.NullValue = "0";
-            this.Price.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle6.Format = "C2";
+            dataGridViewCellStyle6.NullValue = "0";
+            this.Price.DefaultCellStyle = dataGridViewCellStyle6;
             this.Price.HeaderText = "Price";
             this.Price.Increment = 1D;
             this.Price.Name = "Price";
@@ -530,16 +510,6 @@
             this.gbxCustomer.TabStop = false;
             this.gbxCustomer.Text = "Customer";
             // 
-            // pnlTop
-            // 
-            this.pnlTop.Controls.Add(this.lblTransactionDate);
-            this.pnlTop.Controls.Add(this.dtpTransactionDate);
-            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTop.Location = new System.Drawing.Point(0, 0);
-            this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(835, 39);
-            this.pnlTop.TabIndex = 61;
-            // 
             // pnlHeader
             // 
             this.pnlHeader.Controls.Add(this.gbxOther);
@@ -581,6 +551,44 @@
             this.stpRentalAgreement.Name = "stpRentalAgreement";
             this.stpRentalAgreement.Size = new System.Drawing.Size(835, 31);
             this.stpRentalAgreement.TabIndex = 64;
+            // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripStatusLabel4.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.toolStripStatusLabel4.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Padding = new System.Windows.Forms.Padding(10);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(173, 26);
+            this.toolStripStatusLabel4.Text = "Create new rental agreement";
+            // 
+            // toolStripStatusLabel5
+            // 
+            this.toolStripStatusLabel5.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.toolStripStatusLabel5.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.toolStripStatusLabel5.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
+            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+            this.toolStripStatusLabel5.Padding = new System.Windows.Forms.Padding(10);
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(177, 26);
+            this.toolStripStatusLabel5.Text = "F1 :  Open Customer Selection";
+            this.toolStripStatusLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // toolStripStatusLabel6
+            // 
+            this.toolStripStatusLabel6.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
+            this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
+            this.toolStripStatusLabel6.Size = new System.Drawing.Size(380, 26);
+            this.toolStripStatusLabel6.Spring = true;
+            this.toolStripStatusLabel6.Text = "F2 : Open Category Selection";
+            this.toolStripStatusLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // buttonStripItem3
+            // 
+            this.buttonStripItem3.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.buttonStripItem3.Name = "buttonStripItem3";
+            this.buttonStripItem3.Size = new System.Drawing.Size(70, 27);
+            this.buttonStripItem3.Text = "Save";
+            this.buttonStripItem3.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // toolStripStatusLabel1
             // 
@@ -625,43 +633,35 @@
             this.buttonStripItem2.Text = "Close";
             this.buttonStripItem2.Visible = false;
             // 
-            // toolStripStatusLabel4
+            // dtpTransactionDate
             // 
-            this.toolStripStatusLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripStatusLabel4.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
-            this.toolStripStatusLabel4.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
-            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Padding = new System.Windows.Forms.Padding(10);
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(173, 26);
-            this.toolStripStatusLabel4.Text = "Create new rental agreement";
+            this.dtpTransactionDate.Enabled = false;
+            this.dtpTransactionDate.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.dtpTransactionDate.Location = new System.Drawing.Point(112, 10);
+            this.dtpTransactionDate.Name = "dtpTransactionDate";
+            this.dtpTransactionDate.Size = new System.Drawing.Size(250, 21);
+            this.dtpTransactionDate.TabIndex = 4;
+            this.dtpTransactionDate.TabStop = false;
             // 
-            // toolStripStatusLabel5
+            // lblTransactionDate
             // 
-            this.toolStripStatusLabel5.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
-            this.toolStripStatusLabel5.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
-            this.toolStripStatusLabel5.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
-            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Padding = new System.Windows.Forms.Padding(10);
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(177, 26);
-            this.toolStripStatusLabel5.Text = "F1 :  Open Customer Selection";
-            this.toolStripStatusLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTransactionDate.AutoSize = true;
+            this.lblTransactionDate.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.lblTransactionDate.Location = new System.Drawing.Point(13, 13);
+            this.lblTransactionDate.Name = "lblTransactionDate";
+            this.lblTransactionDate.Size = new System.Drawing.Size(93, 13);
+            this.lblTransactionDate.TabIndex = 0;
+            this.lblTransactionDate.Text = "Transaction Date:";
             // 
-            // buttonStripItem3
+            // pnlTop
             // 
-            this.buttonStripItem3.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.buttonStripItem3.Name = "buttonStripItem3";
-            this.buttonStripItem3.Size = new System.Drawing.Size(70, 27);
-            this.buttonStripItem3.Text = "Save";
-            this.buttonStripItem3.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // toolStripStatusLabel6
-            // 
-            this.toolStripStatusLabel6.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
-            this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
-            this.toolStripStatusLabel6.Size = new System.Drawing.Size(349, 26);
-            this.toolStripStatusLabel6.Spring = true;
-            this.toolStripStatusLabel6.Text = "F2 : Open Category Selection";
-            this.toolStripStatusLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.pnlTop.Controls.Add(this.lblTransactionDate);
+            this.pnlTop.Controls.Add(this.dtpTransactionDate);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(835, 39);
+            this.pnlTop.TabIndex = 61;
             // 
             // RentalAgreementFrm
             // 
@@ -682,20 +682,19 @@
             this.pnlAgreementDetailAction.ResumeLayout(false);
             this.gbxCustomer.ResumeLayout(false);
             this.gbxCustomer.PerformLayout();
-            this.pnlTop.ResumeLayout(false);
-            this.pnlTop.PerformLayout();
             this.pnlHeader.ResumeLayout(false);
             this.gbxOther.ResumeLayout(false);
             this.gbxOther.PerformLayout();
             this.stpRentalAgreement.ResumeLayout(false);
             this.stpRentalAgreement.PerformLayout();
+            this.pnlTop.ResumeLayout(false);
+            this.pnlTop.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label lblTransactionDate;
         private System.Windows.Forms.Label lblCustomerId;
         private System.Windows.Forms.TextBox txtCustomerId;
         private System.Windows.Forms.TextBox txtCustomerName;
@@ -704,7 +703,6 @@
         private System.Windows.Forms.Label lblCustomerTitle;
         private System.Windows.Forms.Label lblCustomerEmail;
         private System.Windows.Forms.Label lblCustomerPhone;
-        private System.Windows.Forms.DateTimePicker dtpTransactionDate;
         private System.Windows.Forms.Button btnViewCustomer;
         private System.Windows.Forms.TextBox txtCustomerEmail;
         private System.Windows.Forms.TextBox txtCustomerAddress;
@@ -732,7 +730,6 @@
         private System.Windows.Forms.Panel pnlDetail;
         private System.Windows.Forms.Panel pnlAgreementDetailAction;
         private System.Windows.Forms.GroupBox gbxCustomer;
-        private System.Windows.Forms.Panel pnlTop;
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.GroupBox gbxOther;
         private Controls.ButtonStripItem btnClose;
@@ -746,5 +743,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
         private Controls.ButtonStripItem buttonStripItem3;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
+        private System.Windows.Forms.DateTimePicker dtpTransactionDate;
+        private System.Windows.Forms.Label lblTransactionDate;
+        private System.Windows.Forms.Panel pnlTop;
     }
 }

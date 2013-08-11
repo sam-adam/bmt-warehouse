@@ -77,6 +77,8 @@
             _session.Update(t);
 
             _transaction.Commit();
+
+            _session.Evict(t);
         }
         #endregion
 

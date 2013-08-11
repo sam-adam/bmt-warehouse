@@ -17,7 +17,8 @@
             Map(x => x.Brand);
             Map(x => x.Stock);
             Map(x => x.CreatedDate, "created_date");
-            References(x => x.CreatedBy, "created_by");
+            References(x => x.CreatedBy, "created_by")
+                .Not.LazyLoad();
         }
     }
 }

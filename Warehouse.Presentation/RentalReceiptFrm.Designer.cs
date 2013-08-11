@@ -40,6 +40,7 @@
             this.lblCustomerPhone = new System.Windows.Forms.Label();
             this.stpRentalReceipt = new System.Windows.Forms.StatusStrip();
             this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssHelpCustomerSelection = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssHelpDetailSelection = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnSave = new Warehouse.Presentation.Controls.ButtonStripItem();
             this.btnViewCustomer = new System.Windows.Forms.Button();
@@ -83,7 +84,6 @@
             this.lblRentalAgreement = new System.Windows.Forms.Label();
             this.txtRentalAgreement = new System.Windows.Forms.TextBox();
             this.gbxCustomer = new System.Windows.Forms.GroupBox();
-            this.tssHelpCustomerSelection = new System.Windows.Forms.ToolStripStatusLabel();
             this.stpRentalReceipt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRentalReceiptDetail)).BeginInit();
             this.tabReceiptDetails.SuspendLayout();
@@ -198,6 +198,15 @@
             this.tssHelp.Padding = new System.Windows.Forms.Padding(10);
             this.tssHelp.Size = new System.Drawing.Size(154, 26);
             this.tssHelp.Text = "Create new rental receipt";
+            // 
+            // tssHelpCustomerSelection
+            // 
+            this.tssHelpCustomerSelection.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.tssHelpCustomerSelection.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.tssHelpCustomerSelection.Name = "tssHelpCustomerSelection";
+            this.tssHelpCustomerSelection.Padding = new System.Windows.Forms.Padding(10);
+            this.tssHelpCustomerSelection.Size = new System.Drawing.Size(177, 26);
+            this.tssHelpCustomerSelection.Text = "F1 :  Open Customer Selection";
             // 
             // tssHelpDetailSelection
             // 
@@ -372,7 +381,7 @@
             this.ProductCategoryId.ReadOnly = true;
             this.ProductCategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ProductCategoryId.Visible = false;
-            this.ProductCategoryId.Width = 84;
+            this.ProductCategoryId.Width = 86;
             // 
             // ProductCategory
             // 
@@ -390,7 +399,7 @@
             this.ProductSubcategoryId.ReadOnly = true;
             this.ProductSubcategoryId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ProductSubcategoryId.Visible = false;
-            this.ProductSubcategoryId.Width = 102;
+            this.ProductSubcategoryId.Width = 104;
             // 
             // ProductSubcategory
             // 
@@ -692,15 +701,6 @@
             this.gbxCustomer.TabStop = false;
             this.gbxCustomer.Text = "Customer";
             // 
-            // tssHelpCustomerSelection
-            // 
-            this.tssHelpCustomerSelection.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
-            this.tssHelpCustomerSelection.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
-            this.tssHelpCustomerSelection.Name = "tssHelpCustomerSelection";
-            this.tssHelpCustomerSelection.Padding = new System.Windows.Forms.Padding(10);
-            this.tssHelpCustomerSelection.Size = new System.Drawing.Size(177, 26);
-            this.tssHelpCustomerSelection.Text = "F1 :  Open Customer Selection";
-            // 
             // RentalReceiptFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -710,7 +710,7 @@
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.stpRentalReceipt);
-            this.MinimumSize = new System.Drawing.Size(850, 740);
+            this.MinimumSize = new System.Drawing.Size(850, 736);
             this.Name = "RentalReceiptFrm";
             this.Text = "Rental Receipt";
             this.stpRentalReceipt.ResumeLayout(false);
