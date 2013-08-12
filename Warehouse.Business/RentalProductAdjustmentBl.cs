@@ -1,4 +1,7 @@
-﻿namespace Warehouse.Business
+﻿using System.Linq.Expressions;
+using System.Windows.Forms;
+
+namespace Warehouse.Business
 {
     using System;
     using System.Collections.Generic;
@@ -85,6 +88,27 @@
             }
 
             return string.Format("{0} rental products stocks adjusted", rentalProductAdjustment.Details.Count);
+        }
+
+        public IList<RentalProductAdjustment> GetAll()
+        {
+            var query = _repo.GetAll();
+
+            return query.Any() ? query.ToList() : null;
+        }
+
+        public RentalProductAdjustment GetById(string id)
+        {
+            var query = _repo.Get(x => x.Id == id);
+
+            return query.Any() ? query.First() : null;
+        }
+
+        public IList<RentalProductAdjustment> Get(Expression<Func<RentalProductAdjustment, bool>> predicate)
+        {
+            var query = _repo.Get(predicate);
+
+            return query.Any() ? query.ToList() : null;
         }
     }
 }
