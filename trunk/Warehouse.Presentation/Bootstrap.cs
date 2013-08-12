@@ -82,6 +82,7 @@
             builder.RegisterType<RentalWithdrawalFrm>();
             builder.RegisterType<InvoiceMonthlyFrm>();
             builder.RegisterType<InvoiceWithdrawalFrm>();
+            builder.RegisterType<RentalProductAdjustmentFrm>();
 
             builder.RegisterType<CustomerView>();
             builder.RegisterType<ProductSubcategoryView>();
@@ -92,7 +93,7 @@
             builder.RegisterType<InvoiceMonthlyView>();
             builder.RegisterType<RentalAgreementDetailView>();
             builder.RegisterType<MutationViewForm>();
-            builder.RegisterType<RentalProductAdjustmentFrm>();
+            builder.RegisterType<RentalProductAdjustmentView>();
 
             builder.RegisterType<LoginPresenter>();
             builder.RegisterType<RentalAgreementPresenter>();

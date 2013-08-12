@@ -15,6 +15,7 @@
         private readonly RentalProductAdjusmentPresenter _presenter;
         private readonly CustomerView _customerView;
         private List<RentalProductAdjusmentDetail> _details;
+        private Customer _customer;
 
         public RentalProductAdjustmentFrm(RentalProductAdjusmentPresenter presenter, CustomerView customerView)
         {
@@ -30,21 +31,22 @@
 
         public Customer Customer
         {
+            get { return _customer; }
             set
             {
-                var selectedCustomer = value;
+                _customer = value;
 
                 CleanForm(txtCustomerId);
 
-                if (selectedCustomer != null)
+                if (_customer != null)
                 {
-                    txtCustomerName.Text = selectedCustomer.Name;
-                    txtCustomerEmail.Text = selectedCustomer.Email;
-                    txtCustomerPhone.Text = selectedCustomer.Phone;
-                    txtCustomerTitle.Text = selectedCustomer.Title;
-                    txtCustomerAddress.Text = selectedCustomer.Address1 + Environment.NewLine
-                                              + selectedCustomer.Address2 + Environment.NewLine
-                                              + selectedCustomer.Address3;
+                    txtCustomerName.Text = _customer.Name;
+                    txtCustomerEmail.Text = _customer.Email;
+                    txtCustomerPhone.Text = _customer.Phone;
+                    txtCustomerTitle.Text = _customer.Title;
+                    txtCustomerAddress.Text = _customer.Address1 + Environment.NewLine
+                                              + _customer.Address2 + Environment.NewLine
+                                              + _customer.Address3;
                 }
             }
         }

@@ -5,7 +5,7 @@
 
     public interface IRentalProductAdjustmentForm
     {
-        Customer Customer { set; }
+        Customer Customer { get; set; }
         string CustomerIdInput { get; set; }
         List<RentalProductAdjusmentDetail> Details { get; set; } 
     }

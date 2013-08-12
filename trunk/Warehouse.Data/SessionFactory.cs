@@ -35,7 +35,9 @@
         {
             InitializeSessionFactory();
 
-            return _session ?? _sessionFactory.OpenSession();
+            _session = _sessionFactory.OpenSession();
+
+            return _session;
         }
     }
 }

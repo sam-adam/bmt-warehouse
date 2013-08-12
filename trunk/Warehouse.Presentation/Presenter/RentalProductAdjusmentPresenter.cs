@@ -44,7 +44,8 @@ namespace Warehouse.Presentation.Presenter
         {
             var rentalProductAdjusment = new RentalProductAdjustment()
                 {
-                    Id = _rentalProductAdjustmentBl.GenerateNewId()
+                    Id = _rentalProductAdjustmentBl.GenerateNewId(),
+                    Customer = _form.Customer
                 };
 
             foreach (var detail in _form.Details)
