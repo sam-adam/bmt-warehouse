@@ -51,7 +51,7 @@
                 {
                     updateMessage = Update(activeRental);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     _rentalAgreementRepository.Delete(rentalAgreement);
 

@@ -70,6 +70,7 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AbstractBl.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Contract\IBusinessLogic.cs" />
     <Compile Include="Contract\ICustomerBl.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="RentalWithdrawalBl.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>

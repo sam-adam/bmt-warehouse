@@ -74,7 +74,7 @@
         {
             _transaction = _session.BeginTransaction();
 
-            _session.Update(t);
+            _session.Merge(t);
 
             _transaction.Commit();
 

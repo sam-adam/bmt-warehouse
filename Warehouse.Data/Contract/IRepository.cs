@@ -1,5 +1,6 @@
 ﻿namespace Warehouse.Data.Contract
 {
+    using NHibernate;
     using System;
     using System.Linq.Expressions;
 
