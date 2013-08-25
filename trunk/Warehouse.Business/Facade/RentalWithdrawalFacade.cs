@@ -95,7 +95,7 @@
             foreach (var withdrawalDetail in rentalWithdrawal.Details)
             {
                 var rentalProduct = withdrawalDetail.RentalProduct;
-                var rentalProductPrice = activeRentalAgreement.Details.First(dtl => dtl.Category == rentalProduct.ProductCategory && dtl.Subcategory == rentalProduct.ProductSubcategory).Price;
+                var rentalProductPrice = activeRentalAgreement.Details.First(dtl => dtl.Category.Category == rentalProduct.ProductCategory.Category && dtl.Subcategory.Subcategory == rentalProduct.ProductSubcategory.Subcategory).Price;
                 var invoiceWithdrawalDetail = new InvoiceWithdrawalDetail()
                     {
                         InvoiceWithdrawal = invoiceWithdrawal,
