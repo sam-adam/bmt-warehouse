@@ -87,7 +87,7 @@
 
             if (_invoice != null)
             {
-                txtCustomerId.Text = _invoice.Id;
+                txtWithdrawalId.Text = _invoice.Id;
             }
         }
 

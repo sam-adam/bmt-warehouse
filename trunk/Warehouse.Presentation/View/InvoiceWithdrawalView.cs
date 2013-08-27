@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
@@ -30,7 +31,7 @@
         {
             InvoiceWithdrawal = _invoiceWithdrawal;
 
-            if (keyData == Keys.Enter && Caller != null)
+            if (keyData == Keys.Enter)
             {
                 if (InvoiceWithdrawal == null)
                 {
@@ -130,6 +131,8 @@
                         invoiceWithdrawal.Details.Where(dtl => withdrawal != null && dtl.InvoiceWithdrawal == withdrawal).Sum(dtl => dtl.Quantity * dtl.Price).ToString("N2")
                         );
                 }
+
+                dgvInvoiceWithdrawal.Sort(dgvInvoiceWithdrawal.Columns["InvoiceDate"], ListSortDirection.Descending);
             }
 
             SetDetails();
@@ -145,9 +148,9 @@
 
                 if (invoiceWithdrawals != null)
                 {
-                    var invoiceWithdrawal = invoiceWithdrawals.First();
+                    _invoiceWithdrawal = invoiceWithdrawals.First();
 
-                    foreach (var detail in invoiceWithdrawal.Details)
+                    foreach (var detail in _invoiceWithdrawal.Details)
                     {
                         dgvInvoiceWithdrawalDetail.Rows.Add(
                             detail.RentalProduct.ProductCategory.Id,
@@ -165,5 +168,10 @@
             }
         }
         #endregion
+
+        private void dgvInvoiceWithdrawal_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SetDetails();
+        }
     }
 }

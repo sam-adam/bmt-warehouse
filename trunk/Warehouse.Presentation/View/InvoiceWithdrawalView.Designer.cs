@@ -36,14 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvInvoiceWithdrawal = new System.Windows.Forms.DataGridView();
-            this.dgvInvoiceWithdrawalDetail = new System.Windows.Forms.DataGridView();
-            this.pnlSeparator = new System.Windows.Forms.Panel();
-            this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
-            this.stpInvoiceWithdrawal = new System.Windows.Forms.StatusStrip();
-            this.tssHelpEnter = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtKeyword = new System.Windows.Forms.TextBox();
-            this.pnlTop = new System.Windows.Forms.Panel();
-            this.cboCriteria = new System.Windows.Forms.ComboBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +45,7 @@
             this.AdminId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GrandTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvInvoiceWithdrawalDetail = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +55,13 @@
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlSeparator = new System.Windows.Forms.Panel();
+            this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
+            this.stpInvoiceWithdrawal = new System.Windows.Forms.StatusStrip();
+            this.tssHelpEnter = new System.Windows.Forms.ToolStripStatusLabel();
+            this.txtKeyword = new System.Windows.Forms.TextBox();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.cboCriteria = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceWithdrawal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceWithdrawalDetail)).BeginInit();
             this.stpInvoiceWithdrawal.SuspendLayout();
@@ -121,7 +121,75 @@
             this.dgvInvoiceWithdrawal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInvoiceWithdrawal.Size = new System.Drawing.Size(793, 228);
             this.dgvInvoiceWithdrawal.TabIndex = 23;
+            this.dgvInvoiceWithdrawal.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoiceWithdrawal_CellDoubleClick);
             this.dgvInvoiceWithdrawal.SelectionChanged += new System.EventHandler(this.dgvInvoiceWithdrawal_SelectionChanged);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 41;
+            // 
+            // CustomerId
+            // 
+            this.CustomerId.HeaderText = "CustomerId";
+            this.CustomerId.Name = "CustomerId";
+            this.CustomerId.ReadOnly = true;
+            this.CustomerId.Visible = false;
+            this.CustomerId.Width = 85;
+            // 
+            // Customer
+            // 
+            this.Customer.HeaderText = "Customer";
+            this.Customer.Name = "Customer";
+            this.Customer.ReadOnly = true;
+            this.Customer.Width = 76;
+            // 
+            // RentalWithdrawal
+            // 
+            this.RentalWithdrawal.HeaderText = "Rental Withdrawal";
+            this.RentalWithdrawal.Name = "RentalWithdrawal";
+            this.RentalWithdrawal.ReadOnly = true;
+            this.RentalWithdrawal.Width = 119;
+            // 
+            // RentalAgreement
+            // 
+            this.RentalAgreement.HeaderText = "Rental Agreement";
+            this.RentalAgreement.Name = "RentalAgreement";
+            this.RentalAgreement.ReadOnly = true;
+            this.RentalAgreement.Width = 117;
+            // 
+            // InvoiceDate
+            // 
+            this.InvoiceDate.HeaderText = "Invoice Date";
+            this.InvoiceDate.Name = "InvoiceDate";
+            this.InvoiceDate.ReadOnly = true;
+            this.InvoiceDate.Width = 93;
+            // 
+            // AdminId
+            // 
+            this.AdminId.HeaderText = "AdminId";
+            this.AdminId.Name = "AdminId";
+            this.AdminId.ReadOnly = true;
+            this.AdminId.Visible = false;
+            this.AdminId.Width = 70;
+            // 
+            // Admin
+            // 
+            this.Admin.HeaderText = "Admin";
+            this.Admin.Name = "Admin";
+            this.Admin.ReadOnly = true;
+            this.Admin.Width = 61;
+            // 
+            // GrandTotal
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.GrandTotal.DefaultCellStyle = dataGridViewCellStyle2;
+            this.GrandTotal.HeaderText = "Grand Total";
+            this.GrandTotal.Name = "GrandTotal";
+            this.GrandTotal.ReadOnly = true;
+            this.GrandTotal.Width = 88;
             // 
             // dgvInvoiceWithdrawalDetail
             // 
@@ -152,6 +220,77 @@
             this.dgvInvoiceWithdrawalDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInvoiceWithdrawalDetail.Size = new System.Drawing.Size(793, 222);
             this.dgvInvoiceWithdrawalDetail.TabIndex = 25;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Category Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn1.Width = 86;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Category";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 74;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Subcategory Id";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Visible = false;
+            this.dataGridViewTextBoxColumn3.Width = 104;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Subcategory";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 92;
+            // 
+            // Brand
+            // 
+            this.Brand.HeaderText = "Brand";
+            this.Brand.Name = "Brand";
+            this.Brand.ReadOnly = true;
+            this.Brand.Width = 60;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Width = 85;
+            // 
+            // Quantity
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Quantity.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 71;
+            // 
+            // Price
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Price.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            this.Price.Width = 56;
+            // 
+            // Subtotal
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Subtotal.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Subtotal.HeaderText = "Subtotal";
+            this.Subtotal.Name = "Subtotal";
+            this.Subtotal.ReadOnly = true;
+            this.Subtotal.Width = 71;
             // 
             // pnlSeparator
             // 
@@ -228,144 +367,6 @@
             this.cboCriteria.Size = new System.Drawing.Size(193, 21);
             this.cboCriteria.TabIndex = 2;
             this.cboCriteria.SelectedIndexChanged += new System.EventHandler(this.cboCriteria_SelectedIndexChanged);
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 41;
-            // 
-            // CustomerId
-            // 
-            this.CustomerId.HeaderText = "CustomerId";
-            this.CustomerId.Name = "CustomerId";
-            this.CustomerId.ReadOnly = true;
-            this.CustomerId.Visible = false;
-            this.CustomerId.Width = 85;
-            // 
-            // Customer
-            // 
-            this.Customer.HeaderText = "Customer";
-            this.Customer.Name = "Customer";
-            this.Customer.ReadOnly = true;
-            this.Customer.Width = 76;
-            // 
-            // RentalWithdrawal
-            // 
-            this.RentalWithdrawal.HeaderText = "Rental Withdrawal";
-            this.RentalWithdrawal.Name = "RentalWithdrawal";
-            this.RentalWithdrawal.ReadOnly = true;
-            this.RentalWithdrawal.Width = 119;
-            // 
-            // RentalAgreement
-            // 
-            this.RentalAgreement.HeaderText = "Rental Agreement";
-            this.RentalAgreement.Name = "RentalAgreement";
-            this.RentalAgreement.ReadOnly = true;
-            this.RentalAgreement.Width = 117;
-            // 
-            // InvoiceDate
-            // 
-            this.InvoiceDate.HeaderText = "Invoice Date";
-            this.InvoiceDate.Name = "InvoiceDate";
-            this.InvoiceDate.ReadOnly = true;
-            this.InvoiceDate.Width = 93;
-            // 
-            // AdminId
-            // 
-            this.AdminId.HeaderText = "AdminId";
-            this.AdminId.Name = "AdminId";
-            this.AdminId.ReadOnly = true;
-            this.AdminId.Visible = false;
-            this.AdminId.Width = 70;
-            // 
-            // Admin
-            // 
-            this.Admin.HeaderText = "Admin";
-            this.Admin.Name = "Admin";
-            this.Admin.ReadOnly = true;
-            this.Admin.Width = 61;
-            // 
-            // GrandTotal
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.GrandTotal.DefaultCellStyle = dataGridViewCellStyle2;
-            this.GrandTotal.HeaderText = "Grand Total";
-            this.GrandTotal.Name = "GrandTotal";
-            this.GrandTotal.ReadOnly = true;
-            this.GrandTotal.Width = 88;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Category Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            this.dataGridViewTextBoxColumn1.Width = 86;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Category";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 74;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Subcategory Id";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Visible = false;
-            this.dataGridViewTextBoxColumn3.Width = 104;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Subcategory";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 92;
-            // 
-            // Brand
-            // 
-            this.Brand.HeaderText = "Brand";
-            this.Brand.Name = "Brand";
-            this.Brand.ReadOnly = true;
-            this.Brand.Width = 60;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            this.Description.Width = 85;
-            // 
-            // Quantity
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Quantity.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            this.Quantity.Width = 71;
-            // 
-            // Price
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Price.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            this.Price.Width = 56;
-            // 
-            // Subtotal
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Subtotal.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Subtotal.HeaderText = "Subtotal";
-            this.Subtotal.Name = "Subtotal";
-            this.Subtotal.ReadOnly = true;
-            this.Subtotal.Width = 71;
             // 
             // InvoiceWithdrawalView
             // 

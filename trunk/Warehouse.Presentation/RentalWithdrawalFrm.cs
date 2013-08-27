@@ -5,6 +5,7 @@
     using System.Windows.Forms;
     using Warehouse.Business.Contract;
     using Warehouse.Data.Model;
+    using Warehouse.Presentation.Delegates;
     using Warehouse.Presentation.Print;
     using Warehouse.Presentation.View;
 
@@ -192,7 +193,15 @@
 
             if (_customerView.Customer != null)
             {
-                txtCustomerId.Text = _customerView.Customer.Id;   
+                _customerView.CustomerSelected += CustomerView_CustomerSelected;
+            }
+        }
+
+        private void CustomerView_CustomerSelected(object sender, CustomerSelectedEventArgs e)
+        {
+            if (e.Customer != null)
+            {
+                txtCustomerId.Text = e.Customer.Id;
             }
         }
 

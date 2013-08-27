@@ -111,7 +111,7 @@
                             rentalProduct.Description,
                             string.Format("{0:#,0}", rentalProduct.Stock),
                             string.Format("{0:#,0}", beginingBalance)
-                        );   
+                        );
                     }
                 }
             }
@@ -175,7 +175,8 @@
         {
             if (dgvRentalProduct.CurrentRow != null && dgvRentalProduct.Rows.Count > 0)
             {
-                _presenter.GetRentalProductMutations(dgvRentalProduct.Rows[e.RowIndex].Cells["ProductId"].Value.ToString());
+                _presenter.GetRentalProductMutationIn(dgvRentalProduct.Rows[e.RowIndex].Cells["ProductId"].Value.ToString(), dtpMutationFrom.Value, dtpMutationTo.Value);
+                _presenter.GetRentalProductMutationOut(dgvRentalProduct.Rows[e.RowIndex].Cells["ProductId"].Value.ToString(), dtpMutationFrom.Value, dtpMutationTo.Value);
             }
         }
 

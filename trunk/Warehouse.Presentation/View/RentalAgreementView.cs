@@ -97,8 +97,6 @@
 
             _rentalAgreementFrm.Show();
 
-            
-
             Close();
         }
 
