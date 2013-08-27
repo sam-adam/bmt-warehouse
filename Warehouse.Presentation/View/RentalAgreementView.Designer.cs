@@ -45,15 +45,15 @@
             this.Sales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvRentalAgreementDetail = new System.Windows.Forms.DataGridView();
-            this.pnlSeparator = new System.Windows.Forms.Panel();
-            this.stpRentalAgreementList = new System.Windows.Forms.StatusStrip();
-            this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tssHelpEnter = new System.Windows.Forms.ToolStripStatusLabel();
             this.CategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubcategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Subcategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlSeparator = new System.Windows.Forms.Panel();
+            this.stpRentalAgreementList = new System.Windows.Forms.StatusStrip();
+            this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssHelpEnter = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRentalAgreement)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRentalAgreementDetail)).BeginInit();
@@ -167,7 +167,7 @@
             this.CustomerId.Name = "CustomerId";
             this.CustomerId.ReadOnly = true;
             this.CustomerId.Visible = false;
-            this.CustomerId.Width = 83;
+            this.CustomerId.Width = 85;
             // 
             // Customer
             // 
@@ -204,7 +204,7 @@
             this.SalesId.Name = "SalesId";
             this.SalesId.ReadOnly = true;
             this.SalesId.Visible = false;
-            this.SalesId.Width = 65;
+            this.SalesId.Width = 67;
             // 
             // Sales
             // 
@@ -246,42 +246,6 @@
             this.dgvRentalAgreementDetail.Size = new System.Drawing.Size(959, 222);
             this.dgvRentalAgreementDetail.TabIndex = 10;
             // 
-            // pnlSeparator
-            // 
-            this.pnlSeparator.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlSeparator.Location = new System.Drawing.Point(0, 307);
-            this.pnlSeparator.Name = "pnlSeparator";
-            this.pnlSeparator.Size = new System.Drawing.Size(959, 10);
-            this.pnlSeparator.TabIndex = 7;
-            // 
-            // stpRentalAgreementList
-            // 
-            this.stpRentalAgreementList.AutoSize = false;
-            this.stpRentalAgreementList.BackColor = System.Drawing.Color.White;
-            this.stpRentalAgreementList.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.stpRentalAgreementList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tssHelp,
-            this.tssHelpEnter});
-            this.stpRentalAgreementList.Location = new System.Drawing.Point(0, 539);
-            this.stpRentalAgreementList.Name = "stpRentalAgreementList";
-            this.stpRentalAgreementList.Size = new System.Drawing.Size(959, 31);
-            this.stpRentalAgreementList.TabIndex = 11;
-            // 
-            // tssHelp
-            // 
-            this.tssHelp.BackColor = System.Drawing.Color.Transparent;
-            this.tssHelp.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
-            this.tssHelp.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
-            this.tssHelp.Name = "tssHelp";
-            this.tssHelp.Size = new System.Drawing.Size(171, 26);
-            this.tssHelp.Text = "View and select rental agreement";
-            // 
-            // tssHelpEnter
-            // 
-            this.tssHelpEnter.Name = "tssHelpEnter";
-            this.tssHelpEnter.Size = new System.Drawing.Size(212, 26);
-            this.tssHelpEnter.Text = "Press <Enter> to select Rental Agreement";
-            // 
             // CategoryId
             // 
             this.CategoryId.HeaderText = "CategoryId";
@@ -319,6 +283,43 @@
             this.Price.ReadOnly = true;
             this.Price.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Price.Width = 56;
+            // 
+            // pnlSeparator
+            // 
+            this.pnlSeparator.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlSeparator.Location = new System.Drawing.Point(0, 307);
+            this.pnlSeparator.Name = "pnlSeparator";
+            this.pnlSeparator.Size = new System.Drawing.Size(959, 10);
+            this.pnlSeparator.TabIndex = 7;
+            // 
+            // stpRentalAgreementList
+            // 
+            this.stpRentalAgreementList.AutoSize = false;
+            this.stpRentalAgreementList.BackColor = System.Drawing.Color.White;
+            this.stpRentalAgreementList.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.stpRentalAgreementList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tssHelp,
+            this.tssHelpEnter});
+            this.stpRentalAgreementList.Location = new System.Drawing.Point(0, 539);
+            this.stpRentalAgreementList.Name = "stpRentalAgreementList";
+            this.stpRentalAgreementList.Size = new System.Drawing.Size(959, 31);
+            this.stpRentalAgreementList.TabIndex = 11;
+            // 
+            // tssHelp
+            // 
+            this.tssHelp.BackColor = System.Drawing.Color.Transparent;
+            this.tssHelp.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.tssHelp.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.tssHelp.Name = "tssHelp";
+            this.tssHelp.Size = new System.Drawing.Size(171, 26);
+            this.tssHelp.Text = "View and select rental agreement";
+            // 
+            // tssHelpEnter
+            // 
+            this.tssHelpEnter.Name = "tssHelpEnter";
+            this.tssHelpEnter.Size = new System.Drawing.Size(212, 26);
+            this.tssHelpEnter.Text = "Press <Enter> to select Rental Agreement";
+            this.tssHelpEnter.Visible = false;
             // 
             // RentalAgreementView
             // 
