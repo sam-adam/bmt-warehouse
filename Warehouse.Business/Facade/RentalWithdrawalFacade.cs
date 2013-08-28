@@ -46,7 +46,7 @@
         {
             var customers = _customerBl.Get(id);
 
-            return customers.Any() ? customers.First() : null;
+            return customers != null ? customers.First() : null;
         }
 
         public ProductCategory GetCategory(string id)

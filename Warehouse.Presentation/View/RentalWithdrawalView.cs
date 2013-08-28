@@ -7,18 +7,23 @@
     using System.Windows.Forms;
     using Warehouse.Business.Contract;
     using Warehouse.Data.Model;
+    using Warehouse.Presentation.Print;
 
     public partial class RentalWithdrawalView : Form
     {
         private readonly IRentalWithdrawalBl _rentalWithdrawalBl;
+        private readonly PrintFrm _printFrm;
+        private readonly RentalWithdrawalRpt _report;
         private RentalWithdrawal _rentalWithdrawal;
         public Form Caller { get; set; }
         public RentalWithdrawal RentalWithdrawal { get; private set; }
 
         #region Constructors
-        public RentalWithdrawalView(IRentalWithdrawalBl rentalWithdrawalBl)
+        public RentalWithdrawalView(IRentalWithdrawalBl rentalWithdrawalBl, PrintFrm printFrm, RentalWithdrawalRpt report)
         {
             _rentalWithdrawalBl = rentalWithdrawalBl;
+            _printFrm = printFrm;
+            _report = report;
 
             InitializeComponent();
         }
@@ -155,5 +160,21 @@
             }
         }
         #endregion
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (dgvRentalWithdrawal.CurrentRow != null)
+            {
+                Print(_rentalWithdrawalBl.Get(dgvRentalWithdrawal.CurrentRow.Cells["Id"].Value.ToString()).First(), _report.ResourceName);
+            }
+        }
+
+        private void Print(RentalWithdrawal rentalWithdrawal, string reportFileName)
+        {
+            _printFrm.RecordSelectionFormula = "{tbl_trrentalwithdrawal1.id_rentalwithdrawal}='" + rentalWithdrawal.Id + "'";
+            _printFrm.ReportFilename = reportFileName;
+
+            _printFrm.ShowDialog();
+        }
     }
 }

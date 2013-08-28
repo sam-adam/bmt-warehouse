@@ -37,14 +37,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvInvoiceMonthly = new System.Windows.Forms.DataGridView();
-            this.stpInvoiceMonthly = new System.Windows.Forms.StatusStrip();
-            this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tssHelpEnter = new System.Windows.Forms.ToolStripStatusLabel();
-            this.cboCriteria = new System.Windows.Forms.ComboBox();
-            this.pnlSeparator = new System.Windows.Forms.Panel();
-            this.dgvInvoiceMonthlyDetail = new System.Windows.Forms.DataGridView();
-            this.txtKeyword = new System.Windows.Forms.TextBox();
-            this.pnlTop = new System.Windows.Forms.Panel();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +47,12 @@
             this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiscountRemark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GrandTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stpInvoiceMonthly = new System.Windows.Forms.StatusStrip();
+            this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssHelpEnter = new System.Windows.Forms.ToolStripStatusLabel();
+            this.cboCriteria = new System.Windows.Forms.ComboBox();
+            this.pnlSeparator = new System.Windows.Forms.Panel();
+            this.dgvInvoiceMonthlyDetail = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +62,8 @@
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtKeyword = new System.Windows.Forms.TextBox();
+            this.pnlTop = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceMonthly)).BeginInit();
             this.stpInvoiceMonthly.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceMonthlyDetail)).BeginInit();
@@ -124,7 +124,84 @@
             this.dgvInvoiceMonthly.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInvoiceMonthly.Size = new System.Drawing.Size(793, 228);
             this.dgvInvoiceMonthly.TabIndex = 28;
+            this.dgvInvoiceMonthly.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoiceMonthly_CellDoubleClick);
             this.dgvInvoiceMonthly.SelectionChanged += new System.EventHandler(this.dgvInvoiceMonthly_SelectionChanged);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 41;
+            // 
+            // CustomerId
+            // 
+            this.CustomerId.HeaderText = "CustomerId";
+            this.CustomerId.Name = "CustomerId";
+            this.CustomerId.ReadOnly = true;
+            this.CustomerId.Visible = false;
+            this.CustomerId.Width = 85;
+            // 
+            // Customer
+            // 
+            this.Customer.HeaderText = "Customer";
+            this.Customer.Name = "Customer";
+            this.Customer.ReadOnly = true;
+            this.Customer.Width = 76;
+            // 
+            // RentalAgreement
+            // 
+            this.RentalAgreement.HeaderText = "Rental Agreement";
+            this.RentalAgreement.Name = "RentalAgreement";
+            this.RentalAgreement.ReadOnly = true;
+            this.RentalAgreement.Width = 117;
+            // 
+            // InvoiceDate
+            // 
+            this.InvoiceDate.HeaderText = "Invoice Date";
+            this.InvoiceDate.Name = "InvoiceDate";
+            this.InvoiceDate.ReadOnly = true;
+            this.InvoiceDate.Width = 93;
+            // 
+            // AdminId
+            // 
+            this.AdminId.HeaderText = "AdminId";
+            this.AdminId.Name = "AdminId";
+            this.AdminId.ReadOnly = true;
+            this.AdminId.Visible = false;
+            this.AdminId.Width = 70;
+            // 
+            // Admin
+            // 
+            this.Admin.HeaderText = "Admin";
+            this.Admin.Name = "Admin";
+            this.Admin.ReadOnly = true;
+            this.Admin.Width = 61;
+            // 
+            // Discount
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Discount.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Discount.HeaderText = "Discount";
+            this.Discount.Name = "Discount";
+            this.Discount.ReadOnly = true;
+            this.Discount.Width = 74;
+            // 
+            // DiscountRemark
+            // 
+            this.DiscountRemark.HeaderText = "Discount Remark";
+            this.DiscountRemark.Name = "DiscountRemark";
+            this.DiscountRemark.ReadOnly = true;
+            this.DiscountRemark.Width = 114;
+            // 
+            // GrandTotal
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.GrandTotal.DefaultCellStyle = dataGridViewCellStyle3;
+            this.GrandTotal.HeaderText = "Grand Total";
+            this.GrandTotal.Name = "GrandTotal";
+            this.GrandTotal.ReadOnly = true;
+            this.GrandTotal.Width = 88;
             // 
             // stpInvoiceMonthly
             // 
@@ -209,103 +286,6 @@
             this.dgvInvoiceMonthlyDetail.Size = new System.Drawing.Size(793, 222);
             this.dgvInvoiceMonthlyDetail.TabIndex = 30;
             // 
-            // txtKeyword
-            // 
-            this.txtKeyword.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtKeyword.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtKeyword.Location = new System.Drawing.Point(7, 8);
-            this.txtKeyword.Name = "txtKeyword";
-            this.txtKeyword.Size = new System.Drawing.Size(250, 21);
-            this.txtKeyword.TabIndex = 1;
-            this.txtKeyword.TextChanged += new System.EventHandler(this.txtKeyword_TextChanged);
-            // 
-            // pnlTop
-            // 
-            this.pnlTop.Controls.Add(this.cboCriteria);
-            this.pnlTop.Controls.Add(this.txtKeyword);
-            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTop.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.pnlTop.Location = new System.Drawing.Point(0, 0);
-            this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(793, 38);
-            this.pnlTop.TabIndex = 27;
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 41;
-            // 
-            // CustomerId
-            // 
-            this.CustomerId.HeaderText = "CustomerId";
-            this.CustomerId.Name = "CustomerId";
-            this.CustomerId.ReadOnly = true;
-            this.CustomerId.Visible = false;
-            this.CustomerId.Width = 85;
-            // 
-            // Customer
-            // 
-            this.Customer.HeaderText = "Customer";
-            this.Customer.Name = "Customer";
-            this.Customer.ReadOnly = true;
-            this.Customer.Width = 76;
-            // 
-            // RentalAgreement
-            // 
-            this.RentalAgreement.HeaderText = "Rental Agreement";
-            this.RentalAgreement.Name = "RentalAgreement";
-            this.RentalAgreement.ReadOnly = true;
-            this.RentalAgreement.Width = 117;
-            // 
-            // InvoiceDate
-            // 
-            this.InvoiceDate.HeaderText = "Invoice Date";
-            this.InvoiceDate.Name = "InvoiceDate";
-            this.InvoiceDate.ReadOnly = true;
-            this.InvoiceDate.Width = 93;
-            // 
-            // AdminId
-            // 
-            this.AdminId.HeaderText = "AdminId";
-            this.AdminId.Name = "AdminId";
-            this.AdminId.ReadOnly = true;
-            this.AdminId.Visible = false;
-            this.AdminId.Width = 70;
-            // 
-            // Admin
-            // 
-            this.Admin.HeaderText = "Admin";
-            this.Admin.Name = "Admin";
-            this.Admin.ReadOnly = true;
-            this.Admin.Width = 61;
-            // 
-            // Discount
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Discount.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Discount.HeaderText = "Discount";
-            this.Discount.Name = "Discount";
-            this.Discount.ReadOnly = true;
-            this.Discount.Width = 74;
-            // 
-            // DiscountRemark
-            // 
-            this.DiscountRemark.HeaderText = "Discount Remark";
-            this.DiscountRemark.Name = "DiscountRemark";
-            this.DiscountRemark.ReadOnly = true;
-            this.DiscountRemark.Width = 114;
-            // 
-            // GrandTotal
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.GrandTotal.DefaultCellStyle = dataGridViewCellStyle3;
-            this.GrandTotal.HeaderText = "Grand Total";
-            this.GrandTotal.Name = "GrandTotal";
-            this.GrandTotal.ReadOnly = true;
-            this.GrandTotal.Width = 88;
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Category Id";
@@ -376,6 +356,27 @@
             this.Subtotal.Name = "Subtotal";
             this.Subtotal.ReadOnly = true;
             this.Subtotal.Width = 71;
+            // 
+            // txtKeyword
+            // 
+            this.txtKeyword.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtKeyword.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.txtKeyword.Location = new System.Drawing.Point(7, 8);
+            this.txtKeyword.Name = "txtKeyword";
+            this.txtKeyword.Size = new System.Drawing.Size(250, 21);
+            this.txtKeyword.TabIndex = 1;
+            this.txtKeyword.TextChanged += new System.EventHandler(this.txtKeyword_TextChanged);
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.Controls.Add(this.cboCriteria);
+            this.pnlTop.Controls.Add(this.txtKeyword);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(793, 38);
+            this.pnlTop.TabIndex = 27;
             // 
             // InvoiceMonthlyView
             // 

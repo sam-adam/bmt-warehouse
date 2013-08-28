@@ -46,7 +46,6 @@
             
             crystalReportViewer.PrintReport();
             crystalReportViewer.ReportSource = _reportDocument;
-            crystalReportViewer.Refresh();
         }
     }
 }

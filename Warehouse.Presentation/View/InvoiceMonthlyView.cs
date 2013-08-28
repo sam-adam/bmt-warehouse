@@ -163,5 +163,10 @@
             }
         }
         #endregion
+
+        private void dgvInvoiceMonthly_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SetDetails();
+        }
     }
 }

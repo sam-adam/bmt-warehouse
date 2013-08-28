@@ -28,10 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvRentalReceipt = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RentalAgreement = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReceiptDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reference = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AdminId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tssHelpEnter = new System.Windows.Forms.ToolStripStatusLabel();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stpRentalReceiptList = new System.Windows.Forms.StatusStrip();
@@ -47,15 +56,7 @@
             this.dgvRentalReceiptDetail = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RentalAgreement = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReceiptDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Reference = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AdminId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRentalReceipt)).BeginInit();
             this.stpRentalReceiptList.SuspendLayout();
             this.pnlTop.SuspendLayout();
@@ -68,14 +69,14 @@
             this.dgvRentalReceipt.AllowUserToDeleteRows = false;
             this.dgvRentalReceipt.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvRentalReceipt.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRentalReceipt.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRentalReceipt.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvRentalReceipt.ColumnHeadersHeight = 25;
             this.dgvRentalReceipt.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -87,14 +88,14 @@
             this.Reference,
             this.AdminId,
             this.Admin});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRentalReceipt.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRentalReceipt.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvRentalReceipt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRentalReceipt.EnableHeadersVisualStyles = false;
             this.dgvRentalReceipt.GridColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -103,19 +104,84 @@
             this.dgvRentalReceipt.Name = "dgvRentalReceipt";
             this.dgvRentalReceipt.ReadOnly = true;
             this.dgvRentalReceipt.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRentalReceipt.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRentalReceipt.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvRentalReceipt.RowHeadersVisible = false;
             this.dgvRentalReceipt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRentalReceipt.Size = new System.Drawing.Size(793, 228);
             this.dgvRentalReceipt.TabIndex = 18;
             this.dgvRentalReceipt.SelectionChanged += new System.EventHandler(this.dgvRentalWithdrawal_SelectionChanged);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 41;
+            // 
+            // CustomerId
+            // 
+            this.CustomerId.HeaderText = "CustomerId";
+            this.CustomerId.Name = "CustomerId";
+            this.CustomerId.ReadOnly = true;
+            this.CustomerId.Visible = false;
+            this.CustomerId.Width = 85;
+            // 
+            // Customer
+            // 
+            this.Customer.HeaderText = "Customer";
+            this.Customer.Name = "Customer";
+            this.Customer.ReadOnly = true;
+            this.Customer.Width = 76;
+            // 
+            // RentalAgreement
+            // 
+            this.RentalAgreement.HeaderText = "Rental Agreement";
+            this.RentalAgreement.Name = "RentalAgreement";
+            this.RentalAgreement.ReadOnly = true;
+            this.RentalAgreement.Width = 117;
+            // 
+            // ReceiptDate
+            // 
+            this.ReceiptDate.HeaderText = "Receipt Date";
+            this.ReceiptDate.Name = "ReceiptDate";
+            this.ReceiptDate.ReadOnly = true;
+            this.ReceiptDate.Width = 95;
+            // 
+            // Sender
+            // 
+            this.Sender.HeaderText = "Sender";
+            this.Sender.Name = "Sender";
+            this.Sender.ReadOnly = true;
+            this.Sender.Width = 66;
+            // 
+            // Reference
+            // 
+            this.Reference.HeaderText = "Reference";
+            this.Reference.Name = "Reference";
+            this.Reference.ReadOnly = true;
+            this.Reference.Width = 82;
+            // 
+            // AdminId
+            // 
+            this.AdminId.HeaderText = "AdminId";
+            this.AdminId.Name = "AdminId";
+            this.AdminId.ReadOnly = true;
+            this.AdminId.Visible = false;
+            this.AdminId.Width = 70;
+            // 
+            // Admin
+            // 
+            this.Admin.HeaderText = "Admin";
+            this.Admin.Name = "Admin";
+            this.Admin.ReadOnly = true;
+            this.Admin.Width = 61;
             // 
             // tssHelpEnter
             // 
@@ -193,6 +259,7 @@
             // 
             // pnlTop
             // 
+            this.pnlTop.Controls.Add(this.btnPrint);
             this.pnlTop.Controls.Add(this.cboCriteria);
             this.pnlTop.Controls.Add(this.txtKeyword);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -226,7 +293,7 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Visible = false;
-            this.dataGridViewTextBoxColumn3.Width = 102;
+            this.dataGridViewTextBoxColumn3.Width = 104;
             // 
             // dgvRentalReceiptDetail
             // 
@@ -262,7 +329,7 @@
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Visible = false;
-            this.dataGridViewTextBoxColumn1.Width = 84;
+            this.dataGridViewTextBoxColumn1.Width = 86;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -271,70 +338,15 @@
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Width = 74;
             // 
-            // Id
+            // btnPrint
             // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 41;
-            // 
-            // CustomerId
-            // 
-            this.CustomerId.HeaderText = "CustomerId";
-            this.CustomerId.Name = "CustomerId";
-            this.CustomerId.ReadOnly = true;
-            this.CustomerId.Visible = false;
-            this.CustomerId.Width = 85;
-            // 
-            // Customer
-            // 
-            this.Customer.HeaderText = "Customer";
-            this.Customer.Name = "Customer";
-            this.Customer.ReadOnly = true;
-            this.Customer.Width = 76;
-            // 
-            // RentalAgreement
-            // 
-            this.RentalAgreement.HeaderText = "Rental Agreement";
-            this.RentalAgreement.Name = "RentalAgreement";
-            this.RentalAgreement.ReadOnly = true;
-            this.RentalAgreement.Width = 117;
-            // 
-            // ReceiptDate
-            // 
-            this.ReceiptDate.HeaderText = "Receipt Date";
-            this.ReceiptDate.Name = "ReceiptDate";
-            this.ReceiptDate.ReadOnly = true;
-            this.ReceiptDate.Width = 95;
-            // 
-            // Sender
-            // 
-            this.Sender.HeaderText = "Sender";
-            this.Sender.Name = "Sender";
-            this.Sender.ReadOnly = true;
-            this.Sender.Width = 66;
-            // 
-            // Reference
-            // 
-            this.Reference.HeaderText = "Reference";
-            this.Reference.Name = "Reference";
-            this.Reference.ReadOnly = true;
-            this.Reference.Width = 82;
-            // 
-            // AdminId
-            // 
-            this.AdminId.HeaderText = "AdminId";
-            this.AdminId.Name = "AdminId";
-            this.AdminId.ReadOnly = true;
-            this.AdminId.Visible = false;
-            this.AdminId.Width = 70;
-            // 
-            // Admin
-            // 
-            this.Admin.HeaderText = "Admin";
-            this.Admin.Name = "Admin";
-            this.Admin.ReadOnly = true;
-            this.Admin.Width = 61;
+            this.btnPrint.Location = new System.Drawing.Point(462, 6);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(101, 24);
+            this.btnPrint.TabIndex = 3;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // RentalReceiptView
             // 
@@ -387,6 +399,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Reference;
         private System.Windows.Forms.DataGridViewTextBoxColumn AdminId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Admin;
+        private System.Windows.Forms.Button btnPrint;
 
     }
 }
