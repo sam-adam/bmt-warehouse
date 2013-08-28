@@ -5,10 +5,10 @@
     using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
-    using Warehouse.Application;
     using Warehouse.Business.Contract;
     using Warehouse.Data.Model;
     using Warehouse.Presentation.Delegates;
+    using Warehouse.Presentation.Print;
     
     public partial class RentalAgreementView : Form
     {
@@ -17,13 +17,17 @@
         
         private readonly IRentalAgreementBl _rentalAgreementBl;
         private readonly RentalAgreementFrm _rentalAgreementFrm;
+        private readonly PrintFrm _printFrm;
+        private readonly RentalAgreementRpt _report;
         private RentalAgreement _rentalAgreement;
         
         #region Constructors
-        public RentalAgreementView(IRentalAgreementBl rentalAgreementBl, RentalAgreementFrm rentalAgreementFrm)
+        public RentalAgreementView(IRentalAgreementBl rentalAgreementBl, RentalAgreementFrm rentalAgreementFrm, PrintFrm printFrm, RentalAgreementRpt report)
         {
             _rentalAgreementBl = rentalAgreementBl;
             _rentalAgreementFrm = rentalAgreementFrm;
+            _printFrm = printFrm;
+            _report = report;
 
             InitializeComponent();
         }
@@ -179,5 +183,21 @@
             }
         }
         #endregion
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (dgvRentalAgreement.CurrentRow != null)
+            {
+                Print(_rentalAgreementBl.Get(dgvRentalAgreement.CurrentRow.Cells["Id"].Value.ToString()).First(), _report.ResourceName);
+            }
+        }
+
+        private void Print(RentalAgreement rentalAgreement, string reportFileName)
+        {
+            _printFrm.RecordSelectionFormula = "{tbl_trrentalagreement1.id_rentalagreement}='" + rentalAgreement.Id + "'";
+            _printFrm.ReportFilename = reportFileName;
+
+            _printFrm.ShowDialog();
+        }
     }
 }

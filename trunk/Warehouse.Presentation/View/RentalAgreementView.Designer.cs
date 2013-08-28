@@ -54,6 +54,7 @@
             this.stpRentalAgreementList = new System.Windows.Forms.StatusStrip();
             this.tssHelp = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssHelpEnter = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRentalAgreement)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRentalAgreementDetail)).BeginInit();
@@ -62,6 +63,7 @@
             // 
             // pnlTop
             // 
+            this.pnlTop.Controls.Add(this.btnPrint);
             this.pnlTop.Controls.Add(this.cboCriteria);
             this.pnlTop.Controls.Add(this.txtKeyword);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -321,6 +323,16 @@
             this.tssHelpEnter.Text = "Press <Enter> to select Rental Agreement";
             this.tssHelpEnter.Visible = false;
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(462, 6);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(101, 24);
+            this.btnPrint.TabIndex = 5;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // RentalAgreementView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -369,5 +381,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SubcategoryId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Subcategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

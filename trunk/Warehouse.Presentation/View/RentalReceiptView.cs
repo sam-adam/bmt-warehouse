@@ -9,20 +9,25 @@ using System.Text;
 using System.Windows.Forms;
 using Warehouse.Business.Contract;
 using Warehouse.Data.Model;
+using Warehouse.Presentation.Print;
 
 namespace Warehouse.Presentation.View
 {
     public partial class RentalReceiptView : Form
     {
         private readonly IRentalReceiptBl _rentalReceiptBl;
+        private readonly PrintFrm _printFrm;
+        private readonly RentalReceiptRpt _report;
         private RentalReceipt _rentalReceipt;
         public Form Caller { get; set; }
         public RentalReceipt RentalReceipt { get; private set; }
 
         #region Constructors
-        public RentalReceiptView(IRentalReceiptBl rentalReceiptBl)
+        public RentalReceiptView(IRentalReceiptBl rentalReceiptBl, PrintFrm printFrm, RentalReceiptRpt report)
         {
             _rentalReceiptBl = rentalReceiptBl;
+            _printFrm = printFrm;
+            _report = report;
 
             InitializeComponent();
         }
@@ -162,5 +167,21 @@ namespace Warehouse.Presentation.View
             }
         }
         #endregion
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (dgvRentalReceipt.CurrentRow != null)
+            {
+                Print(_rentalReceiptBl.Get(dgvRentalReceipt.CurrentRow.Cells["Id"].Value.ToString()).First(), _report.ResourceName);
+            }
+        }
+
+        private void Print(RentalReceipt rentalReceipt, string reportFileName)
+        {
+            _printFrm.RecordSelectionFormula = "{tbl_trrentalreceipt1.id_rentalreceipt}='" + rentalReceipt.Id + "'";
+            _printFrm.ReportFilename = reportFileName;
+
+            _printFrm.ShowDialog();
+        }
     }
 }

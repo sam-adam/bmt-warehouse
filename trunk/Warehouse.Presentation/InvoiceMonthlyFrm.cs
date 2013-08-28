@@ -102,7 +102,7 @@ namespace Warehouse.Presentation
                 var invoiceMonthly = new InvoiceMonthly()
                 {
                     Id = _invoiceMonthlyBl.GenerateNewId(),
-                    Discount = Double.Parse(txtDiscount.Text),
+                    Discount = txtDiscount.Text == string.Empty ? 0 : Double.Parse(txtDiscount.Text),
                     DiscountRemark = txtDiscountRemark.Text,
                     RentalAgreement = _customer.GetActiveRental(),
                     InvoiceDate = dtpInvoiceDate.Value

@@ -8,18 +8,23 @@
     using System.Windows.Forms;
     using Warehouse.Business.Contract;
     using Warehouse.Data.Model;
+    using Warehouse.Presentation.Print;
 
     public partial class InvoiceWithdrawalView : Form
     {
         private readonly IInvoiceWithdrawalBl _invoiceWithdrawalBl;
+        private readonly PrintFrm _printFrm;
+        private readonly InvoiceWithdrawalRpt _report;
         private InvoiceWithdrawal _invoiceWithdrawal;
         public Form Caller { get; set; }
         public InvoiceWithdrawal InvoiceWithdrawal { get; private set; }
 
         #region Constructors
-        public InvoiceWithdrawalView(IInvoiceWithdrawalBl invoiceWithdrawalBl)
+        public InvoiceWithdrawalView(IInvoiceWithdrawalBl invoiceWithdrawalBl, PrintFrm printFrm, InvoiceWithdrawalRpt report)
         {
             _invoiceWithdrawalBl = invoiceWithdrawalBl;
+            _printFrm = printFrm;
+            _report = report;
 
             InitializeComponent();
         }
@@ -172,6 +177,22 @@
         private void dgvInvoiceWithdrawal_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             SetDetails();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (dgvInvoiceWithdrawal.CurrentRow != null)
+            {
+                Print(_invoiceWithdrawalBl.Get(dgvInvoiceWithdrawal.CurrentRow.Cells["Id"].Value.ToString()).First(), _report.ResourceName);
+            }
+        }
+
+        private void Print(InvoiceWithdrawal invoiceWithdrawal, string reportFileName)
+        {
+            _printFrm.RecordSelectionFormula = "{tbl_trinvoicewithdrawal1.id_invoicewithdrawal}='" + invoiceWithdrawal.Id + "'";
+            _printFrm.ReportFilename = reportFileName;
+
+            _printFrm.ShowDialog();
         }
     }
 }

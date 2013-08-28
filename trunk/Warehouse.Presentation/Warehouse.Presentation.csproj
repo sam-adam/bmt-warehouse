@@ -32,7 +32,7 @@
     <PublisherName>CodeBros</PublisherName>
     <WebPage>publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>34</ApplicationRevision>
+    <ApplicationRevision>49</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -260,6 +260,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LoadingReceiptRpt.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Print\RentalAgreementRpt.cs">
       <AutoGen>True</AutoGen>
@@ -284,6 +285,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UnloadingReceiptRpt.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -428,14 +430,16 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RentalWithdrawalRpt.cs</LastGenOutput>
     </Content>
-    <EmbeddedResource Include="Print\LoadingReceiptRpt.rpt">
+    <Content Include="Print\LoadingReceiptRpt.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>LoadingReceiptRpt.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Print\UnloadingReceiptRpt.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Print\UnloadingReceiptRpt.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>UnloadingReceiptRpt.cs</LastGenOutput>
-    </EmbeddedResource>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

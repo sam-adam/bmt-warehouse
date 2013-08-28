@@ -189,12 +189,8 @@
         #region Functions
         private void LoadCustomerView()
         {
+            _customerView.CustomerSelected += CustomerView_CustomerSelected;
             _customerView.ShowDialog();
-
-            if (_customerView.Customer != null)
-            {
-                _customerView.CustomerSelected += CustomerView_CustomerSelected;
-            }
         }
 
         private void CustomerView_CustomerSelected(object sender, CustomerSelectedEventArgs e)
