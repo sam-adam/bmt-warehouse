@@ -131,7 +131,7 @@
             this.tssHelpCustomerSelection.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
             this.tssHelpCustomerSelection.Name = "tssHelpCustomerSelection";
             this.tssHelpCustomerSelection.Padding = new System.Windows.Forms.Padding(10);
-            this.tssHelpCustomerSelection.Size = new System.Drawing.Size(550, 26);
+            this.tssHelpCustomerSelection.Size = new System.Drawing.Size(581, 26);
             this.tssHelpCustomerSelection.Spring = true;
             this.tssHelpCustomerSelection.Text = "F1 :  Open Customer Selection";
             this.tssHelpCustomerSelection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -668,6 +668,7 @@
             this.dtpInvoiceDate.Size = new System.Drawing.Size(250, 21);
             this.dtpInvoiceDate.TabIndex = 112;
             this.dtpInvoiceDate.TabStop = false;
+            this.dtpInvoiceDate.ValueChanged += new System.EventHandler(this.dtpInvoiceDate_ValueChanged);
             // 
             // lblInvoiceDate
             // 
