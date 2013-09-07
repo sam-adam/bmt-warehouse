@@ -175,8 +175,7 @@
         {
             if (dgvRentalProduct.CurrentRow != null && dgvRentalProduct.Rows.Count > 0)
             {
-                _presenter.GetRentalProductMutationIn(dgvRentalProduct.Rows[e.RowIndex].Cells["ProductId"].Value.ToString(), dtpMutationFrom.Value, dtpMutationTo.Value);
-                _presenter.GetRentalProductMutationOut(dgvRentalProduct.Rows[e.RowIndex].Cells["ProductId"].Value.ToString(), dtpMutationFrom.Value, dtpMutationTo.Value);
+                _presenter.GetRentalProductMutations(dgvRentalProduct.Rows[e.RowIndex].Cells["ProductId"].Value.ToString());
             }
         }
 

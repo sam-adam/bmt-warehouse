@@ -37,6 +37,16 @@ namespace Warehouse.Presentation
             LoadCustomerView();   
         }
 
+        private void dtpInvoiceDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpInvoiceDate.Value > dtpTransactionDate.Value)
+            {
+                MessageBox.Show(@"Invoice date cannot be greater than transaction date");
+
+                dtpInvoiceDate.Value = dtpTransactionDate.Value;
+            }
+        }
+
         private void txtCustomerId_TextChanged(object sender, EventArgs e)
         {
             ClearForm(txtCustomerId);
@@ -45,7 +55,7 @@ namespace Warehouse.Presentation
             {
                 try
                 {
-                    _customer = _invoiceMonthlyBl.GetCustomer(txtCustomerId.Text);
+                    _customer = _invoiceMonthlyBl.GetCustomer(txtCustomerId.Text, dtpInvoiceDate.Value);
 
                     SetData(_customer);
                 }
@@ -193,7 +203,7 @@ namespace Warehouse.Presentation
 
             dgvInvoiceMonthlyDetail.Rows.Clear();
 
-            var products = _invoiceMonthlyBl.GetProducts(customer);
+            var products = _invoiceMonthlyBl.GetProducts(customer, dtpInvoiceDate.Value);
 
             if (products != null)
             {

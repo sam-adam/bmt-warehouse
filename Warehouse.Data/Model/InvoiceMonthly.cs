@@ -9,6 +9,7 @@
         public virtual RentalAgreement RentalAgreement { get; set; }
         public virtual double Discount { get; set; }
         public virtual string DiscountRemark { get; set; }
+        public virtual DateTime Period { get; set; }
         public virtual DateTime InvoiceDate { get; set; }
         public virtual DateTime CreatedDate { get; set; }
         public virtual Employee CreatedBy { get; set; }

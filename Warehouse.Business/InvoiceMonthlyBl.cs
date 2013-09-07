@@ -2,6 +2,7 @@
 {
     using Warehouse.Data.Contract;
     using Warehouse.Data.Model;
+    using Warehouse.Data.Repository;
     using Warehouse.Business.Contract;
     using Warehouse.Helper;
     using System;
@@ -16,55 +17,49 @@
         private readonly IInvoiceMonthlyRepository _repository;
         private readonly ICustomerRepository _customerRepository;
         private readonly IRentalProductRepository _productRepository;
+        private readonly IRentalReceiptRepository _receiptRepository;
+        private readonly IRentalWithdrawalRepository _withdrawalRepository;
+        private readonly RentalProductAdjustmentRepository _adjustmentRepository;
 
-        public InvoiceMonthlyBl(Common common, IInvoiceMonthlyRepository repository, ICustomerRepository customerRepository, IRentalProductRepository productRepository)
+        public InvoiceMonthlyBl(
+            Common common, 
+            IInvoiceMonthlyRepository repository, 
+            ICustomerRepository customerRepository, 
+            IRentalProductRepository productRepository, 
+            IRentalReceiptRepository receiptRepository, 
+            IRentalWithdrawalRepository withdrawalRepository, 
+            RentalProductAdjustmentRepository adjustmentRepository)
         {
             _common = common;
             _repository = repository;
             _customerRepository = customerRepository;
             _productRepository = productRepository;
+            _receiptRepository = receiptRepository;
+            _withdrawalRepository = withdrawalRepository;
+            _adjustmentRepository = adjustmentRepository;
         }
 
         public string GenerateNewId()
         {
-            var currentMonth = DateTimeHelper.ConvertMonthToAlphabet(DateTime.Now.Month);
             var currentYear = DateTime.Now.Year.ToString(CultureInfo.InvariantCulture).Substring(2, 2);
             var branch = _common.LoggedInUser.Employee.Branch;
-            var newId = "0001";
-
-            var invoiceList = _repository.Get(inv => inv.CreatedDate.Month == DateTime.Now.Month).ToList();
-            var lastRental = invoiceList.Any() ? invoiceList.Last() : null;
-
-            if (lastRental != null)
-            {
-                var lastRentalIds = lastRental.Id.Split('.');
-                var newIntId = int.Parse(lastRentalIds[1]) + 1;
-
-                if (newIntId < 10)
-                {
-                    newId = "000" + newIntId.ToString(CultureInfo.InvariantCulture);
-                }
-                else if (newIntId < 100)
-                {
-                    newId = "00" + newIntId.ToString(CultureInfo.InvariantCulture);
-                }
-                else if (newIntId < 1000)
-                {
-                    newId = "0" + newIntId.ToString(CultureInfo.InvariantCulture);
-                }
-                else
-                {
-                    newId = newIntId.ToString(CultureInfo.InvariantCulture);
-                }
-            }
-
-            return string.Format("IM{0}/{1}{2}.{3}", branch, currentMonth, currentYear, newId);
+            var lastInvoice = _repository.GetAll().OrderByDescending(inv => inv.InvoiceDate);
+            var newInvoiceMonth = !lastInvoice.Any() ? DateTime.Now.Month : lastInvoice.First().InvoiceDate.NextMonth().Month;
+            
+            return string.Format("IM{0}/{1}{2}.{3}", branch, newInvoiceMonth, currentYear, "0001");
         }
 
         public string Save(InvoiceMonthly invoiceMonthly)
         {
             Validate(invoiceMonthly);
 
+            var customer = invoiceMonthly.RentalAgreement.Customer;
+            var lastInvoiceMonthly = GetLastInvoiceForCustomer(customer);
+            var rentalCutOffDate = invoiceMonthly.RentalAgreement.CutOffDate;
+            
+            invoiceMonthly.Period = rentalCutOffDate > invoiceMonthly.InvoiceDate.Date.Day ? 
+                DateTimeHelper.GetDateTime(rentalCutOffDate, invoiceMonthly.InvoiceDate.PreviousMonth().Month, DateTime.Now.Year) : 
+                DateTimeHelper.GetDateTime(rentalCutOffDate, invoiceMonthly.InvoiceDate.Month, DateTime.Now.Year);
             invoiceMonthly.CreatedDate = DateTime.Now;
             invoiceMonthly.CreatedBy = _common.LoggedInUser.Employee;
 
@@ -105,37 +100,161 @@
             return invoices.Any() ? invoices.ToList() : null;
         }
 
-        public Customer GetCustomer(string id)
+        public Customer GetCustomer(string id, DateTime invoiceDate)
         {
             var customerQuery = _customerRepository.Get(cust => cust.Id == id);
 
             if (!customerQuery.Any()) throw new Exception("Customer not found");
 
-            return GetCustomer(customerQuery.First());
+            return GetCustomer(customerQuery.First(), invoiceDate);
         }
 
-        public Customer GetCustomer(Customer customer)
+        private InvoiceMonthly GetLastInvoiceForCustomer(Customer customer)
         {
-            if (!customer.HasRentalAgreement()) throw new Exception(string.Format("Customer \'{0}\' has no active agreement", customer.Name));
+            var result = _repository.Get(inv => inv.RentalAgreement.Customer == customer).OrderByDescending(inv => inv.InvoiceDate);
+
+            return result.Any() ? result.First() : null;
+        }
+
+        public Customer GetCustomer(Customer customer, DateTime invoiceDate)
+        {
+            if (!customer.HasRentalAgreement()) 
+                throw new Exception(string.Format("Customer \'{0}\' has no active agreement", customer.Name));
 
             var activeRental = customer.GetActiveRental();
-            var rentalCutOffDate = activeRental.CutOffDate.ToString(CultureInfo.InvariantCulture) + "/" + DateTime.Now.Month.ToString("d2") + "/" + DateTime.Now.Year;
+            var lastInvoiceMonthly = GetLastInvoiceForCustomer(customer);
 
-            if (DateTime.Now < DateTime.ParseExact(rentalCutOffDate, "dd/MM/yyyy", null)) throw new Exception(string.Format("Cannot invoice customer \'{0}\' before {1}", customer.Name, rentalCutOffDate));
+            if (lastInvoiceMonthly == null)
+            {
+                if ((invoiceDate - activeRental.AgreementDate).TotalDays < 30)
+                    throw new Exception(string.Format("Cannot invoice customer \'{0}\' before 1 month after agreement", customer.Name));
+                
+                var rentalCutOffDate = DateTimeHelper.GetDateTime(activeRental.CutOffDate
+                    , invoiceDate.Month
+                    , DateTime.Now.Year);
+            }
+            else
+            {
+                var rentalCutOffDate = activeRental.CutOffDate;
+                var periodFrom = rentalCutOffDate > invoiceDate.Date.Day ?
+                                DateTimeHelper.GetDateTime(rentalCutOffDate, invoiceDate.PreviousMonth(2).Month, DateTime.Now.Year).AddDays(1) :
+                                DateTimeHelper.GetDateTime(rentalCutOffDate, invoiceDate.PreviousMonth().Month, DateTime.Now.Year);
+                var periodTo = DateTimeHelper.GetDateTime(
+                                periodFrom.Date.AddDays(-1).Day
+                                , periodFrom.NextMonth().Month
+                                , periodFrom.NextMonth().Month < periodFrom.Month ? periodFrom.Year : periodFrom.Year + 1);
 
-            var invoiceQuery = _repository.Get(inv => inv.RentalAgreement == activeRental && inv.InvoiceDate.Month == DateTime.Now.Month);
-            var isAlreadyInvoiced = invoiceQuery.Any();
+                if (periodTo.Month - lastInvoiceMonthly.Period.Month > 1)
+                    throw new Exception(string.Format("Must create invoice for {0} first"
+                        , lastInvoiceMonthly.InvoiceDate.NextMonth().ToString("MMMM")));
 
-            if (isAlreadyInvoiced) throw new Exception(string.Format("Customer \'{0}\' is already invoiced by \'{1}\'", customer.Name, invoiceQuery.First().Id));
+                var invoiceQuery = _repository.Get(inv => inv.RentalAgreement == activeRental && inv.Period.Month == periodTo.Month);
+                var isAlreadyInvoiced = invoiceQuery.Any();
+
+                if (isAlreadyInvoiced)
+                    throw new Exception(string.Format("Customer \'{0}\' is already invoiced by \'{1}\' for period {2}"
+                        , customer.Name
+                        , invoiceQuery.First().Id
+                        , invoiceQuery.First().Period.ToString("dd-MMMM-yyyy")));
+            }
 
             return customer;
         }
 
-        public IList<RentalProduct> GetProducts(Customer customer)
+        public IList<RentalProduct> GetProducts(Customer customer, DateTime invoiceDate)
         {
-            var products = _productRepository.Get(prod => prod.Customer == customer);
+            var rentalProducts = new List<RentalProduct>();
+            var customerRentalProducts = _productRepository.Get(prod => prod.Customer == customer);
+            var activeRental = customer.GetActiveRental();
+            var rentalCutOffDate = activeRental.CutOffDate;
+            var periodFrom = rentalCutOffDate > invoiceDate.Date.Day ?
+                            DateTimeHelper.GetDateTime(rentalCutOffDate, invoiceDate.PreviousMonth(2).Month, DateTime.Now.Year).AddDays(1) :
+                            DateTimeHelper.GetDateTime(rentalCutOffDate, invoiceDate.PreviousMonth().Month, DateTime.Now.Year).AddDays(1);
+            var periodTo = DateTimeHelper.GetDateTime(
+                            periodFrom.Date.Day
+                            , periodFrom.NextMonth().Month
+                            , periodFrom.NextMonth().Month > periodFrom.Month ? periodFrom.Year : periodFrom.Year + 1).AddDays(-1);
+            var lastInvoiceMonthly = GetLastInvoiceForCustomer(customer);
+            var withdrawals = lastInvoiceMonthly == null 
+                ? _withdrawalRepository.GetAll() 
+                : _withdrawalRepository.Get(with => with.Customer == customer);
+            var receipts = lastInvoiceMonthly == null 
+                ? _receiptRepository.GetAll() 
+                : _receiptRepository.Get(rcpt => rcpt.RentalAgreement.Customer == customer);
+            var adjustments = lastInvoiceMonthly == null 
+                ? _adjustmentRepository.GetAll() 
+                : _adjustmentRepository.Get(adj => adj.Customer == customer);
 
-            return products.Any() ? products.ToList() : null;
+            foreach (var rentalProduct in customerRentalProducts)
+            {
+                var product = rentalProduct;
+                var initialBalance = 0;
+
+                if (lastInvoiceMonthly != null)
+                {
+                    var productQuery = lastInvoiceMonthly.Details.Where(dtl => dtl.RentalProduct.Id == product.Id);
+                    
+                    if (productQuery.Any())
+                    {
+                        var productQueryResult = productQuery.First();
+                        initialBalance = productQueryResult.Quantity;
+                    }
+                }
+
+                product.Stock = initialBalance;
+
+                rentalProducts.Add(product);
+            }
+
+            if (withdrawals.Any())
+            {
+                foreach (var rentalWithdrawal in withdrawals.ToList())
+                {
+                    if (rentalWithdrawal.WithdrawalDate.IsBetween(periodFrom, periodTo))
+                    {
+                        foreach (var rentalProduct in rentalProducts)
+                        {
+                            var withdrawalDetail = rentalWithdrawal.Details.FirstOrDefault(dtl => dtl.RentalProduct.Id == rentalProduct.Id);
+                            rentalProduct.Stock -= withdrawalDetail != null ? withdrawalDetail.Quantity : 0;
+                        }
+                    }
+                }
+            }
+
+            if (receipts.Any())
+            {
+                foreach (var rentalReceipt in receipts.ToList())
+                {
+                    if (rentalReceipt.ReceiptDate.IsBetween(periodFrom, periodTo))
+                    {
+                        foreach (var rentalProduct in rentalProducts)
+                        {
+                            var receiptDetail = rentalReceipt.Details.FirstOrDefault(dtl => dtl.RentalProduct.Id == rentalProduct.Id);
+                            rentalProduct.Stock += receiptDetail != null ? receiptDetail.Quantity : 0;
+                        }   
+                    }
+                }   
+            }
+
+            if (adjustments.Any())
+            {
+                foreach (var rentalProductAdjustment in adjustments.ToList())
+                {
+                    if (rentalProductAdjustment.CreatedDate.IsBetween(periodFrom, periodTo))
+                    {
+                        foreach (var rentalProduct in rentalProducts)
+                        {
+                            var adjustmentDetail = rentalProductAdjustment.Details.FirstOrDefault(dtl => dtl.RentalProduct.Id == rentalProduct.Id);
+                            rentalProduct.Stock += adjustmentDetail != null ? adjustmentDetail.AdjustedStock - adjustmentDetail.PreviousStock : 0;
+                        }   
+                    }
+                }   
+            }
+
+            if (rentalProducts.Count == 0)
+                throw new Exception("Customer has no rental product");
+
+            return rentalProducts;
         }
 
         public double GetProductPrice(RentalAgreement activeRental, RentalProduct product)

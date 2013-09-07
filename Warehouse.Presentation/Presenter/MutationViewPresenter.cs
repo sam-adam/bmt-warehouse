@@ -4,9 +4,9 @@
     using System.Collections.Generic;
     using System.Linq;
     using Warehouse.Application;
+    using Warehouse.Business;
     using Warehouse.Business.Contract;
     using Warehouse.Business.Model;
-    using Warehouse.Data.Model;
     using Warehouse.Presentation.Common;
     using Warehouse.Presentation.Contract;
 
@@ -16,14 +16,22 @@
         private readonly IRentalProductBl _rentalProductBl;
         private readonly IRentalReceiptBl _rentalReceiptBl;
         private readonly IRentalWithdrawalBl _rentalWithdrawalBl;
+        private readonly RentalProductAdjustmentBl _adjustmentBl;
         private IMutationViewForm _form;
 
-        public MutationViewPresenter(EntityManager entityManager, ICustomerBl customerBl, IRentalProductBl rentalProductBl, IRentalReceiptBl rentalReceiptBl, IRentalWithdrawalBl rentalWithdrawalBl) : base(entityManager)
+        public MutationViewPresenter(
+            EntityManager entityManager, 
+            ICustomerBl customerBl, 
+            IRentalProductBl rentalProductBl, 
+            IRentalReceiptBl rentalReceiptBl, 
+            IRentalWithdrawalBl rentalWithdrawalBl, 
+            RentalProductAdjustmentBl adjustmentBl) : base(entityManager)
         {
             _customerBl = customerBl;
             _rentalProductBl = rentalProductBl;
             _rentalReceiptBl = rentalReceiptBl;
             _rentalWithdrawalBl = rentalWithdrawalBl;
+            _adjustmentBl = adjustmentBl;
         }
 
         public void SetForm(IMutationViewForm form)

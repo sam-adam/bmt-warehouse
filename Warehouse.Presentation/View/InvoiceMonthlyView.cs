@@ -7,18 +7,23 @@
     using System.Windows.Forms;
     using Warehouse.Business.Contract;
     using Warehouse.Data.Model;
+    using Warehouse.Presentation.Print;
 
     public partial class InvoiceMonthlyView : Form
     {
         private readonly IInvoiceMonthlyBl _invoiceMonthlyBl;
+        private readonly PrintFrm _printFrm;
+        private readonly InvoiceMonthlyRpt _report;
         private InvoiceMonthly _invoiceMonthly;
         public Form Caller { get; set; }
         public InvoiceMonthly InvoiceMonthly { get; private set; }
 
         #region Constructors
-        public InvoiceMonthlyView(IInvoiceMonthlyBl invoiceMonthlyBl)
+        public InvoiceMonthlyView(IInvoiceMonthlyBl invoiceMonthlyBl, PrintFrm printFrm, InvoiceMonthlyRpt report)
         {
             _invoiceMonthlyBl = invoiceMonthlyBl;
+            _printFrm = printFrm;
+            _report = report;
 
             InitializeComponent();
         }
@@ -167,6 +172,22 @@
         private void dgvInvoiceMonthly_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             SetDetails();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (dgvInvoiceMonthly.CurrentRow != null)
+            {
+                Print(_invoiceMonthlyBl.Get(dgvInvoiceMonthly.CurrentRow.Cells["Id"].Value.ToString()).First(), _report.ResourceName);
+            }
+        }
+
+        private void Print(InvoiceMonthly invoiceMonthly, string reportFileName)
+        {
+            _printFrm.RecordSelectionFormula = "{tbl_trinvoicemonthly1.id_invoicemonthly}='" + invoiceMonthly.Id + "'";
+            _printFrm.ReportFilename = reportFileName;
+
+            _printFrm.ShowDialog();
         }
     }
 }

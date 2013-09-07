@@ -13,6 +13,7 @@
             References(x => x.RentalAgreement, "id_rentalagreement");
             Map(x => x.Discount);
             Map(x => x.DiscountRemark, "discount_remark");
+            Map(x => x.Period);
             Map(x => x.InvoiceDate, "invoice_date");
             Map(x => x.CreatedDate, "created_date");
             References(x => x.CreatedBy, "created_by");

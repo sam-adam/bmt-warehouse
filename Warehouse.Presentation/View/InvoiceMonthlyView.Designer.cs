@@ -64,6 +64,7 @@
             this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceMonthly)).BeginInit();
             this.stpInvoiceMonthly.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceMonthlyDetail)).BeginInit();
@@ -369,6 +370,7 @@
             // 
             // pnlTop
             // 
+            this.pnlTop.Controls.Add(this.btnPrint);
             this.pnlTop.Controls.Add(this.cboCriteria);
             this.pnlTop.Controls.Add(this.txtKeyword);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -377,6 +379,16 @@
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.Size = new System.Drawing.Size(793, 38);
             this.pnlTop.TabIndex = 27;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(462, 7);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(101, 24);
+            this.btnPrint.TabIndex = 5;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // InvoiceMonthlyView
             // 
@@ -432,5 +444,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
+        private System.Windows.Forms.Button btnPrint;
     }
 }
